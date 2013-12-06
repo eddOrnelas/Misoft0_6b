@@ -28,6 +28,10 @@ public class ModeloCorte extends CustomORM {
     private Float retiros;
     private Integer numVentas;
     private Float corte;
+    
+ 
+    
+    
 
     public ModeloCorte() {
     }
@@ -35,6 +39,8 @@ public class ModeloCorte extends CustomORM {
     public ModeloCorte(Boolean init) {
     }
 
+    
+    
     public String getFecha1() {
         return fecha1;
     }

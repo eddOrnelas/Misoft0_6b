@@ -236,11 +236,11 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
 
     private void verReportes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReportes
         // TODO add your handling code here:
-           panelPrincipal.removeAll();
+         panelPrincipal.removeAll();
         
         VistaReportes vista = new VistaReportes();
-        vista.show();
         
+        vista.show();
         panelPrincipal.add(vista);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
