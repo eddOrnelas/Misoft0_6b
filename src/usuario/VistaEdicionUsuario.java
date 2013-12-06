@@ -1,7 +1,9 @@
 package usuario;
 
 
+import articulo.VistaConsultarArticulosGeneral;
 import javax.swing.JOptionPane;
+import usuario.ControlUsuario;
 
 /*
  * To change this template, choose Tools | Templates
@@ -14,12 +16,14 @@ import javax.swing.JOptionPane;
  */
 public class VistaEdicionUsuario extends javax.swing.JPanel {
  public String usuario;
+ private String txBuscar;
     /**
      * Creates new form VistaModificarUsuario
      */
     public VistaEdicionUsuario(String usuario) {
         initComponents();
         this.usuario = usuario;
+        this.txBuscar = txBuscar;
         
          Usuario busuario = new Usuario(true);
            
@@ -254,6 +258,11 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -312,9 +321,15 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        this.removeAll();
-        this.revalidate();
-        this.repaint();
+//         VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(textoBusqueda);
+//           this.removeAll();
+//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+//           this.setLayout(new java.awt.BorderLayout());          
+//           this.add(vista);
+//           vista.show();
+//           this.revalidate();
+//           this.repaint();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void EditarUsuario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarUsuario
@@ -352,6 +367,18 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
            
        }
     }//GEN-LAST:event_EditarUsuario
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+         VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(txBuscar);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());          
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
+    }//GEN-LAST:event_jButton2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarUsuario;

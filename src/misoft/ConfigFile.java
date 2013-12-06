@@ -17,7 +17,7 @@ public class ConfigFile {
    public String serverName = "localhost";
    public String databaseName = "misoft";
    public String userdb = "root";
-   public String password = "";
+   public String password = "maro";
     
    public ConfigFile()
    {

@@ -124,6 +124,11 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         add(jScrollPane1, gridBagConstraints);
 
         txBusqueda.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txBusquedaActionPerformed(evt);
+            }
+        });
         txBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 keyBusqueda(evt);
@@ -527,6 +532,10 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
     private void btEliminarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarArticuloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btEliminarArticuloActionPerformed
+
+    private void txBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txBusquedaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;

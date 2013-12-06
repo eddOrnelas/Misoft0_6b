@@ -3,6 +3,7 @@ package login;
 import usuario.VistaAltaUsuario;
 import usuario.VistaConsultaGeneralUsuarios;
 
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -106,6 +107,7 @@ public class Principal extends javax.swing.JFrame {
         
        paneUsuarios.revalidate();
        paneUsuarios.repaint();
+       
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -115,7 +117,8 @@ public class Principal extends javax.swing.JFrame {
         paneUsuarios.removeAll();
         
         paneUsuarios.add(vista);
-        vista.show();
+        vista.show();        
+        
         
        paneUsuarios.revalidate();
        paneUsuarios.repaint();

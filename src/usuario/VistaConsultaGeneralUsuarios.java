@@ -18,12 +18,17 @@ import javax.swing.table.TableRowSorter;
  */
 public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
     private int selection;
+     
 
     /**
      * Creates new form VistaConsultaespecificaUsuario
      */
     public VistaConsultaGeneralUsuarios() {
         initComponents();
+    }
+
+    VistaConsultaGeneralUsuarios(String txBuscar) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
