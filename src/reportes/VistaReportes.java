@@ -4,8 +4,10 @@
  */
 package reportes;
 
+import java.awt.GridBagLayout;
 import reportes.ControlReporte;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import reportes.ModeloArticulo;
 
@@ -20,6 +22,8 @@ public class VistaReportes extends javax.swing.JPanel {
      */
     public VistaReportes() {
         initComponents();
+        
+        
     }
 
     /**
@@ -32,81 +36,22 @@ public class VistaReportes extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        btReporteVentas = new javax.swing.JButton();
         btCorte = new javax.swing.JButton();
         btArticulos = new javax.swing.JButton();
-        txFechaInicio = new com.toedter.calendar.JDateChooser();
-        txFechaFinal = new com.toedter.calendar.JDateChooser();
-        btReporteVentas = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btMovimientos = new javax.swing.JButton();
+        jpRangos = new javax.swing.JPanel();
+        jSeparator2 = new javax.swing.JSeparator();
 
+        setAlignmentX(20.0F);
+        setMaximumSize(new java.awt.Dimension(740, 300));
+        setMinimumSize(new java.awt.Dimension(740, 300));
+        setName("panelReportes"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(740, 300));
         setLayout(new java.awt.GridBagLayout());
 
-        btCorte.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btCorte.setText("Reporte Corte");
-        btCorte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCorteActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.01;
-        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        add(btCorte, gridBagConstraints);
-
-        btArticulos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btArticulos.setText("Reporte Articulos");
-        btArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btArticulosActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.01;
-        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        add(btArticulos, gridBagConstraints);
-
-        txFechaInicio.setDateFormatString("yyyy-MM-dd");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.01;
-        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        add(txFechaInicio, gridBagConstraints);
-
-        txFechaFinal.setDateFormatString("yyyy-MM-dd");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.01;
-        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
-        add(txFechaFinal, gridBagConstraints);
-
-        btReporteVentas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btReporteVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btReporteVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteVenta.png"))); // NOI18N
         btReporteVentas.setText("Reporte de Ventas");
         btReporteVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,126 +60,154 @@ public class VistaReportes extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.01;
-        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 10, 0, 0);
         add(btReporteVentas, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Fecha Inicio:");
-        add(jLabel1, new java.awt.GridBagConstraints());
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Fecha Termino:");
+        btCorte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btCorte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteCorteCaja.png"))); // NOI18N
+        btCorte.setText("Reporte Corte de Caja");
+        btCorte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                verCorteCaja(evt);
+            }
+        });
+        btCorte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCorteActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
-        add(jLabel2, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 10, 0, 0);
+        add(btCorte, gridBagConstraints);
+
+        btArticulos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteAlmacen.png"))); // NOI18N
+        btArticulos.setText("Reporte Almacén");
+        btArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btArticulosActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 0, 0, 0);
+        add(btArticulos, gridBagConstraints);
+
+        btMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/movimientosAlmacen.png"))); // NOI18N
+        btMovimientos.setText("Reporte Movimientos");
+        btMovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMovimientosActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 13;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(32, 14, 0, 0);
+        add(btMovimientos, gridBagConstraints);
+
+        jpRangos.setMaximumSize(new java.awt.Dimension(760, 180));
+        jpRangos.setMinimumSize(new java.awt.Dimension(760, 180));
+        jpRangos.setPreferredSize(new java.awt.Dimension(760, 180));
+        jpRangos.setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
+        add(jpRangos, gridBagConstraints);
+
+        jSeparator2.setMaximumSize(new java.awt.Dimension(550, 10));
+        jSeparator2.setMinimumSize(new java.awt.Dimension(550, 10));
+        jSeparator2.setPreferredSize(new java.awt.Dimension(550, 10));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 210;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
+        add(jSeparator2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCorteActionPerformed
-        // TODO add your handling code here:
 
-        ModeloCorte reporte = null;
-        //Creamos controlador corte
-        ControlReporte ctrCorte = new ControlReporte();
-
-        //Le damos formato a la fecha para que mySQL la reconozca
-        txFechaInicio.setDateFormatString("yyy-MM-dd");
-        txFechaFinal.setDateFormatString("yyy-MM-dd");
-        String fecha1 = "";
-        String fecha2 = "";
-
-        //Obtenemos los valores de la texto de la fecha del calendario
-        if (txFechaInicio.getCalendar() != null) {
-            fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
-        } else {
-            JOptionPane.showMessageDialog(this, "Fecha de inicio incorrecta.");
-        }
-
-        if (txFechaFinal.getCalendar() != null) {
-            fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
-        } else {
-            JOptionPane.showMessageDialog(this, "Fecha final incorrecta.");
-        }
-        reporte = ctrCorte.realizarReporteCorte(fecha1, fecha2);
-
-        if (reporte == null) {
-            JOptionPane.showMessageDialog(this, " No existen registros de ventas para ese rango de fechas  ");
-        } else {
-            ctrCorte.realizarReporteCorte(fecha1, fecha2);
-            JOptionPane.showMessageDialog(null, "Reporte guardado con exito");
-        }
-
-
-
+        jpRangos.removeAll();
+        this.repaint();
+        
     }//GEN-LAST:event_btCorteActionPerformed
-
+    
+    
     private void btArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btArticulosActionPerformed
         // TODO add your handling code here:
-
+        jpRangos.removeAll();
+        this.repaint();
         ModeloArticulo reporte = null;
         ControlReporte ctrArticulos = new ControlReporte();
         reporte = ctrArticulos.realizarReporteArticulo();
-
+        
         if (reporte == null) {
-            JOptionPane.showMessageDialog(null, "No existen Articulos en el almacen");
+            JOptionPane.showMessageDialog(null, "No existen Articulos en el almacén");
         } else {
-            JOptionPane.showMessageDialog(null, "Reporte Guardado");
+            
 
         }
     }//GEN-LAST:event_btArticulosActionPerformed
 
     private void btReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReporteVentasActionPerformed
         // TODO add your handling code here:
-
-        ModeloCorte reporte = null;
-        //Creamos controlador corte
-        ControlReporte ctrCorte = new ControlReporte();
-
-        //Le damos formato a la fecha para que mySQL la reconozca
-        txFechaInicio.setDateFormatString("yyy-MM-dd");
-        txFechaFinal.setDateFormatString("yyy-MM-dd");
-        String fecha1 = "";
-        String fecha2 = "";
-
-        //Obtenemos los valores de la texto de la fecha del calendario
-        if (txFechaInicio.getCalendar() != null) {
-            fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
-        } else {
-            JOptionPane.showMessageDialog(this, "Fecha de inicio incorrecta.");
-        }
-
-        if (txFechaFinal.getCalendar() != null) {
-            fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
-        } else {
-            JOptionPane.showMessageDialog(this, "Fecha final incorrecta.");
-        }
-        reporte = ctrCorte.realizarReporteVentas(fecha1, fecha2);
-
-        if (reporte == null) {
-            JOptionPane.showMessageDialog(this, " No existen registros de ventas para ese rango de fechas  ");
-        } else {
-
-            ctrCorte.realizarReporteVentas(fecha1, fecha2);
-
-            JOptionPane.showMessageDialog(null, "Reporte guardado con exito");
-        }
-
+        jpRangos.removeAll();
+        jpRangos.revalidate();
+        VistaReporteVentasGeneral vista = new VistaReporteVentasGeneral();
+        jpRangos.add(vista);
+        vista.show();
+        this.repaint();
+          
+        
+    
 
     }//GEN-LAST:event_btReporteVentasActionPerformed
+
+    private void verCorteCaja(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verCorteCaja
+        // TODO add your handling code here:
+        
+             
+        jpRangos.removeAll();
+        jpRangos.revalidate();
+        VistaReporteCorte vista = new VistaReporteCorte();
+        jpRangos.add(vista);
+        vista.show();
+        //vista.setVisible(true);
+        //jpRangos.revalidate();
+        
+    }//GEN-LAST:event_verCorteCaja
+
+    private void btMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMovimientosActionPerformed
+
+        jpRangos.removeAll();
+        jpRangos.revalidate();
+        VistaReporteMovimientos vista = new VistaReporteMovimientos();
+        jpRangos.add(vista);
+        vista.show();
+        this.repaint();
+    }//GEN-LAST:event_btMovimientosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btArticulos;
     private javax.swing.JButton btCorte;
+    private javax.swing.JButton btMovimientos;
     private javax.swing.JButton btReporteVentas;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private com.toedter.calendar.JDateChooser txFechaFinal;
-    private com.toedter.calendar.JDateChooser txFechaInicio;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPanel jpRangos;
     // End of variables declaration//GEN-END:variables
 }
