@@ -26,9 +26,16 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
     public VistaConsultaGeneralUsuarios() {
         initComponents();
     }
-
+    
+ 
     VistaConsultaGeneralUsuarios(String txBuscar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.txBuscar.setText(txBuscar);
+        ConsultarUsuariosGeneral(null);
+        
+        
+        
     }
 
     /**
@@ -270,7 +277,7 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 
              if(usuario!=null)
              {
-           VistaEdicionUsuario vista = new VistaEdicionUsuario(usuario);
+           VistaEdicionUsuario vista = new VistaEdicionUsuario(usuario,this.txBuscar.getText());
            this.removeAll();
            //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
            this.setLayout(new java.awt.BorderLayout());          

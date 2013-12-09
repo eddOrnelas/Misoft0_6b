@@ -68,7 +68,18 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jButton4, gridBagConstraints);
 
         paneUsuarios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        paneUsuarios.setLayout(new java.awt.GridBagLayout());
+
+        javax.swing.GroupLayout paneUsuariosLayout = new javax.swing.GroupLayout(paneUsuarios);
+        paneUsuarios.setLayout(paneUsuariosLayout);
+        paneUsuariosLayout.setHorizontalGroup(
+            paneUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1332, Short.MAX_VALUE)
+        );
+        paneUsuariosLayout.setVerticalGroup(
+            paneUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 645, Short.MAX_VALUE)
+        );
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;

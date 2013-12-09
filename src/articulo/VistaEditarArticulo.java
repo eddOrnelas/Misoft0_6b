@@ -386,7 +386,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
     private void cancelarEdicion(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarEdicion
         // TODO add your handling code here:
         
-         VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
+           VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
            this.removeAll();
            //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
            this.setLayout(new java.awt.BorderLayout());          

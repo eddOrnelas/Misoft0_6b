@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package venta;
-import com.sun.org.apache.bcel.internal.generic.Select;
 import java.awt.event.MouseEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -114,7 +113,7 @@ acumIva=0;
 
             },
             new String [] {
-                "Código de Barras", "Descripcion", "PrecioPorUnidad", "Cantidad", "IVA", "subtotal", "total"
+                "Código de Barras", "Descripción", "PrecioPorUnidad", "Cantidad", "IVA", "subtotal", "total"
             }
         ) {
             Class[] types = new Class [] {
@@ -205,7 +204,7 @@ acumIva=0;
         lbBarraEstado.setBounds(150, 520, 930, 15);
 
         txAgregarArticulo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txAgregarArticulo.setText("Teclee o Agrege Código de Barras del Articulo");
+        txAgregarArticulo.setText("Teclee o Agrege Código de Barras del Artículo");
         txAgregarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 limpiartxAgregarArticulo(evt);
@@ -219,7 +218,7 @@ acumIva=0;
         add(txAgregarArticulo);
         txAgregarArticulo.setBounds(300, 160, 360, 30);
 
-        btAgregarArticulo.setText("AgregarArticulo");
+        btAgregarArticulo.setText("Agregar Artículo");
         btAgregarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AgregarArticuloVenta(evt);
@@ -229,7 +228,8 @@ acumIva=0;
         btAgregarArticulo.setBounds(850, 150, 140, 40);
 
         btEliminarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
-        btEliminarArticulo.setText("Eiminar Articulo");
+        btEliminarArticulo.setText("Eiminar Artículo");
+        btEliminarArticulo.setActionCommand("Eiminar Artículo");
         btEliminarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btEliminarArticulo(evt);
@@ -248,11 +248,11 @@ acumIva=0;
         btEliminarVenta.setBounds(410, 70, 130, 40);
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Codigo del Articulo:");
+        jLabel2.setText("Código del Artículo:");
         add(jLabel2);
         jLabel2.setBounds(150, 160, 150, 30);
 
-        btBuscarArticulo.setText("BuscarArticulo");
+        btBuscarArticulo.setText("Buscar Artículo");
         btBuscarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btBuscarArticulo(evt);
@@ -263,7 +263,7 @@ acumIva=0;
 
         lbTitulo.setBackground(new java.awt.Color(51, 255, 51));
         lbTitulo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lbTitulo.setText("Venta del dia:");
+        lbTitulo.setText("Venta del día:");
         add(lbTitulo);
         lbTitulo.setBounds(150, 120, 460, 20);
 
