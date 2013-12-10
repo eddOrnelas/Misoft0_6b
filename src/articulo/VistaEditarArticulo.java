@@ -340,13 +340,15 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
        
        Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
        
-       Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
-       
-       if(!autorizado)
-           errors += "No estas autorizado";
+      
     
        errors += ctrArticulos.validaDatosEdicionArticulo(codigoArticulo.toString(), txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText() );
     
+        Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
+       
+       if(!autorizado)
+           errors += "No estas autorizado";
+       
        
        if(errors.length()>0)
        { JOptionPane.showMessageDialog(this,errors);
