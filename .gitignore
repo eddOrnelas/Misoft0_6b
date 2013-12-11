@@ -216,3 +216,4 @@ pip-log.txt
 /nbproject/private/
 /nbproject/
 /build.xml
+/src/misoft/ConfigFile.java
