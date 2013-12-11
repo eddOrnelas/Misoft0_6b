@@ -68,7 +68,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(27, 20, 0, 0);
         add(etCodigoArticulo, gridBagConstraints);
 
         txNumArt.setMaximumSize(new java.awt.Dimension(6, 25));
@@ -85,16 +85,16 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 4, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(22, 4, 0, 0);
         add(txNumArt, gridBagConstraints);
 
         etFechaInicio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etFechaInicio.setText("Fecha Termino");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 108, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(28, 94, 0, 0);
         add(etFechaInicio, gridBagConstraints);
 
         txFechaFinal.setDateFormatString("yyyy-MM-dd");
@@ -102,7 +102,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 60;
@@ -122,7 +122,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 39, 8, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 54, 3, 0);
         add(btAceptarVentas, gridBagConstraints);
 
         btCancelarRepVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
@@ -133,11 +133,11 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 108, 8, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 94, 3, 0);
         add(btCancelarRepVentas, gridBagConstraints);
 
         etFechaFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -146,7 +146,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 33, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(28, 47, 0, 0);
         add(etFechaFinal, gridBagConstraints);
 
         txFechaInicio.setDateFormatString("yyyy-MM-dd");
@@ -156,7 +156,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
