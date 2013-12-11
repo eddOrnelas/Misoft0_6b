@@ -84,6 +84,11 @@ public class VistaBuscarArticulo extends javax.swing.JFrame {
                 btCancelarBusqueda(evt);
             }
         });
+        btCancelarBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarBusquedaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo/bannerBuscarArticulo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -120,12 +125,12 @@ public class VistaBuscarArticulo extends javax.swing.JFrame {
                 .add(16, 16, 16)
                 .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 354, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btCancelarBusqueda, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .add(btCancelarBusqueda, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-600)/2, (screenSize.height-580)/2, 600, 580);
+        setSize(new java.awt.Dimension(600, 580));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarArticuloParaVenta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarArticuloParaVenta
@@ -178,6 +183,10 @@ public class VistaBuscarArticulo extends javax.swing.JFrame {
         // TODO add your handling code here:
         txBuscarArticulo.setText("");
     }//GEN-LAST:event_limpiartx
+
+    private void btCancelarBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCancelarBusquedaActionPerformed
 
     /**
      * @param args the command line arguments

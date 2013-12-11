@@ -1,6 +1,7 @@
 package usuario;
 
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /*
@@ -14,12 +15,16 @@ import javax.swing.JOptionPane;
  */
 public class VistaAltaUsuario extends javax.swing.JPanel {
 
+
     /**
      * Creates new form VistaAltaUsuario
      */
     public VistaAltaUsuario() {
         initComponents();
+        
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,9 +96,19 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
         jButton5.setText("Cancelar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton5KeyPressed(evt);
             }
         });
 
@@ -108,6 +123,11 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
             }
         });
 
@@ -128,32 +148,32 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txapMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txapPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4))
-                            .addComponent(txpermisos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txapMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txcontraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txapPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(4, 4, 4))
+                                .addComponent(txpermisos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,6 +229,7 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
          this.removeAll();
         this.revalidate();
         this.repaint();
+      
         
        
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -219,7 +240,47 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
 
     private void realizarAltaUsuario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_realizarAltaUsuario
         // TODO add your handling code here:
-        ControlUsuario ctrusuario = new ControlUsuario();
+//        ControlUsuario ctrusuario = new ControlUsuario();
+//        String errores="";
+//        
+//        errores = ctrusuario.validarDatosAltaUsuario(txnombre.getText(),txapPaterno.getText(), txapMaterno.getText(),txusuario.getText(),txcontraseña.getText(),txpermisos.getSelectedItem().toString());
+//        if(errores.length()>0)
+//       {
+//           JOptionPane.showMessageDialog(this,errores);
+//      
+//        }
+//       
+//        else{
+//        
+//          Integer exito = ctrusuario.realizarAltaUsuario(txnombre.getText(),txapPaterno.getText(), txapMaterno.getText(),txusuario.getText(),txcontraseña.getText(),txpermisos.getSelectedItem().toString());
+//
+//        
+//        if(exito==1)
+//        {
+//            JOptionPane.showMessageDialog(this, "Alta Exitosa");
+//        txnombre.setText("");
+//        txapPaterno.setText("");
+//        txapMaterno.setText("");
+//        txusuario.setText("");
+//        txcontraseña.setText("");
+//        
+//
+//        }
+//        
+//       else 
+//        {
+//            JOptionPane.showMessageDialog(this, "Alta Incorrecta");
+//        }
+//       }
+    }//GEN-LAST:event_realizarAltaUsuario
+
+    private void txusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txusuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txusuarioActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+         ControlUsuario ctrusuario = new ControlUsuario();
         String errores="";
         
         errores = ctrusuario.validarDatosAltaUsuario(txnombre.getText(),txapPaterno.getText(), txapMaterno.getText(),txusuario.getText(),txcontraseña.getText(),txpermisos.getSelectedItem().toString());
@@ -251,19 +312,39 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Alta Incorrecta");
         }
        }
-    }//GEN-LAST:event_realizarAltaUsuario
-
-    private void txusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txusuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txusuarioActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txcontraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txcontraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txcontraseñaActionPerformed
+
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+        // TODO add your handling code here:
+               int key=evt.getKeyCode();
+    if(evt.getSource()==jButton4)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           jButton4ActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton4KeyPressed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
+        // TODO add your handling code here:
+                  int key=evt.getKeyCode();
+    if(evt.getSource()==jButton5)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+            jButton5ActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton5KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;

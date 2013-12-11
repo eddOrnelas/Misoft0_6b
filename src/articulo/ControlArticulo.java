@@ -753,8 +753,10 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}, {"activo", "=", 1}};
         
         resultado = articulosBusqueda.buscarBD("all", opciones);
+        if(resultado.length>0){
         articuloEncontrado.setIdArticulo(((Articulo)resultado[0]).getIdArticulo());
         articuloEncontrado.buscarBD();
+        }
         if(resultado.length<=0)
             return null;
         else

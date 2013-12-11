@@ -1,6 +1,7 @@
 package usuario;
 
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
@@ -70,15 +71,19 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 ConsultarUsuariosGeneralActionPerformed(evt);
             }
         });
+        ConsultarUsuariosGeneral.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ConsultarUsuariosGeneralKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.ipadx = 122;
         gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 36, 0, 0);
         add(ConsultarUsuariosGeneral, gridBagConstraints);
 
         jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,16 +104,15 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.ipadx = 2089;
+        gridBagConstraints.ipady = 170;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.05;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
         add(jScrollPane1, gridBagConstraints);
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -119,27 +123,28 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
+        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton5KeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 353;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
         add(jButton5, gridBagConstraints);
 
-        jLabel1.setText("Nombre del usuario a buscar");
+        jLabel1.setText("Nombre del usuario a buscar:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 138;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 26, 0, 0);
         add(jLabel1, gridBagConstraints);
 
         txBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -149,13 +154,12 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 138;
+        gridBagConstraints.ipady = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 10, 0, 0);
         add(txBuscar, gridBagConstraints);
 
         EditarUsuario.setText("Editar Usuario");
@@ -169,15 +173,19 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 EditarUsuarioActionPerformed(evt);
             }
         });
+        EditarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EditarUsuarioKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 401;
         gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
         add(EditarUsuario, gridBagConstraints);
 
         EliminarUsuario.setText("Eliminar Usuario");
@@ -191,15 +199,19 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 EliminarUsuarioActionPerformed(evt);
             }
         });
+        EliminarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EliminarUsuarioKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 393;
         gridBagConstraints.ipady = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
         add(EliminarUsuario, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -214,7 +226,25 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
     private void ConsultarUsuariosGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarUsuariosGeneralActionPerformed
         // TODO add your handling code here:
             
-         
+            //String donde almacenar el texto a buscar
+        String usuario    = txBuscar.getText();
+        //Long donde almacenamos el codigo de usuario
+        //Iniciamos controlador
+        ControlUsuario ctrUsuario = new ControlUsuario();
+        //Iniciamos objectos donde guardaremos los resultados de busqueda
+        Object[] usuarios = null;
+
+           usuarios = ctrUsuario.buscarPorNombreUsuario(usuario);
+            
+           if(usuarios.length<=0)
+           
+               JOptionPane.showMessageDialog(this,"no se encontro usuario");
+        else
+        {
+            
+          llenarTabla(usuarios);
+            
+}
         
 
         
@@ -234,38 +264,31 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
 
      // TODO add your handling code here:
             
-        //String donde almacenar el texto a buscar
-        String usuario    = txBuscar.getText();
-        //Long donde almacenamos el codigo de usuario
-        //Iniciamos controlador
-        ControlUsuario ctrUsuario = new ControlUsuario();
-        //Iniciamos objectos donde guardaremos los resultados de busqueda
-        Object[] usuarios = null;
-
-           usuarios = ctrUsuario.buscarPorNombreUsuario(usuario);
-            
-           if(usuarios.length<=0)
-           
-               JOptionPane.showMessageDialog(this,"no se encontro usuario");
-        else
-        {
-            
-          llenarTabla(usuarios);
-            
-}
+//        //String donde almacenar el texto a buscar
+//        String usuario    = txBuscar.getText();
+//        //Long donde almacenamos el codigo de usuario
+//        //Iniciamos controlador
+//        ControlUsuario ctrUsuario = new ControlUsuario();
+//        //Iniciamos objectos donde guardaremos los resultados de busqueda
+//        Object[] usuarios = null;
+//
+//           usuarios = ctrUsuario.buscarPorNombreUsuario(usuario);
+//            
+//           if(usuarios.length<=0)
+//           
+//               JOptionPane.showMessageDialog(this,"no se encontro usuario");
+//        else
+//        {
+//            
+//          llenarTabla(usuarios);
+//            
+//}
 
     }//GEN-LAST:event_ConsultarUsuariosGeneral
 
     private void EditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUsuarioActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_EditarUsuarioActionPerformed
-
-    private void EditarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarUsuarioMouseClicked
-    
-         
-        //Obtenemos la fila seleccionada
-        selection= tbUsuarios.getSelectedRow();
+           selection= tbUsuarios.getSelectedRow();
         
         String usuario = null;
         try{
@@ -294,18 +317,46 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         
         
         
+    }//GEN-LAST:event_EditarUsuarioActionPerformed
+
+    private void EditarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarUsuarioMouseClicked
+    
+         
+        //Obtenemos la fila seleccionada
+//        selection= tbUsuarios.getSelectedRow();
+//        
+//        String usuario = null;
+//        try{
+//        usuario = (String) tbUsuarios.getValueAt(selection, 3);
+//        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+//        {
+//            
+//        }
+//                
+//             if(usuario!=null)
+//             {
+//           VistaEdicionUsuario vista = new VistaEdicionUsuario(usuario,this.txBuscar.getText());
+//           this.removeAll();
+//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+//           this.setLayout(new java.awt.BorderLayout());          
+//           this.add(vista);
+//           vista.show();
+//           this.revalidate();
+//           this.repaint();
+//             }
+//             else
+//             {
+//                 JOptionPane.showMessageDialog(this, "No se ha seleccionado ningun usuario");
+//             }
+//        
+        
+        
+        
         
     }//GEN-LAST:event_EditarUsuarioMouseClicked
 
     private void EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EliminarUsuarioActionPerformed
-
-    private void EliminarUsuario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarUsuario
-        // TODO add your handling code here
-        
-        
-        
         
              ControlUsuario ctrUsuario = new ControlUsuario();
         
@@ -319,7 +370,7 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                  //Establecemos un si y un no en espanol
                  Object opciones[] = { "SI", "NO" };
                  
-            Integer seleccion = JOptionPane.showOptionDialog(this, "Desea eliminar el usuario seleccionado?", "Atencion!",
+            Integer seleccion = JOptionPane.showOptionDialog(this, "¿Desea eliminar el usuario seleccionado?", "Atencion!",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
     
             if(seleccion == JOptionPane.YES_OPTION)
@@ -343,8 +394,101 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
              {
                 JOptionPane.showMessageDialog(this, "No se ha seleccionado ningun usuario "); 
              }
+    }//GEN-LAST:event_EliminarUsuarioActionPerformed
+
+    private void EliminarUsuario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarUsuario
+        // TODO add your handling code here
+        
+        
+        
+//        
+//             ControlUsuario ctrUsuario = new ControlUsuario();
+//        
+//        //Obtenemos la fila seleccionada
+//        selection= tbUsuarios.getSelectedRow();
+//        String usuario = null;
+//        usuario = tbUsuarios.getValueAt(selection, 3).toString();    
+//        
+//        if(usuario!=null)
+//             {
+//                 //Establecemos un si y un no en espanol
+//                 Object opciones[] = { "SI", "NO" };
+//                 
+//            Integer seleccion = JOptionPane.showOptionDialog(this, "¿Desea eliminar el usuario seleccionado?", "Atencion!",
+//        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+//    
+//            if(seleccion == JOptionPane.YES_OPTION)
+//            {
+//            
+//                Boolean resultado = ctrUsuario.realizarEliminacionUsuario(usuario);
+//                
+//             if(resultado!=null)
+//             {
+//                 ((DefaultTableModel)tbUsuarios.getModel()).removeRow(selection);
+//                 JOptionPane.showMessageDialog(this, "Se elimino el usuario exitosamente");
+//             }
+//             else
+//                 JOptionPane.showMessageDialog(this, "error en la operacion, favor de intentar mas tarde");
+//             
+//             }
+//            
+//            
+//             }
+//             else
+//             {
+//                JOptionPane.showMessageDialog(this, "No se ha seleccionado ningun usuario "); 
+//             }
                  
     }//GEN-LAST:event_EliminarUsuario
+
+    private void ConsultarUsuariosGeneralKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ConsultarUsuariosGeneralKeyPressed
+        // TODO add your handling code here:
+                      int key=evt.getKeyCode();
+    if(evt.getSource()==ConsultarUsuariosGeneral)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           ConsultarUsuariosGeneralActionPerformed(null);                    
+        }
+    }
+        
+    }//GEN-LAST:event_ConsultarUsuariosGeneralKeyPressed
+
+    private void EditarUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EditarUsuarioKeyPressed
+        // TODO add your handling code here:
+                         int key=evt.getKeyCode();
+    if(evt.getSource()== EditarUsuario)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EditarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_EditarUsuarioKeyPressed
+
+    private void EliminarUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EliminarUsuarioKeyPressed
+        // TODO add your handling code here:
+                         int key=evt.getKeyCode();
+    if(evt.getSource()== EliminarUsuario)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EliminarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_EliminarUsuarioKeyPressed
+
+    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
+        // TODO add your handling code here:
+                         int key=evt.getKeyCode();
+    if(evt.getSource()== jButton5)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           jButton5ActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton5KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConsultarUsuariosGeneral;
