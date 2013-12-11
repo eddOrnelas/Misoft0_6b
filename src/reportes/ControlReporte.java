@@ -399,7 +399,7 @@ public class ControlReporte {
 
     }
     
-    public ModeloCorte realizarReporteMovimientos(Long idArticulo, String fecha2) {
+    public ModeloCorte realizarReporteMovimientos(Long idArticulo, String fecha1, String fecha2) {
         
         //Datos de Historial
         Long tmpIdArticulo=idArticulo;
@@ -419,7 +419,7 @@ public class ControlReporte {
         //Parametros de busqueda.
         Boolean activo = true;
         
-        Object[][] opciones = new Object[][]{{"fecha", "<=", fecha2},{"idArticulo","=",idArticulo}};
+        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1},{"fecha", "<=", fecha2},{"idArticulo","=",idArticulo}};
 
         mov = rMovimientos.buscarBD("all", opciones);
         
