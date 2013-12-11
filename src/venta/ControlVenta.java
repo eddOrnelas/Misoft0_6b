@@ -14,6 +14,7 @@ import java.util.Iterator;
 import articulo.Articulo;
 import articulo.ControlArticulo;
 import articulo.HistorialAlmacen;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -560,6 +561,60 @@ return true;
     }
        return false;
    }
+
+   public Boolean realizarVenta(ArrayList carrito) {
+        
+        HistorialAlmacen historial = new HistorialAlmacen(true);
+        Articulo articulo = new Articulo(true);
+        Articulo articuloEditar = new Articulo(true);
+        ArticuloVenta artVenta = new ArticuloVenta(true);
+        Venta venta = new Venta(true);
+        
+        Integer cantidad_articulos = carrito.size();
+        Float totalVenta = 0.0f;
+        
+         for(int x=0; x<cantidad_articulos; x++)
+          {
+              
+                Object[] articuloTmp = (Object[])carrito.get(x);
+                Articulo thisArticulo = (Articulo)articuloTmp[0];
+                Integer cantidad = (Integer)articuloTmp[1];
+                
+                articulo.setIdArticulo(thisArticulo.getIdArticulo());
+                articulo.buscarBD();
+                
+                
+                 //Actualizamos el Articulo dando restas
+                articuloEditar.setIdArticulo(articulo.getIdArticulo());
+                articuloEditar.buscarBD();
+                articuloEditar.setCantidadExistencia(articulo.getCantidadExistencia()-cantidad);
+                articulo.acualizarBD();
+                
+                //Actualizamos el Historial
+                historial.setIdArticulo(articulo.getIdArticulo());
+                historial.setConcepto("Venta");
+                historial.setPrecioCompra(articulo.getPrecioCompra());
+                historial.setPrecioVenta(artVenta.getPrecioVenta());
+                historial.setCantidad(-cantidad);
+                historial.registrarBD();
+                
+                
+           
+                totalVenta+= (cantidad*articulo.getPrecioVenta());
+                
+                
+          
+          }
+         
+         venta.setCantidad(cantidad_articulos);
+         venta.setTotal(totalVenta);
+         venta.registrarBD();
+        
+        
+        //JOptionPane.showMessageDialog(this, "La venta se realizo con exito");
+         
+         return true;
+    }
 
 
 }

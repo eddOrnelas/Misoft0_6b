@@ -10,6 +10,7 @@ import java.awt.Color;
 import reportes.VistaReportes;
 import usuario.VistaPrincipalUsuario;
 import venta.VistaRealizarVenta;
+import venta.VistaRealizarVentas;
 
 
 
@@ -212,7 +213,7 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
             
         panelPrincipal.removeAll();
         
-        VistaRealizarVenta vista = new VistaRealizarVenta();
+        VistaRealizarVentas vista = new VistaRealizarVentas();
         vista.show();
         
         panelPrincipal.add(vista);
