@@ -248,7 +248,7 @@ public class ControlReporte {
                 
 
                 document.add(table);
-                document.add(new Phrase("Total de ventas: $"+totalVentas));
+                document.add(new Phrase("Total de ventas: $"+totalVentas+"",FontFactory.getFont(FontFactory.HELVETICA, 8)));
            
                 
                 JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
