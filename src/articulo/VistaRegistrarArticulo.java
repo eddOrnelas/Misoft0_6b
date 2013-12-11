@@ -138,6 +138,11 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
                 realizarRegistroArticulo(evt);
             }
         });
+        btAceptarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAceptarAltaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -271,6 +276,10 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_cancelarRegistro
+
+    private void btAceptarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAceptarAltaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarAlta;
