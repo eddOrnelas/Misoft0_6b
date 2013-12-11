@@ -3,6 +3,7 @@ package login;
 import usuario.VistaAltaUsuario;
 import usuario.VistaConsultaGeneralUsuarios;
 
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -67,7 +68,18 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jButton4, gridBagConstraints);
 
         paneUsuarios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        paneUsuarios.setLayout(new java.awt.GridBagLayout());
+
+        javax.swing.GroupLayout paneUsuariosLayout = new javax.swing.GroupLayout(paneUsuarios);
+        paneUsuarios.setLayout(paneUsuariosLayout);
+        paneUsuariosLayout.setHorizontalGroup(
+            paneUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1332, Short.MAX_VALUE)
+        );
+        paneUsuariosLayout.setVerticalGroup(
+            paneUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 645, Short.MAX_VALUE)
+        );
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -106,6 +118,7 @@ public class Principal extends javax.swing.JFrame {
         
        paneUsuarios.revalidate();
        paneUsuarios.repaint();
+       
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -115,7 +128,8 @@ public class Principal extends javax.swing.JFrame {
         paneUsuarios.removeAll();
         
         paneUsuarios.add(vista);
-        vista.show();
+        vista.show();        
+        
         
        paneUsuarios.revalidate();
        paneUsuarios.repaint();

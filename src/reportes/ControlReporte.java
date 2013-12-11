@@ -23,6 +23,8 @@ import java.awt.Font;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import static java.lang.Float.parseFloat;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
@@ -50,10 +52,11 @@ public class ControlReporte {
         // String tmpUsuario = " ";
         Float tmpVentas = 0F;
         Float tmpDev = 0F;
-        Float tmpEntradas = 0F;
-        Float tmpRetiros = 0F;
+        Float tmpSubtotal = 0F;
+        Float tmpIVA = 0F;
         Float tmpTotal = 0F;
         Float tmpCorte = 0F;
+        
 
         int x = 0;
 
@@ -65,13 +68,21 @@ public class ControlReporte {
                 
                 tmpVentas += ((Venta) ventas[x]).getTotal();
                 tmpNoVentas++;
+                tmpSubtotal += ((((Venta)ventas[x]).getTotal())*100)/111;
+                tmpIVA +=((((Venta)ventas[x]).getTotal())*11)/111;
                 
 
             }
-                tmpCorte = tmpVentas + tmpEntradas - tmpRetiros;
+            
+            
+            
+            
         }
 
         try {
+            DecimalFormat decimal = new DecimalFormat("#.##"); 
+            
+            
             //Obtenemos la fecha del reporte y la separamos en mes dia y año.
             Calendar cal = new GregorianCalendar();
             int month = cal.get(Calendar.MONTH);
@@ -109,14 +120,12 @@ public class ControlReporte {
             
             table.addCell(new Phrase("Número de Ventas",FontFactory.getFont(FontFactory.HELVETICA, 10)));
             table.addCell(new Phrase(tmpNoVentas.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-            table.addCell(new Phrase("Dinero de Ventas",FontFactory.getFont(FontFactory.HELVETICA,10)));
-            table.addCell(new Phrase("$"+tmpVentas.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-            table.addCell(new Phrase("Entradas de Dinero",FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Phrase(tmpEntradas.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-            table.addCell(new Phrase("Retiros",FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Phrase(tmpRetiros.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+            table.addCell(new Phrase("Subtotal",FontFactory.getFont(FontFactory.HELVETICA,10)));
+            table.addCell(new Phrase("$"+decimal.format(tmpSubtotal),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+            table.addCell(new Phrase("I.V.A.",FontFactory.getFont(FontFactory.HELVETICA, 10)));
+            table.addCell(new Phrase(decimal.format(tmpIVA),FontFactory.getFont(FontFactory.HELVETICA, 8)));
             table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA, 10)));
-            table.addCell(new Phrase("$"+tmpCorte.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+            table.addCell(new Phrase("$"+tmpVentas.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
 
             document.add(table);
 
@@ -160,6 +169,7 @@ public class ControlReporte {
         String tmpFecha;
         Integer tmpCantidad;
         Float tmpTotal;
+        Float totalVentas= 0F;
         
        
         
@@ -232,14 +242,16 @@ public class ControlReporte {
                 
                 tmpTotal = ((Venta) ventas[x]).getTotal();
                 table.addCell(new Phrase(tmpTotal.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                
+                totalVentas += tmpTotal;
                 } 
                     
                 
 
                 document.add(table);
-                
+                document.add(new Phrase("Total de ventas: $"+totalVentas));
            
+                
+                JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
                 //Cerramos PDF.
                 document.close();
                 try {
@@ -250,7 +262,7 @@ public class ControlReporte {
                     e.printStackTrace();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+                 JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Ventas.pdf");
             }
         }
         return reporteVentas;
@@ -388,7 +400,7 @@ public class ControlReporte {
     }
     
     public ModeloCorte realizarReporteMovimientos(Long idArticulo, String fecha2) {
-        System.out.println("Entro a realizar R.Mov.");
+        
         //Datos de Historial
         Long tmpIdArticulo=idArticulo;
         String tmpFecha;
@@ -494,7 +506,7 @@ public class ControlReporte {
 
                 document.add(table);
                 
-           
+                JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
                 //Cerramos PDF.
                 document.close();
                 try {
@@ -505,141 +517,11 @@ public class ControlReporte {
                     e.printStackTrace();
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en reporte de Movimientos.");
+                JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Movimientos.pdf");
             }
         }
         return reporteMovimientos;
     }
-    
-    public ModeloCorte realizarReporteVentaDetalles(Long idVenta) {
-
-       
-        //Iniciamos objetos necesarios para la busqueda.
-        ArticuloVenta rArticulo = new ArticuloVenta(true);
-        Object[] articulosDetalles = null;
-        ModeloCorte repVentasDet = new ModeloCorte();
-        //Parametros de busqueda.
-        Boolean activo = true;
-        Object[][] opciones = new Object[][]{{"idVenta", "=", idVenta}};
-
-        articulosDetalles = rArticulo.buscarBD("all", opciones);
-        //Agrego una fuente general
-      
-        Long tmpIdVenta;
-        Long tmpIdArticulo;
-        String tmpDescripcion;
-        Float tmpPrecioVenta;
-        Integer tmpCantidad;
-        Float tmpTotal;
-        float tmpTotalFinal=0;
-        
-        int x = 0;
-
-        if (articulosDetalles.length <= 0) {
-            return null;
-        } else {
-
-            try {
-                //Obtenemos la fecha del reporte y la separamos en mes dia y año.
-                Calendar cal = new GregorianCalendar();
-                
-                int month = cal.get(Calendar.MONTH);
-                int year = cal.get(Calendar.YEAR);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                String fechaDia = ((1+ month)+ "/" + day + "/" + year);
-
-                //Creamos la variable docmuent de tipo Document
-                Document document = new Document();
-                //Abrimos el flujo para escribir en el PDF.
-                PdfWriter.getInstance(document, new FileOutputStream("Reporte de Venta Especifico.pdf"));
-                document.open();
-                Image logo = Image.getInstance("logo200.png");   
-               //Modificacion posicion de img Dann
-                logo.setAlignment(MIDDLE);               
-                document.add(logo);
-
-                //Creamos el documento y le damos formato con una tabla
-                //Modificacion de Fuente, Tamaño y Color Dann
-                document.add(new Paragraph("              Reporte de Venta" + "                                                                                  " + fechaDia, FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, BaseColor.BLACK)));
-                Image linea = Image.getInstance("linea.png");   
-               //Modificacion posicion de img Dann
-                linea.scaleAbsolute(550,30);
-                linea.setAlignment(MIDDLE);     
-                document.add(linea);
-                document.add(new Paragraph(" "));
-               
-                //Modifico las celdas de las tablas Dann
-                PdfPTable table = new PdfPTable(5);
-                //Dar formato al contenido de la celda DANN
-                PdfPCell cell = new PdfPCell();
-                //Cambiar Forma a las celdas Dann
-                //cell.setBorder(5);
-                
-                cell.setColspan(5);
-                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
-                table.addCell(cell);
-                //table.addCell("Id de Articulo");
-                
-                table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
-                
-                
-                table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
-                
-                
-                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10,BaseColor.BLACK)));
-                
-                
-                table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
-                
-               
-                table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
-
-
-
-                for (x = 0; x < articulosDetalles.length; x++) {
-                    //tmpIdArticulo = ((Articulo) articulos[x]).getIdArticulo();
-                    tmpIdArticulo = ((Articulo) articulosDetalles[x]).getCodigoArticulo();
-                    tmpDescripcion = ((Articulo) articulosDetalles[x]).getDescripcion();
-                    tmpPrecioVenta = ((Articulo) articulosDetalles[x]).getPrecioVenta();
-                    tmpCantidad = ((Articulo) articulosDetalles[x]).getCantidadExistencia();
-                    tmpTotal = tmpPrecioVenta*tmpCantidad;
-                    tmpTotalFinal = tmpTotalFinal+tmpTotal;
-                    //tmpActivo = ((Articulo) articulos[x]).getActivo();
-
-                    //table.addCell(tmpIdArticulo.toString());
-                   
-                    table.addCell(new Phrase(tmpIdArticulo.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                    table.addCell(new Phrase(tmpDescripcion,FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                    table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                    table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                    table.addCell(new Phrase(tmpTotal.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                }
-                
-                document.add(new Paragraph(" "+tmpTotalFinal));
-                    
-                document.add(table);
-                //Mensaje PDF generado
-                JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
-                //Cerramos PDF.
-                document.close();
-                try {
-                    //Modifico el nombre del reporte.
-                    String ruta = "Reporte de Venta Especifico.pdf";
-                    Desktop.getDesktop().open(new File(ruta));
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Venta Especifico.pdf");
-            }
-        }
-
-
-        return repVentasDet;
-
     }
-}
 
     

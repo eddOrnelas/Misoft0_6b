@@ -124,6 +124,11 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
                 cancelarEdicion(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -335,13 +340,15 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
        
        Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
        
-       Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
-       
-       if(!autorizado)
-           errors += "No estas autorizado";
+      
     
        errors += ctrArticulos.validaDatosEdicionArticulo(codigoArticulo.toString(), txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText() );
     
+        Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
+       
+       if(!autorizado)
+           errors += "No estas autorizado";
+       
        
        if(errors.length()>0)
        { JOptionPane.showMessageDialog(this,errors);
@@ -381,7 +388,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
     private void cancelarEdicion(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarEdicion
         // TODO add your handling code here:
         
-         VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
+           VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
            this.removeAll();
            //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
            this.setLayout(new java.awt.BorderLayout());          
@@ -391,6 +398,10 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
            this.repaint();
         
     }//GEN-LAST:event_cancelarEdicion
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

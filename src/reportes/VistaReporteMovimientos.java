@@ -7,7 +7,11 @@
 package reportes;
 
 import static java.lang.Integer.parseInt;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +23,19 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
     /**
      * Creates new form VistaReporteMovimientos
      */
-    public VistaReporteMovimientos() {
+    public VistaReporteMovimientos() throws ParseException {
         initComponents();
+        /*Calendar cal = new GregorianCalendar();
+        
+        int month = cal.get(Calendar.MONTH)+1;
+        int year = cal.get(Calendar.YEAR);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        String fechaActual =  year+"-"+month+"-"+day;
+       
+        txFechaFinal.setDateFormatString("yyy-MM-dd");
+        txFechaFinal.setMaxSelectableDate(new Date());
+        */
+       
     }
 
     /**
@@ -125,29 +140,48 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         ModeloCorte reporte = null;
         //Creamos controlador corte
         ControlReporte ctrlMov = new ControlReporte();
-        String idArt = txNumArt.getText();
-        Long   idArticulo= Long.parseLong(idArt);
         
-        String fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+        txFechaFinal.setDateFormatString("yyy-MM-dd");
+        String fecha2 = "";
+        
         int band=0;
+        int band2=0;
         
+             
         
-        
-        
-        if(txNumArt.getText().trim().length()!=0){
-       
+        if (txFechaFinal.getCalendar() != null) {
+            fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            band=1;
+                       
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese Hasta la Fecha");
+            band =0;
         }
-        else{
-       JOptionPane.showMessageDialog(this, "Ingrese Código de Articulo");
+        
+        String idArt = "";
+        if (txNumArt.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Ingrese código de artículo");
+            band =0;
+            
+        } else {
+            
+            idArt = txNumArt.getText();
+            band2=2;
         }
+        Long idArticulo = null;
+        idArticulo = Long.parseLong(idArt);
         
         
+ 
         
+        if(band==1&&band2==2){
         reporte = ctrlMov.realizarReporteMovimientos(idArticulo, fecha2);
 
-        if (reporte == null&& band == 1) {
-            JOptionPane.showMessageDialog(this, " No existen registros de movimientos para ese rango de fechas  ");
+        if (reporte == null) {
+            JOptionPane.showMessageDialog(this, " No existen registros de movimientos para "+idArticulo+" hasta esa fecha.");
         } 
+        }
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btAceptarVentasActionPerformed

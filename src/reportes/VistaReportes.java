@@ -4,11 +4,16 @@
  */
 package reportes;
 
+import java.awt.Color;
 import java.awt.GridBagLayout;
+import java.text.ParseException;
 import reportes.ControlReporte;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import misoft.VistaVentanaPrincipal;
 import reportes.ModeloArticulo;
 
 /**
@@ -22,7 +27,8 @@ public class VistaReportes extends javax.swing.JPanel {
      */
     public VistaReportes() {
         initComponents();
-        
+        VistaVentanaPrincipal texto = new VistaVentanaPrincipal();
+        texto.setTitle("reportes");
         
     }
 
@@ -34,40 +40,67 @@ public class VistaReportes extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        btReporteVentas = new javax.swing.JButton();
-        btCorte = new javax.swing.JButton();
         btArticulos = new javax.swing.JButton();
         btMovimientos = new javax.swing.JButton();
-        jpRangos = new javax.swing.JPanel();
+        btReporteVentas = new javax.swing.JButton();
+        btCorte = new javax.swing.JButton();
+        panelEtiqueta = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        panelRangos = new javax.swing.JPanel();
 
+        setToolTipText("Reportes");
         setAlignmentX(20.0F);
-        setMaximumSize(new java.awt.Dimension(740, 300));
-        setMinimumSize(new java.awt.Dimension(740, 300));
+        setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        setMinimumSize(new java.awt.Dimension(2147483647, 2147483647));
         setName("panelReportes"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(740, 300));
-        setLayout(new java.awt.GridBagLayout());
+        setPreferredSize(new java.awt.Dimension(1200, 1200));
+
+        btArticulos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteAlmacen.png"))); // NOI18N
+        btArticulos.setText("Reporte Almacén");
+        btArticulos.setMaximumSize(new java.awt.Dimension(300, 50));
+        btArticulos.setMinimumSize(new java.awt.Dimension(300, 50));
+        btArticulos.setPreferredSize(new java.awt.Dimension(300, 50));
+        btArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btArticulosActionPerformed(evt);
+            }
+        });
+        add(btArticulos);
+
+        btMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/movimientosAlmacen.png"))); // NOI18N
+        btMovimientos.setText("Reporte Movimientos");
+        btMovimientos.setMaximumSize(new java.awt.Dimension(300, 50));
+        btMovimientos.setMinimumSize(new java.awt.Dimension(300, 50));
+        btMovimientos.setPreferredSize(new java.awt.Dimension(300, 50));
+        btMovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMovimientosActionPerformed(evt);
+            }
+        });
+        add(btMovimientos);
 
         btReporteVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btReporteVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteVenta.png"))); // NOI18N
         btReporteVentas.setText("Reporte de Ventas");
+        btReporteVentas.setMaximumSize(new java.awt.Dimension(300, 50));
+        btReporteVentas.setMinimumSize(new java.awt.Dimension(300, 50));
+        btReporteVentas.setPreferredSize(new java.awt.Dimension(300, 50));
         btReporteVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btReporteVentasActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 10, 0, 0);
-        add(btReporteVentas, gridBagConstraints);
+        add(btReporteVentas);
 
         btCorte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btCorte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteCorteCaja.png"))); // NOI18N
         btCorte.setText("Reporte Corte de Caja");
+        btCorte.setMaximumSize(new java.awt.Dimension(300, 50));
+        btCorte.setMinimumSize(new java.awt.Dimension(300, 50));
+        btCorte.setPreferredSize(new java.awt.Dimension(300, 50));
         btCorte.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 verCorteCaja(evt);
@@ -78,71 +111,35 @@ public class VistaReportes extends javax.swing.JPanel {
                 btCorteActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 10, 0, 0);
-        add(btCorte, gridBagConstraints);
+        add(btCorte);
 
-        btArticulos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteAlmacen.png"))); // NOI18N
-        btArticulos.setText("Reporte Almacén");
-        btArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btArticulosActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(31, 0, 0, 0);
-        add(btArticulos, gridBagConstraints);
+        panelEtiqueta.setMinimumSize(new java.awt.Dimension(2000, 100));
+        panelEtiqueta.setPreferredSize(new java.awt.Dimension(2000, 100));
+        panelEtiqueta.setLayout(new java.awt.GridBagLayout());
 
-        btMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/movimientosAlmacen.png"))); // NOI18N
-        btMovimientos.setText("Reporte Movimientos");
-        btMovimientos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btMovimientosActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(32, 14, 0, 0);
-        add(btMovimientos, gridBagConstraints);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img30x30/facturacion_electronica.png"))); // NOI18N
+        jLabel1.setText("Reportes");
+        panelEtiqueta.add(jLabel1, new java.awt.GridBagConstraints());
 
-        jpRangos.setMaximumSize(new java.awt.Dimension(760, 180));
-        jpRangos.setMinimumSize(new java.awt.Dimension(760, 180));
-        jpRangos.setPreferredSize(new java.awt.Dimension(760, 180));
-        jpRangos.setLayout(new java.awt.GridBagLayout());
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        add(jpRangos, gridBagConstraints);
+        add(panelEtiqueta);
 
-        jSeparator2.setMaximumSize(new java.awt.Dimension(550, 10));
-        jSeparator2.setMinimumSize(new java.awt.Dimension(550, 10));
-        jSeparator2.setPreferredSize(new java.awt.Dimension(550, 10));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 210;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 0, 0, 0);
-        add(jSeparator2, gridBagConstraints);
+        jSeparator2.setMaximumSize(new java.awt.Dimension(2000, 10));
+        jSeparator2.setMinimumSize(new java.awt.Dimension(580, 10));
+        jSeparator2.setPreferredSize(new java.awt.Dimension(1300, 10));
+        add(jSeparator2);
+
+        panelRangos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelRangos.setMaximumSize(new java.awt.Dimension(1200, 180));
+        panelRangos.setMinimumSize(new java.awt.Dimension(1200, 180));
+        panelRangos.setPreferredSize(new java.awt.Dimension(1200, 180));
+        panelRangos.setLayout(new java.awt.GridBagLayout());
+        add(panelRangos);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCorteActionPerformed
 
-        jpRangos.removeAll();
+        panelRangos.removeAll();
         this.repaint();
         
     }//GEN-LAST:event_btCorteActionPerformed
@@ -150,7 +147,7 @@ public class VistaReportes extends javax.swing.JPanel {
     
     private void btArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btArticulosActionPerformed
         // TODO add your handling code here:
-        jpRangos.removeAll();
+        panelRangos.removeAll();
         this.repaint();
         ModeloArticulo reporte = null;
         ControlReporte ctrArticulos = new ControlReporte();
@@ -162,17 +159,24 @@ public class VistaReportes extends javax.swing.JPanel {
             
 
         }
+        btArticulos.setBackground(Color.gray);
+        btMovimientos.setBackground(Color.lightGray);
+        btReporteVentas.setBackground(Color.lightGray);
+        btCorte.setBackground(Color.lightGray);
     }//GEN-LAST:event_btArticulosActionPerformed
 
     private void btReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReporteVentasActionPerformed
         // TODO add your handling code here:
-        jpRangos.removeAll();
-        jpRangos.revalidate();
+        panelRangos.removeAll();
+        panelRangos.revalidate();
         VistaReporteVentasGeneral vista = new VistaReporteVentasGeneral();
-        jpRangos.add(vista);
+        panelRangos.add(vista);
         vista.show();
         this.repaint();
-          
+        btArticulos.setBackground(Color.lightGray);
+        btMovimientos.setBackground(Color.lightGray);
+        btReporteVentas.setBackground(Color.gray);
+        btCorte.setBackground(Color.lightGray);
         
     
 
@@ -182,24 +186,35 @@ public class VistaReportes extends javax.swing.JPanel {
         // TODO add your handling code here:
         
              
-        jpRangos.removeAll();
-        jpRangos.revalidate();
+        panelRangos.removeAll();
+        panelRangos.revalidate();
         VistaReporteCorte vista = new VistaReporteCorte();
-        jpRangos.add(vista);
+        panelRangos.add(vista);
         vista.show();
         //vista.setVisible(true);
         //jpRangos.revalidate();
+        btArticulos.setBackground(Color.lightGray);
+        btMovimientos.setBackground(Color.lightGray);
+        btReporteVentas.setBackground(Color.lightGray);
+        btCorte.setBackground(Color.gray);
         
     }//GEN-LAST:event_verCorteCaja
 
     private void btMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMovimientosActionPerformed
-
-        jpRangos.removeAll();
-        jpRangos.revalidate();
-        VistaReporteMovimientos vista = new VistaReporteMovimientos();
-        jpRangos.add(vista);
-        vista.show();
-        this.repaint();
+        try {
+            panelRangos.removeAll();
+            panelRangos.revalidate();
+            VistaReporteMovimientos vista = new VistaReporteMovimientos();
+            panelRangos.add(vista);
+            vista.show();
+            this.repaint();
+            btArticulos.setBackground(Color.lightGray);
+            btMovimientos.setBackground(Color.gray);
+            btReporteVentas.setBackground(Color.lightGray);
+            btCorte.setBackground(Color.lightGray);
+        } catch (ParseException ex) {
+            Logger.getLogger(VistaReportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btMovimientosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,7 +222,9 @@ public class VistaReportes extends javax.swing.JPanel {
     private javax.swing.JButton btCorte;
     private javax.swing.JButton btMovimientos;
     private javax.swing.JButton btReporteVentas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JPanel jpRangos;
+    private javax.swing.JPanel panelEtiqueta;
+    private javax.swing.JPanel panelRangos;
     // End of variables declaration//GEN-END:variables
 }

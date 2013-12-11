@@ -6,6 +6,7 @@ package misoft;
 
 import articulo.VistaPrincipalArticulos;
 import corte.VistaCorte;
+import java.awt.Color;
 import reportes.VistaReportes;
 import usuario.VistaPrincipalUsuario;
 import venta.VistaRealizarVenta;
@@ -64,14 +65,17 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         btAdministracion = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btVentas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MiSoft");
         setBackground(new java.awt.Color(204, 204, 204));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         btAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/INVENTARIOS.gif"))); // NOI18N
-        btAlmacen.setText("Administrar Almacen");
+        btAlmacen.setText("Administrar Almacén");
+        btAlmacen.setMaximumSize(new java.awt.Dimension(183, 50));
+        btAlmacen.setMinimumSize(new java.awt.Dimension(183, 50));
+        btAlmacen.setPreferredSize(new java.awt.Dimension(183, 50));
         btAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verAlmacen(evt);
@@ -107,6 +111,9 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
 
         btReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/reports_icon.png"))); // NOI18N
         btReportes.setText("Reportes");
+        btReportes.setMaximumSize(new java.awt.Dimension(129, 50));
+        btReportes.setMinimumSize(new java.awt.Dimension(129, 50));
+        btReportes.setPreferredSize(new java.awt.Dimension(129, 50));
         btReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verReportes(evt);
@@ -121,7 +128,10 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         getContentPane().add(btReportes, gridBagConstraints);
 
         btAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/usuario.png"))); // NOI18N
-        btAdministracion.setText("Administracion");
+        btAdministracion.setText("Administración");
+        btAdministracion.setMaximumSize(new java.awt.Dimension(155, 50));
+        btAdministracion.setMinimumSize(new java.awt.Dimension(155, 50));
+        btAdministracion.setPreferredSize(new java.awt.Dimension(155, 50));
         btAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verAdministracion(evt);
@@ -146,6 +156,9 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
 
         btVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/icons_agregar.png"))); // NOI18N
         btVentas.setText("Ventas");
+        btVentas.setMaximumSize(new java.awt.Dimension(119, 50));
+        btVentas.setMinimumSize(new java.awt.Dimension(119, 50));
+        btVentas.setPreferredSize(new java.awt.Dimension(119, 50));
         btVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verVentas(evt);
@@ -158,19 +171,6 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.weightx = 1.0;
         getContentPane().add(btVentas, gridBagConstraints);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/reports_icon.png"))); // NOI18N
-        jButton1.setText("Corte Caja");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verCorteCaja(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        getContentPane().add(jButton1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,6 +186,7 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         panelPrincipal.add(vista);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
+        this.setTitle("MiSoft/Administrar Almacén");
         
         
     }//GEN-LAST:event_verAlmacen
@@ -201,6 +202,7 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         panelPrincipal.add(vista);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
+        this.setTitle("MiSoft/Administración");
         
     }//GEN-LAST:event_verAdministracion
 
@@ -216,27 +218,13 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         panelPrincipal.add(vista);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
-        
+        this.setTitle("MiSoft/Ventas");
         
     }//GEN-LAST:event_verVentas
 
-    private void verCorteCaja(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCorteCaja
-        // TODO add your handling code here:
-        
-        panelPrincipal.removeAll();
-        
-        VistaCorte vista = new VistaCorte();
-        vista.show();
-        
-        panelPrincipal.add(vista);
-        panelPrincipal.revalidate();
-        panelPrincipal.repaint();
-        
-    }//GEN-LAST:event_verCorteCaja
-
     private void verReportes(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verReportes
         // TODO add your handling code here:
-         panelPrincipal.removeAll();
+        panelPrincipal.removeAll();
         
         VistaReportes vista = new VistaReportes();
         
@@ -244,6 +232,8 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         panelPrincipal.add(vista);
         panelPrincipal.revalidate();
         panelPrincipal.repaint();
+        this.setTitle("MiSoft/Reportes");
+       
     }//GEN-LAST:event_verReportes
 
     /**
@@ -285,7 +275,6 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btAlmacen;
     private javax.swing.JButton btReportes;
     private javax.swing.JButton btVentas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelPrincipal;

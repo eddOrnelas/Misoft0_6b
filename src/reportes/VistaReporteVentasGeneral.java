@@ -131,29 +131,31 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         String fecha1 = "";
         String fecha2 = "";
         int band=0;
+        int band2=0;
 
         //Obtenemos los valores de la texto de la fecha del calendario
         if (txFechaInicio.getCalendar() != null) {
             fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
             band=1;
         } else {
-            JOptionPane.showMessageDialog(this, "Fecha de inicio incorrecta.");
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio.");
             band = 0;
         }
 
         if (txFechaFinal.getCalendar() != null) {
             fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
-            band =1;
+            band2 =2;
         } else {
-            JOptionPane.showMessageDialog(this, "Fecha final incorrecta.");
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino.");
             band =0;
         }
+        if(band==1&band2==2){
         reporte = ctrCorte.realizarReporteVentas(fecha1, fecha2);
 
-        if (reporte == null&& band==1) {
+        if (reporte == null) {
             JOptionPane.showMessageDialog(this, " No existen registros de ventas para ese rango de fechas  ");
         } 
-        
+        }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btAceptarVentasActionPerformed

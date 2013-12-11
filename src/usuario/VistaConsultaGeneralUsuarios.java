@@ -18,12 +18,24 @@ import javax.swing.table.TableRowSorter;
  */
 public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
     private int selection;
+     
 
     /**
      * Creates new form VistaConsultaespecificaUsuario
      */
     public VistaConsultaGeneralUsuarios() {
         initComponents();
+    }
+    
+ 
+    VistaConsultaGeneralUsuarios(String txBuscar) {
+         //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.txBuscar.setText(txBuscar);
+        ConsultarUsuariosGeneral(null);
+        
+        
+        
     }
 
     /**
@@ -265,7 +277,7 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 
              if(usuario!=null)
              {
-           VistaEdicionUsuario vista = new VistaEdicionUsuario(usuario);
+           VistaEdicionUsuario vista = new VistaEdicionUsuario(usuario,this.txBuscar.getText());
            this.removeAll();
            //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
            this.setLayout(new java.awt.BorderLayout());          

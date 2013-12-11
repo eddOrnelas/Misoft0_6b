@@ -88,7 +88,7 @@ Long idVenta=null;
                 {null, null, null, null}
             },
             new String [] {
-                "Codigo de Barras", "Descripcion", "Cantidad", "Total"
+                "Código de Barras", "Descripción", "Cantidad", "Total"
             }
         ));
         jScrollPane2.setViewportView(tbReciboVenta);
@@ -118,7 +118,7 @@ Long idVenta=null;
         calendario.setDateFormatString("yyyy-MM-dd");
         calendario.setMinSelectableDate(new java.util.Date(-62135765931000L));
 
-        jButton1.setText("Devolucion del articulo seleccionado");
+        jButton1.setText("Devolución del artículo seleccionado");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,7 +127,7 @@ Long idVenta=null;
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(btConsultarFecha)
                 .addGap(18, 18, 18)
@@ -138,7 +138,7 @@ Long idVenta=null;
                         .addComponent(lbAtendio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbnoVenta))
                     .addComponent(lbFecha, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,8 +183,8 @@ Long idVenta=null;
                         .addGap(0, 20, Short.MAX_VALUE))))
         );
 
-        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-966)/2, (screenSize.height-533)/2, 966, 533);
+        setSize(new java.awt.Dimension(966, 533));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConsultarVentas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConsultarVentas
