@@ -6,6 +6,7 @@
 
 package reportes;
 
+import java.awt.event.KeyEvent;
 import static java.lang.Integer.parseInt;
 import java.sql.Date;
 import java.text.ParseException;
@@ -243,17 +244,12 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_btCancelarRepVentasActionPerformed
 
     private void txNumArtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumArtKeyTyped
+        char caracter = evt.getKeyChar();
+        if(((caracter < '0') || (caracter > '9')) &&(caracter != KeyEvent.VK_BACK_SPACE)){
+        evt.consume();
+        JOptionPane.showMessageDialog(this, "Ingrese sólo dígitos: {0,1,2,3,4,5,6,7,8,9}");
+        }
 
-        char car = evt.getKeyChar();
-        if((car<'0' || car>'9')){
-            evt.consume();
-            
-        }
-        if(car=='0'||(car=='1')||(car=='2')||(car=='3')||(car=='4')||(car=='5')||(car=='6')||(car=='7')||(car=='8')||(car=='9')){
-      
-        }else{
-              JOptionPane.showMessageDialog(this, "Ingrese sólo dígitos: {0,1,2,3,4,5,6,7,8,9}");
-        }
 // TODO add your handling code here:
     }//GEN-LAST:event_txNumArtKeyTyped
 

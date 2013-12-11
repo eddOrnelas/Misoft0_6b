@@ -403,6 +403,7 @@ public class ControlReporte {
         Integer tmpCantidad;
         Float tmpPrecioVenta;
         Float tmpPrecioCompra;
+        
 
         //Iniciamos objetos necesarios para la busqueda.
         
@@ -456,7 +457,7 @@ public class ControlReporte {
                 
                 //Crear y llenar Tabla PDF
                 PdfPTable table = new PdfPTable(5);
-                PdfPCell cell = new PdfPCell(new Paragraph("Artículo: " +tmpIdArticulo,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                PdfPCell cell = new PdfPCell(new Paragraph("Código de artículo: " +tmpIdArticulo,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
                 cell.setColspan(5);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
