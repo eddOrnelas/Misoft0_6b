@@ -6,8 +6,13 @@
 
 package reportes;
 
+import java.awt.event.KeyEvent;
 import static java.lang.Integer.parseInt;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +24,19 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
     /**
      * Creates new form VistaReporteMovimientos
      */
-    public VistaReporteMovimientos() {
+    public VistaReporteMovimientos() throws ParseException {
         initComponents();
+        /*Calendar cal = new GregorianCalendar();
+        
+        int month = cal.get(Calendar.MONTH)+1;
+        int year = cal.get(Calendar.YEAR);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        String fechaActual =  year+"-"+month+"-"+day;
+       
+        txFechaFinal.setDateFormatString("yyy-MM-dd");
+        txFechaFinal.setMaxSelectableDate(new Date(year,month,day));
+        */
+       
     }
 
     /**
@@ -33,12 +49,14 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel3 = new javax.swing.JLabel();
+        etCodigoArticulo = new javax.swing.JLabel();
         txNumArt = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        etFechaInicio = new javax.swing.JLabel();
         txFechaFinal = new com.toedter.calendar.JDateChooser();
         btAceptarVentas = new javax.swing.JButton();
         btCancelarRepVentas = new javax.swing.JButton();
+        etFechaFinal = new javax.swing.JLabel();
+        txFechaInicio = new com.toedter.calendar.JDateChooser();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de Movimientos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         setMaximumSize(new java.awt.Dimension(600, 140));
@@ -46,46 +64,51 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(600, 140));
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel3.setText("Código de Árticulo:");
+        etCodigoArticulo.setText("Código de Árticulo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(74, 30, 0, 0);
-        add(jLabel3, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(27, 20, 0, 0);
+        add(etCodigoArticulo, gridBagConstraints);
 
         txNumArt.setMaximumSize(new java.awt.Dimension(6, 25));
         txNumArt.setMinimumSize(new java.awt.Dimension(6, 25));
         txNumArt.setPreferredSize(new java.awt.Dimension(6, 25));
+        txNumArt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txNumArtKeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(63, 4, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(22, 4, 0, 0);
         add(txNumArt, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Hasta la fecha");
+        etFechaInicio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        etFechaInicio.setText("Fecha Termino");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(73, 114, 0, 0);
-        add(jLabel2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(28, 94, 0, 0);
+        add(etFechaInicio, gridBagConstraints);
 
         txFechaFinal.setDateFormatString("yyyy-MM-dd");
         txFechaFinal.setMaximumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(63, 4, 0, 29);
+        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 16);
         add(txFechaFinal, gridBagConstraints);
 
         btAceptarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
@@ -97,9 +120,10 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 6, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 54, 3, 0);
         add(btAceptarVentas, gridBagConstraints);
 
         btCancelarRepVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
@@ -110,12 +134,34 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 114, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 94, 3, 0);
         add(btCancelarRepVentas, gridBagConstraints);
+
+        etFechaFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        etFechaFinal.setText("Fecha Inicio");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 47, 0, 0);
+        add(etFechaFinal, gridBagConstraints);
+
+        txFechaInicio.setDateFormatString("yyyy-MM-dd");
+        txFechaInicio.setMaximumSize(new java.awt.Dimension(85, 25));
+        txFechaInicio.setMinimumSize(new java.awt.Dimension(85, 25));
+        txFechaInicio.setPreferredSize(new java.awt.Dimension(85, 25));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
+        add(txFechaInicio, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAceptarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarVentasActionPerformed
@@ -125,29 +171,62 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         ModeloCorte reporte = null;
         //Creamos controlador corte
         ControlReporte ctrlMov = new ControlReporte();
-        String idArt = txNumArt.getText();
-        Long   idArticulo= Long.parseLong(idArt);
+        txFechaInicio.setDateFormatString("yyy-MM-dd");
+        txFechaFinal.setDateFormatString("yyy-MM-dd");
+        String fecha1 = "";
+        String fecha2 = "";
         
-        String fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
         int band=0;
+        int band2=0;
+        int band3=0;
         
         
+         String idArt = "";
+        if (txNumArt.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Ingrese código de artículo");
+            band =0;
+            
+        } else {
+            
+            idArt = txNumArt.getText();
+            band2=2;
+        }
         
         
-        if(txNumArt.getText().trim().length()!=0){
+        if (txFechaInicio.getCalendar() != null) {
+            fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+            band3=3;
+                       
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha de Inicio");
+            band =0;
+        }     
+        
+        if (txFechaFinal.getCalendar() != null) {
+            fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            band=1;
+                       
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino");
+            band =0;
+        }
+        
        
-        }
-        else{
-       JOptionPane.showMessageDialog(this, "Ingrese Código de Articulo");
-        }
+        Long idArticulo = null;
+        idArticulo = Long.parseLong(idArt);
         
+      
+ 
         
-        
-        reporte = ctrlMov.realizarReporteMovimientos(idArticulo, fecha2);
+        if(band==1&&band2==2&&band3==3){
+        reporte = ctrlMov.realizarReporteMovimientos(idArticulo, fecha1, fecha2);
 
-        if (reporte == null&& band == 1) {
-            JOptionPane.showMessageDialog(this, " No existen registros de movimientos para ese rango de fechas  ");
+        if (reporte == null) {
+            JOptionPane.showMessageDialog(this, " No existen registros de movimientos para "+idArticulo+" para este rango.");
         } 
+        }
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btAceptarVentasActionPerformed
@@ -164,13 +243,25 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarRepVentasActionPerformed
 
+    private void txNumArtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumArtKeyTyped
+        char caracter = evt.getKeyChar();
+        if(((caracter < '0') || (caracter > '9')) &&(caracter != KeyEvent.VK_BACK_SPACE)){
+        evt.consume();
+        JOptionPane.showMessageDialog(this, "Ingrese sólo dígitos: {0,1,2,3,4,5,6,7,8,9}");
+        }
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_txNumArtKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarVentas;
     private javax.swing.JButton btCancelarRepVentas;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel etCodigoArticulo;
+    private javax.swing.JLabel etFechaFinal;
+    private javax.swing.JLabel etFechaInicio;
     private com.toedter.calendar.JDateChooser txFechaFinal;
+    private com.toedter.calendar.JDateChooser txFechaInicio;
     private javax.swing.JTextField txNumArt;
     // End of variables declaration//GEN-END:variables
 }

@@ -126,7 +126,8 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         //Le damos formato a la fecha para que mySQL la reconozca
         txFechaInicio.setDateFormatString("yyy-MM-dd");
         txFechaFinal.setDateFormatString("yyy-MM-dd");
-        int band = 2;
+        int band = 0;
+        int band2 = 0;
 
         String fecha1 = "";
         String fecha2 = "";
@@ -142,18 +143,20 @@ public class VistaReporteCorte extends javax.swing.JPanel {
 
         if (txFechaFinal.getCalendar() != null) {
             fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
-            band=1;
+            band2=2;
         } else {
             JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino");
             band =0;
         }
+        
+        if(band==1&&band2==2){
         reporte = ctrCorte.realizarReporteCorte(fecha1, fecha2);
 
         if (reporte == null) {
-            JOptionPane.showMessageDialog(this, " No existen registros de ventas para ese rango de fechas.");
+            JOptionPane.showMessageDialog(this, " No existen registros de corte de caja para ese rango de fechas.");
 
         }
-        
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btAceptarCorteCajaActionPerformed
 

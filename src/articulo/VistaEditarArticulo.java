@@ -48,7 +48,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
            txCodigoArticulo.setText(articulo.getCodigoArticulo().toString());
            txDescripcion.setText(articulo.getDescripcion());
            txProveedor.setText(articulo.getProveedor());
-           txPrecioCompra.setText(articulo.getPrecioCompra().toString());
+           txPrecioCompra.setText(articulo.getPrecioCompra().toString()); 
            txPrecioVenta.setText(articulo.getPrecioVenta().toString());
            txCantidadExistencia.setText(articulo.getCantidadExistencia().toString());
        }
