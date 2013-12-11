@@ -46,6 +46,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         etCodigoArticulo = new javax.swing.JLabel();
         txNumArt = new javax.swing.JTextField();
@@ -60,20 +61,54 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(600, 140));
         setMinimumSize(new java.awt.Dimension(600, 140));
         setPreferredSize(new java.awt.Dimension(600, 140));
+        setLayout(new java.awt.GridBagLayout());
 
         etCodigoArticulo.setText("Código de Árticulo:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 20, 0, 0);
+        add(etCodigoArticulo, gridBagConstraints);
 
         txNumArt.setMaximumSize(new java.awt.Dimension(6, 25));
         txNumArt.setMinimumSize(new java.awt.Dimension(6, 25));
         txNumArt.setPreferredSize(new java.awt.Dimension(6, 25));
+        txNumArt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txNumArtKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 91;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 4, 0, 0);
+        add(txNumArt, gridBagConstraints);
 
         etFechaInicio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etFechaInicio.setText("Fecha Termino");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 94, 0, 0);
+        add(etFechaInicio, gridBagConstraints);
 
         txFechaFinal.setDateFormatString("yyyy-MM-dd");
         txFechaFinal.setMaximumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 16);
+        add(txFechaFinal, gridBagConstraints);
 
         btAceptarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
         btAceptarVentas.setText("Aceptar");
@@ -82,6 +117,13 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
                 btAceptarVentasActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 54, 3, 0);
+        add(btAceptarVentas, gridBagConstraints);
 
         btCancelarRepVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelarRepVentas.setText("Cancelar");
@@ -90,62 +132,35 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
                 btCancelarRepVentasActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 94, 3, 0);
+        add(btCancelarRepVentas, gridBagConstraints);
 
         etFechaFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        etFechaFinal.setText("Fecha de inicio");
+        etFechaFinal.setText("Fecha Inicio");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(28, 47, 0, 0);
+        add(etFechaFinal, gridBagConstraints);
 
         txFechaInicio.setDateFormatString("yyyy-MM-dd");
         txFechaInicio.setMaximumSize(new java.awt.Dimension(85, 25));
         txFechaInicio.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaInicio.setPreferredSize(new java.awt.Dimension(85, 25));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(etCodigoArticulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txNumArt, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(etFechaFinal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btAceptarVentas))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btCancelarRepVentas)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(etFechaInicio)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etCodigoArticulo)
-                            .addComponent(txNumArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(etFechaFinal))
-                    .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etFechaInicio))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCancelarRepVentas)
-                    .addComponent(btAceptarVentas))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
+        add(txFechaInicio, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAceptarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarVentasActionPerformed
@@ -226,6 +241,21 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarRepVentasActionPerformed
+
+    private void txNumArtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumArtKeyTyped
+
+        char car = evt.getKeyChar();
+        if((car<'0' || car>'9')){
+            evt.consume();
+            
+        }
+        if(car=='0'||(car=='1')||(car=='2')||(car=='3')||(car=='4')||(car=='5')||(car=='6')||(car=='7')||(car=='8')||(car=='9')){
+      
+        }else{
+              JOptionPane.showMessageDialog(this, "Ingrese sólo dígitos: {0,1,2,3,4,5,6,7,8,9}");
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_txNumArtKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

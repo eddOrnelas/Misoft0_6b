@@ -213,15 +213,10 @@ public class ControlReporte {
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 table.addCell(cell);
-               
+                     
                 
-                
-                
-                
-                               
-                
-                table.addCell(new Phrase("ID venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));   
-                table.addCell(new Phrase("Fecha",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
+                table.addCell(new Phrase("No. venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));   
+                table.addCell(new Phrase("Fecha y Hora",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 
@@ -248,7 +243,7 @@ public class ControlReporte {
                 
 
                 document.add(table);
-                document.add(new Phrase("Total de ventas: $"+totalVentas));
+                document.add(new Phrase("Total de ventas: $"+totalVentas+"",FontFactory.getFont(FontFactory.HELVETICA, 8)));
            
                 
                 JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
@@ -474,7 +469,7 @@ public class ControlReporte {
                                
                 
                 table.addCell(new Phrase("Concepto",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));   
-                table.addCell(new Phrase("Fecha",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
+                table.addCell(new Phrase("Fecha y Hora",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Precio Compra",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Precio Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
