@@ -142,6 +142,11 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarUsuario(evt);
@@ -268,7 +273,7 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
            vista.show();
            this.revalidate();
            this.repaint();
-        
+//        
     }//GEN-LAST:event_editarUsuario
 
     private void EditarUsuario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarUsuario
@@ -328,6 +333,14 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
            if(status==1)
            {
                JOptionPane.showMessageDialog(this,"Se edito al usuario exitosamente");
+                 VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(this.txBuscar);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
        
            }
            else
@@ -350,6 +363,19 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         }
     }
     }//GEN-LAST:event_EditarUsuarioKeyPressed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+//        VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(this.txBuscar);
+//           this.removeAll();
+//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+//           this.setLayout(new java.awt.BorderLayout());
+//           this.add(vista);
+//           vista.show();
+//           this.revalidate();
+//           this.repaint();
+        
+    }//GEN-LAST:event_jButton2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarUsuario;
