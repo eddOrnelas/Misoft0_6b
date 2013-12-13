@@ -177,13 +177,7 @@ public Boolean realizarLogin(String usuario, String password)
   }
           public String validarDatosLogin(String usuario, String password){
               
-//               Usuario tipoUsuario= new Usuario(true);
-//      
-//      
-//      Object[][] options = new Object[][]{{"usuario", "=", usuario },
-//                                           {"password", "=", password}};      
-//      
-//      Object[] resultado=tipoUsuario.buscarBD("all", options);
+
               
               
               
