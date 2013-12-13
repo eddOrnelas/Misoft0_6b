@@ -279,6 +279,9 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                                 .addGap(126, 126, 126)
                                 .addComponent(txContraseña)))))
                 .addContainerGap())
+<<<<<<< HEAD
+>>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
+=======
 >>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
         );
         jPanel1Layout.setVerticalGroup(
@@ -330,6 +333,9 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+<<<<<<< HEAD
+>>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
+=======
 >>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
         );
 
