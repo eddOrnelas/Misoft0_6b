@@ -1,4 +1,4 @@
-/*
+﻿/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -41,9 +41,8 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
     
     public VistaVentanaPrincipal() {
         initComponents();
-
-        this.idUsuario = 1L; 
-        this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        this.idUsuario = 1L;
+       this.setExtendedState(this.MAXIMIZED_BOTH);
     }
     
     public VistaVentanaPrincipal(Long idUsuario) {
