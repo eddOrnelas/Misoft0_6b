@@ -138,11 +138,6 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
                 realizarRegistroArticulo(evt);
             }
         });
-        btAceptarAlta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarAltaActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -236,18 +231,16 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
             
             }
             else{
-           
-           VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(ctrArticulos.obtenerUltimoId(),textoBusqueda);
-           this.removeAll();
-           
-
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            this.setLayout(new java.awt.BorderLayout());
-           
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
+                VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(Long.parseLong(txCodigoArticulo.getText()),textoBusqueda);
+                this.removeAll();
+                txCodigoArticulo.setText("");
+                txDescripcion.setText("");
+                txProveedor.setText("");
+                this.setLayout(new java.awt.BorderLayout());
+                this.add(vista);
+                vista.show();
+                this.revalidate();
+                this.repaint();
             }
             
            }
@@ -276,10 +269,6 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_cancelarRegistro
-
-    private void btAceptarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarAltaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAceptarAltaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarAlta;

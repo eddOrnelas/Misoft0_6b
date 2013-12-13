@@ -1,6 +1,7 @@
 package usuario;
 
 
+import articulo.VistaConsultarArticuloEspecifico;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -14,6 +15,8 @@ import javax.swing.JOptionPane;
  * @author NOE
  */
 public class VistaAltaUsuario extends javax.swing.JPanel {
+    public String usuario;
+ private String txBuscar;
 
 
     /**
@@ -21,7 +24,13 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
      */
     public VistaAltaUsuario() {
         initComponents();
+        this.txBuscar="";
         
+    }
+     public VistaAltaUsuario(String txBuscar) {
+        initComponents();
+        this.txBuscar= "";
+         this.txBuscar = txBuscar;
     }
 
     
@@ -297,21 +306,42 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         
         if(exito==1)
         {
-            JOptionPane.showMessageDialog(this, "Alta Exitosa");
+            Object opciones[] = { "SI", "NO" };    
+         Integer seleccion = JOptionPane.showOptionDialog(this, "El usuario se registro con exito, deceas registrar otro mas?", "Atencion!",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+          if(seleccion == JOptionPane.YES_OPTION){  
+        JOptionPane.showMessageDialog(this, "Alta Exitosa");
         txnombre.setText("");
         txapPaterno.setText("");
         txapMaterno.setText("");
         txusuario.setText("");
-        txcontraseña.setText("");
+        txcontraseña.setText("");}
+          else{
+        
+        
+        
+        
+        VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(this.txBuscar);
+           this.removeAll();
+           
+
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+            this.setLayout(new java.awt.BorderLayout());
+           
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
         
 
-        }
+        }}
         
        else 
         {
             JOptionPane.showMessageDialog(this, "Alta Incorrecta");
         }
-       }
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void txcontraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txcontraseñaActionPerformed

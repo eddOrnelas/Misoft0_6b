@@ -51,16 +51,16 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btBuscar = new javax.swing.JButton();
         txBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbArticulos = new javax.swing.JTable();
         txCantidad = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
+        btAgregar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -85,8 +85,8 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btBuscar.setText("Buscar");
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarArticulo(evt);
             }
@@ -98,7 +98,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(btBuscar, gridBagConstraints);
 
         txBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -139,10 +139,12 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tbArticulos);
-        tbArticulos.getColumnModel().getColumn(0).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(1).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(2).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(3).setResizable(false);
+        if (tbArticulos.getColumnModel().getColumnCount() > 0) {
+            tbArticulos.getColumnModel().getColumn(0).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(1).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(2).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -174,10 +176,10 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel3, gridBagConstraints);
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btCancelarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -186,12 +188,12 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
-        getContentPane().add(jButton2, gridBagConstraints);
+        getContentPane().add(btCancelar, gridBagConstraints);
 
-        jButton3.setText("Agregar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btAgregar.setText("Agregar");
+        btAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btAgregarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -200,7 +202,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
-        getContentPane().add(jButton3, gridBagConstraints);
+        getContentPane().add(btAgregar, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -246,7 +248,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_txBuscarKeyPressed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
         // TODO add your handling code here:
         
          //Obtenemos la fila seleccionada
@@ -288,12 +290,12 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
                  JOptionPane.showMessageDialog(this, "La Cantidad introducida es incorrecta");
         
         
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btAgregarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,9 +332,9 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btAgregar;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

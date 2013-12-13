@@ -6,7 +6,9 @@
 
 package reportes;
 
+import java.sql.Date;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +22,18 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
      */
     VistaReporteVentasGeneral() {
         initComponents();
+        //Fecha no sea mayor a la actual.
+        Calendar cal = new GregorianCalendar();
+        
+        int month = cal.get(Calendar.MONTH)+1;
+        int year = cal.get(Calendar.YEAR)-1900;
+        int day = cal.get(Calendar.DAY_OF_MONTH)-31;
+                
+        txFechaFinal.setDateFormatString("yyyy-MM-dd");
+        txFechaFinal.setMaxSelectableDate(new Date(year,month,day));
+        
+        txFechaInicio.setDateFormatString("yyyy-MM-dd");
+        txFechaInicio.setMaxSelectableDate(new Date(year,month,day));
         
     }
 
@@ -132,6 +146,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         String fecha2 = "";
         int band=0;
         int band2=0;
+        int band4 =0;
 
         //Obtenemos los valores de la texto de la fecha del calendario
         if (txFechaInicio.getCalendar() != null) {
@@ -149,7 +164,42 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino.");
             band =0;
         }
-        if(band==1&band2==2){
+        
+        //Validar fecha inicio <= fecha termino
+        if (txFechaFinal.getCalendar() != null && txFechaInicio.getCalendar() != null) {
+            int a1 = txFechaInicio.getCalendar().get(Calendar.YEAR);
+            int a2 = txFechaFinal.getCalendar().get(Calendar.YEAR);
+            
+            int mes1 = txFechaInicio.getCalendar().get(Calendar.MONTH);
+            int mes2 = txFechaFinal.getCalendar().get(Calendar.MONTH);
+            
+            int dia1 = txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int dia2 = txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            
+            
+            if(a1>a2){
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+            band4 = 4;
+            }
+            
+            if(a1==a2){
+                if(mes1>mes2){
+                JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                band4 = 4;
+                }else{
+                    if(mes1==mes2){
+                        if(dia1>dia2){
+                            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                            band4 = 4;
+                        }
+                    }
+                
+                }
+            }else{
+            band4=0;
+            }
+        }
+        if(band==1&band2==2&&band4==4){
         reporte = ctrCorte.realizarReporteVentas(fecha1, fecha2);
 
         if (reporte == null) {

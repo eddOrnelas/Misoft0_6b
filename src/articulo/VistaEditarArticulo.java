@@ -251,6 +251,11 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         jPanel2.add(jLabel5, gridBagConstraints);
 
         txPrecioCompra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txPrecioCompra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txPrecioCompraKeyReleased(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
@@ -338,16 +343,9 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
        
       // String pass = JOptionPane.showInputDialog("Introduce tu contrasena para validar la operacion");
        
-       Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
        
-      
-    
        errors += ctrArticulos.validaDatosEdicionArticulo(codigoArticulo.toString(), txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText() );
-    
-        Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
        
-       if(!autorizado)
-           errors += "No estas autorizado";
        
        
        if(errors.length()>0)
@@ -356,10 +354,17 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
        }
        else
        {
-        Integer status = ctrArticulos.realizarEdicionArticulo(codigoArticulo.toString(),txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText() );
-    
-           if(status==1)
-           {JOptionPane.showMessageDialog(this,"Edicion Exitosa");
+           
+            Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
+            Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
+            if(!autorizado){
+                errors += "No estas autorizado";
+           }
+           else{
+               Integer status = ctrArticulos.realizarEdicionArticulo(codigoArticulo.toString(),txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText() );
+               if(status==1)
+               {
+                   JOptionPane.showMessageDialog(this,"Edicion Exitosa");
            //barraEstado.setText("Alta Articulos: Completado");
            
            VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(ctrArticulos.obtenerUltimoId(), textoBusqueda);
@@ -382,7 +387,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
            }
            
        }
-        
+       }
     }//GEN-LAST:event_editarArticulo
 
     private void cancelarEdicion(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarEdicion
@@ -402,6 +407,18 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txPrecioCompraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txPrecioCompraKeyReleased
+        Float iva=0.0f;
+        Float total=0.0f;
+        try{
+        iva= Float.parseFloat(txPrecioCompra.getText());
+        total= iva+Float.parseFloat(txPrecioCompra.getText());
+        txPrecioVenta.setText(total.toString());
+        }catch(NumberFormatException e){
+            txPrecioVenta.setText("0.0");
+        }
+    }//GEN-LAST:event_txPrecioCompraKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

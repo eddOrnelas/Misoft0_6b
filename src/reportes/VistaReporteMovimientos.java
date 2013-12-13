@@ -7,10 +7,8 @@
 package reportes;
 
 import java.awt.event.KeyEvent;
-import static java.lang.Integer.parseInt;
 import java.sql.Date;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
@@ -26,16 +24,19 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
      */
     public VistaReporteMovimientos() throws ParseException {
         initComponents();
-        /*Calendar cal = new GregorianCalendar();
+        
+        //Fecha no sea mayor a la actual.
+        Calendar cal = new GregorianCalendar();
         
         int month = cal.get(Calendar.MONTH)+1;
-        int year = cal.get(Calendar.YEAR);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        String fechaActual =  year+"-"+month+"-"+day;
-       
-        txFechaFinal.setDateFormatString("yyy-MM-dd");
+        int year = cal.get(Calendar.YEAR)-1900;
+        int day = cal.get(Calendar.DAY_OF_MONTH)-31;
+                
+        txFechaFinal.setDateFormatString("yyyy-MM-dd");
         txFechaFinal.setMaxSelectableDate(new Date(year,month,day));
-        */
+        
+        txFechaInicio.setDateFormatString("yyyy-MM-dd");
+        txFechaInicio.setMaxSelectableDate(new Date(year,month,day));
        
     }
 
@@ -179,6 +180,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         int band=0;
         int band2=0;
         int band3=0;
+        int band4=0;
         
         
          String idArt = "";
@@ -213,6 +215,45 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
             band =0;
         }
         
+        //Validar fecha inicio <= fecha termino
+        if (txFechaFinal.getCalendar() != null && txFechaInicio.getCalendar() != null) {
+            int a1 = txFechaInicio.getCalendar().get(Calendar.YEAR);
+            int a2 = txFechaFinal.getCalendar().get(Calendar.YEAR);
+            
+            int mes1 = txFechaInicio.getCalendar().get(Calendar.MONTH);
+            int mes2 = txFechaFinal.getCalendar().get(Calendar.MONTH);
+            
+            int dia1 = txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int dia2 = txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            
+            
+            if(a1>a2){
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+            band4 = 4;
+            }
+            
+            if(a1==a2){
+                if(mes1>mes2){
+                JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                band4 = 4;
+                }else{
+                    if(mes1==mes2){
+                        if(dia1>dia2){
+                            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                            band4 = 4;
+                        }
+                    }
+                
+                }
+            }else{
+            band4=0;
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino. ultimo else");
+            band =0;
+        }
+        
        
         Long idArticulo = null;
         idArticulo = Long.parseLong(idArt);
@@ -220,7 +261,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
       
  
         
-        if(band==1&&band2==2&&band3==3){
+        if(band==1&&band2==2&&band3==3&&band4==0){
         reporte = ctrlMov.realizarReporteMovimientos(idArticulo, fecha1, fecha2);
 
         if (reporte == null) {

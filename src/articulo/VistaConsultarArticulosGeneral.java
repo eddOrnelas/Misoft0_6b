@@ -146,16 +146,11 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
         add(txBusqueda, gridBagConstraints);
 
-        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 consultarArticulos(evt);
-            }
-        });
-        btBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBuscarActionPerformed(evt);
             }
         });
         btBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -187,11 +182,6 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         btVerDetallesAriculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 verDetallesArticulo(evt);
-            }
-        });
-        btVerDetallesAriculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVerDetallesAriculoActionPerformed(evt);
             }
         });
         btVerDetallesAriculo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -547,14 +537,6 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txBusquedaActionPerformed
 
-    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btBuscarActionPerformed
-
-    private void btVerDetallesAriculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerDetallesAriculoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btVerDetallesAriculoActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btEditarArticulo;
@@ -564,7 +546,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbArticulos;
-    private javax.swing.JTextField txBusqueda;
+    public javax.swing.JTextField txBusqueda;
     // End of variables declaration//GEN-END:variables
 
     private void initGrid() {

@@ -166,6 +166,8 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.01;
         add(lbProveedor, gridBagConstraints);
 
+        btEditarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btEditarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btEditarArticulo.setText("Editar");
         btEditarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,10 +204,17 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.01;
         add(jLabel5, gridBagConstraints);
 
+        btCancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelarConsulta(evt);
+            }
+        });
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -290,6 +299,10 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_cancelarConsulta
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;
