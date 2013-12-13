@@ -113,7 +113,6 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(12, 0, 0, 73);
         add(jScrollPane1, gridBagConstraints);
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -130,12 +129,11 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 281;
         gridBagConstraints.ipady = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 6, 11, 73);
+        gridBagConstraints.weightx = 1.0;
         add(jButton5, gridBagConstraints);
 
         jLabel1.setText("Nombre del usuario a buscar:");
@@ -178,13 +176,10 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.ipadx = 329;
-        gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 6, 11, 0);
+        gridBagConstraints.weightx = 1.0;
         add(EditarUsuario, gridBagConstraints);
 
         EliminarUsuario.setText("Eliminar Usuario");
@@ -206,11 +201,9 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 321;
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(12, 0, 11, 0);
+        gridBagConstraints.weightx = 1.0;
         add(EliminarUsuario, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
