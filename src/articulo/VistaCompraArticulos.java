@@ -97,7 +97,7 @@ public class VistaCompraArticulos extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Compra De Articulos");
         add(jLabel1);
-        jLabel1.setBounds(2, 0, 730, 44);
+        jLabel1.setBounds(2, 0, 720, 44);
 
         btAceptar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N

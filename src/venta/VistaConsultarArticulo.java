@@ -63,18 +63,20 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Consulta Articulo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel1, gridBagConstraints);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Codigo Articulo o Descripcion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -85,6 +87,8 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel2, gridBagConstraints);
 
+        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +104,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(btBuscar, gridBagConstraints);
 
+        txBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txBuscarKeyPressed(evt);
@@ -115,6 +120,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(txBuscar, gridBagConstraints);
 
+        tbArticulos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tbArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -139,12 +145,10 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tbArticulos);
-        if (tbArticulos.getColumnModel().getColumnCount() > 0) {
-            tbArticulos.getColumnModel().getColumn(0).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(1).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(2).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(3).setResizable(false);
-        }
+        tbArticulos.getColumnModel().getColumn(0).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(1).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(2).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(3).setResizable(false);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -166,6 +170,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(txCantidad, gridBagConstraints);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Cantidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -176,6 +181,8 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel3, gridBagConstraints);
 
+        btCancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,13 +190,15 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(btCancelar, gridBagConstraints);
 
+        btAgregar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944512_plus.png"))); // NOI18N
         btAgregar.setText("Agregar");
         btAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +206,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weightx = 1.0;

@@ -80,6 +80,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
+        tbArticulos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tbArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -123,7 +124,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
         add(jScrollPane1, gridBagConstraints);
 
-        txBusqueda.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txBusqueda.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txBusquedaActionPerformed(evt);
@@ -147,6 +148,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         add(txBusqueda, gridBagConstraints);
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -168,7 +170,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
         add(btBuscar, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nombre Articulo o Codigo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -178,6 +181,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
         add(jLabel2, gridBagConstraints);
 
+        btVerDetallesAriculo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btVerDetallesAriculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942729_eye-24.png"))); // NOI18N
         btVerDetallesAriculo.setText("Ver Detalles");
         btVerDetallesAriculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -195,6 +200,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(btVerDetallesAriculo, gridBagConstraints);
 
+        btEditarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btEditarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btEditarArticulo.setText("Editar Articulo");
         btEditarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -212,6 +219,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(btEditarArticulo, gridBagConstraints);
 
+        btEliminarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btEliminarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942378_Black_Trash.png"))); // NOI18N
         btEliminarArticulo.setText("Eliminar Articulo");
         btEliminarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -234,6 +243,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(btEliminarArticulo, gridBagConstraints);
 
+        btRealizarCompra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btRealizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942614_meanicons_58.png"))); // NOI18N
         btRealizarCompra.setText("Realizar Compra");
         btRealizarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

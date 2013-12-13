@@ -49,11 +49,13 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Agregar Articulos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.ipady = 9;
@@ -62,6 +64,7 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel1, gridBagConstraints);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Cantidad");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -74,6 +77,7 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel2, gridBagConstraints);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Codigo Articulo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -85,6 +89,8 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel3, gridBagConstraints);
+
+        txBuscarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -97,9 +103,11 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(txBuscarArticulo, gridBagConstraints);
 
+        btCancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelar.setText("Cancelar");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.ipady = 9;
@@ -108,6 +116,8 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(btCancelar, gridBagConstraints);
 
+        btAgregar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944250_pencil_add.png"))); // NOI18N
         btAgregar.setText("Agregar");
         btAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,7 +125,7 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.ipadx = 9;
         gridBagConstraints.ipady = 9;
@@ -123,6 +133,8 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(btAgregar, gridBagConstraints);
+
+        txCantidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
