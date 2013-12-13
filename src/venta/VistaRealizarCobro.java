@@ -24,6 +24,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
     public VistaRealizarCobro(ArrayList carrito) {
         initComponents();
         this.carrito =  carrito;
+        calcularCosto();
     }
     
     public VistaRealizarCobro() {
@@ -55,7 +56,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         btContinuar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -81,7 +82,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         getContentPane().add(jLabel2, gridBagConstraints);
 
         lbSubTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbSubTotal.setText("0.0 $");
+        lbSubTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -101,7 +102,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         getContentPane().add(jLabel4, gridBagConstraints);
 
         lbIva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbIva.setText("0.0 $");
+        lbIva.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -121,7 +122,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         getContentPane().add(jLabel6, gridBagConstraints);
 
         lbTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbTotal.setText("0.0 $");
+        lbTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -141,7 +142,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         getContentPane().add(jLabel8, gridBagConstraints);
 
         lbCambio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbCambio.setText("0.0 $");
+        lbCambio.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 10;
@@ -302,9 +303,9 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
          
          DecimalFormat decimal = new DecimalFormat("#.##");
          
-        lbSubTotal.setText(""+decimal.format(subSubTotal)+" $");
-        lbIva.setText(""+decimal.format(iva)+" $");
-        lbTotal.setText(""+decimal.format(subTotal)+" $");
+        lbSubTotal.setText("$ "+decimal.format(subSubTotal));
+        lbIva.setText("$ "+decimal.format(iva));
+        lbTotal.setText("$ "+decimal.format(subTotal));
         
         return Float.parseFloat(decimal.format(subTotal));
     }

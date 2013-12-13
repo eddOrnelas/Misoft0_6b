@@ -262,7 +262,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jPanel1.add(jLabel3, gridBagConstraints);
 
         lbSubTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbSubTotal.setText("0.0 $");
+        lbSubTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -286,7 +286,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jPanel1.add(jLabel5, gridBagConstraints);
 
         lbIva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbIva.setText("0.0 $");
+        lbIva.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -310,7 +310,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jPanel1.add(jLabel7, gridBagConstraints);
 
         lbTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbTotal.setText("0.0");
+        lbTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -511,9 +511,12 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     private void RealizarCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarCobroActionPerformed
         // TODO add your handling code here:
         
+        if(carrito.size()>0){
       VistaRealizarCobro vista = new VistaRealizarCobro(carrito);
       vista.setEnabled(true);
       vista.setVisible(true);
+        }else
+            JOptionPane.showMessageDialog(this, "No cuentas con articulos en la lista");
           
         
     }//GEN-LAST:event_RealizarCobroActionPerformed
@@ -689,9 +692,9 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
          
          DecimalFormat decimal = new DecimalFormat("#.##");
          
-        lbSubTotal.setText(""+decimal.format(subSubTotal)+" $");
-        lbIva.setText(""+decimal.format(iva)+" $");
-        lbTotal.setText(""+decimal.format(subTotal)+" $");
+        lbSubTotal.setText("$ "+decimal.format(subSubTotal));
+        lbIva.setText("$ "+decimal.format(iva));
+        lbTotal.setText("$ "+decimal.format(subTotal));
     }
     
     

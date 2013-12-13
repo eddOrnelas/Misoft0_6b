@@ -166,7 +166,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weightx = 2.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(txCantidad, gridBagConstraints);
 
@@ -266,7 +266,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         Long codigoArticulo = null;
         try{
         codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
-        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        }catch(java.lang.IndexOutOfBoundsException e)
         {
             
         }
@@ -276,9 +276,9 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
 
         try{
         cantidad = Integer.parseInt(txCantidad.getText());
-        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        }catch(NumberFormatException e)
         {
-            
+            cantidad = null;
         }
         
              if(cantidad!=null && cantidad > 0)
