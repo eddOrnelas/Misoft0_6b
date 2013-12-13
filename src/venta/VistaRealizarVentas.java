@@ -556,7 +556,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
             else
                 if(key==KeyEvent.VK_TAB){
-                    return false;
+                //    evt.
                 }
         
         
