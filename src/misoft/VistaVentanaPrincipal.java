@@ -1,4 +1,4 @@
-﻿package misoft;
+package misoft;
 
 import articulo.VistaPrincipalArticulos;
 import corte.VistaCorte;

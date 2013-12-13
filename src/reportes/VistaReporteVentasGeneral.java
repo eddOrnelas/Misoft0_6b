@@ -199,7 +199,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             band4=0;
             }
         }
-        if(band==1&band2==2&&band4==4){
+        if(band==1&band2==2&&band4==0){
         reporte = ctrCorte.realizarReporteVentas(fecha1, fecha2);
 
         if (reporte == null) {
