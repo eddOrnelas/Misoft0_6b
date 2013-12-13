@@ -2,6 +2,7 @@ package usuario;
 
 
 import articulo.VistaConsultarArticulosGeneral;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import usuario.ControlUsuario;
 
@@ -304,6 +305,7 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_EditarUsuario
 
+
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
         // TODO add your handling code here:
                int key=evt.getKeyCode();
@@ -315,6 +317,7 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         }
     }
     }//GEN-LAST:event_jButton2KeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarUsuario;

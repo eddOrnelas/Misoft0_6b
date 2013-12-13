@@ -416,11 +416,11 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-=======
+
+
     private void txPrecioCompraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txPrecioCompraKeyReleased
         Float iva=0.0f;
         Float total=0.0f;
@@ -432,7 +432,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
             txPrecioVenta.setText("0.0");
         }
     }//GEN-LAST:event_txPrecioCompraKeyReleased
->>>>>>> 0f50fd8ef4ffda28ec5fec7b8b96d65482d59dfa
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
