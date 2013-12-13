@@ -212,6 +212,11 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
                 cancelarConsulta(evt);
             }
         });
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 32;
@@ -294,6 +299,10 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_cancelarConsulta
+
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;

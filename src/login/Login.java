@@ -1,6 +1,7 @@
 package login;
 
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import misoft.VistaVentanaPrincipal;
 import usuario.ControlUsuario;
@@ -62,17 +63,58 @@ public class Login extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
+=======
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.05;
+        getContentPane().add(jButton1, gridBagConstraints);
+>>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+=======
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.ipadx = 15;
+        gridBagConstraints.ipady = 15;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 0.05;
+        getContentPane().add(jButton2, gridBagConstraints);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+>>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
         jLabel1.setText("Usuario:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -133,6 +175,33 @@ public class Login extends javax.swing.JFrame {
 
     private void realizarLogin(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_realizarLogin
 
+//        ControlUsuario ctrusuario = new ControlUsuario();
+//        String errores="";
+//        
+//         errores=ctrusuario.validarDatosLogin(txUsuario.getText(),txContraseña.getText());
+//         if(errores.length()>0)
+//       { 
+//           JOptionPane.showMessageDialog(this,errores);
+//      
+//        }
+//            else
+//        if(ctrusuario.realizarLogin(txUsuario.getText() ,  txContraseña.getText()))                
+//                {
+//                    System.out.println("Se hizo login correctamente");
+//                    
+//                    VistaVentanaPrincipal ventanaPrincipal = new VistaVentanaPrincipal();
+//                    ventanaPrincipal.setVisible(true);
+//                    this.dispose();
+//                    
+//                }
+//        else JOptionPane.showMessageDialog(this, "¡ El Usuario y/o Password es incorrecto !");
+//        txUsuario.setText("");
+//        txContraseña.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_realizarLogin
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
         ControlUsuario ctrusuario = new ControlUsuario();
         String errores="";
         
@@ -155,16 +224,40 @@ public class Login extends javax.swing.JFrame {
         else JOptionPane.showMessageDialog(this, "¡ El Usuario y/o Password es incorrecto !");
         txUsuario.setText("");
         txContraseña.setText("");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_realizarLogin
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txUsuarioActionPerformed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+                  int key=evt.getKeyCode();
+    if(evt.getSource()==jButton1)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           jButton1ActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        // TODO add your handling code here:
+                  int key=evt.getKeyCode();
+    if(evt.getSource()==jButton2)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           jButton2ActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton2KeyPressed
 
     /**
      * @param args the command line arguments

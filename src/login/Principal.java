@@ -1,5 +1,6 @@
 package login;
 
+import java.awt.event.KeyEvent;
 import usuario.VistaAltaUsuario;
 import usuario.VistaConsultaGeneralUsuarios;
 
@@ -55,9 +56,19 @@ public class Principal extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/search user.png"))); // NOI18N
         jButton4.setText("Consulta General Usuarios");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton4KeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -94,9 +105,19 @@ public class Principal extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/adduser.png"))); // NOI18N
         jButton1.setLabel("Registrar usuario");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -136,6 +157,38 @@ public class Principal extends javax.swing.JFrame {
        paneUsuarios.revalidate();
        paneUsuarios.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+        // TODO add your handling code here:
+                    int key=evt.getKeyCode();
+    if(evt.getSource()==jButton4)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           jButton4ActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton4KeyPressed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        // TODO add your handling code here:
+                    int key=evt.getKeyCode();
+    if(evt.getSource()==jButton1)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           jButton1ActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton1KeyPressed
 
     /**
      * @param args the command line arguments
