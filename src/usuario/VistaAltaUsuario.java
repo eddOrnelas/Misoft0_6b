@@ -307,7 +307,7 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         if(exito==1)
         {
             Object opciones[] = { "SI", "NO" };    
-         Integer seleccion = JOptionPane.showOptionDialog(this, "El usuario se registro con exito, deceas registrar otro mas?", "Atencion!",
+         Integer seleccion = JOptionPane.showOptionDialog(this, "El usuario se registro con exito, deseas registrar otro mas?", "Atencion!",
         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
             
           if(seleccion == JOptionPane.YES_OPTION){  

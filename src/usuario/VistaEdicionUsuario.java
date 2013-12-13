@@ -21,10 +21,13 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
     /**
      * Creates new form VistaModificarUsuario
      */
-    public VistaEdicionUsuario(String usuario, String usuarioBuscar) {
+ public VistaEdicionUsuario() {
+        initComponents();
+    }
+    public VistaEdicionUsuario(String usuario, String txBuscar) {
         initComponents();
         this.usuario = usuario;
-        this.txBuscar = usuarioBuscar;
+        this.txBuscar = txBuscar;
         
          Usuario busuario = new Usuario(true);
            
@@ -150,6 +153,11 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarUsuario(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
 
@@ -376,6 +384,18 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
 //           this.repaint();
         
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        // TODO add your handling code here:
+               int key=evt.getKeyCode();
+    if(evt.getSource()==jButton2)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+            editarUsuario(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton2KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarUsuario;

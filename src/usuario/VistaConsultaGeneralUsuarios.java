@@ -77,13 +77,14 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 122;
-        gridBagConstraints.ipady = 15;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 36, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(28, 29, 0, 0);
         add(ConsultarUsuariosGeneral, gridBagConstraints);
 
         jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,14 +106,14 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridwidth = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 2089;
-        gridBagConstraints.ipady = 170;
+        gridBagConstraints.ipadx = 1273;
+        gridBagConstraints.ipady = 157;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(12, 0, 0, 73);
         add(jScrollPane1, gridBagConstraints);
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -129,22 +130,21 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 353;
+        gridBagConstraints.ipadx = 281;
         gridBagConstraints.ipady = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(12, 6, 11, 73);
         add(jButton5, gridBagConstraints);
 
         jLabel1.setText("Nombre del usuario a buscar:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 138;
-        gridBagConstraints.ipady = 8;
+        gridBagConstraints.ipadx = 31;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(26, 26, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(34, 30, 0, 0);
         add(jLabel1, gridBagConstraints);
 
         txBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,10 +156,9 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 138;
-        gridBagConstraints.ipady = 11;
+        gridBagConstraints.ipadx = 118;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(31, 47, 0, 0);
         add(txBuscar, gridBagConstraints);
 
         EditarUsuario.setText("Editar Usuario");
@@ -179,13 +178,13 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.ipadx = 401;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 329;
         gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(12, 6, 11, 0);
         add(EditarUsuario, gridBagConstraints);
 
         EliminarUsuario.setText("Eliminar Usuario");
@@ -205,13 +204,13 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 393;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 321;
         gridBagConstraints.ipady = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(12, 0, 11, 0);
         add(EliminarUsuario, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
