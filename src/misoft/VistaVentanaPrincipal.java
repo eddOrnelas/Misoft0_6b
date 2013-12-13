@@ -41,6 +41,7 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
     public VistaVentanaPrincipal() {
         initComponents();
         this.idUsuario = 1L;
+       this.setExtendedState(this.MAXIMIZED_BOTH);
     }
     
     public VistaVentanaPrincipal(Long idUsuario) {
@@ -72,7 +73,8 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 204, 204));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        btAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/INVENTARIOS.gif"))); // NOI18N
+        btAlmacen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/almacen.png"))); // NOI18N
         btAlmacen.setText("Administrar Almacén");
         btAlmacen.setMaximumSize(new java.awt.Dimension(183, 50));
         btAlmacen.setMinimumSize(new java.awt.Dimension(183, 50));
@@ -110,7 +112,8 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(panelPrincipal, gridBagConstraints);
 
-        btReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/reports_icon.png"))); // NOI18N
+        btReportes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/reportes.png"))); // NOI18N
         btReportes.setText("Reportes");
         btReportes.setMaximumSize(new java.awt.Dimension(129, 50));
         btReportes.setMinimumSize(new java.awt.Dimension(129, 50));
@@ -128,7 +131,8 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         getContentPane().add(btReportes, gridBagConstraints);
 
-        btAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/usuario.png"))); // NOI18N
+        btAdministracion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btAdministracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/users.png"))); // NOI18N
         btAdministracion.setText("Administración");
         btAdministracion.setMaximumSize(new java.awt.Dimension(155, 50));
         btAdministracion.setMinimumSize(new java.awt.Dimension(155, 50));
@@ -146,7 +150,7 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         getContentPane().add(btAdministracion, gridBagConstraints);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banner1_1.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/logo2.png"))); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -155,6 +159,7 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         getContentPane().add(jLabel1, gridBagConstraints);
 
+        btVentas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img50x50/icons_agregar.png"))); // NOI18N
         btVentas.setText("Ventas");
         btVentas.setMaximumSize(new java.awt.Dimension(119, 50));

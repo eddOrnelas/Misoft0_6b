@@ -54,7 +54,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCarrito = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        RealizarCobro = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         lbSubTotal = new javax.swing.JLabel();
@@ -62,6 +62,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         lbIva = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lbTotal = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -118,7 +120,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         add(txBuscar, gridBagConstraints);
 
         btBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btBuscar.setText("Agregar Articulo");
+        btBuscar.setText("Agregar Articulo [Enter]");
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarArticulo(evt);
@@ -177,10 +179,13 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tbCarrito.setColumnSelectionAllowed(true);
         tbCarrito.getTableHeader().setReorderingAllowed(false);
+        tbCarrito.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbCarritoKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbCarrito);
-        tbCarrito.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbCarrito.getColumnModel().getColumn(0).setResizable(false);
         tbCarrito.getColumnModel().getColumn(0).setPreferredWidth(50);
         tbCarrito.getColumnModel().getColumn(1).setResizable(false);
@@ -204,7 +209,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 19, 0, 0);
         add(jScrollPane1, gridBagConstraints);
 
-        jButton3.setText("Cancelar Venta");
+        jButton3.setText("Cancelar Venta [F10]");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -214,21 +219,25 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.5;
+        gridBagConstraints.ipadx = 13;
+        gridBagConstraints.ipady = 13;
+        gridBagConstraints.weighty = 0.01;
         add(jButton3, gridBagConstraints);
 
-        jButton4.setText("Realizar Venta");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        RealizarCobro.setText("Realizar Cobro [F8]");
+        RealizarCobro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                RealizarCobroActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.weighty = 0.5;
-        add(jButton4, gridBagConstraints);
+        gridBagConstraints.ipadx = 13;
+        gridBagConstraints.ipady = 13;
+        gridBagConstraints.weighty = 0.01;
+        add(RealizarCobro, gridBagConstraints);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -313,6 +322,28 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(jPanel1, gridBagConstraints);
+
+        jButton1.setText("Agregar Articulos [F5]");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VerAgregarArticulos(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        add(jButton1, gridBagConstraints);
+
+        jButton5.setText("Cancelar Articulos [C]");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.ipadx = 13;
+        gridBagConstraints.ipady = 13;
+        gridBagConstraints.weighty = 0.01;
+        add(jButton5, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarArticulo
@@ -424,7 +455,16 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
                 if(key==KeyEvent.VK_ENTER)
                 { 
                    agregarArticulo(null);
+                }else
+                    if(key==KeyEvent.VK_F5)
+                {
+                   VistaAgregarArticulos agregarArticulos = new VistaAgregarArticulos(this);
+                     agregarArticulos.show();
                 }
+                    else
+                        if(key==KeyEvent.VK_F8){
+                            RealizarCobroActionPerformed(null);
+                    }
             }
         
     }//GEN-LAST:event_txBuscarKeyPressed
@@ -456,28 +496,73 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
 
     }//GEN-LAST:event_formKeyPressed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void RealizarCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarCobroActionPerformed
         // TODO add your handling code here:
         
-      ControlVenta ctrVenta = new ControlVenta();
-      if(ctrVenta.realizarVenta(carrito)){
-          JOptionPane.showMessageDialog(this, "Venta Realizada con Exito");
-         
-//            VistaRealizarVenta vista = new VistaRealizarVenta();
-//           this.removeAll();
-//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-//           this.setLayout(new java.awt.BorderLayout());          
-//           this.add(vista);
-//           vista.show();
-//           this.revalidate();
-//           this.repaint();
-
-      }
-      else
-          JOptionPane.showMessageDialog(this, "Ocurrio un error al momento de realizar la venta");
+      VistaRealizarCobro vista = new VistaRealizarCobro(carrito);
+      vista.setEnabled(true);
+      vista.setVisible(true);
           
         
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_RealizarCobroActionPerformed
+
+    private void VerAgregarArticulos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerAgregarArticulos
+        // TODO add your handling code here:
+        VistaAgregarArticulos agregarArticulos = new VistaAgregarArticulos(this);
+        agregarArticulos.show();
+    }//GEN-LAST:event_VerAgregarArticulos
+
+    private void tbCarritoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbCarritoKeyPressed
+        // TODO add your handling code here:
+        
+         int key=evt.getKeyCode();
+
+        
+        if(key==KeyEvent.VK_DELETE)
+        {
+          //Obtenemos la fila seleccionada
+       int selection= tbCarrito.getSelectedRow();
+        
+       Long codigoArticulo = null;
+        try{
+        codigoArticulo = (Long)tbCarrito.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        
+        if(codigoArticulo!=null){
+            Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "Desceas cancelar articulo?", "Atencion!",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                cancelarArticulo(codigoArticulo);
+                txBuscar.requestFocus();
+            }
+        }else{
+             JOptionPane.showMessageDialog(this, "Codigo Articulo Invalido");
+            txBuscar.requestFocus();
+        }
+        
+        
+        
+        }else
+            if(key==KeyEvent.VK_ESCAPE){
+                txBuscar.requestFocus();
+            }
+            else
+                if(key==KeyEvent.VK_TAB){
+                    return false;
+                }
+        
+        
+       
+        
+    }//GEN-LAST:event_tbCarritoKeyPressed
 
     public void agregarArticuloCarrito(Articulo articulo, Integer cantidad){
         
@@ -599,10 +684,12 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton RealizarCobro;
     private javax.swing.JButton btBuscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -614,7 +701,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     private javax.swing.JLabel lbSubTotal;
     private javax.swing.JLabel lbTotal;
     private javax.swing.JTable tbCarrito;
-    private javax.swing.JTextField txBuscar;
+    public javax.swing.JTextField txBuscar;
     // End of variables declaration//GEN-END:variables
 
     private void rellenartabla() {
@@ -646,5 +733,27 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         
        }
 
-   
+    public void cancelarArticulo(Long codigoArticulo) {
+    
+    int cantidad_articulos =  carrito.size();
+            
+            
+        for(int x=0; x<cantidad_articulos; x++)
+          {
+              
+             Object articuloTmp = carrito.get(x);
+             Object[] thisArticulo = ((Object[]) articuloTmp); 
+              
+        
+          if(((Articulo)thisArticulo[0]).getCodigoArticulo() == codigoArticulo)
+          {
+              carrito.remove(x);
+
+          }
+
+          }
+        rellenartabla();
+        calcularCosto();
+     }
+    
 }

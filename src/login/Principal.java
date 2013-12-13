@@ -52,7 +52,8 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa_1.jpg"))); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/search user.png"))); // NOI18N
         jButton4.setText("Consulta General Usuarios");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +78,7 @@ public class Principal extends javax.swing.JFrame {
         );
         paneUsuariosLayout.setVerticalGroup(
             paneUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 645, Short.MAX_VALUE)
+            .addGap(0, 683, Short.MAX_VALUE)
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -90,7 +91,8 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(paneUsuarios, gridBagConstraints);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarusuario_1.jpg"))); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/adduser.png"))); // NOI18N
         jButton1.setLabel("Registrar usuario");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

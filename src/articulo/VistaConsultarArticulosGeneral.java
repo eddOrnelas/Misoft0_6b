@@ -146,7 +146,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
         add(txBusqueda, gridBagConstraints);
 
-        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -564,7 +564,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbArticulos;
-    private javax.swing.JTextField txBusqueda;
+    public javax.swing.JTextField txBusqueda;
     // End of variables declaration//GEN-END:variables
 
     private void initGrid() {
