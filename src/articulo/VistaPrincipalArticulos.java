@@ -46,7 +46,7 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
 
         btAltaArticulos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btAltaArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/addarticle.png"))); // NOI18N
-        btAltaArticulos.setText("Registro Nuevo Articulo");
+        btAltaArticulos.setText("Registro Nuevo Artículo");
         btAltaArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 verVistaAltaArticulos(evt);
@@ -64,7 +64,7 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943418_th-list.png"))); // NOI18N
-        jButton5.setText("Consulta Articulos");
+        jButton5.setText("Consulta Artículos");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 verVistaConsultaArticulos(evt);

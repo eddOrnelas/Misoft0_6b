@@ -86,7 +86,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Codigo Articulo", "Descripcion", "Proveedor"
+                "Código Artículo", "Descripción", "Proveedor"
             }
         ) {
             Class[] types = new Class [] {
@@ -106,11 +106,13 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         });
         tbArticulos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbArticulos);
-        tbArticulos.getColumnModel().getColumn(0).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(1).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(1).setPreferredWidth(300);
-        tbArticulos.getColumnModel().getColumn(2).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(2).setPreferredWidth(300);
+        if (tbArticulos.getColumnModel().getColumnCount() > 0) {
+            tbArticulos.getColumnModel().getColumn(0).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(1).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(1).setPreferredWidth(300);
+            tbArticulos.getColumnModel().getColumn(2).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(2).setPreferredWidth(300);
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -172,7 +174,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nombre Articulo o Codigo:");
+        jLabel2.setText("Nombre Artículo o Código:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -203,6 +205,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         btEditarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btEditarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btEditarArticulo.setText("Editar Articulo");
+        btEditarArticulo.setActionCommand("Editar Artículo");
         btEditarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editarArticulo(evt);
@@ -221,7 +224,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
 
         btEliminarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btEliminarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942378_Black_Trash.png"))); // NOI18N
-        btEliminarArticulo.setText("Eliminar Articulo");
+        btEliminarArticulo.setText("Eliminar Artículo");
         btEliminarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 eliminarArticulo(evt);
