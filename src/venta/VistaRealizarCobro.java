@@ -17,13 +17,15 @@ import javax.swing.JOptionPane;
 public class VistaRealizarCobro extends javax.swing.JFrame {
 
     public ArrayList carrito;
+    public VistaRealizarVentas vistaventas;
     
     /**
      * Creates new form VistaRealizarCobro
      */
-    public VistaRealizarCobro(ArrayList carrito) {
+    public VistaRealizarCobro(ArrayList carrito, VistaRealizarVentas vistaventa) {
         initComponents();
         this.carrito =  carrito;
+        this.vistaventas = vistaventa;
         calcularCosto();
     }
     
@@ -265,6 +267,9 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
          btContinuar.requestFocus();
          
          lbCambio.setText(""+(cambio)+" $");
+         carrito.clear();
+         this.vistaventas.calcularCosto();
+         this.vistaventas.rellenartabla();
 
       }
       else
