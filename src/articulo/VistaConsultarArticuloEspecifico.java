@@ -87,7 +87,7 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Detalles Articulo");
+        jLabel1.setText("Detalles Artículo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -99,7 +99,7 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Codigo Articulo:");
+        jLabel2.setText("Código Artículo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
@@ -122,7 +122,7 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         add(lbCodigoArticulo, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel4.setText("Descripcion:");
+        jLabel4.setText("Descripción:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 14;

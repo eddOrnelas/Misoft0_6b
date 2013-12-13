@@ -95,7 +95,7 @@ public class VistaCompraArticulos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Compra De Articulos");
+        jLabel1.setText("Compra De Artículos");
         add(jLabel1);
         jLabel1.setBounds(2, 0, 720, 44);
 
@@ -121,11 +121,11 @@ public class VistaCompraArticulos extends javax.swing.JPanel {
         add(btCancelar);
         btCancelar.setBounds(363, 384, 360, 43);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), null), "Datos Articulo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 153, 153), null), "Datos Artículo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Codigo Articulo:");
+        jLabel3.setText("Código Artículo:");
 
         lbCodigoArticulo.setBackground(new java.awt.Color(204, 204, 204));
         lbCodigoArticulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -133,7 +133,7 @@ public class VistaCompraArticulos extends javax.swing.JPanel {
         lbCodigoArticulo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Descripcion:");
+        jLabel5.setText("Descripción:");
 
         lbDescripcion.setBackground(new java.awt.Color(204, 204, 204));
         lbDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

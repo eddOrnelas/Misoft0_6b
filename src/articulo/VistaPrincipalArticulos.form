@@ -24,7 +24,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/NuevasImagenes/addarticle.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Registro Nuevo Articulo"/>
+        <Property name="text" type="java.lang.String" value="Registro Nuevo Art&#xed;culo"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="verVistaAltaArticulos"/>
@@ -43,7 +43,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/NuevasImagenes/1386943418_th-list.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Consulta Articulos"/>
+        <Property name="text" type="java.lang.String" value="Consulta Art&#xed;culos"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="verVistaConsultaArticulos"/>

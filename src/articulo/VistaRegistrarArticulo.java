@@ -58,7 +58,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Codigo Articulo:");
+        jLabel1.setText("Código Artículo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -81,7 +81,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         add(txCodigoArticulo, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Descripcion:");
+        jLabel2.setText("Descripción:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
