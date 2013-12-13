@@ -44,6 +44,8 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
+        btAltaArticulos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btAltaArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/addarticle.png"))); // NOI18N
         btAltaArticulos.setText("Registro Nuevo Articulo");
         btAltaArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -60,6 +62,8 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(btAltaArticulos, gridBagConstraints);
 
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943418_th-list.png"))); // NOI18N
         jButton5.setText("Consulta Articulos");
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
