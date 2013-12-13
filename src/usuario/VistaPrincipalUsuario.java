@@ -46,7 +46,8 @@ public class VistaPrincipalUsuario extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(paneUsuarios, gridBagConstraints);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa_1.jpg"))); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/search user.png"))); // NOI18N
         jButton4.setText("Consulta General Usuarios");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +61,8 @@ public class VistaPrincipalUsuario extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.05;
         add(jButton4, gridBagConstraints);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregarusuario_1.jpg"))); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/adduser.png"))); // NOI18N
         jButton1.setLabel("Registrar usuario");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

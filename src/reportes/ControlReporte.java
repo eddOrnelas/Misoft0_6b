@@ -44,7 +44,7 @@ public class ControlReporte {
         Object[] ventas = null;
         ModeloCorte corteCaja = new ModeloCorte();
         //Parametros de busqueda.
-        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1}, {"fecha", "<=", fecha2}};
+        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"}, {"fecha", "<=", fecha2+" 23:59:00"}};
 
         ventas = mVentas.buscarBD("all", opciones);
 
@@ -160,7 +160,7 @@ public class ControlReporte {
         ModeloCorte reporteVentas = new ModeloCorte();
         //Parametros de busqueda.
         Boolean activo = true;
-        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1}, {"fecha", "<=", fecha2}};
+        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"}, {"fecha", "<=", fecha2+" 23:59:00"}};
 
         ventas = mVentas.buscarBD("all", opciones);
         
@@ -415,7 +415,7 @@ public class ControlReporte {
         //Parametros de busqueda.
         Boolean activo = true;
         
-        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1},{"fecha", "<=", fecha2},{"idArticulo","=",idArticulo}};
+        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"},{"fecha", "<=", fecha2+" 23:59:00"},{"idArticulo","=",idArticulo}};
 
         mov = rMovimientos.buscarBD("all", opciones);
         

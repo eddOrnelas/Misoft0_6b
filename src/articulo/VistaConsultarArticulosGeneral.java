@@ -80,6 +80,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
+        tbArticulos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tbArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -123,7 +124,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(6, 10, 0, 0);
         add(jScrollPane1, gridBagConstraints);
 
-        txBusqueda.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txBusqueda.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txBusquedaActionPerformed(evt);
@@ -146,16 +147,12 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
         add(txBusqueda, gridBagConstraints);
 
-        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
         btBuscar.setText("Buscar");
         btBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 consultarArticulos(evt);
-            }
-        });
-        btBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btBuscarActionPerformed(evt);
             }
         });
         btBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -173,7 +170,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
         add(btBuscar, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nombre Articulo o Codigo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -183,15 +181,12 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 0, 0, 0);
         add(jLabel2, gridBagConstraints);
 
+        btVerDetallesAriculo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btVerDetallesAriculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942729_eye-24.png"))); // NOI18N
         btVerDetallesAriculo.setText("Ver Detalles");
         btVerDetallesAriculo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 verDetallesArticulo(evt);
-            }
-        });
-        btVerDetallesAriculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btVerDetallesAriculoActionPerformed(evt);
             }
         });
         btVerDetallesAriculo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -205,6 +200,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(btVerDetallesAriculo, gridBagConstraints);
 
+        btEditarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btEditarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btEditarArticulo.setText("Editar Articulo");
         btEditarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -222,6 +219,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(btEditarArticulo, gridBagConstraints);
 
+        btEliminarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btEliminarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942378_Black_Trash.png"))); // NOI18N
         btEliminarArticulo.setText("Eliminar Articulo");
         btEliminarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -244,6 +243,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(btEliminarArticulo, gridBagConstraints);
 
+        btRealizarCompra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btRealizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942614_meanicons_58.png"))); // NOI18N
         btRealizarCompra.setText("Realizar Compra");
         btRealizarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -547,14 +548,6 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txBusquedaActionPerformed
 
-    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btBuscarActionPerformed
-
-    private void btVerDetallesAriculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerDetallesAriculoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btVerDetallesAriculoActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btEditarArticulo;
@@ -564,7 +557,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbArticulos;
-    private javax.swing.JTextField txBusqueda;
+    public javax.swing.JTextField txBusqueda;
     // End of variables declaration//GEN-END:variables
 
     private void initGrid() {

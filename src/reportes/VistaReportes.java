@@ -57,7 +57,7 @@ public class VistaReportes extends javax.swing.JPanel {
         setName("panelReportes"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1200, 1200));
 
-        btArticulos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btArticulos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteAlmacen.png"))); // NOI18N
         btArticulos.setText("Reporte Almacén");
         btArticulos.setMaximumSize(new java.awt.Dimension(300, 50));
@@ -70,6 +70,7 @@ public class VistaReportes extends javax.swing.JPanel {
         });
         add(btArticulos);
 
+        btMovimientos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/movimientosAlmacen.png"))); // NOI18N
         btMovimientos.setText("Reporte Movimientos");
         btMovimientos.setMaximumSize(new java.awt.Dimension(300, 50));
@@ -82,7 +83,7 @@ public class VistaReportes extends javax.swing.JPanel {
         });
         add(btMovimientos);
 
-        btReporteVentas.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btReporteVentas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btReporteVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteVenta.png"))); // NOI18N
         btReporteVentas.setText("Reporte de Ventas");
         btReporteVentas.setMaximumSize(new java.awt.Dimension(300, 50));
@@ -95,7 +96,7 @@ public class VistaReportes extends javax.swing.JPanel {
         });
         add(btReporteVentas);
 
-        btCorte.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btCorte.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btCorte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reporteCorteCaja.png"))); // NOI18N
         btCorte.setText("Reporte Corte de Caja");
         btCorte.setMaximumSize(new java.awt.Dimension(300, 50));

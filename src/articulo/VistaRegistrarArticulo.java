@@ -57,7 +57,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Codigo Articulo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -69,7 +69,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel1, gridBagConstraints);
 
-        txCodigoArticulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txCodigoArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -80,7 +80,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(txCodigoArticulo, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Descripcion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -92,7 +92,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel2, gridBagConstraints);
 
-        txDescripcion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txDescripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txDescripcionActionPerformed(evt);
@@ -108,7 +108,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(txDescripcion, gridBagConstraints);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Proveedor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -120,7 +120,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel5, gridBagConstraints);
 
-        txProveedor.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txProveedor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -131,16 +131,12 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(txProveedor, gridBagConstraints);
 
-        btAceptarAlta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btAceptarAlta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btAceptarAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
         btAceptarAlta.setText("Aceptar");
         btAceptarAlta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 realizarRegistroArticulo(evt);
-            }
-        });
-        btAceptarAlta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarAltaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -153,7 +149,8 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(btAceptarAlta, gridBagConstraints);
 
-        btCancelarAlta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btCancelarAlta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btCancelarAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelarAlta.setText("Cancelar");
         btCancelarAlta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -170,11 +167,13 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(btCancelarAlta, gridBagConstraints);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("Alta Articulos");
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Alta Artículos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 7;
@@ -236,18 +235,16 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
             
             }
             else{
-           
-           VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(ctrArticulos.obtenerUltimoId(),textoBusqueda);
-           this.removeAll();
-           
-
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            this.setLayout(new java.awt.BorderLayout());
-           
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
+                VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(Long.parseLong(txCodigoArticulo.getText()),textoBusqueda);
+                this.removeAll();
+                txCodigoArticulo.setText("");
+                txDescripcion.setText("");
+                txProveedor.setText("");
+                this.setLayout(new java.awt.BorderLayout());
+                this.add(vista);
+                vista.show();
+                this.revalidate();
+                this.repaint();
             }
             
            }
@@ -276,10 +273,6 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_cancelarRegistro
-
-    private void btAceptarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarAltaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btAceptarAltaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarAlta;

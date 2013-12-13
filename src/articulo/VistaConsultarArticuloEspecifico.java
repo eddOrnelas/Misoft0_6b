@@ -85,7 +85,8 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         layout.rowHeights = new int[] {0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0, 5, 0};
         setLayout(layout);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Detalles Articulo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -166,6 +167,8 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.01;
         add(lbProveedor, gridBagConstraints);
 
+        btEditarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btEditarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btEditarArticulo.setText("Editar");
         btEditarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,6 +205,8 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.01;
         add(jLabel5, gridBagConstraints);
 
+        btCancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelar.setText("Cancelar");
         btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

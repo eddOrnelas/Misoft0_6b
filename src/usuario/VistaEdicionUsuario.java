@@ -2,7 +2,6 @@ package usuario;
 
 
 import articulo.VistaConsultarArticulosGeneral;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import usuario.ControlUsuario;
 
@@ -131,25 +130,10 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                 EditarUsuario(evt);
             }
         });
-        EditarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditarUsuarioActionPerformed(evt);
-            }
-        });
-        EditarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                EditarUsuarioKeyPressed(evt);
-            }
-        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
         jButton2.setText("Cancelar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarUsuario(evt);
@@ -170,18 +154,18 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(EditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1)
+                .addGap(12, 12, 12)
+                .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(12, 12, 12)
-                        .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(EditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,12 +187,12 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(126, 126, 126)
                                 .addComponent(jUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 50, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(126, 126, 126)
-                                .addComponent(txContraseña)))))
-                .addContainerGap())
+                                .addComponent(txContraseña)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,12 +227,12 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(7, 7, 7)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(bxPermisos, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(bxPermisos, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EditarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -281,7 +265,7 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
            vista.show();
            this.revalidate();
            this.repaint();
-//        
+        
     }//GEN-LAST:event_editarUsuario
 
     private void EditarUsuario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditarUsuario
@@ -290,39 +274,7 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         
         
         
-//       String errorString = "";
-//        
-//       ControlUsuario ctrUsuarios = new ControlUsuario();
-//       boolean errores;
-//       
-//       errores = ctrUsuarios.validaDatosEdicionUsuario(txNombre.getText(),txApPaterno.getText(), txApMaterno.getText(), txContraseña.getText());
-//
-//       if(errores==false)
-//       { 
-//           JOptionPane.showMessageDialog(this,"prueba");
-//       
-//       }
-//       else
-//       {
-//        int status = ctrUsuarios.realizarEdicionUsuario(txNombre.getText(), txApPaterno.getText(), txApMaterno.getText(),this.usuario,txContraseña.getText(), bxPermisos.getSelectedItem().toString() );
-//    
-//           if(status==1)
-//           {
-//               JOptionPane.showMessageDialog(this,"Se edito al usuario exitosamente");
-//       
-//           }
-//           else
-//           {
-//               JOptionPane.showMessageDialog(this,"error en la operacion");
-//               //barraEstado.setText("Alta Articulos: En Espera");
-//           }
-//           
-//       }
-    }//GEN-LAST:event_EditarUsuario
-
-    private void EditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUsuarioActionPerformed
-        // TODO add your handling code here:
-          String errorString = "";
+       String errorString = "";
         
        ControlUsuario ctrUsuarios = new ControlUsuario();
        boolean errores;
@@ -341,14 +293,6 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
            if(status==1)
            {
                JOptionPane.showMessageDialog(this,"Se edito al usuario exitosamente");
-                 VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(this.txBuscar);
-           this.removeAll();
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-           this.setLayout(new java.awt.BorderLayout());
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
        
            }
            else
@@ -358,32 +302,7 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
            }
            
        }
-    }//GEN-LAST:event_EditarUsuarioActionPerformed
-
-    private void EditarUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EditarUsuarioKeyPressed
-        // TODO add your handling code here:
-           int key=evt.getKeyCode();
-    if(evt.getSource()==EditarUsuario)
-    {
-        if(key==KeyEvent.VK_ENTER)
-        { 
-            EditarUsuarioActionPerformed(null);                    
-        }
-    }
-    }//GEN-LAST:event_EditarUsuarioKeyPressed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-//        VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(this.txBuscar);
-//           this.removeAll();
-//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-//           this.setLayout(new java.awt.BorderLayout());
-//           this.add(vista);
-//           vista.show();
-//           this.revalidate();
-//           this.repaint();
-        
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_EditarUsuario
 
     private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
         // TODO add your handling code here:
