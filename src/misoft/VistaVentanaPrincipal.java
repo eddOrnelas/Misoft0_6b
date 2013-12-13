@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-=======
-
->>>>>>> eb23b1114492783f66a20006468a2be312e33269
-package misoft;
+﻿package misoft;
 
 import articulo.VistaPrincipalArticulos;
 import corte.VistaCorte;
