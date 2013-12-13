@@ -65,7 +65,10 @@ public class Login extends javax.swing.JFrame {
         });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
 =======
 >>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
         jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -99,9 +102,12 @@ public class Login extends javax.swing.JFrame {
         });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 =======
+=======
+>>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
 =======
 >>>>>>> 3931995f1bf0649a036b5da239c6338593434eb4
         jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
