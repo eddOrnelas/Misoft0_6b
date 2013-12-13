@@ -22,32 +22,32 @@ public class VistaConsultaEspecificaUsuario extends javax.swing.JPanel {
     /**
      * Creates new form VistaConsultaGenerlaUsuario
      */
- public VistaConsultaEspecificaUsuario() {
-        initComponents();
-    }
-    public VistaConsultaEspecificaUsuario(String nombre, String txBuscar) {
-        initComponents();
-        this.nombre = nombre;
-        this.txBuscar = txBuscar;
-         //Creamos variable para guardar el articulo
-        Usuario usuario = null;
-        //Creamos controlador articulo
-        ControlUsuario ctrUsuario = new ControlUsuario();
-        
-       usuario = ctrUsuario.buscarPorNombreUsuario(nombre);
-        
-       if(usuario==null)
-           JOptionPane.showMessageDialog(this,"Articulo Invalido");
-       else
-       {
-           lbCodigoArticulo.setText(articulo.getCodigoArticulo().toString());
-           lbDescripcion.setText(articulo.getDescripcion());
-           lbProveedor.setText(articulo.getProveedor());
-           lbPrecioCompra.setText(articulo.getPrecioCompra().toString());
-           lbPrecioVenta.setText(articulo.getPrecioVenta().toString());
-           lbCantidadExistencia.setText(articulo.getCantidadExistencia().toString());
-       }
-    }
+// public VistaConsultaEspecificaUsuario() {
+//        initComponents();
+//    }
+//    public VistaConsultaEspecificaUsuario(String nombre, String txBuscar) {
+//        initComponents();
+//        this.nombre = nombre;
+//        this.txBuscar = txBuscar;
+//         //Creamos variable para guardar el articulo
+//        Usuario usuario = null;
+//        //Creamos controlador articulo
+//        ControlUsuario ctrUsuario = new ControlUsuario();
+//        
+//       usuario = ctrUsuario.buscarPorNombreUsuario(nombre);
+//        
+//       if(usuario==null)
+//           JOptionPane.showMessageDialog(this,"Articulo Invalido");
+//       else
+//       {
+//           lbCodigoArticulo.setText(articulo.getCodigoArticulo().toString());
+//           lbDescripcion.setText(articulo.getDescripcion());
+//           lbProveedor.setText(articulo.getProveedor());
+//           lbPrecioCompra.setText(articulo.getPrecioCompra().toString());
+//           lbPrecioVenta.setText(articulo.getPrecioVenta().toString());
+//           lbCantidadExistencia.setText(articulo.getCantidadExistencia().toString());
+//       }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -226,7 +226,7 @@ public class VistaConsultaEspecificaUsuario extends javax.swing.JPanel {
         ControlUsuario ctrusuario = new ControlUsuario();
         String errores="";
 
-        errores = ctrusuario.validarDatosAltaUsuario(txnombre.getText(),txapPaterno.getText(), txapMaterno.getText(),txusuario.getText(),txcontraseña.getText(),txpermisos.getSelectedItem().toString());
+//        errores = ctrusuario.validarDatosAltaUsuario(txnombre.getText(),txapPaterno.getText(), txapMaterno.getText(),txusuario.getText(),txcontraseña.getText(),txpermisos.getSelectedItem().toString());
         if(errores.length()>0)
         {
             JOptionPane.showMessageDialog(this,errores);
@@ -235,9 +235,9 @@ public class VistaConsultaEspecificaUsuario extends javax.swing.JPanel {
 
         else{
 
-            Integer exito = ctrusuario.realizarAltaUsuario(txnombre.getText(),txapPaterno.getText(), txapMaterno.getText(),txusuario.getText(),txcontraseña.getText(),txpermisos.getSelectedItem().toString());
+//            Integer exito = ctrusuario.realizarAltaUsuario(txnombre.getText(),txapPaterno.getText(), txapMaterno.getText(),txusuario.getText(),txcontraseña.getText(),txpermisos.getSelectedItem().toString());
 
-            if(exito==1)
+//            if(exito==1)
             {
                 Object opciones[] = { "SI", "NO" };
                 Integer seleccion = JOptionPane.showOptionDialog(this, "El usuario se registro con exito, deceas registrar otro mas?", "Atencion!",
@@ -245,12 +245,12 @@ public class VistaConsultaEspecificaUsuario extends javax.swing.JPanel {
 
                 if(seleccion == JOptionPane.YES_OPTION){
                     JOptionPane.showMessageDialog(this, "Alta Exitosa");
-                    txnombre.setText("");
-                    txapPaterno.setText("");
-                    txapMaterno.setText("");
-                    txusuario.setText("");
-                    txcontraseña.setText("");}
-                else{
+//                    txnombre.setText("");
+//                    txapPaterno.setText("");
+//                    txapMaterno.setText("");
+//                    txusuario.setText("");
+//                    txcontraseña.setText("");}
+//                else{
 
                     VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(this.txBuscar);
                     this.removeAll();
@@ -265,7 +265,7 @@ public class VistaConsultaEspecificaUsuario extends javax.swing.JPanel {
 
                 }}
 
-                else
+//                else
                 {
                     JOptionPane.showMessageDialog(this, "Alta Incorrecta");
                 }
@@ -274,14 +274,14 @@ public class VistaConsultaEspecificaUsuario extends javax.swing.JPanel {
 
     private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
         // TODO add your handling code here:
-        int key=evt.getKeyCode();
-        if(evt.getSource()==jButton4)
-        {
-            if(key==KeyEvent.VK_ENTER)
-            {
-                jButton4ActionPerformed(null);
-            }
-        }
+//        int key=evt.getKeyCode();
+//        if(evt.getSource()==jButton4)
+//        {
+//            if(key==KeyEvent.VK_ENTER)
+//            {
+//                jButton4ActionPerformed(null);
+//            }
+//        }
     }//GEN-LAST:event_jButton4KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

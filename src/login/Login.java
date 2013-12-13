@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         txUsuario = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        RealizarLogin = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,22 +61,22 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(16, 4, 0, 10);
         getContentPane().add(txUsuario, gridBagConstraints);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aceptar1.png"))); // NOI18N
-        jButton1.setText("Aceptar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        RealizarLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        RealizarLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aceptar1.png"))); // NOI18N
+        RealizarLogin.setText("Aceptar");
+        RealizarLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 realizarLogin(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        RealizarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                RealizarLoginActionPerformed(evt);
             }
         });
-        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        RealizarLogin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton1KeyPressed(evt);
+                RealizarLoginKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -85,7 +85,7 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 11, 11, 0);
-        getContentPane().add(jButton1, gridBagConstraints);
+        getContentPane().add(RealizarLogin, gridBagConstraints);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
@@ -183,7 +183,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_realizarLogin
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void RealizarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarLoginActionPerformed
         // TODO add your handling code here:
         ControlUsuario ctrusuario = new ControlUsuario();
         String errores="";
@@ -208,23 +208,23 @@ public class Login extends javax.swing.JFrame {
         txUsuario.setText("");
         txContraseña.setText("");
      
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_RealizarLoginActionPerformed
 
     private void txUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txUsuarioActionPerformed
 
-    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+    private void RealizarLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RealizarLoginKeyPressed
         // TODO add your handling code here:
                   int key=evt.getKeyCode();
-    if(evt.getSource()==jButton1)
+    if(evt.getSource()==RealizarLogin)
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-           jButton1ActionPerformed(null);                    
+           RealizarLoginActionPerformed(null);                    
         }
     }
-    }//GEN-LAST:event_jButton1KeyPressed
+    }//GEN-LAST:event_RealizarLoginKeyPressed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
@@ -284,7 +284,7 @@ public class Login extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton RealizarLogin;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
