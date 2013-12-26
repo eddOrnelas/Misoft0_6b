@@ -172,13 +172,13 @@
           <Color id="Cursor Por defecto"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1200, 180]"/>
+          <Dimension value="[1200, 380]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1200, 180]"/>
+          <Dimension value="[1200, 380]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1200, 180]"/>
+          <Dimension value="[1200, 420]"/>
         </Property>
       </Properties>
 

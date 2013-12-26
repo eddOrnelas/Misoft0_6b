@@ -131,9 +131,9 @@ public class VistaReportes extends javax.swing.JPanel {
         add(jSeparator2);
 
         panelRangos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelRangos.setMaximumSize(new java.awt.Dimension(1200, 180));
-        panelRangos.setMinimumSize(new java.awt.Dimension(1200, 180));
-        panelRangos.setPreferredSize(new java.awt.Dimension(1200, 180));
+        panelRangos.setMaximumSize(new java.awt.Dimension(1200, 380));
+        panelRangos.setMinimumSize(new java.awt.Dimension(1200, 380));
+        panelRangos.setPreferredSize(new java.awt.Dimension(1200, 420));
         panelRangos.setLayout(new java.awt.GridBagLayout());
         add(panelRangos);
     }// </editor-fold>//GEN-END:initComponents
@@ -209,10 +209,9 @@ public class VistaReportes extends javax.swing.JPanel {
             panelRangos.add(vista);
             vista.show();
             this.repaint();
-            btArticulos.setBackground(Color.lightGray);
+           
             btMovimientos.setBackground(Color.gray);
-            btReporteVentas.setBackground(Color.lightGray);
-            btCorte.setBackground(Color.lightGray);
+            
         } catch (ParseException ex) {
             Logger.getLogger(VistaReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
