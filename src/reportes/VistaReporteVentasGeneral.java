@@ -9,6 +9,7 @@ package reportes;
 import articulo.Articulo;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
@@ -116,17 +117,17 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
 
         tbVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Código de Artículo", "Cantidad", "Precio de Venta", "IVA", "Total"
+                "Código de Artículo", "Descripción", "Cantidad", "Precio de Venta", "IVA", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -143,6 +144,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             tbVentas.getColumnModel().getColumn(2).setResizable(false);
             tbVentas.getColumnModel().getColumn(3).setResizable(false);
             tbVentas.getColumnModel().getColumn(4).setResizable(false);
+            tbVentas.getColumnModel().getColumn(5).setResizable(false);
         }
 
         txFecHr.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -181,13 +183,14 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txNoVenta)
-                    .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(btCancelarRepVentas)
-                    .addComponent(btAceptarVentas)
-                    .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txNoVenta)
+                        .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)
+                        .addComponent(btCancelarRepVentas)
+                        .addComponent(btAceptarVentas)))
                 .addGap(9, 9, 9)
                 .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -272,13 +275,29 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
         ventas = mVentas.buscarBD("all", opciones);
         
-     
-        
-        if(ventas.length<=0)
+           
+        if(ventas.length==0)
             JOptionPane.showMessageDialog(this,"No existen registros para ese No. de Venta.");
         else
         {
-          llenarTabla(ventas);
+        //Obtener descripcion
+        Object[]dventas = null;
+        
+        
+        Long tmpIdArt = ((ArticuloVenta)ventas[0]).getIdArticulo();
+        
+        
+        Object[][] opciones2 = new Object[][]{{"codigoArticulo","=",tmpIdArt}};
+        JOptionPane.showMessageDialog(this, "temp descr id art: "+tmpIdArt);
+        
+        Articulo dVenta = new Articulo(true);
+        dventas = dVenta.buscarBD("all",opciones2);
+        
+       
+      
+        
+        
+          llenarTabla(ventas,dventas);
             
         }
         }//cierre de 1er else
@@ -307,8 +326,12 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         }
     }
     }//GEN-LAST:event_txNumVentaKeyPressed
-private void llenarTabla(Object[] venta) {
+private void llenarTabla(Object[] venta, Object[] articulo) {
+    
+        DecimalFormat decimal = new DecimalFormat("#.##");
         Long nVenta = Long.parseLong(txNumVenta.getText());
+        
+        
         Object[] fventas = null;
         Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
         Venta fVenta = new Venta(true);
@@ -316,19 +339,28 @@ private void llenarTabla(Object[] venta) {
         
         txFecHr.setText("Fecha y Hora:  " + ((Venta) fventas[0]).getFecha());
         txTotal.setText("Total:  $"+((Venta) fventas[0]).getTotal());
+        
+        Object [] desc = null;
+       
         DefaultTableModel datos = (DefaultTableModel) tbVentas.getModel();
         datos.setRowCount(0);
-         
+        
+            
+        int x=0; 
         for(Object thisVenta: venta)
           {
+          
           datos.addRow(new Object[] {
-          ((ArticuloVenta)thisVenta).getIdArticulo(),
-         
+          ((ArticuloVenta)thisVenta).getIdArticulo(),         
+         ((Articulo)articulo[x]).getDescripcion(),
           ((ArticuloVenta)thisVenta).getCantidad(),
-          ((ArticuloVenta)thisVenta).getPrecioVenta(),
-           ((ArticuloVenta)thisVenta).getIva(),
-           ((ArticuloVenta)thisVenta).getTotal()
+                   
+          decimal.format(((ArticuloVenta)thisVenta).getPrecioVenta()),
+           decimal.format(((ArticuloVenta)thisVenta).getIva()),
+           decimal.format(((ArticuloVenta)thisVenta).getTotal())
+            
           });
+           x++;
           }
         
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbVentas.getModel());
