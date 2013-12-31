@@ -148,18 +148,14 @@ public class VistaReportes extends javax.swing.JPanel {
     
     private void btArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btArticulosActionPerformed
         // TODO add your handling code here:
+        //Generar tabla de articulos
+     
         panelRangos.removeAll();
+        panelRangos.revalidate();
+        VistaReporteAlmacen vista = new VistaReporteAlmacen();
+        panelRangos.add(vista);
+        vista.show();
         this.repaint();
-        ModeloArticulo reporte = null;
-        ControlReporte ctrArticulos = new ControlReporte();
-        reporte = ctrArticulos.realizarReporteArticulo();
-        
-        if (reporte == null) {
-            JOptionPane.showMessageDialog(null, "No existen Articulos en el almacén");
-        } else {
-            
-
-        }
         btArticulos.setBackground(Color.gray);
         btMovimientos.setBackground(Color.lightGray);
         btReporteVentas.setBackground(Color.lightGray);

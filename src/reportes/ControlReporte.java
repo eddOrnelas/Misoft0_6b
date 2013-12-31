@@ -376,6 +376,8 @@ public class ControlReporte {
 
 
                 for (x = 0; x < articulos.length; x++) {
+                    
+                    
                     //tmpIdArticulo = ((Articulo) articulos[x]).getIdArticulo();
                     tmpCodigoArticulo = ((Articulo) articulos[x]).getCodigoArticulo();
                     tmpDescripcion = ((Articulo) articulos[x]).getDescripcion();
@@ -386,13 +388,14 @@ public class ControlReporte {
                     //tmpActivo = ((Articulo) articulos[x]).getActivo();
 
                     //table.addCell(tmpIdArticulo.toString());
-                   
+                    if(tmpCantidadExistencia>0){
                     table.addCell(new Phrase(tmpCodigoArticulo.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpDescripcion,FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpPrecioCompra.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpCantidadExistencia.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpProveedor,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                    }
                 }
 
                 document.add(table);
