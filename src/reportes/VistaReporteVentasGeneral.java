@@ -281,25 +281,18 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         else
         {
         //Obtener descripcion
-        Object[]dventas = null;
+               
         
-        
-        Long tmpIdArt = ((ArticuloVenta)ventas[0]).getIdArticulo();
-        
-        
-        Object[][] opciones2 = new Object[][]{{"codigoArticulo","=",tmpIdArt}};
-        JOptionPane.showMessageDialog(this, "temp descr id art: "+tmpIdArt);
-        
-        Articulo dVenta = new Articulo(true);
-        dventas = dVenta.buscarBD("all",opciones2);
+        llenarTabla(ventas);
+        }
         
        
       
         
         
-          llenarTabla(ventas,dventas);
+          
             
-        }
+        
         }//cierre de 1er else
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -326,8 +319,21 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         }
     }
     }//GEN-LAST:event_txNumVentaKeyPressed
-private void llenarTabla(Object[] venta, Object[] articulo) {
+private void llenarTabla(Object[] venta) {
     
+        Object[]dventas = null;
+        int x=0;
+        int tam = venta.length;
+        double total = 0.0;
+        for (x=0;x<tam;x++){
+        Long tmpIdArt = ((ArticuloVenta)venta[x]).getIdArticulo();
+        
+        
+        Object[][] opciones2 = new Object[][]{{"codigoArticulo","=",tmpIdArt}};
+        Articulo dVenta = new Articulo(true);
+        dventas = dVenta.buscarBD("all",opciones2);
+/* obtener articulos */
+
         DecimalFormat decimal = new DecimalFormat("#.##");
         Long nVenta = Long.parseLong(txNumVenta.getText());
         
@@ -338,21 +344,21 @@ private void llenarTabla(Object[] venta, Object[] articulo) {
         fventas = fVenta.buscarBD("all", opciones);
         
         txFecHr.setText("Fecha y Hora:  " + ((Venta) fventas[0]).getFecha());
-        txTotal.setText("Total:  $"+((Venta) fventas[0]).getTotal());
+        
         
         Object [] desc = null;
        
         DefaultTableModel datos = (DefaultTableModel) tbVentas.getModel();
         datos.setRowCount(0);
         
-            
-        int x=0; 
-        for(Object thisVenta: venta)
+           
+         
+        for(Object thisVenta:venta)
           {
           
           datos.addRow(new Object[] {
-          ((ArticuloVenta)thisVenta).getIdArticulo(),         
-         ((Articulo)articulo[x]).getDescripcion(),
+         ((ArticuloVenta)thisVenta).getIdArticulo(),         
+         ((Articulo)dventas[0]).getDescripcion(),
           ((ArticuloVenta)thisVenta).getCantidad(),
                    
           decimal.format(((ArticuloVenta)thisVenta).getPrecioVenta()),
@@ -360,14 +366,23 @@ private void llenarTabla(Object[] venta, Object[] articulo) {
            decimal.format(((ArticuloVenta)thisVenta).getTotal())
             
           });
-           x++;
+          total = total + ((ArticuloVenta)thisVenta).getTotal();
+          txTotal.setText("Total:  $"+decimal.format(total));
+          x++;
+          
+          tmpIdArt = ((ArticuloVenta)venta[x]).getIdArticulo();
+          opciones2 = new Object[][]{{"codigoArticulo","=",tmpIdArt}};
+          dVenta = new Articulo(true);
+          dventas = dVenta.buscarBD("all",opciones2);
+          
           }
+        
         
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbVentas.getModel());
           
         tbVentas.setRowSorter(sorter);}
 
-
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarVentas;
     private javax.swing.JButton btCancelarRepVentas;
