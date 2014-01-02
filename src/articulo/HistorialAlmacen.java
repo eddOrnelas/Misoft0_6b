@@ -21,9 +21,24 @@ public class HistorialAlmacen extends CustomORM{
     private String extra;
     private Float precioCompra;
     private Float precioVenta;
-    
+    private String unidad;
+    private Long cantidadUnidad;
 
-    
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public Long getCantidadUnidad() {
+        return cantidadUnidad;
+    }
+
+    public void setUnidad(String Unidad) {
+        this.unidad = Unidad;
+    }
+
+    public void setCantidadUnidad(Long cantidadUnidad) {
+        this.cantidadUnidad = cantidadUnidad;
+    }
     
     public HistorialAlmacen()
     {

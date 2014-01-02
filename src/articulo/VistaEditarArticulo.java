@@ -51,6 +51,9 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
            txPrecioCompra.setText(articulo.getPrecioCompra().toString()); 
            txPrecioVenta.setText(articulo.getPrecioVenta().toString());
            txCantidadExistencia.setText(articulo.getCantidadExistencia().toString());
+           txCantidadUnidad.setText(articulo.getcantidadUnidad().toString());
+           ComboBoxUnidad.setSelectedItem(articulo.getUnidad());
+           
        }
         
         
@@ -77,6 +80,10 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         txDescripcion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txProveedor = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txCantidadUnidad = new javax.swing.JTextField();
+        ComboBoxUnidad = new javax.swing.JComboBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         txPrecioCompra = new javax.swing.JTextField();
@@ -87,7 +94,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Editar Artículo");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -147,11 +154,11 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(jButton2, gridBagConstraints);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), null), "Datos Descriptivos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), null), "Datos Descriptivos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
         jPanel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Código Artículo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -181,7 +188,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(txCodigoArticulo, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Descripción:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -206,7 +213,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(txDescripcion, gridBagConstraints);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Proveedor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -231,6 +238,62 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(txProveedor, gridBagConstraints);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Cantidad de Unidad:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(jLabel8, gridBagConstraints);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Unidad:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(jLabel9, gridBagConstraints);
+
+        txCantidadUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(txCantidadUnidad, gridBagConstraints);
+
+        ComboBoxUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ComboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gramos", "Piezas", "Unidades", "Litros", "Kilogramos (Kg)", "Centimetros (Cm)", "Metros (Mt)" }));
+        ComboBoxUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxUnidadActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(ComboBoxUnidad, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -241,15 +304,15 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.05;
         add(jPanel1, gridBagConstraints);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), null), "Datos de Venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 102, 102), null), "Datos de Venta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
         jPanel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Precio Compra:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.ipady = 12;
@@ -265,8 +328,8 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.ipady = 12;
@@ -275,11 +338,11 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel2.add(txPrecioCompra, gridBagConstraints);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Cantidad Existencia:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.ipady = 12;
@@ -290,8 +353,8 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
 
         txCantidadExistencia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.ipady = 12;
@@ -302,8 +365,8 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
 
         txPrecioVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.ipady = 12;
@@ -312,11 +375,11 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         jPanel2.add(txPrecioVenta, gridBagConstraints);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Precio Venta");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 12;
         gridBagConstraints.ipady = 12;
@@ -352,7 +415,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
       // String pass = JOptionPane.showInputDialog("Introduce tu contrasena para validar la operacion");
        
        
-       errors += ctrArticulos.validaDatosEdicionArticulo(codigoArticulo.toString(), txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText() );
+       errors += ctrArticulos.validaDatosEdicionArticulo(codigoArticulo.toString(), txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText(), txCantidadUnidad.getText(), (String) ComboBoxUnidad.getSelectedItem() );
        
        
        
@@ -369,7 +432,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
                 errors += "No estas autorizado";
            }
            else{
-               Integer status = ctrArticulos.realizarEdicionArticulo(codigoArticulo.toString(),txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText() );
+               Integer status = ctrArticulos.realizarEdicionArticulo(codigoArticulo.toString(),txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText(), txPrecioCompra.getText(), txPrecioVenta.getText(), txCantidadExistencia.getText(),txCantidadUnidad.getText(), (String) ComboBoxUnidad.getSelectedItem()  );
                if(status==1)
                {
                    JOptionPane.showMessageDialog(this,"Edicion Exitosa");
@@ -433,8 +496,13 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txPrecioCompraKeyReleased
 
+    private void ComboBoxUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxUnidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxUnidadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox ComboBoxUnidad;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -444,9 +512,12 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txCantidadExistencia;
+    private javax.swing.JTextField txCantidadUnidad;
     private javax.swing.JTextField txCodigoArticulo;
     private javax.swing.JTextField txDescripcion;
     private javax.swing.JTextField txPrecioCompra;

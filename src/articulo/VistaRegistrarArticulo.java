@@ -54,10 +54,15 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         btAceptarAlta = new javax.swing.JButton();
         btCancelarAlta = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txcantidadUnidad = new javax.swing.JTextField();
+        comboBoxUnidad = new javax.swing.JComboBox();
 
         setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Código Artículo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -69,7 +74,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel1, gridBagConstraints);
 
-        txCodigoArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txCodigoArticulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -80,7 +85,8 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(txCodigoArticulo, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Descripción:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -92,7 +98,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel2, gridBagConstraints);
 
-        txDescripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txDescripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txDescripcionActionPerformed(evt);
@@ -108,7 +114,8 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(txDescripcion, gridBagConstraints);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Proveedor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -120,7 +127,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel5, gridBagConstraints);
 
-        txProveedor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -141,7 +148,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -159,7 +166,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridy = 11;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
@@ -181,6 +188,54 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         add(jLabel6, gridBagConstraints);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Cantidad de Unidad");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(jLabel3, gridBagConstraints);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Unidad");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        add(jLabel4, gridBagConstraints);
+
+        txcantidadUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        add(txcantidadUnidad, gridBagConstraints);
+
+        comboBoxUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gramos", "Piezas", "Unidades", "Litros", "Kilogramos (Kg)", "Centimetros (Cm)", "Metros (Mt)" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weighty = 0.3;
+        gridBagConstraints.insets = new java.awt.Insets(3, 0, 0, 0);
+        add(comboBoxUnidad, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txDescripcionActionPerformed
@@ -207,7 +262,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
          //  errors += "No estas autorizado";
     
     
-       errors += ctrArticulos.validaDatosArticulo(txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText() );
+       errors += ctrArticulos.validaDatosArticulo(txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txcantidadUnidad.getText(), (String) comboBoxUnidad.getSelectedItem() );
     
        
        if(errors.length()>0)
@@ -216,7 +271,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
        }
        else
        {
-        Integer status = ctrArticulos.realizarRegistroArticulo(txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText() );
+          Integer status = ctrArticulos.realizarRegistroArticulo(txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText(), txcantidadUnidad.getText(), (String) comboBoxUnidad.getSelectedItem() );
     
            if(status==1)
            {
@@ -277,12 +332,16 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarAlta;
     private javax.swing.JButton btCancelarAlta;
+    private javax.swing.JComboBox comboBoxUnidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txCodigoArticulo;
     private javax.swing.JTextField txDescripcion;
     private javax.swing.JTextField txProveedor;
+    private javax.swing.JTextField txcantidadUnidad;
     // End of variables declaration//GEN-END:variables
 }

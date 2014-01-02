@@ -33,7 +33,7 @@ public class ControlArticulo {
     
     //Metodos de Registro
 
-    public String validaDatosArticulo(String codigoArticulo, String descripcion,String proveedor)
+    public String validaDatosArticulo(String codigoArticulo, String descripcion,String proveedor, String cantidadUnidad, String unidad)
         {    
             String errorLog ="";
             Articulo articuloValida = new Articulo(true);
@@ -42,13 +42,15 @@ public class ControlArticulo {
        Float tmpPrecioVenta = null;
        Float tmpPrecioCompra = null;
        Integer tmpCantidadExistencia = null;
-        
+       Long tmpCantidadUnidad= null;
+       String tmpUnidad = null;        
         
         
         
            
                 try{
-           tmpCodigoArticulo = Long.parseLong(codigoArticulo);   
+           tmpCodigoArticulo = Long.parseLong(codigoArticulo); 
+           
     }catch(NumberFormatException e)
         {
             errorLog+="- El codigo de articulo tiene un formato incorrecto \n";
@@ -74,6 +76,21 @@ public class ControlArticulo {
                 errorLog += "- Codigo de Articulo repetido, favor de usar otro \n";
             
         }
+        //cantidad unidad
+                
+        try{
+           tmpCantidadUnidad = Long.parseLong(cantidadUnidad);
+        }catch(NumberFormatException e){
+            errorLog+="- La Cantidad de Unidad tiene un formato incorrecto \n";
+        }
+                   
+        if(tmpCantidadUnidad==null)
+        {
+            errorLog += "- Cantidad de Unidad no es valido \n";
+        }else 
+            if(tmpCantidadUnidad<0 || cantidadUnidad.contains("+") || cantidadUnidad.contains("-")){
+            errorLog += "- Cantidad de Unidad no es valido, solo son permitidos numeros \n";
+        }
         
         
         
@@ -88,6 +105,11 @@ public class ControlArticulo {
             errorLog += "- El nombre de proveedor no puede quedar en blanco \n";
         }
          
+         if(cantidadUnidad.trim().length()<=0){
+             errorLog += "- La Cantidad de Unidad no puede quedar en blanco \n";
+         }
+         
+         
          //if(codigoArticulo.split("\\+").length>0 || codigoArticulo.split("\\-").length>0)
          //    errorLog += "- El codigo de articulo tiene caracteres inecesarios \n";
              
@@ -99,7 +121,7 @@ public class ControlArticulo {
     
     
     
-public Integer realizarRegistroArticulo(String codigoArticulo, String descripcion ,String proveedor)
+public Integer realizarRegistroArticulo(String codigoArticulo, String descripcion ,String proveedor, String cantidadUnidad, String unidad)
 {    
             
             Articulo articulo = new Articulo(true);
@@ -110,12 +132,19 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             Integer statusOperation = null;
             
             Integer tmpCantidadExistencia = null;
-        
+            Long tmpCantidadUnidad= null;
+            String tmpUnidad = null; 
         
             
 
     try{
            tmpCodigoArticulo = Long.parseLong(codigoArticulo);   
+    }catch(NumberFormatException e)
+        {
+            //errorLog+="El codigo de articulo tiene un formato incorrecto \n";
+        }
+    try{
+           tmpCantidadUnidad = Long.parseLong(cantidadUnidad);   
     }catch(NumberFormatException e)
         {
             //errorLog+="El codigo de articulo tiene un formato incorrecto \n";
@@ -127,6 +156,8 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     articulo.setPrecioVenta(0F);
     articulo.setCantidadExistencia(0);
     articulo.setProveedor(proveedor);
+    articulo.setcantidadUnidad(tmpCantidadUnidad);
+    articulo.setUnidad(unidad);
     
     statusOperation = articulo.registrarBD();
     
@@ -142,6 +173,8 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         historial.setCantidad(0);
         historial.setPrecioCompra(0.00F);
         historial.setPrecioVenta(0.00F);
+        historial.setCantidadUnidad(tmpCantidadUnidad);
+        historial.setUnidad(unidad);
 
         historial.registrarBD();
        statusOperation = 1;
@@ -208,7 +241,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     
     //Metodos de Edicion
     
- public String validaDatosEdicionArticulo(String codigoArticuloAnterior,  String codigoArticulo, String descripcion,String proveedor, String PrecioCompra, String PrecioVenta, String cantidadExistencia)
+ public String validaDatosEdicionArticulo(String codigoArticuloAnterior,  String codigoArticulo, String descripcion,String proveedor, String PrecioCompra, String PrecioVenta, String cantidadExistencia, String cantidadUnidad, String unidad)
  {    
             String errorLog ="";
             Articulo articuloValida = new Articulo(true);
@@ -219,6 +252,8 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
        Float tmpPrecioCompra = null;
        Integer tmpCantidadExistencia = null;
        Long tmpCodigoArticuloAnterior = null;
+       Long tmpCantidadUnidad= null;
+       String tmpUnidad = null;    
         
        
     try{
@@ -257,7 +292,19 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             }
         }
         
-        
+        try{
+           tmpCantidadUnidad = Long.parseLong(cantidadUnidad);
+        }catch(NumberFormatException e){
+            errorLog+="- La Cantidad de Unidad tiene un formato incorrecto \n";
+        }
+                   
+        if(tmpCantidadUnidad==null)
+        {
+            errorLog += "- Cantidad de Unidad no es valido \n";
+        }else 
+            if(tmpCantidadUnidad<0 || cantidadUnidad.contains("+") || cantidadUnidad.contains("-")){
+            errorLog += "- Cantidad de Unidad no es valido, solo son permitidos numeros \n";
+        }
         
         if(descripcion.trim().length()<=0)
         {
@@ -276,7 +323,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             return errorLog;
     }
     
-    public Integer realizarEdicionArticulo(String codigoArticuloAnterior, String codigoArticulo, String descripcion ,String proveedor, String precioCompra, String precioVenta, String cantidadExistencia)
+    public Integer realizarEdicionArticulo(String codigoArticuloAnterior, String codigoArticulo, String descripcion ,String proveedor, String precioCompra, String precioVenta, String cantidadExistencia, String cantidadUnidad, String unidad)
 {    
             
             Articulo articulo = new Articulo(true);
@@ -287,6 +334,8 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             Integer statusOperation = null;
             Long tmpCodigoArticuloAnterior = null;
             Integer tmpCantidadExistencia = null;
+            Long tmpCantidadUnidad=null;
+           // String tmpUnidad=null;
             
             String extras = "";
             
@@ -300,11 +349,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             //Articulo Anterior para comparar y guardar en historial
             Articulo datosAnteriores = new Articulo(true);
             datosAnteriores = buscarUnoPorCodigoArticulo(tmpCodigoArticuloAnterior);
-           // datosAnteriores.buscarBD();
-            
-            
-        
-        
+           // datosAnteriores.buscarBD();     
            
 
     try{
@@ -337,8 +382,15 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         {
             //errorLog+="El codigo de articulo tiene un formato incorrecto \n";
         }
-    
+     try{
+           tmpCantidadUnidad = Long.parseLong(cantidadUnidad);   
+    }catch(NumberFormatException e)
+        {
+            //errorLog+="El codigo de articulo anterior tiene un formato incorrecto \n";
+        }
+     
     //Llenamos el objeto para poder actualizarloa
+     System.out.println("Joanna Aqui "+tmpCantidadUnidad);
     Articulo articuloTemporal = buscarUnoPorCodigoArticulo(tmpCodigoArticuloAnterior);
     articulo.setIdArticulo(articuloTemporal.getIdArticulo());
     articulo.setCodigoArticulo(tmpCodigoArticulo);
@@ -347,6 +399,8 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     articulo.setPrecioVenta(tmpPrecioVenta);
     articulo.setCantidadExistencia(tmpCantidadExistencia);
     articulo.setProveedor(proveedor);
+    articulo.setcantidadUnidad(tmpCantidadUnidad);
+    articulo.setUnidad(unidad);
     
     Boolean resultado = articulo.acualizarBD();
     if(resultado)
@@ -372,6 +426,8 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         
        historial.setPrecioCompra(tmpPrecioCompra);
        historial.setPrecioVenta(tmpPrecioVenta);
+       historial.setCantidadUnidad(tmpCantidadUnidad);
+       historial.setUnidad(unidad);
        //historial.setFecha("CURRENT_DATE");
        
        historial.registrarBD();
