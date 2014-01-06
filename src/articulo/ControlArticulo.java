@@ -792,14 +792,12 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         
         }
         
-        
-        
         if(codigoArticulo!=null)
            return this.buscarPorCodigoArticulo(codigoArticulo);
         else
             return this.buscarPorDescripcion(descripcion);
     }
-
+   
     public Articulo buscarUnoPorCodigoArticulo(Long codigoArticulo)
    {
         Articulo articulosBusqueda = new Articulo(true);
@@ -824,4 +822,6 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
        
    }
     
+
+
 }

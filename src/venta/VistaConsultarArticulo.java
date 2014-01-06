@@ -63,26 +63,26 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Consulta Articulo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.gridwidth = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Codigo Articulo o Descripcion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_TRAILING;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel2, gridBagConstraints);
@@ -126,14 +126,14 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo Articulo", "Descripcion", "Proveedor", "Precio de venta"
+                "Codigo Articulo", "Descripcion", "Proveedor", "Cantidad Existencia", "Precio de venta"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Long.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -145,10 +145,18 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tbArticulos);
-        tbArticulos.getColumnModel().getColumn(0).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(1).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(2).setResizable(false);
-        tbArticulos.getColumnModel().getColumn(3).setResizable(false);
+        if (tbArticulos.getColumnModel().getColumnCount() > 0) {
+            tbArticulos.getColumnModel().getColumn(0).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(0).setHeaderValue("Codigo Articulo");
+            tbArticulos.getColumnModel().getColumn(1).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(1).setHeaderValue("Descripcion");
+            tbArticulos.getColumnModel().getColumn(2).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(2).setHeaderValue("Proveedor");
+            tbArticulos.getColumnModel().getColumn(3).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(3).setHeaderValue("Cantidad Existencia");
+            tbArticulos.getColumnModel().getColumn(4).setResizable(false);
+            tbArticulos.getColumnModel().getColumn(4).setHeaderValue("Precio de venta");
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -160,25 +168,26 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
+        txCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txCantidad.setText("1");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 39;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
         gridBagConstraints.weightx = 2.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(txCantidad, gridBagConstraints);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Cantidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         getContentPane().add(jLabel3, gridBagConstraints);
@@ -208,7 +217,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.weightx = 1.0;
@@ -363,8 +372,9 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
           {
           datos.addRow(new Object[] {
           ((Articulo)thisArticulo).getCodigoArticulo(),
-          ((Articulo)thisArticulo).getDescripcion(),
+          ((Articulo)thisArticulo).getDescripcion()+" - "+((Articulo)thisArticulo).getcantidadUnidad()+" "+((Articulo)thisArticulo).getUnidad(),
           ((Articulo)thisArticulo).getProveedor(),
+          ((Articulo)thisArticulo).getCantidadExistencia(),
            ((Articulo)thisArticulo).getPrecioVenta()});
           }
         

@@ -61,19 +61,19 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Realizar Cobro");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(jLabel1, gridBagConstraints);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Sub Total:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -83,7 +83,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        lbSubTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbSubTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbSubTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -93,7 +93,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(lbSubTotal, gridBagConstraints);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Iva:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -103,7 +103,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(jLabel4, gridBagConstraints);
 
-        lbIva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbIva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbIva.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -113,7 +113,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(lbIva, gridBagConstraints);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Total:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -123,7 +123,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(jLabel6, gridBagConstraints);
 
-        lbTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -133,7 +133,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(lbTotal, gridBagConstraints);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Efectivo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -143,7 +143,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(jLabel8, gridBagConstraints);
 
-        lbCambio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbCambio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbCambio.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -167,7 +167,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
@@ -188,7 +188,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);
         getContentPane().add(txEfectivo, gridBagConstraints);
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Cambio:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -208,7 +208,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
@@ -224,8 +224,8 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(11, 8, 11, 8);

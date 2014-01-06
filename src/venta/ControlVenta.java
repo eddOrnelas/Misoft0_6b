@@ -583,34 +583,56 @@ return true;
                 articulo.setIdArticulo(thisArticulo.getIdArticulo());
                 articulo.buscarBD();
                 
-                
                  //Actualizamos el Articulo dando restas
                 articuloEditar.setIdArticulo(articulo.getIdArticulo());
                 articuloEditar.buscarBD();
-                articuloEditar.setCantidadExistencia(articulo.getCantidadExistencia()-cantidad);
+                Integer cantidadNueva=articulo.getCantidadExistencia()-cantidad;
+                articulo.setCantidadExistencia(cantidadNueva);
                 articulo.acualizarBD();
+                
                 
                 //Actualizamos el Historial
                 historial.setIdArticulo(articulo.getIdArticulo());
                 historial.setConcepto("Venta");
                 historial.setPrecioCompra(articulo.getPrecioCompra());
-                historial.setPrecioVenta(artVenta.getPrecioVenta());
-                historial.setCantidad(-cantidad);
+                historial.setPrecioVenta(articulo.getPrecioVenta());
+                historial.setCantidad(cantidad);
                 historial.registrarBD();
                 
-                
-           
                 totalVenta+= (cantidad*articulo.getPrecioVenta());
-                
-                
-          
           }
          
+          
          venta.setCantidad(cantidad_articulos);
+         venta.setIva((totalVenta*11)/100);
+         venta.setPorcentajeIva(11.0f);
+         venta.setSubtotal(totalVenta-((totalVenta*11)/100));
          venta.setTotal(totalVenta);
          venta.registrarBD();
-        
-        
+         Long idventa=venta.getIdVenta();
+         //Agregando a Articulo Ventas 
+          for(int x=0; x<cantidad_articulos; x++){
+              
+                Object[] articuloTmp = (Object[])carrito.get(x);
+                Articulo thisArticulo = (Articulo)articuloTmp[0];
+                Integer cantidad = (Integer)articuloTmp[1];
+                
+                articulo.setIdArticulo(thisArticulo.getIdArticulo());
+                articulo.buscarBD();
+                
+                artVenta.setIdVenta(idventa);
+                artVenta.setIdArticulo(articulo.getIdArticulo());
+                artVenta.setCantidad(cantidad);
+                artVenta.setPrecioVenta(articulo.getPrecioVenta());
+                artVenta.setIva((double)(totalVenta*11)/100);
+                artVenta.setSubTotal(totalVenta-((totalVenta*11)/100));
+                artVenta.setTotal(totalVenta);
+                artVenta.registrarBD();
+          }
+         
+         
+      
+         
         //JOptionPane.showMessageDialog(this, "La venta se realizo con exito");
          
          return true;
