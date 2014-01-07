@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.2" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -49,11 +49,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txFechaFinal" min="-2" pref="145" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                              <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btAceptarCC" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                               <Component id="btCancelarReporteC" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btAceptarCorteCaja" min="-2" max="-2" attributes="0"/>
+                              <Component id="btExportarCorteCaja" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="txRango" min="-2" pref="0" max="-2" attributes="0"/>
@@ -77,9 +77,9 @@
                   </Group>
                   <Component id="txFechaFinal" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="jToggleButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btAceptarCC" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btCancelarReporteC" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btAceptarCorteCaja" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btExportarCorteCaja" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="txFechaInicio" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -118,7 +118,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btAceptarCorteCaja">
+    <Component class="javax.swing.JButton" name="btExportarCorteCaja">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/img/pdf.png"/>
@@ -126,7 +126,7 @@
         <Property name="text" type="java.lang.String" value="Exportar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAceptarCorteCajaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExportarCorteCajaActionPerformed"/>
       </Events>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="txFechaInicio">
@@ -159,7 +159,7 @@
         <Property name="text" type="java.lang.String" value="Fecha Termino:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+    <Component class="javax.swing.JToggleButton" name="btAceptarCC">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/img20x20/aceptar1.png"/>
@@ -167,7 +167,7 @@
         <Property name="text" type="java.lang.String" value="Aceptar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAceptarCCActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

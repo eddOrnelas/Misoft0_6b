@@ -53,9 +53,9 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btAceptarVentas = new javax.swing.JButton();
+        btExportarVentas = new javax.swing.JButton();
         btCancelarRepVentas = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btAceptarRepVentas = new javax.swing.JButton();
         txNoVenta = new javax.swing.JLabel();
         txNumVenta = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -69,11 +69,11 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1200, 350));
         setPreferredSize(new java.awt.Dimension(1200, 350));
 
-        btAceptarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
-        btAceptarVentas.setText("Exportar");
-        btAceptarVentas.addActionListener(new java.awt.event.ActionListener() {
+        btExportarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
+        btExportarVentas.setText("Exportar");
+        btExportarVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarVentasActionPerformed(evt);
+                btExportarVentasActionPerformed(evt);
             }
         });
 
@@ -85,11 +85,11 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aceptar1.png"))); // NOI18N
-        jButton1.setText("Aceptar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAceptarRepVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aceptar1.png"))); // NOI18N
+        btAceptarRepVentas.setText("Aceptar");
+        btAceptarRepVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAceptarRepVentasActionPerformed(evt);
             }
         });
 
@@ -115,7 +115,6 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
 
         tbVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
@@ -164,7 +163,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
-                        .addComponent(jButton1)
+                        .addComponent(btAceptarRepVentas)
                         .addGap(18, 18, 18)
                         .addComponent(btCancelarRepVentas)
                         .addGap(102, 102, 102)
@@ -173,7 +172,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btAceptarVentas))))
+                                .addComponent(btExportarVentas))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -186,9 +185,9 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txNoVenta)
                         .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)
+                        .addComponent(btAceptarRepVentas)
                         .addComponent(btCancelarRepVentas))
-                    .addComponent(btAceptarVentas))
+                    .addComponent(btExportarVentas))
                 .addGap(9, 9, 9)
                 .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -199,7 +198,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAceptarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarVentasActionPerformed
+    private void btExportarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarVentasActionPerformed
        
         ModeloCorte reporte = null;
         //Creamos controlador corte
@@ -233,7 +232,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAceptarVentasActionPerformed
+    }//GEN-LAST:event_btExportarVentasActionPerformed
 
     private void btCancelarRepVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarRepVentasActionPerformed
         // Botón Cancelar Rep Ventas
@@ -247,7 +246,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarRepVentasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btAceptarRepVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarRepVentasActionPerformed
         //Botón aceptar
         // TODO add your handling code here:
         ArticuloVenta mVentas = new ArticuloVenta(true);
@@ -273,8 +272,8 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
         ventas = mVentas.buscarBD("all", opciones);
         
-           
-        if(ventas.length==0)
+         JOptionPane.showMessageDialog(this,"Fecha de venta en index : "+((Venta)ventas[0]).getFecha());  
+        if(ventas.length<0)
             JOptionPane.showMessageDialog(this,"No existen registros para ese No. de Venta.");
         else
         {
@@ -293,7 +292,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         
         }//cierre de 1er else
 // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btAceptarRepVentasActionPerformed
 
     private void txNumVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumVentaKeyTyped
         char caracter = evt.getKeyChar();
@@ -313,7 +312,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-           jButton1ActionPerformed(null);
+           btAceptarRepVentasActionPerformed(null);
         }
     }
     }//GEN-LAST:event_txNumVentaKeyPressed
@@ -330,7 +329,9 @@ private void llenarTabla(Object[] venta) {
         Object[][] opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
         Articulo dVenta = new Articulo(true);
         dventas = dVenta.buscarBD("all",opciones2);
-/* obtener articulos */
+        
+        
+        /* obtener articulos */
 
         DecimalFormat decimal = new DecimalFormat("#.##");
         Long nVenta = Long.parseLong(txNumVenta.getText());
@@ -383,9 +384,9 @@ private void llenarTabla(Object[] venta) {
 
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAceptarVentas;
+    private javax.swing.JButton btAceptarRepVentas;
     private javax.swing.JButton btCancelarRepVentas;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btExportarVentas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tbVentas;

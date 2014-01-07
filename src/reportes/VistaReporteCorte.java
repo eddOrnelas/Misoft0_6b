@@ -53,11 +53,11 @@ public class VistaReporteCorte extends javax.swing.JPanel {
 
         btCancelarReporteC = new javax.swing.JButton();
         txFechaFinal = new com.toedter.calendar.JDateChooser();
-        btAceptarCorteCaja = new javax.swing.JButton();
+        btExportarCorteCaja = new javax.swing.JButton();
         txFechaInicio = new com.toedter.calendar.JDateChooser();
         txFecIni = new javax.swing.JLabel();
         txFecTer = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btAceptarCC = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCorteCaja = new javax.swing.JTable();
         txRango = new javax.swing.JLabel();
@@ -80,11 +80,11 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
 
-        btAceptarCorteCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
-        btAceptarCorteCaja.setText("Exportar");
-        btAceptarCorteCaja.addActionListener(new java.awt.event.ActionListener() {
+        btExportarCorteCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
+        btExportarCorteCaja.setText("Exportar");
+        btExportarCorteCaja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarCorteCajaActionPerformed(evt);
+                btExportarCorteCajaActionPerformed(evt);
             }
         });
 
@@ -99,11 +99,11 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         txFecTer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txFecTer.setText("Fecha Termino:");
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
-        jToggleButton1.setText("Aceptar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAceptarCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
+        btAceptarCC.setText("Aceptar");
+        btAceptarCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btAceptarCCActionPerformed(evt);
             }
         });
 
@@ -151,11 +151,11 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(81, 81, 81)
-                                .addComponent(jToggleButton1)
+                                .addComponent(btAceptarCC)
                                 .addGap(63, 63, 63)
                                 .addComponent(btCancelarReporteC)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btAceptarCorteCaja))
+                                .addComponent(btExportarCorteCaja))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
@@ -171,9 +171,9 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                         .addComponent(txFecTer))
                     .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jToggleButton1)
+                        .addComponent(btAceptarCC)
                         .addComponent(btCancelarReporteC)
-                        .addComponent(btAceptarCorteCaja))
+                        .addComponent(btExportarCorteCaja))
                     .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +183,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAceptarCorteCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarCorteCajaActionPerformed
+    private void btExportarCorteCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarCorteCajaActionPerformed
         // Ejecuto corte de caja
         ModeloCorte reporte = null;
         //Creamos controlador corte
@@ -194,6 +194,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         txFechaFinal.setDateFormatString("yyy-MM-dd");
         int band = 0;
         int band2 = 0;
+        int band3 = 0;
         int band4 =0;
 
         String fecha1 = "";
@@ -215,6 +216,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino");
             band =0;
         }
+
         //Validar fecha inicio <= fecha termino
         if (txFechaFinal.getCalendar() != null && txFechaInicio.getCalendar() != null) {
             int a1 = txFechaInicio.getCalendar().get(Calendar.YEAR);
@@ -231,7 +233,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
             band4 = 4;
             }
-            
+            else
             if(a1==a2){
                 if(mes1>mes2){
                 JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
@@ -258,7 +260,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         }
         }
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAceptarCorteCajaActionPerformed
+    }//GEN-LAST:event_btExportarCorteCajaActionPerformed
 
     private void btCancelarReporteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarReporteCActionPerformed
         // Boton Cancelar Rep Corte Caja
@@ -272,7 +274,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarReporteCActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void btAceptarCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarCCActionPerformed
         // TODO add your handling code here:
         //Aceptar Repote Corte de Caja
         
@@ -288,7 +290,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         
         String fecha1 = "";
         String fecha2 = "";
-        int band=0,band2=0;
+        int band=0,band2=0,band3;
         //Obtenemos los valores de la texto de la fecha del calendario
         if (txFechaInicio.getCalendar() != null) {
             fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
@@ -305,9 +307,10 @@ public class VistaReporteCorte extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino");
             band =0;
         }
-        
+        //Validar campos
+        band3=validaciones();
         //Parametros de busqueda.
-        if(band==1&&band2==2){
+        if(band==1&&band2==2&&band3==0){
         Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"}, {"fecha", "<=", fecha2+" 23:59:00"}};
 
         ventas = mVentas.buscarBD("all", opciones);
@@ -357,13 +360,58 @@ public class VistaReporteCorte extends javax.swing.JPanel {
           
         tbCorteCaja.setRowSorter(sorter);
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btAceptarCCActionPerformed
 
+    private int validaciones (){
+        txFechaInicio.setDateFormatString("yyy-MM-dd");
+        txFechaFinal.setDateFormatString("yyy-MM-dd");
+      
+
+        String fecha1 = "";
+        String fecha2 = "";
+
+        int band3=0,band4=0;
+
+        //Validar fecha inicio <= fecha termino
+        if (txFechaFinal.getCalendar() != null && txFechaInicio.getCalendar() != null) {
+            int a1 = txFechaInicio.getCalendar().get(Calendar.YEAR);
+            int a2 = txFechaFinal.getCalendar().get(Calendar.YEAR);
+            
+            int mes1 = txFechaInicio.getCalendar().get(Calendar.MONTH);
+            int mes2 = txFechaFinal.getCalendar().get(Calendar.MONTH);
+            
+            int dia1 = txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int dia2 = txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            
+            
+            if(a1>a2){
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+            band3=3;
+            }
+            else
+            if(a1==a2){
+                if(mes1>mes2){
+                JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                band3=3;
+                }else{
+                    if(mes1==mes2){
+                        if(dia1>dia2){
+                            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                         band3=3;
+                        }
+                    }
+                
+                }
+            }
+      }
+        
+    return band3;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAceptarCorteCaja;
+    private javax.swing.JToggleButton btAceptarCC;
     private javax.swing.JButton btCancelarReporteC;
+    private javax.swing.JButton btExportarCorteCaja;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tbCorteCaja;
     private javax.swing.JLabel txFecIni;
     private javax.swing.JLabel txFecTer;
