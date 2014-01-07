@@ -250,7 +250,18 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         else
         {
 
-          llenarTabla(articulos);
+            //llenarTabla(articulos);
+            DefaultTableModel datos = (DefaultTableModel) tablaDevolucionArticulos.getModel();
+            datos.setRowCount(0);
+            Venta thisVenta = ((VentabuscarArticulos);
+          /*  for(Object thisArticulo: articulos){
+                ctrArticulo.buscarPorCodigoArticulo(((Articulo)thisArticulo).getCodigoArticulo());
+                datos.addRow(new Object[] {
+                    ((Articulo)thisArticulo).getCodigoArticulo(),
+                    ((Articulo)thisArticulo).getDescripcion(),
+                    ((Venta)thisArticulo).getCantidad(),
+                    ((Venta)thisArticulo).getSubtotal()});
+            }*/
 
             
         }
