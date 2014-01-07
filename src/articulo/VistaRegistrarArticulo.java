@@ -226,7 +226,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         add(txcantidadUnidad, gridBagConstraints);
 
         comboBoxUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        comboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gramos", "Piezas", "Unidades", "Litros", "Kilogramos (Kg)", "Centimetros (Cm)", "Metros (Mt)" }));
+        comboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pieza(s)", "Unidad(es)", "Mililitro(s) ", "Litro(s)", "Gramo(s)", "Kilogramo(s)", "Centimetro(s)", "Metro(s)" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;

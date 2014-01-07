@@ -48,8 +48,10 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
            lbPrecioCompra.setText(articulo.getPrecioCompra().toString());
            lbPrecioVenta.setText(articulo.getPrecioVenta().toString());
            lbCantidadExistencia.setText(articulo.getCantidadExistencia().toString());
-           lbCantidadUnidad.setText(articulo.getcantidadUnidad().toString());
-           ComboBoxUnidad.setSelectedItem(articulo.getUnidad());
+           lbCantidadUnidad.setText(articulo.getCantidadUnidad().toString());
+           lbUnidad.setText(articulo.getUnidad());
+           //ComboBoxUnidad.setSelectedItem(articulo.getUnidad());
+           
        }
         
         
@@ -83,8 +85,8 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         lbCantidadExistencia = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        ComboBoxUnidad = new javax.swing.JComboBox();
         lbCantidadUnidad = new javax.swing.JLabel();
+        lbUnidad = new javax.swing.JLabel();
 
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0, 5, 0};
@@ -288,6 +290,11 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Unidad:");
+        jLabel9.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentMoved(java.awt.event.ComponentEvent evt) {
+                jLabel9ComponentMoved(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 24;
@@ -296,17 +303,6 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         add(jLabel9, gridBagConstraints);
-
-        ComboBoxUnidad.setBackground(new java.awt.Color(0, 0, 0));
-        ComboBoxUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ComboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gramos", "Piezas", "Unidades", "Litros", "Kilogramos (Kg)", "Centimetros (Cm)", "Metros (Mt)" }));
-        ComboBoxUnidad.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 24;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
-        add(ComboBoxUnidad, gridBagConstraints);
 
         lbCantidadUnidad.setBackground(new java.awt.Color(255, 255, 255));
         lbCantidadUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -319,6 +315,14 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
         add(lbCantidadUnidad, gridBagConstraints);
+
+        lbUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbUnidad.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 24;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        add(lbUnidad, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void editarArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarArticulo
@@ -356,8 +360,11 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    private void jLabel9ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel9ComponentMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9ComponentMoved
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox ComboBoxUnidad;
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btEditarArticulo;
     private javax.swing.JLabel jLabel1;
@@ -376,6 +383,7 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
     private javax.swing.JLabel lbPrecioCompra;
     private javax.swing.JLabel lbPrecioVenta;
     private javax.swing.JLabel lbProveedor;
+    private javax.swing.JLabel lbUnidad;
     // End of variables declaration//GEN-END:variables
 
     

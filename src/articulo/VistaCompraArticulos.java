@@ -52,7 +52,7 @@ public class VistaCompraArticulos extends javax.swing.JPanel {
            lbCantidad.setText(articulo.getCantidadExistencia().toString());
            lbPrecioCompraActual.setText(articulo.getPrecioCompra().toString());
            lbPrecioVentaActual.setText(articulo.getPrecioVenta().toString());
-           lbCantidadUnidad.setText(articulo.getcantidadUnidad().toString());
+           lbCantidadUnidad.setText(articulo.getCantidadUnidad().toString());
            lbUnidad.setText(articulo.getUnidad());
            
        }

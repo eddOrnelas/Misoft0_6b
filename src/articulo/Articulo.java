@@ -56,11 +56,11 @@ public class Articulo extends CustomORM {
         this.idArticulo = idArticulo;
     }
 
-     public Long getcantidadUnidad() {
+     public Long getCantidadUnidad() {
         return cantidadUnidad;
     }
 
-    public void setcantidadUnidad(Long cantidadUnidad) {
+    public void setCantidadUnidad(Long cantidadUnidad) {
         this.cantidadUnidad = cantidadUnidad;
     }
     
