@@ -226,64 +226,74 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
          
         //Iniciamos controlador
         ControlArticulo ctrArticulo = new ControlArticulo();
+        
         //Iniciamos objectos donde guardaremos los resultados de busqueda
         Object[] articulos = null;
         
         //Iniciamos objetos clase
         Venta ventaBuscar = new Venta(true);
-        
-        
-       // this.textoBusqueda = descripcion;
+        ArticuloVenta articulosVentaBuscar = new ArticuloVenta(true);
         
         //Buscamos primero venta
         ventaBuscar.setIdVenta(idVenta);
+        Boolean ventaValida = ventaBuscar.buscarBD();
         
-        //Buscamos articulos venta
-       articulos = ctrArticulo.buscarArticulo(descripcion);
+        //Validamos venta
+        if(!ventaValida)
+        {
+            JOptionPane.showMessageDialog(this,"La venta no ha sido encontrada");
+                 return;
+        }
         
-        //Long donde almacenamos el codigo de articulo
+
+        //Buscamos articulos venta 
+      Object[][] opciones = new Object[][] {{"idVenta","=",idVenta}};
+      articulos = articulosVentaBuscar.buscarBD("all", opciones);
+        
         
             
         
         if(articulos.length<=0)
-            JOptionPane.showMessageDialog(this,"no se encontro articulo");
+            JOptionPane.showMessageDialog(this,"no se encontraron articulos en esta venta");
         else
         {
-
-            //llenarTabla(articulos);
-            DefaultTableModel datos = (DefaultTableModel) tablaDevolucionArticulos.getModel();
-            datos.setRowCount(0);
-            Venta thisVenta = ((VentabuscarArticulos);
-          /*  for(Object thisArticulo: articulos){
-                ctrArticulo.buscarPorCodigoArticulo(((Articulo)thisArticulo).getCodigoArticulo());
-                datos.addRow(new Object[] {
-                    ((Articulo)thisArticulo).getCodigoArticulo(),
-                    ((Articulo)thisArticulo).getDescripcion(),
-                    ((Venta)thisArticulo).getCantidad(),
-                    ((Venta)thisArticulo).getSubtotal()});
-            }*/
-
-            
+            llenarTabla(articulos);
         }
+
     }//GEN-LAST:event_btBuscarActionPerformed
-/*
+
     private void llenarTabla(Object[] articulos) {
+        
         DefaultTableModel datos = (DefaultTableModel) tablaDevolucionArticulos.getModel();
         datos.setRowCount(0);
          
         for(Object thisArticulo: articulos)
           {
+              //Inicio variables temporales
+              Articulo datosArticulo = new Articulo(true);
+              Integer cantidadTemp = 0;
+              
+              datosArticulo.setIdArticulo(((ArticuloVenta)thisArticulo).getIdArticulo());
+              datosArticulo.buscarBD();
+              
+              if(((ArticuloVenta)thisArticulo).getDevolucion())
+              cantidadTemp = ((ArticuloVenta)thisArticulo).getCantidad()-((ArticuloVenta)thisArticulo).getCantidadDevuelto();
+              else
+              cantidadTemp = ((ArticuloVenta)thisArticulo).getCantidad();
+              
           datos.addRow(new Object[] {
-          ((Articulo)thisArticulo).getCodigoArticulo(),
-          ((Articulo)thisArticulo).getDescripcion(),
-          ((Venta)thisArticulo).getCantidad(),
-          ((Venta)thisArticulo).getSubtotal()});
-          }
+          datosArticulo.getCodigoArticulo(),
+          datosArticulo.getDescripcion()+" -- "+datosArticulo.getCantidadUnidad()+" "+datosArticulo.getUnidad(),
+          cantidadTemp,
+          cantidadTemp*((ArticuloVenta)thisArticulo).getPrecioVenta()
+          
+          });
         
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tablaDevolucionArticulos.getModel());
           
         tablaDevolucionArticulos.setRowSorter(sorter);
-    }*/
+          }
+    }
     
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         // TODO add your handling code here:
