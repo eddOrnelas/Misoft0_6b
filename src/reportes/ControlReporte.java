@@ -144,7 +144,7 @@ public class ControlReporte {
 
     public ModeloCorte realizarReporteVentas(Long nVenta) {
 
-
+        
 
         //Iniciamos objetos necesarios para la busqueda.
         
@@ -161,7 +161,6 @@ public class ControlReporte {
         Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
         ventas = mVentas.buscarBD("all", opciones);
         
-        Object[][] fechaVenta = new Object[][]{{"idVenta","=",nVenta}};
         fventas = fVenta.buscarBD("all", opciones);
         
        
@@ -169,12 +168,13 @@ public class ControlReporte {
         
         
         //Datos de Venta
-        Long tmpIdVenta;
+        Long tmpCodArt;
+        Long tmpIDart;
         Double tmpIVA;
         String tmpDesc;
         Integer tmpCantidad;
         Float tmpPrecioVenta;
-        Float tmpTotal;
+        Float tmpTotal=0F;
         Float totalVentas= 0F;
         String tmpFecha;
     
@@ -232,18 +232,30 @@ public class ControlReporte {
                 table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 
-                
-                
+               
+                     
                 for(int x=0;x<ventas.length;x++){
-                tmpIdVenta = ((ArticuloVenta) ventas[x]).getIdArticulo();
-                table.addCell(new Phrase(tmpIdVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
-                Object[][] opciones2 = new Object[][]{{"codigoArticulo","=",tmpIdVenta}};
+                Long tmpIdArt;
+        
+                tmpIdArt = ((ArticuloVenta)ventas[x]).getIdArticulo();
+                Object[][] opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
                 Articulo dVenta = new Articulo(true);
-                dventas  = dVenta.buscarBD("all",opciones2);
+                dventas = dVenta.buscarBD("all",opciones2);    
+                    
+                JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
+                tmpCodArt = ((Articulo) dventas[0]).getCodigoArticulo();
+                tmpIDart = ((ArticuloVenta)ventas[x]).getIdArticulo();
+                table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+          
+                
+                 
+                
+                
                 
                 tmpDesc = ((Articulo)dventas[0]).getDescripcion();
                 table.addCell(new Phrase(tmpDesc,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+          
                 
                 tmpCantidad = ((ArticuloVenta) ventas[x]).getCantidad();
                 table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -257,7 +269,7 @@ public class ControlReporte {
                 
                 tmpTotal = ((ArticuloVenta) ventas[x]).getTotal();
                 table.addCell(new Phrase(tmpTotal.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                totalVentas += tmpTotal;
+                
                 
            
                 } 
@@ -265,7 +277,7 @@ public class ControlReporte {
                 
 
                 document.add(table);
-                document.add(new Phrase("                                                                                                                                                                          Total: $"+decimal.format(totalVentas)+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                document.add(new Phrase("                                                                                                                                                                          Total: $"+decimal.format(tmpTotal)+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
            
                 
                 JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
@@ -296,7 +308,7 @@ public class ControlReporte {
         ModeloArticulo reporteArticulos = new ModeloArticulo();
         //Parametros de busqueda.
         Boolean activo = true;
-        Object[][] opciones = new Object[][]{{"idArticulo", ">=", activo}};
+        Object[][] opciones = new Object[][]{{"activo", ">=", 1}};
 
         articulos = mArticulo.buscarBD("all", opciones);
         //Agrego una fuente general

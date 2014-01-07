@@ -10,8 +10,6 @@ import articulo.Articulo;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.text.DecimalFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
@@ -326,10 +324,10 @@ private void llenarTabla(Object[] venta) {
         int tam = venta.length;
         double total = 0.0;
         for (x=0;x<tam;x++){
-        Long tmpIdArt = ((ArticuloVenta)venta[x]).getIdArticulo();
+        Long tmpIdArt;
         
-        
-        Object[][] opciones2 = new Object[][]{{"codigoArticulo","=",tmpIdArt}};
+        tmpIdArt = ((ArticuloVenta)venta[x]).getIdArticulo();
+        Object[][] opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
         Articulo dVenta = new Articulo(true);
         dventas = dVenta.buscarBD("all",opciones2);
 /* obtener articulos */
@@ -344,34 +342,35 @@ private void llenarTabla(Object[] venta) {
         fventas = fVenta.buscarBD("all", opciones);
         
         txFecHr.setText("Fecha y Hora:  " + ((Venta) fventas[0]).getFecha());
-        
+        txTotal.setText("Total:  $" + ((Venta) fventas[0]).getTotal());
         
         Object [] desc = null;
        
         DefaultTableModel datos = (DefaultTableModel) tbVentas.getModel();
         datos.setRowCount(0);
-        
-           
-         
         for(Object thisVenta:venta)
           {
+          float tmpTotal= ((ArticuloVenta)thisVenta).getCantidad() * ((ArticuloVenta)thisVenta).getPrecioVenta() ;
+          float tmpIVA = ((11*tmpTotal)/111);
+          float tmpPrecioVenta = (100*tmpTotal)/111 ;
           
           datos.addRow(new Object[] {
-         ((ArticuloVenta)thisVenta).getIdArticulo(),         
+         ((Articulo)dventas[0]).getCodigoArticulo(),         
          ((Articulo)dventas[0]).getDescripcion(),
           ((ArticuloVenta)thisVenta).getCantidad(),
                    
-          decimal.format(((ArticuloVenta)thisVenta).getPrecioVenta()),
-           decimal.format(((ArticuloVenta)thisVenta).getIva()),
-           decimal.format(((ArticuloVenta)thisVenta).getTotal())
+          decimal.format(tmpPrecioVenta),
+           decimal.format(tmpIVA),
+           decimal.format(tmpTotal)
             
           });
-          total = total + ((ArticuloVenta)thisVenta).getTotal();
-          txTotal.setText("Total:  $"+decimal.format(total));
-          x++;
           
+          
+          x++;
+          //Obtener los datos del siguiente artículo
           tmpIdArt = ((ArticuloVenta)venta[x]).getIdArticulo();
-          opciones2 = new Object[][]{{"codigoArticulo","=",tmpIdArt}};
+          
+          opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
           dVenta = new Articulo(true);
           dventas = dVenta.buscarBD("all",opciones2);
           

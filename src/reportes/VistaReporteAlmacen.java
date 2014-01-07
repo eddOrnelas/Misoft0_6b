@@ -67,26 +67,21 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tbArticulos.setEditingColumn(0);
-        tbArticulos.setEditingRow(0);
+        tbArticulos.setIntercellSpacing(new java.awt.Dimension(1, 1));
         tbArticulos.setMaximumSize(new java.awt.Dimension(1150, 210));
         tbArticulos.setMinimumSize(new java.awt.Dimension(1150, 210));
         tbArticulos.setPreferredSize(new java.awt.Dimension(1150, 210));
-        tbArticulos.setRowMargin(2);
         jScrollPane1.setViewportView(tbArticulos);
         if (tbArticulos.getColumnModel().getColumnCount() > 0) {
-            tbArticulos.getColumnModel().getColumn(0).setResizable(false);
             tbArticulos.getColumnModel().getColumn(1).setResizable(false);
             tbArticulos.getColumnModel().getColumn(2).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(3).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(4).setResizable(false);
             tbArticulos.getColumnModel().getColumn(5).setResizable(false);
         }
 
@@ -99,10 +94,10 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1)
                         .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btAceptarVentas)
@@ -119,8 +114,7 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(btAceptarVentas)
                 .addGap(55, 55, 55)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(72, 72, 72)
@@ -146,7 +140,7 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
          
         for(Object thisArticulo:articulos)
           {
-          if( ((Articulo)thisArticulo).getCantidadExistencia() >0)
+          if( ((Articulo)thisArticulo).getCantidadExistencia() >0 && ((Articulo)thisArticulo).getActivo())
           datos.addRow(new Object[] {
          ((Articulo)thisArticulo).getCodigoArticulo(),         
           ((Articulo)thisArticulo).getDescripcion(),
