@@ -195,7 +195,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
       
         //String donde almacenar el texto a buscar y variables aux
-        Integer idVenta = null;
+        Long idVenta = null;
         String numeroVenta = txBusqueda.getText();
         
         
@@ -206,7 +206,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         
         
          try{
-           idVenta = Integer.parseInt(numeroVenta); 
+           idVenta = Long.parseLong(numeroVenta); 
            
     }catch(NumberFormatException e)
         {
@@ -249,7 +249,9 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"no se encontro articulo");
         else
         {
+
           llenarTabla(articulos);
+
             
         }
     }//GEN-LAST:event_btBuscarActionPerformed
