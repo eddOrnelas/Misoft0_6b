@@ -372,7 +372,7 @@ public class VistaConsultarArticulo extends javax.swing.JFrame {
           {
           datos.addRow(new Object[] {
           ((Articulo)thisArticulo).getCodigoArticulo(),
-          ((Articulo)thisArticulo).getDescripcion()+" - "+((Articulo)thisArticulo).getcantidadUnidad()+" "+((Articulo)thisArticulo).getUnidad(),
+          ((Articulo)thisArticulo).getDescripcion()+" - "+((Articulo)thisArticulo).getCantidadUnidad()+" "+((Articulo)thisArticulo).getUnidad(),
           ((Articulo)thisArticulo).getProveedor(),
           ((Articulo)thisArticulo).getCantidadExistencia(),
            ((Articulo)thisArticulo).getPrecioVenta()});

@@ -14,25 +14,47 @@ import misoft.CustomORM;
  */
 public class ArticuloVenta extends CustomORM{
    
+    private Long idArticuloVenta;
     private Long idVenta;
-    
-    ////////////////////////////
     private Long    idArticulo;
-     //private String descripcion;
-    private Float   precioVenta;
     private Integer cantidad;
-    //////////////////////////////
+    private Float   precioVenta;
+    private Boolean devolucion;
+    private Integer cantidadDevuelto;
+    ////////////////////////////
+    
+        //////////////////////////////
     //private String idUsuario;
-    private Double iva;
-    private Float total;
+   // private Double iva;
+    //private Float total;
 
   
-    private Float subtotal;
+   // private Float subtotal;
    // private Float pagocon;
     //private Float cambio;
     //private String fecha;
    // private String hora;
-    private Long idArticuloVenta;
+    
+    
+     //private String descripcion;
+
+    public Boolean getDevolucion() {
+        return devolucion;
+    }
+
+    public void setDevolucion(Boolean devolucion) {
+        this.devolucion = devolucion;
+    }
+
+    public Integer getCantidadDevuelto() {
+        return cantidadDevuelto;
+    }
+
+    public void setCantidadDevuelto(Integer cantidadDevuelto) {
+        this.cantidadDevuelto = cantidadDevuelto;
+    }
+    
+  
     
 public ArticuloVenta(){
     //constructor vacio
@@ -62,6 +84,7 @@ public ArticuloVenta(Boolean init)
     }
 
 
+    /*
     public Double getIva() {
         return iva;
     }
@@ -85,7 +108,7 @@ public ArticuloVenta(Boolean init)
         this.subtotal = subTotal;
     }
 
-    
+    */
 
      public Long getIdArticulo() {
         return idArticulo;
@@ -118,6 +141,7 @@ public ArticuloVenta(Boolean init)
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+    
  public Long getIdArticuloVenta() {
         return idArticuloVenta;
     }
@@ -132,11 +156,7 @@ public ArticuloVenta(Boolean init)
     public void setIdArticuloVenta(Long idArticuloVenta) {
         this.idArticuloVenta = idArticuloVenta;
     }
-    @Override
-    public String toString() {
-        return "[idVenta"+this.getIdVenta()+"[ArticuloVenta"+this.getIdArticuloVenta()+"[codigoArticulo"+this.getIdArticulo()+"] descripcion: "+"]precio de venta:"+this.getPrecioVenta()+"cantidad:"+this.getCantidad()+"iva:"+this.getIva()+"total"+this.getTotal()+"subtotal"+this.getSubtotal();
-    }
-
+    
    
 
  

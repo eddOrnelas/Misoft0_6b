@@ -86,14 +86,14 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Código Artículo", "Descripción", "Proveedor", "Cantidad Existencia", "Cantidad Unidad", "Unidad"
+                "Código Artículo", "Descripción", "Proveedor", "Cantidad Existencia", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Long.class, java.lang.String.class
+                java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -106,16 +106,13 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         });
         tbArticulos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbArticulos);
-        if (tbArticulos.getColumnModel().getColumnCount() > 0) {
-            tbArticulos.getColumnModel().getColumn(0).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(1).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(1).setPreferredWidth(300);
-            tbArticulos.getColumnModel().getColumn(2).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(2).setPreferredWidth(300);
-            tbArticulos.getColumnModel().getColumn(3).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(4).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(5).setResizable(false);
-        }
+        tbArticulos.getColumnModel().getColumn(0).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(1).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(1).setPreferredWidth(300);
+        tbArticulos.getColumnModel().getColumn(2).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(2).setPreferredWidth(300);
+        tbArticulos.getColumnModel().getColumn(3).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(4).setResizable(false);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -416,7 +413,7 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
                 Boolean resultado = ctrArticulo.elimiarArticuloPorCodigo(codigoArticulo);
              if(resultado)
              {
-                 ((DefaultTableModel)tbArticulos.getModel()).removeRow(selection);
+                 ((DefaultTableModel)tbArticulos.getModel()).setValueAt("Eliminado", seleccion, 4);
                  JOptionPane.showMessageDialog(this, "Se elimino el articulo de forma correcta del sistema");
              }
              else
@@ -588,14 +585,19 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
          
         for(Object thisArticulo: articulos)
           {
+              String articuloEstado = "Activo";
+              
+              if(!((Articulo)thisArticulo).getActivo()){
+                  articuloEstado = "Eliminado";
+              }
+              
           datos.addRow(new Object[] {
           ((Articulo)thisArticulo).getCodigoArticulo(),
-          ((Articulo)thisArticulo).getDescripcion(),
+          ((Articulo)thisArticulo).getDescripcion()+" -- "+((Articulo)thisArticulo).getCantidadUnidad()+" "+((Articulo)thisArticulo).getUnidad(),
           ((Articulo)thisArticulo).getProveedor(),
           ((Articulo)thisArticulo).getCantidadExistencia(),
-          ((Articulo)thisArticulo).getcantidadUnidad(),
-          ((Articulo)thisArticulo).getUnidad()});
-          }
+           articuloEstado}
+          );
         
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbArticulos.getModel());
           
@@ -604,5 +606,6 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         
     }
     
+    }
     
 }

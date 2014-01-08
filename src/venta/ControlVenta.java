@@ -175,7 +175,7 @@ public class ControlVenta {
            // Long idArticulo = (Long)((Object[])thisArticulo)[0];
              // cantidad+=cantidad;
             total=calcularTotal(articulo.getPrecioVenta(),cantidad);//se envian las variables 
-                           ventar.setTotal(total);
+                           //ventar.setTotal(total);
 
                     System.out.println("totalVenta:"+total);
               
@@ -230,7 +230,7 @@ acumTotales=resTotales;
            if(idArticulo.equals(codigo)){
                  
          subtotal=calcularSubTotal(articulo.getPrecioVenta(), cantidad);//se calcula el total de la venta por articulo
-                            ventar.setSubTotal(subtotal);
+                            //ventar.setSubTotal(subtotal);
        
                     System.out.println("subtotalVenta:"+subtotal);
            } }
@@ -299,7 +299,7 @@ acumTotales=resTotales;
         Double ivap=.11;
         iva=calcularIva(ivap,articulo.getPrecioVenta());
              
-         ventar.setIva(redondearIva(iva));
+         //ventar.setIva(redondearIva(iva));
           Float PrecioVenta=articulo.getPrecioVenta();
           String descripcion=articulo.getDescripcion();
          idArticulo=articulo.getIdArticulo();
@@ -428,9 +428,9 @@ acumTotales=resTotales;
         //   Articuloventa.setDescripcion(descripcion);
            Articuloventa.setCantidad(cantidad);
            Articuloventa.setPrecioVenta(precioVenta);
-           Articuloventa.setIva(iva);
-           Articuloventa.setTotal(total);
-           Articuloventa.setSubTotal(subtotal);
+           //Articuloventa.setIva(iva);
+           //Articuloventa.setTotal(total);
+          // Articuloventa.setSubTotal(subtotal);
   
            statusOperation = Articuloventa.registrarBD();
      //////////////////////////////////////////////////////////////////////////////
@@ -573,44 +573,34 @@ return true;
         Integer cantidad_articulos = carrito.size();
         Float totalVenta = 0.0f;
         
-         for(int x=0; x<cantidad_articulos; x++)
-          {
+        //obtener totales, iva y subtotal
+        for(int x=0; x<cantidad_articulos; x++)
+          { 
+              Object[] articuloTmp = (Object[])carrito.get(x);
+              Articulo thisArticulo = (Articulo)articuloTmp[0];
+              Integer cantidad = (Integer)articuloTmp[1];
               
-                Object[] articuloTmp = (Object[])carrito.get(x);
-                Articulo thisArticulo = (Articulo)articuloTmp[0];
-                Integer cantidad = (Integer)articuloTmp[1];
-                
-                articulo.setIdArticulo(thisArticulo.getIdArticulo());
-                articulo.buscarBD();
-                
-                 //Actualizamos el Articulo dando restas
-                articuloEditar.setIdArticulo(articulo.getIdArticulo());
-                articuloEditar.buscarBD();
-                Integer cantidadNueva=articulo.getCantidadExistencia()-cantidad;
-                articulo.setCantidadExistencia(cantidadNueva);
-                articulo.acualizarBD();
-                
-                
-                //Actualizamos el Historial
-                historial.setIdArticulo(articulo.getIdArticulo());
-                historial.setConcepto("Venta");
-                historial.setPrecioCompra(articulo.getPrecioCompra());
-                historial.setPrecioVenta(articulo.getPrecioVenta());
-                historial.setCantidad(cantidad);
-                historial.registrarBD();
-                
-                totalVenta+= (cantidad*articulo.getPrecioVenta());
+              totalVenta+= (cantidad*thisArticulo.getPrecioVenta());
           }
-         
-          
+        
+        
+        //Realizar Venta //Alta Venta
          venta.setCantidad(cantidad_articulos);
-         venta.setIva((totalVenta*11)/100);
-         venta.setPorcentajeIva(11.0f);
-         venta.setSubtotal(totalVenta-((totalVenta*11)/100));
+         venta.setIva((totalVenta*11)/100);//Colocar Iva
+         venta.setPorcentajeIva(11.0f);//Colocar Iva
+         venta.setSubtotal(totalVenta-((totalVenta*11)/100)); //Colocar Iva
          venta.setTotal(totalVenta);
-         venta.registrarBD();
-         Long idventa=venta.getIdVenta();
-         //Agregando a Articulo Ventas 
+         venta.setCancelado(false);
+         
+         Integer respuestaVenta = venta.registrarBD();
+         
+         Long idventa = venta.getIdVenta();
+         
+         if(respuestaVenta != 1 || idventa<=0){
+             return false;
+         }
+         
+          //Agregando a Articulo Ventas 
           for(int x=0; x<cantidad_articulos; x++){
               
                 Object[] articuloTmp = (Object[])carrito.get(x);
@@ -624,10 +614,52 @@ return true;
                 artVenta.setIdArticulo(articulo.getIdArticulo());
                 artVenta.setCantidad(cantidad);
                 artVenta.setPrecioVenta(articulo.getPrecioVenta());
-                artVenta.setIva((double)(totalVenta*11)/100);
-                artVenta.setSubTotal(totalVenta-((totalVenta*11)/100));
-                artVenta.setTotal(totalVenta);
+                artVenta.setDevolucion(false);
+                artVenta.setCantidadDevuelto(0);
+                //artVenta.setIva((double)(totalVenta*11)/100);
+                //artVenta.setSubTotal(totalVenta-((totalVenta*11)/100));
+               // artVenta.setTotal(totalVenta);
                 artVenta.registrarBD();
+          }
+        
+          //Actualizar Historial y Almacen
+         for(int x=0; x<cantidad_articulos; x++)
+          {
+              
+                Object[] articuloTmp = (Object[])carrito.get(x);
+                Articulo thisArticulo = (Articulo)articuloTmp[0];
+                Integer cantidad = (Integer)articuloTmp[1];
+                Integer cantidadHistorial = 0;
+                
+                articulo.setIdArticulo(thisArticulo.getIdArticulo());
+                articulo.buscarBD();
+                
+                 //Actualizamos el Articulo dando restas
+                articuloEditar.setIdArticulo(articulo.getIdArticulo());
+                articuloEditar.buscarBD();
+                
+                //Obtener diferido
+                Integer cantidadNueva = articulo.getCantidadExistencia()-cantidad;
+                
+                articulo.setCantidadExistencia(cantidadNueva);
+                articulo.acualizarBD();
+                
+                
+                //Actualizamos el Historial
+                historial.setIdArticulo(articulo.getIdArticulo());
+                historial.setConcepto("Venta");
+                historial.setPrecioCompra(articulo.getPrecioCompra());
+                historial.setPrecioVenta(articulo.getPrecioVenta());
+                historial.setCantidad(cantidad);
+                historial.setCantidadActual(cantidadNueva);
+                //historial.setFecha(null);
+                historial.setCantidadUnidad(articulo.getCantidadUnidad());
+                historial.setUnidad(articulo.getUnidad());
+                
+                
+                historial.registrarBD();
+                
+                
           }
          
          

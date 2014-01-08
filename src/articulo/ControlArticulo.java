@@ -156,11 +156,10 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     articulo.setPrecioVenta(0F);
     articulo.setCantidadExistencia(0);
     articulo.setProveedor(proveedor);
-    articulo.setcantidadUnidad(tmpCantidadUnidad);
+    articulo.setCantidadUnidad(tmpCantidadUnidad);
     articulo.setUnidad(unidad);
     
     statusOperation = articulo.registrarBD();
-    
     colocarUltimoId(articulo.getIdArticulo());
     
     
@@ -175,6 +174,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         historial.setPrecioVenta(0.00F);
         historial.setCantidadUnidad(tmpCantidadUnidad);
         historial.setUnidad(unidad);
+        historial.setCantidadActual(0);
 
         historial.registrarBD();
        statusOperation = 1;
@@ -209,7 +209,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         Articulo articulosBusqueda = new Articulo(true);
         Object[] resultado = null;
         
-        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}, {"activo", "=", 1}};
+        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}};
         
         resultado = articulosBusqueda.buscarBD("all", opciones);
         
@@ -220,7 +220,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         Articulo articulosBusqueda = new Articulo(true);
         Object[] resultado = null;
         
-        Object[][] opciones = new Object[][] {{"descripcion","LIKE",descripcion}, {"activo", "=", 1}};
+        Object[][] opciones = new Object[][] {{"descripcion","LIKE",descripcion}};
         
         resultado = articulosBusqueda.buscarBD("all", opciones);
         
@@ -276,7 +276,8 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         if(tmpCodigoArticulo==null)
         {
             errorLog += "- Codigo de Articulo no es valido \n";
-        }else if(tmpCodigoArticulo<0 || codigoArticulo.contains("+") || codigoArticulo.contains("-")){
+        }else
+            if(tmpCodigoArticulo<0 || codigoArticulo.contains("+") || codigoArticulo.contains("-")){
             errorLog += "- Codigo de Articulo no es valido, solo son permitidos numeros \n";
         }
         else
@@ -390,7 +391,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         }
      
     //Llenamos el objeto para poder actualizarloa
-     System.out.println("Joanna Aqui "+tmpCantidadUnidad);
+    
     Articulo articuloTemporal = buscarUnoPorCodigoArticulo(tmpCodigoArticuloAnterior);
     articulo.setIdArticulo(articuloTemporal.getIdArticulo());
     articulo.setCodigoArticulo(tmpCodigoArticulo);
@@ -399,7 +400,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     articulo.setPrecioVenta(tmpPrecioVenta);
     articulo.setCantidadExistencia(tmpCantidadExistencia);
     articulo.setProveedor(proveedor);
-    articulo.setcantidadUnidad(tmpCantidadUnidad);
+    articulo.setCantidadUnidad(tmpCantidadUnidad);
     articulo.setUnidad(unidad);
     
     Boolean resultado = articulo.acualizarBD();
@@ -420,7 +421,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         historial.setConcepto("Edicion Articulo");
         
         //Revisamos si hubo un cambio en las cantidades, si es mayor se coloca cuantos mas, si es menor se coloca cuantos menos
-            historial.setCantidad(articulo.getCantidadExistencia() - datosAnteriores.getCantidadExistencia());
+        historial.setCantidad(articulo.getCantidadExistencia() - datosAnteriores.getCantidadExistencia());
         
         
         
@@ -429,6 +430,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
        historial.setCantidadUnidad(tmpCantidadUnidad);
        historial.setUnidad(unidad);
        //historial.setFecha("CURRENT_DATE");
+       historial.setCantidadActual(articulo.getCantidadExistencia());
        
        historial.registrarBD();
 
@@ -452,6 +454,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             Integer statusOperation = null;
             
             Integer tmpCantidad = null;
+            Integer cantidadHistorial = 0;
         
         
             
@@ -490,7 +493,12 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     
     articulo.setPrecioCompra(tmpPrecioCompra);
     articulo.setPrecioVenta(tmpPrecioVenta);
-    articulo.setCantidadExistencia(articulo.getCantidadExistencia()+tmpCantidad);
+    
+        //set cantidad historial
+        cantidadHistorial = articulo.getCantidadExistencia()+tmpCantidad;
+        
+    articulo.setCantidadExistencia(cantidadHistorial);
+    
     
     
     Boolean operacion = articulo.acualizarBD();
@@ -507,8 +515,11 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         historial.setCantidad(tmpCantidad);
         historial.setPrecioCompra(tmpPrecioCompra);
         historial.setPrecioVenta(tmpPrecioVenta);
-        
-        
+ 
+        historial.setCantidadActual(cantidadHistorial);
+        historial.setUnidad(articulo.getUnidad());
+        historial.setCantidadUnidad(articulo.getCantidadUnidad());
+
         historial.registrarBD();
        statusOperation = 1;
   
@@ -535,6 +546,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             Integer statusOperation = null;
             
             Integer tmpCantidad = null;
+            Integer historialCantidad = 0;
         
         
             
@@ -573,7 +585,9 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     
     articulo.setPrecioCompra(tmpPrecioCompra);
     articulo.setPrecioVenta(tmpPrecioVenta);
-    articulo.setCantidadExistencia(articulo.getCantidadExistencia()+tmpCantidad);
+    
+    historialCantidad = articulo.getCantidadExistencia()+tmpCantidad;
+    articulo.setCantidadExistencia(historialCantidad);
     
     
     Boolean operacion = articulo.acualizarBD();
@@ -591,6 +605,10 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         historial.setPrecioCompra(tmpPrecioCompra);
         historial.setPrecioVenta(tmpPrecioVenta);
         historial.setFecha(fecha);
+        
+        historial.setCantidadUnidad(articulo.getCantidadUnidad());
+        historial.setUnidad(articulo.getUnidad());
+        historial.setCantidadActual(historialCantidad);
         
         
         historial.registrarBD();
@@ -739,10 +757,11 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         historial.setIdArticulo(articulo.getIdArticulo());
         historial.setConcepto("Articulo Eliminado");
         historial.setCantidad(0);
-        historial.setPrecioCompra(0F);
-        historial.setPrecioVenta(0F);
-        
-        
+        historial.setPrecioCompra(articulo.getPrecioCompra());
+        historial.setPrecioVenta(articulo.getPrecioVenta());
+        historial.setUnidad(articulo.getUnidad());
+        historial.setCantidadUnidad(articulo.getCantidadUnidad());
+        historial.setCantidadActual(articulo.getCantidadExistencia());
         historial.registrarBD();
   
     }
@@ -769,8 +788,12 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         historial.setIdArticulo(articulo.getIdArticulo());
         historial.setConcepto("Articulo Eliminado");
         historial.setCantidad(0);
-        historial.setPrecioCompra(0F);
-        historial.setPrecioVenta(0F);
+        historial.setPrecioCompra(articulo.getPrecioCompra());
+        historial.setPrecioVenta(articulo.getPrecioVenta());
+        historial.setUnidad(articulo.getUnidad());
+        historial.setCantidadUnidad(articulo.getCantidadUnidad());
+        historial.setCantidadActual(articulo.getCantidadExistencia());
+        historial.registrarBD();
         
         
         historial.registrarBD();
@@ -804,7 +827,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         Articulo articuloEncontrado = new Articulo(true);
         Object[] resultado = null;
         
-        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}, {"activo", "=", 1}};
+        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}};
         
         resultado = articulosBusqueda.buscarBD("all", opciones);
         if(resultado.length>0){

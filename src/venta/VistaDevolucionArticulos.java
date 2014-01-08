@@ -51,12 +51,12 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txIdVentaBuscar = new javax.swing.JTextField();
-        BuscarIdVenta = new javax.swing.JButton();
+        txBusqueda = new javax.swing.JTextField();
+        btBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaDevolucionArticulos = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btRealizarVenta = new javax.swing.JButton();
+        btCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -80,7 +80,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 20, 0, 0);
         getContentPane().add(jLabel2, gridBagConstraints);
 
-        txIdVentaBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -88,19 +88,19 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 114;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 0);
-        getContentPane().add(txIdVentaBuscar, gridBagConstraints);
+        getContentPane().add(txBusqueda, gridBagConstraints);
 
-        BuscarIdVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        BuscarIdVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
-        BuscarIdVenta.setText("Buscar");
-        BuscarIdVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
+        btBuscar.setText("Buscar");
+        btBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BuscarIdVentaMouseClicked(evt);
+                btBuscarMouseClicked(evt);
             }
         });
-        BuscarIdVenta.addActionListener(new java.awt.event.ActionListener() {
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarIdVentaActionPerformed(evt);
+                btBuscarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -111,7 +111,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
-        getContentPane().add(BuscarIdVenta, gridBagConstraints);
+        getContentPane().add(btBuscar, gridBagConstraints);
 
         tablaDevolucionArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,9 +151,9 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(7, 20, 0, 16);
         getContentPane().add(jScrollPane2, gridBagConstraints);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943729_edit-clear.png"))); // NOI18N
-        jButton2.setText("Realizar Devolucion");
+        btRealizarVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btRealizarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943729_edit-clear.png"))); // NOI18N
+        btRealizarVenta.setText("Realizar Devolucion");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -163,14 +163,14 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 58, 13, 0);
-        getContentPane().add(jButton2, gridBagConstraints);
+        getContentPane().add(btRealizarVenta, gridBagConstraints);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
-        jButton3.setText("Cancelar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
+        btCancelar.setText("Cancelar");
+        btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btCancelarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -179,73 +179,127 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        getContentPane().add(jButton3, gridBagConstraints);
+        getContentPane().add(btCancelar, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BuscarIdVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarIdVentaMouseClicked
+    private void btBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btBuscarMouseClicked
 
-        if(txIdVentaBuscar.getText().compareTo("")==0){
+        if(txBusqueda.getText().compareTo("")==0){
 
         }
 
-    }//GEN-LAST:event_BuscarIdVentaMouseClicked
+    }//GEN-LAST:event_btBuscarMouseClicked
 
-    private void BuscarIdVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarIdVentaActionPerformed
-        Long idVentaBuscar = Long.parseLong(txIdVentaBuscar.getText());
-
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+      
+        //String donde almacenar el texto a buscar y variables aux
+        Long idVenta = null;
+        String numeroVenta = txBusqueda.getText();
+        
+        
+        //Validaciones de caja texto y de la venta exista
+        if(numeroVenta.length()<=0){
+             JOptionPane.showMessageDialog(this,"Hubo un error en la operacion");
+        }
+        
+        
+         try{
+           idVenta = Long.parseLong(numeroVenta); 
+           
+    }catch(NumberFormatException e)
+        {
+            //errorLog+="- El codigo de articulo tiene un formato incorrecto \n";
+        }
+        
+         
+         if(idVenta == null){
+              JOptionPane.showMessageDialog(this,"El numero de venta es erroneo, solo se permiten numeros");
+             return;
+         }else
+             if(idVenta<0 || numeroVenta.contains("+") || numeroVenta.contains("-")){
+            //errorLog += "- Codigo de Articulo no es valido, solo son permitidos numeros \n";
+                 JOptionPane.showMessageDialog(this,"El numero de venta es erroneo, solo se permiten numeros");
+                 return;
+        }
+         
         //Iniciamos controlador
-        ControlVenta ctrVenta = new ControlVenta();
         ControlArticulo ctrArticulo = new ControlArticulo();
+        
         //Iniciamos objectos donde guardaremos los resultados de busqueda
-         Object[] articulos;
-         articulos= ctrVenta.buscarPorCodigoArticulo(idVentaBuscar);
-         
-         
+        Object[] articulos = null;
+        
+        //Iniciamos objetos clase
+        Venta ventaBuscar = new Venta(true);
+        ArticuloVenta articulosVentaBuscar = new ArticuloVenta(true);
+        
+        //Buscamos primero venta
+        ventaBuscar.setIdVenta(idVenta);
+        Boolean ventaValida = ventaBuscar.buscarBD();
+        
+        //Validamos venta
+        if(!ventaValida)
+        {
+            JOptionPane.showMessageDialog(this,"La venta no ha sido encontrada");
+                 return;
+        }
+        
+
+        //Buscamos articulos venta 
+      Object[][] opciones = new Object[][] {{"idVenta","=",idVenta}};
+      articulos = articulosVentaBuscar.buscarBD("all", opciones);
+        
+        
+            
+        
         if(articulos.length<=0)
-        JOptionPane.showMessageDialog(this,"no se encontro venta");
+            JOptionPane.showMessageDialog(this,"no se encontraron articulos en esta venta");
         else
         {
-            //llenarTabla(articulos);
-            DefaultTableModel datos = (DefaultTableModel) tablaDevolucionArticulos.getModel();
-            datos.setRowCount(0);
-            Venta thisVenta = ((VentabuscarArticulos);
-          /*  for(Object thisArticulo: articulos){
-                ctrArticulo.buscarPorCodigoArticulo(((Articulo)thisArticulo).getCodigoArticulo());
-                datos.addRow(new Object[] {
-                    ((Articulo)thisArticulo).getCodigoArticulo(),
-                    ((Articulo)thisArticulo).getDescripcion(),
-                    ((Venta)thisArticulo).getCantidad(),
-                    ((Venta)thisArticulo).getSubtotal()});
-            }*/
-            
-            RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tablaDevolucionArticulos.getModel());
-            tablaDevolucionArticulos.setRowSorter(sorter);
+            llenarTabla(articulos);
         }
-    }//GEN-LAST:event_BuscarIdVentaActionPerformed
-/*
+
+    }//GEN-LAST:event_btBuscarActionPerformed
+
     private void llenarTabla(Object[] articulos) {
+        
         DefaultTableModel datos = (DefaultTableModel) tablaDevolucionArticulos.getModel();
         datos.setRowCount(0);
          
         for(Object thisArticulo: articulos)
           {
+              //Inicio variables temporales
+              Articulo datosArticulo = new Articulo(true);
+              Integer cantidadTemp = 0;
+              
+              datosArticulo.setIdArticulo(((ArticuloVenta)thisArticulo).getIdArticulo());
+              datosArticulo.buscarBD();
+              
+              if(((ArticuloVenta)thisArticulo).getDevolucion())
+              cantidadTemp = ((ArticuloVenta)thisArticulo).getCantidad()-((ArticuloVenta)thisArticulo).getCantidadDevuelto();
+              else
+              cantidadTemp = ((ArticuloVenta)thisArticulo).getCantidad();
+              
           datos.addRow(new Object[] {
-          ((Articulo)thisArticulo).getCodigoArticulo(),
-          ((Articulo)thisArticulo).getDescripcion(),
-          ((Venta)thisArticulo).getCantidad(),
-          ((Venta)thisArticulo).getSubtotal()});
-          }
+          datosArticulo.getCodigoArticulo(),
+          datosArticulo.getDescripcion()+" -- "+datosArticulo.getCantidadUnidad()+" "+datosArticulo.getUnidad(),
+          cantidadTemp,
+          cantidadTemp*((ArticuloVenta)thisArticulo).getPrecioVenta()
+          
+          });
         
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tablaDevolucionArticulos.getModel());
           
         tablaDevolucionArticulos.setRowSorter(sorter);
-    }*/
+          }
+    }
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+        this.dispose();
+    }//GEN-LAST:event_btCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,14 +336,14 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BuscarIdVenta;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btCancelar;
+    private javax.swing.JButton btRealizarVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tablaDevolucionArticulos;
-    private javax.swing.JTextField txIdVentaBuscar;
+    private javax.swing.JTextField txBusqueda;
     // End of variables declaration//GEN-END:variables
 
 }

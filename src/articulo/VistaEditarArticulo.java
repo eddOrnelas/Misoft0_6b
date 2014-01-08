@@ -51,7 +51,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
            txPrecioCompra.setText(articulo.getPrecioCompra().toString()); 
            txPrecioVenta.setText(articulo.getPrecioVenta().toString());
            txCantidadExistencia.setText(articulo.getCantidadExistencia().toString());
-           txCantidadUnidad.setText(articulo.getcantidadUnidad().toString());
+           txCantidadUnidad.setText(articulo.getCantidadUnidad().toString());
            ComboBoxUnidad.setSelectedItem(articulo.getUnidad());
            
        }
@@ -277,7 +277,7 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         jPanel1.add(txCantidadUnidad, gridBagConstraints);
 
         ComboBoxUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ComboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Gramos", "Piezas", "Unidades", "Litros", "Kilogramos (Kg)", "Centimetros (Cm)", "Metros (Mt)" }));
+        ComboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pieza(s)", "Unidad(es)", "Mililitro(s) ", "Litro(s)", "Gramo(s)", "Kilogramo(s)", "Centimetro(s)", "Metro(s)" }));
         ComboBoxUnidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxUnidadActionPerformed(evt);

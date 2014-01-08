@@ -152,6 +152,11 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 txBuscarActionPerformed(evt);
             }
         });
+        txBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txBuscarKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -487,6 +492,18 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         }
     }
     }//GEN-LAST:event_jButton5KeyPressed
+
+    private void txBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txBuscarKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==txBuscar)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          ConsultarUsuariosGeneralActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txBuscarKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConsultarUsuariosGeneral;

@@ -20,6 +20,19 @@ import misoft.VistaVentanaPrincipal;
  */
 public class ControlUsuario {
     
+     private String ultimoNombre;
+     
+     
+       private void colocarUltimoNombre(Long ultimoNombre)
+    {
+                ultimoNombre = ultimoNombre;
+    }
+    
+    public String obtenerUltimoId()
+    {
+         return ultimoNombre;
+    }
+    
  
     
     public Integer realizarAltaUsuario(String nombre, String apPaterno, String apMaterno, String usuario, String password, String permisos)
@@ -37,6 +50,7 @@ public class ControlUsuario {
       
         
       statusOperacion = UsuarioAlta.registrarBD();
+       
       
 
        
