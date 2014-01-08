@@ -5,6 +5,7 @@
 package reportes;
 
 import articulo.Articulo;
+import articulo.ControlArticulo;
 import articulo.HistorialAlmacen;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -457,6 +458,8 @@ public class ControlReporte {
         //Iniciamos objetos necesarios para la busqueda.
         
         HistorialAlmacen rMovimientos = new HistorialAlmacen(true);
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        Articulo articuloBuscar = null;
         Articulo rArt = new Articulo(true);
         Object[] mov = null;
         Object[] art = null;
@@ -464,18 +467,21 @@ public class ControlReporte {
         ModeloCorte reporteMovimientos = new ModeloCorte();
         //Parametros de busqueda.
         Boolean activo = true;
-        //Obtener datos para convertir codigoArt a IDart
-        Object[][] opciones1 = new Object[][]{{"codigoArticulo","=",idArticulo}};
-        art = rArt.buscarBD("all", opciones1);
         
-        if(art.length==1){
-        Long tmpIDart = ((Articulo)art[0]).getIdArticulo();
+        //Obtener datos para convertir codigoArt a IDart
+        //Object[][] opciones1 = new Object[][]{{"codigoArticulo","=",idArticulo}};
+       // art = rArt.buscarBD("all", opciones1);
+        
+        articuloBuscar = ctrArticulo.buscarUnoPorCodigoArticulo(idArticulo);
+        
+        if(articuloBuscar!=null){
+        Long tmpIDart = articuloBuscar.getIdArticulo();
        
         
         Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"},{"fecha", "<=", fecha2+" 23:59:00"},{"idArticulo","=",tmpIDart}};
         mov = rMovimientos.buscarBD("all", opciones);
         
-        if (mov.length==0) {
+        if (mov.length<=0) {
             return null;
         } else {
 

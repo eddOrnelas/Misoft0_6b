@@ -18,7 +18,7 @@ public class HistorialAlmacen extends CustomORM{
     private String concepto;
     private Integer cantidad;
     private String fecha;
-    private String extra;
+   // private String extra;
     private Float precioCompra;
     private Float precioVenta;
     private String unidad;
@@ -103,13 +103,6 @@ public class HistorialAlmacen extends CustomORM{
         this.fecha = fechaHora;
     }
 
-    public String getExtra() {
-        return extra;
-    }
-
-    public void setExtra(String extra) {
-        this.extra = extra;
-    }
 
     public Float getPrecioCompra() {
         return precioCompra;
