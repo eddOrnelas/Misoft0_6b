@@ -115,16 +115,16 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
 
         tbVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código de Artículo", "Descripción", "Cantidad", "Precio de Venta", "IVA", "Total"
+                "Código de Artículo", "Descripción", "Cantidad", "Precio de Venta", "SubTotal", "IVA", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -139,13 +139,15 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             tbVentas.getColumnModel().getColumn(0).setResizable(false);
             tbVentas.getColumnModel().getColumn(1).setResizable(false);
             tbVentas.getColumnModel().getColumn(2).setResizable(false);
-            tbVentas.getColumnModel().getColumn(3).setResizable(false);
             tbVentas.getColumnModel().getColumn(4).setResizable(false);
             tbVentas.getColumnModel().getColumn(5).setResizable(false);
+            tbVentas.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        txFecHr.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txFecHr.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txFecHr.setMaximumSize(new java.awt.Dimension(300, 30));
 
+        txTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txTotal.setMaximumSize(new java.awt.Dimension(200, 30));
         txTotal.setMinimumSize(new java.awt.Dimension(200, 30));
         txTotal.setPreferredSize(new java.awt.Dimension(200, 30));
@@ -170,7 +172,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btExportarVentas))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
@@ -350,6 +352,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         for(Object thisVenta:venta)
           {
           float tmpTotal= ((ArticuloVenta)thisVenta).getCantidad() * ((ArticuloVenta)thisVenta).getPrecioVenta() ;
+          float tmpPrecio = ((ArticuloVenta)thisVenta).getPrecioVenta() ;
           float tmpIVA = ((11*tmpTotal)/111);
           float tmpPrecioVenta = (100*tmpTotal)/111 ;
           
@@ -357,7 +360,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
          ((Articulo)dventas[0]).getCodigoArticulo(),         
          ((Articulo)dventas[0]).getDescripcion(),
           ((ArticuloVenta)thisVenta).getCantidad(),
-                   
+          decimal.format(tmpPrecio),
           decimal.format(tmpPrecioVenta),
            decimal.format(tmpIVA),
            decimal.format(tmpTotal)

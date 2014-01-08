@@ -403,11 +403,21 @@ public class VistaReporteCorte extends javax.swing.JPanel {
     }//GEN-LAST:event_btAceptarCCKeyPressed
 
     private void btAceptarCCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAceptarCCKeyTyped
-
+        int key=evt.getKeyCode();
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           limpiarTabla();
+           btAceptarCCActionPerformed(null);
+        }
     }//GEN-LAST:event_btAceptarCCKeyTyped
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-     
+        int key=evt.getKeyCode();
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           limpiarTabla();
+           btAceptarCCActionPerformed(null);
+        }
     }//GEN-LAST:event_formKeyPressed
 
     private int validaciones (){

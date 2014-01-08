@@ -1,4 +1,4 @@
-﻿package usuario;
+package usuario;
 
 
 import articulo.VistaConsultarArticulosGeneral;

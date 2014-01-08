@@ -21,6 +21,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Desktop;
 import java.awt.Font;
+import static java.awt.GridBagConstraints.CENTER;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -216,11 +217,11 @@ public class ControlReporte {
                 document.add(linea);
                 
                 //Crear y llenar Tabla PDF
-                PdfPTable table = new PdfPTable(6);
+                PdfPTable table = new PdfPTable(7);
                 
                 tmpFecha = ((Venta) fventas[0]).getFecha();
                 PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + nVenta +"                  Fecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
-                cell.setColspan(6);
+                cell.setColspan(7);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 table.addCell(cell);
@@ -229,6 +230,7 @@ public class ControlReporte {
                 table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));   
                 table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
+                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
                 table.addCell(new Phrase("SubTotal",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
                 table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
@@ -265,6 +267,8 @@ public class ControlReporte {
                 tmpPrecioVenta = ((ArticuloVenta) ventas[x]).getPrecioVenta();
                  Float tmpGranTotal =  tmpCantidad * tmpPrecioVenta;
                 
+                table.addCell(new Phrase(decimal.format(tmpGranTotal),FontFactory.getFont(FontFactory.HELVETICA, 8))); 
+                 
                 tmpTotal = ((100*tmpGranTotal)/111);
                 decimal.format(tmpTotal);
                 table.addCell(new Phrase(decimal.format(tmpTotal),FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -273,7 +277,7 @@ public class ControlReporte {
                 table.addCell(new Phrase(decimal.format(tmpIVA),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                 
-                table.addCell(new Phrase(decimal.format(tmpPrecioVenta),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                table.addCell(new Phrase(decimal.format(tmpPrecioVenta*tmpCantidad),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                
                
@@ -288,7 +292,7 @@ public class ControlReporte {
                 
 
                 document.add(table);
-                document.add(new Phrase("                                                                                                                                                                          Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                document.add(new Phrase("                                                                                                                                                                                Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
            
                 
                 JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
@@ -451,6 +455,7 @@ public class ControlReporte {
         String tmpFecha;
         String tmpConcepto;
         Integer tmpCantidad;
+        Integer tmpExistencia;
         Float tmpPrecioVenta;
         Float tmpPrecioCompra;
         
@@ -476,10 +481,11 @@ public class ControlReporte {
         
         if(articuloBuscar!=null){
         Long tmpIDart = articuloBuscar.getIdArticulo();
-       
+         
         
         Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"},{"fecha", "<=", fecha2+" 23:59:00"},{"idArticulo","=",tmpIDart}};
         mov = rMovimientos.buscarBD("all", opciones);
+        
         
         if (mov.length<=0) {
             return null;
@@ -514,17 +520,22 @@ public class ControlReporte {
                 linea.setAlignment(MIDDLE);     
                 document.add(linea);
                 
+                Paragraph rango = new Paragraph("Periodo de movimientos del "+fecha1+" al "+fecha2+"\n \n",FontFactory.getFont(FontFactory.HELVETICA_BOLD,12)); 
+                rango.setAlignment(Element.ALIGN_CENTER);
+                document.add(rango);
                 //Crear y llenar Tabla PDF
-                PdfPTable table = new PdfPTable(5);
-                PdfPCell cell = new PdfPCell(new Paragraph("Código de artículo: " +tmpIdArticulo + "   Descripción: "+((Articulo)art[0]).getDescripcion(),FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
-                cell.setColspan(5);
+                PdfPTable table = new PdfPTable(6);
+                PdfPCell cell = new PdfPCell(new Paragraph("Código de artículo: " +tmpIdArticulo + "   Descripción: "+articuloBuscar.getDescripcion(),FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12)));
+               
+                cell.setColspan(6);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                
                 table.addCell(cell);
-                table.addCell(new Phrase("Concepto",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));   
                 table.addCell(new Phrase("Fecha y Hora",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
+                table.addCell(new Phrase("Concepto",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));   
                 table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
+                table.addCell(new Phrase("Cantidad en Existencia",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Precio Compra",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Precio Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 
@@ -532,15 +543,16 @@ public class ControlReporte {
            //CONFLICTO PARA OBTENER DATOS DE HISTORIAL ALMACEN.
                 for(int x=0;x<mov.length;x++){
                      
-               
-                tmpConcepto = ((HistorialAlmacen)mov[x]).getConcepto();
-                table.addCell(new Phrase(tmpConcepto,FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                JOptionPane.showMessageDialog(null, "agrego Concepto: ");  
-                
                 tmpFecha = ((HistorialAlmacen) mov[x]).getFecha();
                 table.addCell(new Phrase(tmpFecha,FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
+                tmpConcepto = ((HistorialAlmacen)mov[x]).getConcepto();
+                table.addCell(new Phrase(tmpConcepto,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                             
                 tmpCantidad = ((HistorialAlmacen) mov[x]).getCantidad();
+                table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+                tmpCantidad = ((HistorialAlmacen) mov[x]).getCantidadActual();
                 table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                 tmpPrecioCompra = ((HistorialAlmacen)mov[x]).getPrecioCompra();

@@ -6,12 +6,20 @@
 
 package reportes;
 
+import articulo.Articulo;
+import articulo.ControlArticulo;
+import articulo.HistorialAlmacen;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import venta.ArticuloVenta;
 
 /**
  *
@@ -48,7 +56,6 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         etCodigoArticulo = new javax.swing.JLabel();
         txNumArt = new javax.swing.JTextField();
@@ -59,21 +66,17 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         etFechaFinal = new javax.swing.JLabel();
         txFechaInicio = new com.toedter.calendar.JDateChooser();
         btAceptarRepMovimientos = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbMovimientos = new javax.swing.JTable();
+        etDatosMov = new javax.swing.JLabel();
+        etDatosArt = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de Movimientos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
-        setMaximumSize(new java.awt.Dimension(1150, 250));
-        setMinimumSize(new java.awt.Dimension(1150, 250));
-        setPreferredSize(new java.awt.Dimension(1150, 250));
-        setLayout(new java.awt.GridBagLayout());
+        setMaximumSize(new java.awt.Dimension(1200, 350));
+        setMinimumSize(new java.awt.Dimension(1200, 350));
+        setPreferredSize(new java.awt.Dimension(1200, 350));
 
         etCodigoArticulo.setText("Código de Árticulo:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 15;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(56, 16, 180, 0);
-        add(etCodigoArticulo, gridBagConstraints);
 
         txNumArt.setMaximumSize(new java.awt.Dimension(6, 25));
         txNumArt.setMinimumSize(new java.awt.Dimension(6, 25));
@@ -83,34 +86,14 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
                 txNumArtKeyTyped(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 91;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(45, 4, 180, 0);
-        add(txNumArt, gridBagConstraints);
 
         etFechaInicio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etFechaInicio.setText("Fecha Termino");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(55, 4, 180, 0);
-        add(etFechaInicio, gridBagConstraints);
 
         txFechaFinal.setDateFormatString("yyyy-MM-dd");
         txFechaFinal.setMaximumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(45, 4, 180, 0);
-        add(txFechaFinal, gridBagConstraints);
 
         btExportarMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
         btExportarMovimientos.setText("Exportar");
@@ -119,12 +102,6 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
                 btExportarMovimientosActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(41, 111, 180, 16);
-        add(btExportarMovimientos, gridBagConstraints);
 
         btCancelarRepMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelarRepMovimientos.setText("Cancelar");
@@ -133,33 +110,14 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
                 btCancelarRepMovimientosActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(41, 10, 180, 0);
-        add(btCancelarRepMovimientos, gridBagConstraints);
 
         etFechaFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etFechaFinal.setText("Fecha Inicio");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(55, 18, 180, 0);
-        add(etFechaFinal, gridBagConstraints);
 
         txFechaInicio.setDateFormatString("yyyy-MM-dd");
         txFechaInicio.setMaximumSize(new java.awt.Dimension(85, 25));
         txFechaInicio.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaInicio.setPreferredSize(new java.awt.Dimension(85, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(45, 4, 180, 0);
-        add(txFechaInicio, gridBagConstraints);
 
         btAceptarRepMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
         btAceptarRepMovimientos.setText("Aceptar");
@@ -168,17 +126,103 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
                 btAceptarRepMovimientosActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(41, 32, 180, 0);
-        add(btAceptarRepMovimientos, gridBagConstraints);
+
+        tbMovimientos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Fecha y Hora", "Concepto", "Cantidad", "Cantidad en Existencia", "Precio de Compra", "Precio de Venta"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbMovimientos.setMaximumSize(new java.awt.Dimension(1150, 200));
+        tbMovimientos.setMinimumSize(new java.awt.Dimension(1150, 200));
+        tbMovimientos.setPreferredSize(new java.awt.Dimension(1150, 200));
+        jScrollPane1.setViewportView(tbMovimientos);
+
+        etDatosMov.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        etDatosArt.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(etCodigoArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(txNumArt, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(etFechaFinal)
+                        .addGap(4, 4, 4)
+                        .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(etFechaInicio)
+                        .addGap(4, 4, 4)
+                        .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btAceptarRepMovimientos)
+                        .addGap(29, 29, 29)
+                        .addComponent(btCancelarRepMovimientos)
+                        .addGap(50, 50, 50)
+                        .addComponent(btExportarMovimientos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(393, 393, 393)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(etDatosMov, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(etDatosArt, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))))
+                .addGap(22, 22, 22))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(etCodigoArticulo))
+                    .addComponent(txNumArt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(etFechaFinal))
+                    .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(etFechaInicio))
+                    .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAceptarRepMovimientos)
+                    .addComponent(btCancelarRepMovimientos)
+                    .addComponent(btExportarMovimientos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(etDatosMov, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addGap(8, 8, 8)
+                .addComponent(etDatosArt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExportarMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarMovimientosActionPerformed
         
-        
+        limpiarTabla();
         //Validación de campos
         ModeloCorte reporte = null;
         //Creamos controlador corte
@@ -194,7 +238,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         int band4=0;
         
         
-         String idArt = "";
+        String idArt = "";
         if (txNumArt.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Ingrese código de artículo");
             band2 =2;
@@ -298,9 +342,12 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
 
     private void txNumArtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumArtKeyTyped
         char caracter = evt.getKeyChar();
-        if(((caracter < '0') || (caracter > '9')) &&(caracter != KeyEvent.VK_BACK_SPACE)){
+        if(((caracter < '0') || (caracter > '9')) &&(caracter != KeyEvent.VK_BACK_SPACE) && (caracter != KeyEvent.VK_ENTER)){
         evt.consume();
         JOptionPane.showMessageDialog(this, "Ingrese sólo dígitos: {0,1,2,3,4,5,6,7,8,9}");
+        }
+        if(caracter==KeyEvent.VK_ENTER){
+            btAceptarRepMovimientosActionPerformed(null);
         }
 
 // TODO add your handling code here:
@@ -308,17 +355,211 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
 
     private void btAceptarRepMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarRepMovimientosActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "En construcción");
+      //Datos de Historial
+        limpiarTabla();
+        int campos = validarCampos();
+        if(campos==1){
+            
+        String idArt = txNumArt.getText();
+        Long tmpIdArticulo= Long.parseLong(idArt);
+        String tmpFecha;
+        String tmpConcepto;
+        Integer tmpCantidad;
+        Integer tmpExistencia;
+        Float tmpPrecioVenta;
+        Float tmpPrecioCompra;
+        
+        String fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+        String fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+        
+        
+        
+
+        //Iniciamos objetos necesarios para la busqueda.
+        
+        HistorialAlmacen rMovimientos = new HistorialAlmacen(true);
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        Articulo articuloBuscar = null;
+        Articulo rArt = new Articulo(true);
+        Object[] mov = null;
+        Object[] art = null;
+        
+        ModeloCorte reporteMovimientos = new ModeloCorte();
+        //Parametros de busqueda.
+        Boolean activo = true;
+        
+        //Obtener datos para convertir codigoArt a IDart
+        //Object[][] opciones1 = new Object[][]{{"codigoArticulo","=",idArticulo}};
+       // art = rArt.buscarBD("all", opciones1);
+        
+        articuloBuscar = ctrArticulo.buscarUnoPorCodigoArticulo(tmpIdArticulo);
+        
+        if(articuloBuscar!=null){
+        Long tmpIDart = articuloBuscar.getIdArticulo();
+        String tmpDescripcion = articuloBuscar.getDescripcion();
+        
+        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"},{"fecha", "<=", fecha2+" 23:59:00"},{"idArticulo","=",tmpIDart}};
+        mov = rMovimientos.buscarBD("all", opciones);
+        
+        
+        if (mov.length<=0) {
+        JOptionPane.showMessageDialog(this, " No existen registros de movimientos para "+tmpIdArticulo+" para este rango.");    
+        } else {
+         etDatosMov.setText("Periodo de movimientos del " +fecha1+ " al "+fecha2);
+         etDatosArt.setText("Código de Artículo: "+tmpIdArticulo+ " Descripción: "+tmpDescripcion);
+         llenarTabla(mov); 
+            
+        } 
+        }else{
+        JOptionPane.showMessageDialog(null, "No existe artículo "+tmpIdArticulo+", por favor ingrese otro código de artículo."); 
+        }
+        }//Cierre de if
     }//GEN-LAST:event_btAceptarRepMovimientosActionPerformed
 
 
+    private int validarCampos(){
+        txFechaInicio.setDateFormatString("yyy-MM-dd");
+        txFechaFinal.setDateFormatString("yyy-MM-dd");
+        String fecha1 = "";
+        String fecha2 = "";
+        
+        int band=0;
+        int band2=0;
+        int band3=0;
+        int band4=0;
+        
+        
+        String idArt = "";
+        if (txNumArt.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Ingrese código de artículo");
+            band2 =2;
+            
+        } else {
+            
+            idArt = txNumArt.getText();
+            band2=0;
+        }
+        
+        
+        if (txFechaInicio.getCalendar() != null) {
+            fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+            band3=0;
+                       
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha de Inicio");
+            band3 =3;
+        }     
+        
+        if (txFechaFinal.getCalendar() != null) {
+            fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            band=0;
+                       
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino");
+            band =1;
+        }
+        
+        //Validar fecha inicio <= fecha termino
+        if (txFechaFinal.getCalendar() != null && txFechaInicio.getCalendar() != null) {
+            int a1 = txFechaInicio.getCalendar().get(Calendar.YEAR);
+            int a2 = txFechaFinal.getCalendar().get(Calendar.YEAR);
+            
+            int mes1 = txFechaInicio.getCalendar().get(Calendar.MONTH);
+            int mes2 = txFechaFinal.getCalendar().get(Calendar.MONTH);
+            
+            int dia1 = txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
+            int dia2 = txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
+            
+            
+            if(a1>a2){
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+            band4 = 4;
+            }
+            
+            if(a1==a2){
+                if(mes1>mes2){
+                JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                band4 = 4;
+                }else{
+                    if(mes1==mes2){
+                        if(dia1>dia2){
+                            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
+                            band4 = 4;
+                        }
+                    }
+                
+                }
+            }else{
+            band4=0;
+            }
+            
+        } else {
+            
+            band4 =0;
+        }
+        int valor=0;
+        if(band==0&&band2==0&&band3==0&&band4==0){
+        valor=1;
+        }
+        return valor;
+    
+    }
+    private void llenarTabla(Object[] mov){
+    
+        DefaultTableModel datos = (DefaultTableModel) tbMovimientos.getModel();
+        datos.setRowCount(0);
+        for(Object thisMov:mov)
+          {
+         
+          
+          datos.addRow(new Object[] {
+         ((HistorialAlmacen)thisMov).getFecha(),
+         ((HistorialAlmacen)thisMov).getConcepto(),
+         ((HistorialAlmacen)thisMov).getCantidad(),
+         ((HistorialAlmacen)thisMov).getCantidadActual(),
+         ((HistorialAlmacen)thisMov).getPrecioCompra(),
+         ((HistorialAlmacen)thisMov).getPrecioVenta()
+           
+         
+            
+          });
+        }
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbMovimientos.getModel());
+          
+        tbMovimientos.setRowSorter(sorter);
+    
+    }
+    private void limpiarTabla(){
+        DefaultTableModel datos = (DefaultTableModel) tbMovimientos.getModel();
+        datos.setRowCount(0);
+        
+          
+         
+          
+          datos.addRow(new Object[] {
+         "","","","","","",""});
+        
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbMovimientos.getModel());
+          
+        tbMovimientos.setRowSorter(sorter);
+        etDatosArt.setText("");
+        etDatosMov.setText("");
+        
+    
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarRepMovimientos;
     private javax.swing.JButton btCancelarRepMovimientos;
     private javax.swing.JButton btExportarMovimientos;
     private javax.swing.JLabel etCodigoArticulo;
+    private javax.swing.JLabel etDatosArt;
+    private javax.swing.JLabel etDatosMov;
     private javax.swing.JLabel etFechaFinal;
     private javax.swing.JLabel etFechaInicio;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbMovimientos;
     private com.toedter.calendar.JDateChooser txFechaFinal;
     private com.toedter.calendar.JDateChooser txFechaInicio;
     private javax.swing.JTextField txNumArt;
