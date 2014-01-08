@@ -53,17 +53,20 @@ public class VistaReporteCorte extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelRangos = new javax.swing.JPanel();
+        txFecIni = new javax.swing.JLabel();
+        txFechaInicio = new com.toedter.calendar.JDateChooser();
+        btAceptarCC = new javax.swing.JToggleButton();
         btCancelarReporteC = new javax.swing.JButton();
         txFechaFinal = new com.toedter.calendar.JDateChooser();
-        btExportarCorteCaja = new javax.swing.JButton();
-        txFechaInicio = new com.toedter.calendar.JDateChooser();
-        txFecIni = new javax.swing.JLabel();
         txFecTer = new javax.swing.JLabel();
-        btAceptarCC = new javax.swing.JToggleButton();
+        btExportarCorteCaja = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCorteCaja = new javax.swing.JTable();
-        txRango = new javax.swing.JLabel();
+        panelRangos1 = new javax.swing.JPanel();
+        btExportarCorteDia = new javax.swing.JButton();
         btCorteDia = new javax.swing.JButton();
+        txRango = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte Corte de Caja", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         setMaximumSize(new java.awt.Dimension(1200, 350));
@@ -75,37 +78,18 @@ public class VistaReporteCorte extends javax.swing.JPanel {
             }
         });
 
-        btCancelarReporteC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
-        btCancelarReporteC.setText("Cancelar");
-        btCancelarReporteC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarReporteCActionPerformed(evt);
-            }
-        });
+        panelRangos.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Por Periodo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        panelRangos.setMaximumSize(new java.awt.Dimension(815, 70));
+        panelRangos.setMinimumSize(new java.awt.Dimension(815, 70));
+        panelRangos.setPreferredSize(new java.awt.Dimension(815, 70));
 
-        txFechaFinal.setDateFormatString("yyyy-MM-dd");
-        txFechaFinal.setMaximumSize(new java.awt.Dimension(85, 25));
-        txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
-        txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
-
-        btExportarCorteCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
-        btExportarCorteCaja.setText("Exportar");
-        btExportarCorteCaja.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExportarCorteCajaActionPerformed(evt);
-            }
-        });
+        txFecIni.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txFecIni.setText("Fecha Inicio:");
 
         txFechaInicio.setDateFormatString("yyyy-MM-dd");
         txFechaInicio.setMaximumSize(new java.awt.Dimension(85, 25));
         txFechaInicio.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaInicio.setPreferredSize(new java.awt.Dimension(85, 25));
-
-        txFecIni.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txFecIni.setText("Fecha Inicio:");
-
-        txFecTer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        txFecTer.setText("Fecha Termino:");
 
         btAceptarCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
         btAceptarCC.setText("Aceptar");
@@ -122,6 +106,67 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                 btAceptarCCKeyTyped(evt);
             }
         });
+
+        btCancelarReporteC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
+        btCancelarReporteC.setText("Cancelar");
+        btCancelarReporteC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarReporteCActionPerformed(evt);
+            }
+        });
+
+        txFechaFinal.setDateFormatString("yyyy-MM-dd");
+        txFechaFinal.setMaximumSize(new java.awt.Dimension(85, 25));
+        txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
+        txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
+
+        txFecTer.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txFecTer.setText("Fecha Termino:");
+
+        btExportarCorteCaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
+        btExportarCorteCaja.setText("Exportar");
+        btExportarCorteCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExportarCorteCajaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRangosLayout = new javax.swing.GroupLayout(panelRangos);
+        panelRangos.setLayout(panelRangosLayout);
+        panelRangosLayout.setHorizontalGroup(
+            panelRangosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRangosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txFecIni)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txFecTer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btAceptarCC)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btCancelarReporteC)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btExportarCorteCaja)
+                .addContainerGap())
+        );
+        panelRangosLayout.setVerticalGroup(
+            panelRangosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRangosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRangosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txFecTer)
+                    .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txFecIni)
+                    .addGroup(panelRangosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btAceptarCC)
+                        .addComponent(btCancelarReporteC)
+                        .addComponent(btExportarCorteCaja)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jScrollPane1.setMaximumSize(new java.awt.Dimension(1150, 210));
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1150, 210));
@@ -146,14 +191,25 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tbCorteCaja.setMaximumSize(new java.awt.Dimension(1150, 150));
+        tbCorteCaja.setMinimumSize(new java.awt.Dimension(1150, 150));
+        tbCorteCaja.setPreferredSize(new java.awt.Dimension(1150, 150));
         jScrollPane1.setViewportView(tbCorteCaja);
 
-        txRango.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txRango.setMaximumSize(new java.awt.Dimension(300, 50));
-        txRango.setMinimumSize(new java.awt.Dimension(300, 50));
-        txRango.setPreferredSize(new java.awt.Dimension(300, 50));
+        panelRangos1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Corte del Día", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        panelRangos1.setMaximumSize(new java.awt.Dimension(300, 70));
+        panelRangos1.setMinimumSize(new java.awt.Dimension(300, 70));
+        panelRangos1.setPreferredSize(new java.awt.Dimension(300, 70));
 
-        btCorteDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/corte.png"))); // NOI18N
+        btExportarCorteDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
+        btExportarCorteDia.setText("Exportar");
+        btExportarCorteDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExportarCorteDiaActionPerformed(evt);
+            }
+        });
+
+        btCorteDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btCorteDia.setText("Corte del Día");
         btCorteDia.setMaximumSize(new java.awt.Dimension(127, 29));
         btCorteDia.setMinimumSize(new java.awt.Dimension(127, 29));
@@ -164,55 +220,57 @@ public class VistaReporteCorte extends javax.swing.JPanel {
             }
         });
 
+        javax.swing.GroupLayout panelRangos1Layout = new javax.swing.GroupLayout(panelRangos1);
+        panelRangos1.setLayout(panelRangos1Layout);
+        panelRangos1Layout.setHorizontalGroup(
+            panelRangos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRangos1Layout.createSequentialGroup()
+                .addComponent(btCorteDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(btExportarCorteDia))
+        );
+        panelRangos1Layout.setVerticalGroup(
+            panelRangos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRangos1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelRangos1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCorteDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btExportarCorteDia))
+                .addContainerGap())
+        );
+
+        txRango.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txRango.setMaximumSize(new java.awt.Dimension(300, 50));
+        txRango.setMinimumSize(new java.awt.Dimension(300, 50));
+        txRango.setPreferredSize(new java.awt.Dimension(300, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txFecIni)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                        .addComponent(txFecTer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btAceptarCC)
-                        .addGap(18, 18, 18)
-                        .addComponent(btCancelarReporteC)
-                        .addGap(18, 18, 18)
-                        .addComponent(btCorteDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(157, 157, 157)
-                        .addComponent(btExportarCorteCaja))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(panelRangos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelRangos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txFecIni)
-                        .addComponent(txFecTer))
-                    .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btAceptarCC)
-                        .addComponent(btCancelarReporteC)
-                        .addComponent(btExportarCorteCaja)
-                        .addComponent(btCorteDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelRangos1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRangos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -221,14 +279,9 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         
         limpiarTabla();
         // Ejecuto corte de caja
-        if(tipoCorte==1){
+        tipoCorte=1;
         exportarCorteRangos();
-        }
-        else{
-        if(tipoCorte==2){
-        exportarCorteDia();
-        }
-        }
+        
         
         // TODO add your handling code here:
     }//GEN-LAST:event_btExportarCorteCajaActionPerformed
@@ -488,7 +541,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         Object[][] opciones = new Object[][]{{"fecha", ">=", fechaDia+" 00:00:00"}, {"fecha", "<=", fechaDia+" 23:59:00"}};
 
         ventas = mVentas.buscarBD("all", opciones);
-        JOptionPane.showMessageDialog(this, " fecha de hoy "+ fechaDia);
+        
         if(ventas.length>0){
             
         DecimalFormat decimal = new DecimalFormat("#.##");
@@ -503,7 +556,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         DefaultTableModel datos = (DefaultTableModel) tbCorteCaja.getModel();
         datos.setRowCount(0);
         
-        txRango.setText("Corte del día.");
+        txRango.setText("Corte del día "+fechaDia+".");
      
        
             for (x = 0; x <ventas.length; x++) {
@@ -537,6 +590,14 @@ public class VistaReporteCorte extends javax.swing.JPanel {
      
         
     }//GEN-LAST:event_btCorteDiaActionPerformed
+
+    private void btExportarCorteDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarCorteDiaActionPerformed
+        // TODO add your handling code here:
+        //Exportar a PDF corte del dia
+        tipoCorte=2;
+        exportarCorteDia();
+        
+    }//GEN-LAST:event_btExportarCorteDiaActionPerformed
 
     private int validaciones (){
         txFechaInicio.setDateFormatString("yyy-MM-dd");
@@ -599,7 +660,10 @@ public class VistaReporteCorte extends javax.swing.JPanel {
     private javax.swing.JButton btCancelarReporteC;
     private javax.swing.JButton btCorteDia;
     private javax.swing.JButton btExportarCorteCaja;
+    private javax.swing.JButton btExportarCorteDia;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelRangos;
+    private javax.swing.JPanel panelRangos1;
     private javax.swing.JTable tbCorteCaja;
     private javax.swing.JLabel txFecIni;
     private javax.swing.JLabel txFecTer;
