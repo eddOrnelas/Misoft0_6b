@@ -199,7 +199,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExportarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarVentasActionPerformed
-       
+        limpiarTabla();
         ModeloCorte reporte = null;
         //Creamos controlador corte
         ControlReporte ctrCorte = new ControlReporte();
@@ -227,7 +227,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         reporte = ctrCorte.realizarReporteVentas(nVenta);
 
         if (reporte == null) {
-            JOptionPane.showMessageDialog(this, " No existen registros para ese No. de Venta.");
+            JOptionPane.showMessageDialog(this, " No existen registros para No. de Venta "+nVenta);
         } 
         }
 
@@ -249,6 +249,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     private void btAceptarRepVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarRepVentasActionPerformed
         //Botón aceptar
         // TODO add your handling code here:
+        limpiarTabla();
         ArticuloVenta mVentas = new ArticuloVenta(true);
        
         if(txNumVenta.getText().equals("")){
@@ -261,10 +262,9 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
          //String donde almacenar el texto a buscar
         Long nVenta = Long.parseLong(txNumVenta.getText());
         
-        //Iniciamos controlador
-        ControlReporte ctrReporte = new ControlReporte();
+        
         //Iniciamos objectos donde guardaremos los resultados de busqueda
-        Object[] venta = null;
+       
         
         Object[] ventas = null;
         
@@ -272,14 +272,11 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
         ventas = mVentas.buscarBD("all", opciones);
         
-       
-        if(ventas.length<0)
-            JOptionPane.showMessageDialog(this,"No existen registros para ese No. de Venta.");
-        else
-        {
-        //Obtener descripcion
-               
         
+        if(ventas.length==0){
+        JOptionPane.showMessageDialog(this,"No existen registros para No. de Venta "+nVenta);
+        }else
+        {
         llenarTabla(ventas);
         }
         
@@ -312,6 +309,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
+           limpiarTabla();
            btAceptarRepVentasActionPerformed(null);
         }
     }
@@ -383,6 +381,18 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         tbVentas.setRowSorter(sorter);}
 
 }
+    private void limpiarTabla(){
+        DefaultTableModel datos = (DefaultTableModel) tbVentas.getModel();
+        datos.setRowCount(0);
+        datos.addRow(new Object[] {
+         "","","","","",""   
+       });
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbVentas.getModel());
+          
+        tbVentas.setRowSorter(sorter);
+        txFecHr.setText("");
+        txTotal.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarRepVentas;
     private javax.swing.JButton btCancelarRepVentas;

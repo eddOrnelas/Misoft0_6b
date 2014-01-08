@@ -205,7 +205,9 @@ public class VistaReportes extends javax.swing.JPanel {
             panelRangos.add(vista);
             vista.show();
             this.repaint();
-           
+            btArticulos.setBackground(Color.lightGray);
+            btReporteVentas.setBackground(Color.lightGray);
+            btCorte.setBackground(Color.lightGray);
             btMovimientos.setBackground(Color.gray);
             
         } catch (ParseException ex) {
