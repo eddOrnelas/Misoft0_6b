@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <Properties>
@@ -23,61 +23,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <EmptySpace min="183" pref="183" max="-2" attributes="0"/>
-              <Component id="jUsuario" min="-2" pref="155" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <Component id="EditarUsuario" min="-2" pref="700" max="-2" attributes="0"/>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="700" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="177" pref="177" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel2" min="-2" pref="351" max="-2" attributes="0"/>
-                      <EmptySpace min="298" pref="298" max="-2" attributes="0"/>
-                      <Component id="jUsuarios" min="-2" pref="412" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel3" min="-2" pref="351" max="-2" attributes="0"/>
-                      <EmptySpace min="298" pref="298" max="-2" attributes="0"/>
-                      <Component id="txNombre" min="-2" pref="913" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel4" min="-2" pref="351" max="-2" attributes="0"/>
-                      <EmptySpace min="298" pref="298" max="-2" attributes="0"/>
-                      <Component id="txApPaterno" min="-2" pref="913" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel5" min="-2" pref="351" max="-2" attributes="0"/>
-                      <EmptySpace min="298" pref="298" max="-2" attributes="0"/>
-                      <Component id="txApMaterno" min="-2" pref="913" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel6" min="-2" pref="351" max="-2" attributes="0"/>
-                      <EmptySpace min="298" pref="298" max="-2" attributes="0"/>
-                      <Component id="txContraseña" min="-2" pref="913" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel7" min="-2" pref="351" max="-2" attributes="0"/>
-                      <EmptySpace min="298" pref="298" max="-2" attributes="0"/>
-                      <Component id="bxPermisos" min="-2" pref="913" max="-2" attributes="0"/>
-=======
               <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
               <Component id="jUsuario" min="-2" pref="155" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-=======
-              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-              <Component id="jUsuario" min="-2" pref="155" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -122,10 +72,6 @@
                           <Component id="jLabel5" alignment="0" min="-2" pref="351" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-<<<<<<< HEAD
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
                   </Group>
               </Group>
           </Group>
@@ -138,15 +84,7 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Component id="jUsuario" min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-              <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
-=======
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
@@ -158,16 +96,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      <Component id="txNombre" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-=======
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
                       <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                       <Component id="txNombre" min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
@@ -176,55 +104,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="txApPaterno" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-<<<<<<< HEAD
-              </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="txApMaterno" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel6" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      <Component id="txContraseña" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-<<<<<<< HEAD
-              <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="txApMaterno" min="-2" pref="31" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel6" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                      <Component id="txContraseña" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-=======
-              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="bxPermisos" min="-2" pref="46" max="-2" attributes="0"/>
-              </Group>
-<<<<<<< HEAD
-              <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="EditarUsuario" min="-2" pref="48" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="48" max="-2" attributes="0"/>
-=======
-=======
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -247,15 +126,10 @@
                   </Group>
                   <Component id="bxPermisos" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButton2" min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="EditarUsuario" min="-2" pref="48" max="-2" attributes="0"/>
-<<<<<<< HEAD
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
               </Group>
           </Group>
       </Group>
@@ -287,13 +161,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bxPermisosActionPerformed"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="bxPermisosKeyPressed"/>
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -339,49 +206,21 @@
     <Component class="javax.swing.JTextField" name="txNombre">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txNombreActionPerformed"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txNombreKeyPressed"/>
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txApMaterno">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txApMaternoActionPerformed"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txApMaternoKeyPressed"/>
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txApPaterno">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txApPaternoActionPerformed"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txApPaternoKeyPressed"/>
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txContrase&#xf1;a">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txContrase&#xf1;aActionPerformed"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txContrase&#xf1;aKeyPressed"/>
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
-=======
->>>>>>> 3ef7f7748c10eeba05beb91aeecb1adbcb903fbf
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="EditarUsuario">
