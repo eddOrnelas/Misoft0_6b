@@ -4,6 +4,8 @@
  */
 package articulo;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author Eddie
@@ -52,6 +54,16 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
                 verVistaAltaArticulos(evt);
             }
         });
+        btAltaArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAltaArticulosActionPerformed(evt);
+            }
+        });
+        btAltaArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAltaArticulosKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -68,6 +80,16 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 verVistaConsultaArticulos(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton5KeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -96,7 +118,46 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
 
     private void verVistaAltaArticulos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVistaAltaArticulos
         // TODO add your handling code here:
+//        
+//        jpArticulos.removeAll();
+//       jpArticulos.revalidate();
+//       
+//       VistaRegistrarArticulo vistaAltaArticulos = new VistaRegistrarArticulo();
+//       
+//        jpArticulos.add(vistaAltaArticulos);
+//        
+//        vistaAltaArticulos.show();
         
+    }//GEN-LAST:event_verVistaAltaArticulos
+
+    private void verVistaConsultaArticulos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVistaConsultaArticulos
+        // TODO add your handling code here:
+//        
+//         VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral();
+//        jpArticulos.removeAll();
+//        jpArticulos.add(vista);
+//        vista.show();
+//        jpArticulos.revalidate();
+//        jpArticulos.repaint();
+        
+    }//GEN-LAST:event_verVistaConsultaArticulos
+
+    private void btAltaArticulosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAltaArticulosKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==btAltaArticulos)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          btAltaArticulosActionPerformed(null);                    
+        }
+    }
+        
+    }//GEN-LAST:event_btAltaArticulosKeyPressed
+
+    private void btAltaArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaArticulosActionPerformed
+        // TODO add your handling code here:
+         
         jpArticulos.removeAll();
        jpArticulos.revalidate();
        
@@ -105,20 +166,31 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         jpArticulos.add(vistaAltaArticulos);
         
         vistaAltaArticulos.show();
-        
-    }//GEN-LAST:event_verVistaAltaArticulos
+    }//GEN-LAST:event_btAltaArticulosActionPerformed
 
-    private void verVistaConsultaArticulos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVistaConsultaArticulos
+    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
         // TODO add your handling code here:
+                           int key=evt.getKeyCode();
+    if(evt.getSource()==jButton5)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+         jButton5ActionPerformed(null);                    
+        }
+    }
         
+    }//GEN-LAST:event_jButton5KeyPressed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+           
          VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral();
         jpArticulos.removeAll();
         jpArticulos.add(vista);
         vista.show();
         jpArticulos.revalidate();
         jpArticulos.repaint();
-        
-    }//GEN-LAST:event_verVistaConsultaArticulos
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAltaArticulos;
