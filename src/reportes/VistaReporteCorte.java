@@ -26,6 +26,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
     /**
      * Creates new form VistaReporteCorte
      */
+    int tipoCorte = 0;
     public VistaReporteCorte() {
         initComponents();
         //Fecha no sea mayor a la actual.
@@ -62,6 +63,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCorteCaja = new javax.swing.JTable();
         txRango = new javax.swing.JLabel();
+        btCorteDia = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte Corte de Caja", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         setMaximumSize(new java.awt.Dimension(1200, 350));
@@ -146,36 +148,50 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbCorteCaja);
 
-        txRango.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txRango.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txRango.setMaximumSize(new java.awt.Dimension(300, 50));
         txRango.setMinimumSize(new java.awt.Dimension(300, 50));
         txRango.setPreferredSize(new java.awt.Dimension(300, 50));
+
+        btCorteDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/corte.png"))); // NOI18N
+        btCorteDia.setText("Corte del Día");
+        btCorteDia.setMaximumSize(new java.awt.Dimension(127, 29));
+        btCorteDia.setMinimumSize(new java.awt.Dimension(127, 29));
+        btCorteDia.setPreferredSize(new java.awt.Dimension(127, 29));
+        btCorteDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCorteDiaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 28, Short.MAX_VALUE)
+                .addGap(0, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txFecIni)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txFecTer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(81, 81, 81)
-                                .addComponent(btAceptarCC))
-                            .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(63, 63, 63)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(txFecTer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btAceptarCC)
+                        .addGap(18, 18, 18)
                         .addComponent(btCancelarReporteC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btExportarCorteCaja)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btCorteDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157)
+                        .addComponent(btExportarCorteCaja))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,11 +206,12 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btAceptarCC)
                         .addComponent(btCancelarReporteC)
-                        .addComponent(btExportarCorteCaja))
+                        .addComponent(btExportarCorteCaja)
+                        .addComponent(btCorteDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -204,8 +221,19 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         
         limpiarTabla();
         // Ejecuto corte de caja
+        if(tipoCorte==1){
+        exportarCorteRangos();
+        }
+        else{
+        if(tipoCorte==2){
+        exportarCorteDia();
+        }
+        }
         
-        ModeloCorte reporte = null;
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btExportarCorteCajaActionPerformed
+    private void exportarCorteRangos(){
+    ModeloCorte reporte = null;
         //Creamos controlador corte
         ControlReporte ctrCorte = new ControlReporte();
 
@@ -272,16 +300,40 @@ public class VistaReporteCorte extends javax.swing.JPanel {
             }
         }
         if(band==1&&band2==2&&band4==0){
-        reporte = ctrCorte.realizarReporteCorte(fecha1, fecha2);
+        reporte = ctrCorte.realizarReporteCorte(fecha1, fecha2,tipoCorte);
 
         if (reporte == null) {
             JOptionPane.showMessageDialog(this, " No existen registros de corte de caja para ese rango de fechas.");
 
         }
         }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btExportarCorteCajaActionPerformed
+    
+    }
+    private void exportarCorteDia(){
+        
+        ModeloCorte reporte = null;
+        //Creamos controlador corte
+        ControlReporte ctrCorte = new ControlReporte();
 
+       
+        
+        Calendar cal = new GregorianCalendar();
+            int month = cal.get(Calendar.MONTH);
+            int year = cal.get(Calendar.YEAR);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            String fechaDia = (year + "-" + (month+1) + "-" + day); 
+        String fecha1 = fechaDia;
+        String fecha2 = fechaDia;
+
+        
+        reporte = ctrCorte.realizarReporteCorte(fecha1, fecha2,tipoCorte);
+
+        if (reporte == null) {
+            JOptionPane.showMessageDialog(this, " No existen registros de corte de caja para el día de hoy.");
+
+        
+        }
+    }
     private void btCancelarReporteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarReporteCActionPerformed
         // Boton Cancelar Rep Corte Caja
            
@@ -297,7 +349,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
     private void btAceptarCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarCCActionPerformed
         // TODO add your handling code here:
         //Aceptar Repote Corte de Caja
-        
+        tipoCorte=1;
         limpiarTabla();
        //Iniciamos objetos necesarios para la busqueda.
         Venta mVentas = new Venta(true);
@@ -420,6 +472,72 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_formKeyPressed
 
+    private void btCorteDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCorteDiaActionPerformed
+        // TODO add your handling code here:
+        //Reporte por Corte de día
+        tipoCorte=2;
+        Venta mVentas = new Venta(true);
+        Object[] ventas = null;
+        
+            Calendar cal = new GregorianCalendar();
+            int month = cal.get(Calendar.MONTH);
+            int year = cal.get(Calendar.YEAR);
+            int day = cal.get(Calendar.DAY_OF_MONTH);
+            String fechaDia = (year + "-" + (month+1) + "-" + day); 
+       
+        Object[][] opciones = new Object[][]{{"fecha", ">=", fechaDia+" 00:00:00"}, {"fecha", "<=", fechaDia+" 23:59:00"}};
+
+        ventas = mVentas.buscarBD("all", opciones);
+        JOptionPane.showMessageDialog(this, " fecha de hoy "+ fechaDia);
+        if(ventas.length>0){
+            
+        DecimalFormat decimal = new DecimalFormat("#.##");
+        
+     
+        Integer tmpNoVentas = 0;
+        Float tmpVentas = 0F;
+        Float tmpSubtotal = 0F;
+        Float tmpIVA = 0F;
+        Float tmpTotal = 0F;
+        int x=0;
+        DefaultTableModel datos = (DefaultTableModel) tbCorteCaja.getModel();
+        datos.setRowCount(0);
+        
+        txRango.setText("Corte del día.");
+     
+       
+            for (x = 0; x <ventas.length; x++) {
+
+                
+                tmpVentas = tmpVentas +((Venta) ventas[x]).getTotal();
+                
+                tmpSubtotal += ((((Venta)ventas[x]).getTotal())*100)/111;
+               
+                tmpIVA +=((((Venta)ventas[x]).getTotal())*11)/111;
+               
+                tmpNoVentas++;
+               
+                
+               }
+            
+        
+         
+            
+            
+          
+          datos.addRow(new Object[] {
+          tmpNoVentas, decimal.format(tmpSubtotal),decimal.format(tmpIVA),decimal.format(tmpSubtotal+tmpIVA)
+          });
+          RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbCorteCaja.getModel());
+          
+        tbCorteCaja.setRowSorter(sorter);
+        }else{
+        JOptionPane.showMessageDialog(this, " No existen registros para el día de hoy.");
+        }
+     
+        
+    }//GEN-LAST:event_btCorteDiaActionPerformed
+
     private int validaciones (){
         txFechaInicio.setDateFormatString("yyy-MM-dd");
         txFechaFinal.setDateFormatString("yyy-MM-dd");
@@ -479,6 +597,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btAceptarCC;
     private javax.swing.JButton btCancelarReporteC;
+    private javax.swing.JButton btCorteDia;
     private javax.swing.JButton btExportarCorteCaja;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbCorteCaja;

@@ -40,7 +40,7 @@ import venta.Venta;
 public class ControlReporte {
    
     
-    public ModeloCorte realizarReporteCorte(String fecha1, String fecha2) {
+    public ModeloCorte realizarReporteCorte(String fecha1, String fecha2,int tipoCorte) {
         //Iniciamos objetos necesarios para la busqueda.
         Venta mVentas = new Venta(true);
         Object[] ventas = null;
@@ -107,7 +107,15 @@ public class ControlReporte {
                 document.add(linea);
             
             PdfPTable table = new PdfPTable(2);
-            PdfPCell cell = new PdfPCell(new Paragraph("Corte del día " + fecha1 + " al " + fecha2,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+            PdfPCell cell = new PdfPCell();
+            if(tipoCorte==1){
+            cell = new PdfPCell(new Paragraph("Corte del día " + fecha1 + " al " + fecha2,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+            }
+            if(tipoCorte==2){
+            cell = new PdfPCell( new Paragraph ("Corte del día "+ fecha1));
+            }
+            
+            
             cell.setColspan(4);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
             cell.setBackgroundColor(BaseColor.LIGHT_GRAY);

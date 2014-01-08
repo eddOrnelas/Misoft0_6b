@@ -144,10 +144,10 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             tbVentas.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        txFecHr.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txFecHr.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txFecHr.setMaximumSize(new java.awt.Dimension(300, 30));
 
-        txTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txTotal.setMaximumSize(new java.awt.Dimension(200, 30));
         txTotal.setMinimumSize(new java.awt.Dimension(200, 30));
         txTotal.setPreferredSize(new java.awt.Dimension(200, 30));
