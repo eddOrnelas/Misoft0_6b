@@ -737,7 +737,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
             return errorLog;
     }
 
-    Boolean elimiarArticuloPorCodigo(Long codigoArticulo){
+    public Boolean elimiarArticuloPorCodigo(Long codigoArticulo){
          Articulo articulo = new Articulo(true);
         
         //Articulo tmpArticulo = buscarUnoPorCodigoArticulo(codigoArticulo);

@@ -494,7 +494,7 @@ public Boolean acualizarBD()
     
     
     
-    qry += "WHERE "+keyField+" = ?";
+    qry += " WHERE "+keyField+" = ?";
    // qry +=" FROM"+" "+useTable+ " WHERE "+keyField+" = ? LIMIT 1";
     System.out.println(qry);//Debug qyr
     try {
