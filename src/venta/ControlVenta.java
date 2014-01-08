@@ -670,6 +670,103 @@ return true;
          return true;
     }
 
+    public Boolean cancelarArticuloVenta(Long idVenta, Long codigoArticulo, Integer cantidadDevolver) {
+       
+        //Iniciamos objetos clase
+        Venta venta = new Venta(true);
+        ArticuloVenta artVenta = new ArticuloVenta(true);
+        ArticuloVenta artVentaBusqueda = new ArticuloVenta();
+        ArticuloVenta artVentaCancelar = new ArticuloVenta(true);
+        HistorialAlmacen historial = new HistorialAlmacen(true);
+        Articulo datosArticulo = new Articulo(true);
+        Articulo articuloAlmacen = new Articulo(true);
+        
+        Object[] articulos = null;
+        
+        //Validar la venta
+        
+        venta.setIdVenta(idVenta);
+        Boolean ventaExiste = venta.buscarBD();
+        
+        if(ventaExiste)
+            if(venta.getCancelado())
+            {
+                ventaExiste = false;
+            }
+        
+        if(ventaExiste){
+            
+            
+            //Buscamos referencias del articulo por su codigo validamos que exista tal articulo
+            datosArticulo = ctrArticulo.buscarUnoPorCodigoArticulo(codigoArticulo);
+            
+            //hacemos un return para salir si falla esta validacion
+            if(datosArticulo == null)
+                return false;
+            
+            //Buscamos articulo de la venta y validamos que exista
+            Object[][] options = {{"idArticulo", "=", datosArticulo.getIdArticulo()},{"idVenta","=",idVenta}};
+            articulos = artVenta.buscarBD("all", options);
+            
+            //hacemos un return para salir si falla esta validacion
+            if(articulos == null)
+                return false;
+            
+            //Si encontramos articulos que coincidan nos traemos el primero
+            artVentaBusqueda = ((ArticuloVenta) articulos[0]);
+            
+            //Inicializamos el articulo con ORM
+            artVentaCancelar.setIdArticuloVenta(artVentaBusqueda.getIdArticuloVenta().longValue());
+            artVentaCancelar.buscarBD();
+            
+            //Modificamos los datos del articulo venta
+            
+            artVentaCancelar.setDevolucion(true);
+            artVentaCancelar.setCantidadDevuelto(artVentaCancelar.getCantidad()-cantidadDevolver);
+            
+            Boolean edicionCorrecta = artVentaCancelar.acualizarBD();
+            
+            if(edicionCorrecta){
+                
+                //Reintegramos la cantidad a almacen
+                articuloAlmacen.setIdArticulo(datosArticulo.getIdArticulo());
+                articuloAlmacen.buscarBD();
+                articuloAlmacen.setCantidadExistencia(cantidadDevolver+datosArticulo.getCantidadExistencia());
+                Boolean actualizacionAlmacen = articuloAlmacen.acualizarBD();
+                
+                if(!actualizacionAlmacen){
+                    return false;
+                }
+                
+                //Introducimos registro en historial
+                historial.setIdArticulo(datosArticulo.getIdArticulo());
+                historial.setConcepto("Devolucion");
+                historial.setPrecioCompra(datosArticulo.getPrecioCompra());
+                historial.setPrecioVenta(datosArticulo.getPrecioVenta());
+                historial.setCantidad(cantidadDevolver);
+                historial.setCantidadActual(cantidadDevolver+datosArticulo.getCantidadExistencia());
+                historial.setUnidad(datosArticulo.getUnidad());
+                historial.setCantidadUnidad(datosArticulo.getCantidadUnidad());
+                Integer historialCorrecto = historial.registrarBD();
+                
+                //Validamos se haya hecho el registro en historial
+                if(historialCorrecto!=1)
+                    return false;
+                
+                
+            }else{
+                //Cancelamos operacion y salimos de metodo
+                return false;
+            }
+            
+            
+        }
+        
+        
+        
+        return true;
+    }
+
 
 }
 

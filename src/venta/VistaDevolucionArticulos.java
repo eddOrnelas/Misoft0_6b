@@ -16,6 +16,7 @@ import javax.swing.RowSorter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import usuario.ControlUsuario;
 
 /**
  *
@@ -25,6 +26,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
 
     public JTextField txBuscarArticulo= null;
     public JPanel formulario = null;
+    public Long venta = null;
     
     /**
      * Creates new form VistaConsultarArticulo
@@ -54,7 +56,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         txBusqueda = new javax.swing.JTextField();
         btBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablaDevolucionArticulos = new javax.swing.JTable();
+        tbArticulos = new javax.swing.JTable();
         btRealizarVenta = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
 
@@ -113,12 +115,12 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         getContentPane().add(btBuscar, gridBagConstraints);
 
-        tablaDevolucionArticulos.setModel(new javax.swing.table.DefaultTableModel(
+        tbArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo Articulo", "Descripcion", "Cantidad", "Subtotal"
+                "Codigo Articulo", "Descripcion", "Cantidad Vendida", "Precio Venta"
             }
         ) {
             Class[] types = new Class [] {
@@ -136,7 +138,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(tablaDevolucionArticulos);
+        jScrollPane2.setViewportView(tbArticulos);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -154,6 +156,11 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         btRealizarVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btRealizarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943729_edit-clear.png"))); // NOI18N
         btRealizarVenta.setText("Realizar Devolucion");
+        btRealizarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRealizarVentaActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -197,6 +204,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         //String donde almacenar el texto a buscar y variables aux
         Long idVenta = null;
         String numeroVenta = txBusqueda.getText();
+        venta = null;
         
         
         //Validaciones de caja texto y de la venta exista
@@ -207,7 +215,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         
          try{
            idVenta = Long.parseLong(numeroVenta); 
-           
+           venta = idVenta;
     }catch(NumberFormatException e)
         {
             //errorLog+="- El codigo de articulo tiene un formato incorrecto \n";
@@ -238,6 +246,12 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         ventaBuscar.setIdVenta(idVenta);
         Boolean ventaValida = ventaBuscar.buscarBD();
         
+        //Validamos que la venta no ha sido cancelada antes por completo
+            if(ventaValida)
+                if(ventaBuscar.getCancelado()){
+                        ventaValida = false;
+                    }
+        
         //Validamos venta
         if(!ventaValida)
         {
@@ -264,7 +278,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
 
     private void llenarTabla(Object[] articulos) {
         
-        DefaultTableModel datos = (DefaultTableModel) tablaDevolucionArticulos.getModel();
+        DefaultTableModel datos = (DefaultTableModel) tbArticulos.getModel();
         datos.setRowCount(0);
          
         for(Object thisArticulo: articulos)
@@ -285,13 +299,13 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
           datosArticulo.getCodigoArticulo(),
           datosArticulo.getDescripcion()+" -- "+datosArticulo.getCantidadUnidad()+" "+datosArticulo.getUnidad(),
           cantidadTemp,
-          cantidadTemp*((ArticuloVenta)thisArticulo).getPrecioVenta()
+          ((ArticuloVenta)thisArticulo).getPrecioVenta()
           
           });
         
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tablaDevolucionArticulos.getModel());
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbArticulos.getModel());
           
-        tablaDevolucionArticulos.setRowSorter(sorter);
+        tbArticulos.setRowSorter(sorter);
           }
     }
     
@@ -300,6 +314,81 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void btRealizarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarVentaActionPerformed
+        // TODO add your handling code here:
+        
+        
+        //Iniciamos controlador articulo
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        ControlVenta ctrVenta = new ControlVenta();
+        
+        //Obtenemos la fila seleccionada
+        Integer selection= tbArticulos.getSelectedRow();
+        //Optenemos el id de esa fila
+        Long codigoArticulo = null;
+        
+        try{
+        codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        
+        if(codigoArticulo!=null)
+             {
+                   
+           String cantidadStr = JOptionPane.showInputDialog(null, "Cuantos deceas devolver? (Maximo "+(((Integer) tbArticulos.getValueAt(selection, 2)))+"):");
+           Integer cantidadTmp = null;
+           Boolean cantidadValida = false;
+           
+           try{
+           cantidadTmp = Integer.parseInt(cantidadStr);   
+            }catch(NumberFormatException e)
+                {
+                    //errorLog+="El codigo de articulo tiene un formato incorrecto \n";
+                }
+           
+           if(cantidadTmp<=0 || cantidadTmp == null || cantidadTmp > ((Integer) tbArticulos.getValueAt(selection, 2)))
+           {
+               JOptionPane.showMessageDialog(this, "Cantidad introducida invalida");
+               
+           }else
+                if(cantidadTmp<=0 || cantidadStr.contains("+") || cantidadStr.contains("-")){
+                    JOptionPane.showMessageDialog(this, "La cantidad introducida es invalida, solo son permitidos numeros \n");
+                    
+                    }else
+                        cantidadValida = true;
+           
+            if(cantidadValida)
+            {
+
+                
+                Boolean resultado = ctrVenta.cancelarArticuloVenta(venta, codigoArticulo, cantidadTmp);
+             if(resultado)
+             {
+                 Integer cantidadTabla = (Integer) tbArticulos.getValueAt(selection, 2);
+                 ((DefaultTableModel)tbArticulos.getModel()).setValueAt((cantidadTabla-cantidadTmp), selection, 3);
+                 JOptionPane.showMessageDialog(this, "Se cancelo el articulo de forma correcta del sistema \n"+"Favor de devolver al cliente la cantidad de: \n"+(cantidadTmp*cantidadTabla));
+                 
+             }
+             else
+                 JOptionPane.showMessageDialog(this, "Ocurrio un error en la operacion, favor de intentar mas tarde");
+             }
+            
+            
+             }
+             else
+             {
+                JOptionPane.showMessageDialog(this, "No has seleccionado articulo "); 
+             }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btRealizarVentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,7 +431,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tablaDevolucionArticulos;
+    private javax.swing.JTable tbArticulos;
     private javax.swing.JTextField txBusqueda;
     // End of variables declaration//GEN-END:variables
 

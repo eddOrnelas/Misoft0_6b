@@ -4,6 +4,7 @@ import articulo.VistaPrincipalArticulos;
 import corte.VistaCorte;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import reportes.VistaReportes;
 import usuario.VistaPrincipalUsuario;
 import venta.VistaRealizarVenta;
@@ -80,9 +81,19 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         btAlmacen.setMaximumSize(new java.awt.Dimension(183, 50));
         btAlmacen.setMinimumSize(new java.awt.Dimension(183, 50));
         btAlmacen.setPreferredSize(new java.awt.Dimension(183, 50));
+        btAlmacen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btAlmacenMouseClicked(evt);
+            }
+        });
         btAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verAlmacen(evt);
+            }
+        });
+        btAlmacen.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAlmacenKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -124,6 +135,11 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
                 verReportes(evt);
             }
         });
+        btReportes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btReportesKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -138,9 +154,19 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         btAdministracion.setMaximumSize(new java.awt.Dimension(155, 50));
         btAdministracion.setMinimumSize(new java.awt.Dimension(155, 50));
         btAdministracion.setPreferredSize(new java.awt.Dimension(155, 50));
+        btAdministracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btAdministracionMouseClicked(evt);
+            }
+        });
         btAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verAdministracion(evt);
+            }
+        });
+        btAdministracion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAdministracionKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -169,6 +195,11 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         btVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verVentas(evt);
+            }
+        });
+        btVentas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btVentasKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -242,6 +273,62 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
         this.setTitle("MiSoft/Reportes");
        
     }//GEN-LAST:event_verReportes
+
+    private void btAlmacenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAlmacenKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==btAlmacen)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           verAlmacen(null);                    
+        }
+    }
+    }//GEN-LAST:event_btAlmacenKeyPressed
+
+    private void btAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAlmacenMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAlmacenMouseClicked
+
+    private void btReportesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btReportesKeyPressed
+        // TODO add your handling code here:
+                           int key=evt.getKeyCode();
+    if(evt.getSource()==btReportes)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           verReportes(null);                    
+        }
+    }
+    }//GEN-LAST:event_btReportesKeyPressed
+
+    private void btAdministracionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAdministracionKeyPressed
+        // TODO add your handling code here:
+                               int key=evt.getKeyCode();
+    if(evt.getSource()==btAdministracion)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           verAdministracion(null);                    
+        }
+    }
+    }//GEN-LAST:event_btAdministracionKeyPressed
+
+    private void btAdministracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAdministracionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAdministracionMouseClicked
+
+    private void btVentasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btVentasKeyPressed
+        // TODO add your handling code here:
+                                 int key=evt.getKeyCode();
+    if(evt.getSource()==btVentas)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           verVentas(null);                    
+        }
+    }
+    }//GEN-LAST:event_btVentasKeyPressed
 
     /**
      * @param args the command line arguments

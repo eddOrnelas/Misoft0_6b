@@ -2,6 +2,7 @@ package usuario;
 
 
 import articulo.VistaConsultarArticuloEspecifico;
+import articulo.VistaConsultarArticulosGeneral;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -266,9 +267,21 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
 
     private void txCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCancelarActionPerformed
         // TODO add your handling code here:
-         this.removeAll();
-        this.revalidate();
-        this.repaint();
+         VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(usuario);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());          
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
+        
+        
+        
+        
+//         this.removeAll();
+//        this.revalidate();
+//        this.repaint();
       
         
        
