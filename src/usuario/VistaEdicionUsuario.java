@@ -1,7 +1,8 @@
-﻿package usuario;
+package usuario;
 
 
 import articulo.VistaConsultarArticulosGeneral;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import usuario.ControlUsuario;
 
@@ -79,6 +80,11 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                 bxPermisosActionPerformed(evt);
             }
         });
+        bxPermisos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bxPermisosKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -100,10 +106,20 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                 txNombreActionPerformed(evt);
             }
         });
+        txNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txNombreKeyPressed(evt);
+            }
+        });
 
         txApMaterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txApMaternoActionPerformed(evt);
+            }
+        });
+        txApMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txApMaternoKeyPressed(evt);
             }
         });
 
@@ -112,10 +128,20 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                 txApPaternoActionPerformed(evt);
             }
         });
+        txApPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txApPaternoKeyPressed(evt);
+            }
+        });
 
         txContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txContraseñaActionPerformed(evt);
+            }
+        });
+        txContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txContraseñaKeyPressed(evt);
             }
         });
 
@@ -127,6 +153,16 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
                 EditarUsuario(evt);
             }
         });
+        EditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarUsuarioActionPerformed(evt);
+            }
+        });
+        EditarUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EditarUsuarioKeyPressed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
@@ -134,6 +170,11 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarUsuario(evt);
+            }
+        });
+        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton2KeyPressed(evt);
             }
         });
 
@@ -269,7 +310,63 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
         
         
         
-       String errorString = "";
+//       String errorString = "";
+//        
+//       ControlUsuario ctrUsuarios = new ControlUsuario();
+//       boolean errores;
+//       
+//       errores = ctrUsuarios.validaDatosEdicionUsuario(txNombre.getText(),txApPaterno.getText(), txApMaterno.getText(), txContraseña.getText());
+//
+//       if(errores==false)
+//       { 
+//           JOptionPane.showMessageDialog(this,"prueba");
+//       
+//       }
+//       else
+//       {
+//        int status = ctrUsuarios.realizarEdicionUsuario(txNombre.getText(), txApPaterno.getText(), txApMaterno.getText(),this.usuario,txContraseña.getText(), bxPermisos.getSelectedItem().toString() );
+//    
+//           if(status==1)
+//           {
+//               JOptionPane.showMessageDialog(this,"Se edito al usuario exitosamente");
+//               
+//               VistaConsultaGeneralUsuarios vista = new VistaConsultaGeneralUsuarios(txNombre.getText());
+//           this.removeAll();
+//           
+//
+//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+//        this.setLayout(new java.awt.BorderLayout());
+//           
+//           this.add(vista);
+//           vista.show();
+//           this.revalidate();
+//           this.repaint();
+//       
+//           }
+//           else
+//           {
+//               JOptionPane.showMessageDialog(this,"error en la operacion");
+//               //barraEstado.setText("Alta Articulos: En Espera");
+//           }
+//           
+//       }
+    }//GEN-LAST:event_EditarUsuario
+
+    private void txNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNombreKeyPressed
+        // TODO add your handling code here:
+                     int key=evt.getKeyCode();
+    if(evt.getSource()==txNombre)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EditarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txNombreKeyPressed
+
+    private void EditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarUsuarioActionPerformed
+        // TODO add your handling code here:
+        String errorString = "";
         
        ControlUsuario ctrUsuarios = new ControlUsuario();
        boolean errores;
@@ -309,7 +406,79 @@ public class VistaEdicionUsuario extends javax.swing.JPanel {
            }
            
        }
-    }//GEN-LAST:event_EditarUsuario
+    }//GEN-LAST:event_EditarUsuarioActionPerformed
+
+    private void txApPaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txApPaternoKeyPressed
+        // TODO add your handling code here:
+                          int key=evt.getKeyCode();
+    if(evt.getSource()==txApPaterno)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EditarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txApPaternoKeyPressed
+
+    private void txApMaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txApMaternoKeyPressed
+        // TODO add your handling code here:
+                          int key=evt.getKeyCode();
+    if(evt.getSource()==txApMaterno)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EditarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txApMaternoKeyPressed
+
+    private void txContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txContraseñaKeyPressed
+        // TODO add your handling code here:
+                          int key=evt.getKeyCode();
+    if(evt.getSource()==txContraseña)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EditarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txContraseñaKeyPressed
+
+    private void bxPermisosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bxPermisosKeyPressed
+        // TODO add your handling code here:
+                          int key=evt.getKeyCode();
+    if(evt.getSource()==bxPermisos)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EditarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_bxPermisosKeyPressed
+
+    private void EditarUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EditarUsuarioKeyPressed
+        // TODO add your handling code here:
+                          int key=evt.getKeyCode();
+    if(evt.getSource()==EditarUsuario)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           EditarUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_EditarUsuarioKeyPressed
+
+    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
+        // TODO add your handling code here:
+                          int key=evt.getKeyCode();
+    if(evt.getSource()==jButton2)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           editarUsuario(null);                    
+        }
+    }
+    }//GEN-LAST:event_jButton2KeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditarUsuario;

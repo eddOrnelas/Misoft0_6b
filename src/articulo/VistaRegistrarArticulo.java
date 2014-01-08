@@ -5,6 +5,7 @@
 package articulo;
 
 import java.awt.LayoutManager;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import usuario.ControlUsuario;
@@ -75,6 +76,11 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         add(jLabel1, gridBagConstraints);
 
         txCodigoArticulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txCodigoArticulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txCodigoArticuloKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -104,6 +110,11 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
                 txDescripcionActionPerformed(evt);
             }
         });
+        txDescripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txDescripcionKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -128,6 +139,11 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         add(jLabel5, gridBagConstraints);
 
         txProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txProveedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txProveedorKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
@@ -146,6 +162,16 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
                 realizarRegistroArticulo(evt);
             }
         });
+        btAceptarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAceptarAltaActionPerformed(evt);
+            }
+        });
+        btAceptarAlta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAceptarAltaKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 11;
@@ -162,6 +188,16 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         btCancelarAlta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cancelarRegistro(evt);
+            }
+        });
+        btCancelarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarAltaActionPerformed(evt);
+            }
+        });
+        btCancelarAlta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btCancelarAltaKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -215,6 +251,11 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         add(jLabel4, gridBagConstraints);
 
         txcantidadUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txcantidadUnidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txcantidadUnidadKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 7;
@@ -227,6 +268,11 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
 
         comboBoxUnidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboBoxUnidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pieza(s)", "Unidad(es)", "Mililitro(s) ", "Litro(s)", "Gramo(s)", "Kilogramo(s)", "Centimetro(s)", "Metro(s)" }));
+        comboBoxUnidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboBoxUnidadKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 9;
@@ -243,7 +289,107 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     }//GEN-LAST:event_txDescripcionActionPerformed
 
     private void realizarRegistroArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_realizarRegistroArticulo
+//        // TODO add your handling code here:
+//        
+//        //barraEstado.setText("Alta Articulos: Guardando");
+//        
+//        String errorString = "";
+//        
+//       ControlArticulo ctrArticulos = new ControlArticulo();
+//       String errors = "";
+//       
+//       //ControlUsuario ctrUsuario =new ControlUsuario();
+//       
+//       //Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
+//       
+//       //Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
+//       
+//       //if(!autorizado)
+//         //  errors += "No estas autorizado";
+//    
+//    
+//       errors += ctrArticulos.validaDatosArticulo(txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txcantidadUnidad.getText(), (String) comboBoxUnidad.getSelectedItem() );
+//    
+//       
+//       if(errors.length()>0)
+//       { JOptionPane.showMessageDialog(this,errors);
+//        //barraEstado.setText("Alta Articulos: En Espera");
+//       }
+//       else
+//       {
+//          Integer status = ctrArticulos.realizarRegistroArticulo(txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText(), txcantidadUnidad.getText(), (String) comboBoxUnidad.getSelectedItem() );
+//    
+//           if(status==1)
+//           {
+//           
+//            Object opciones[] = { "SI", "NO" };    
+//         Integer seleccion = JOptionPane.showOptionDialog(this, "El articulo se registro con exito, deceas registrar otro mas?", "Atencion!",
+//        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+//    
+//            
+//            
+//            if(seleccion == JOptionPane.YES_OPTION)
+//            {
+//                txCodigoArticulo.setText("");
+//                txDescripcion.setText("");
+//                txProveedor.setText("");
+//            
+//            }
+//            else{
+//                VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(Long.parseLong(txCodigoArticulo.getText()),textoBusqueda);
+//                this.removeAll();
+//                txCodigoArticulo.setText("");
+//                txDescripcion.setText("");
+//                txProveedor.setText("");
+//                this.setLayout(new java.awt.BorderLayout());
+//                this.add(vista);
+//                vista.show();
+//                this.revalidate();
+//                this.repaint();
+//            }
+//            
+//           }
+//           else
+//           {
+//               JOptionPane.showMessageDialog(this,"Hubo un error en la operacion");
+//               //barraEstado.setText("Alta Articulos: En Espera");
+//           }
+//           
+//       }
+        
+        
+    }//GEN-LAST:event_realizarRegistroArticulo
+
+    private void cancelarRegistro(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarRegistro
         // TODO add your handling code here:
+        
+//         VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
+//           this.removeAll();
+//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+//           this.setLayout(new java.awt.BorderLayout());          
+//           this.add(vista);
+//           vista.show();
+//           this.revalidate();
+//           this.repaint();
+//        
+        
+    }//GEN-LAST:event_cancelarRegistro
+
+    private void txCodigoArticuloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCodigoArticuloKeyPressed
+        // TODO add your handling code here:
+                                 int key=evt.getKeyCode();
+    if(evt.getSource()==txCodigoArticulo)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        btAceptarAltaActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txCodigoArticuloKeyPressed
+
+    private void btAceptarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarAltaActionPerformed
+        // TODO add your handling code here:
+          // TODO add your handling code here:
         
         //barraEstado.setText("Alta Articulos: Guardando");
         
@@ -310,13 +456,82 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
            }
            
        }
-        
-        
-    }//GEN-LAST:event_realizarRegistroArticulo
+    }//GEN-LAST:event_btAceptarAltaActionPerformed
 
-    private void cancelarRegistro(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarRegistro
+    private void txDescripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txDescripcionKeyPressed
         // TODO add your handling code here:
-        
+                                     int key=evt.getKeyCode();
+    if(evt.getSource()==txDescripcion)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        btAceptarAltaActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txDescripcionKeyPressed
+
+    private void txProveedorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txProveedorKeyPressed
+        // TODO add your handling code here:
+                                     int key=evt.getKeyCode();
+    if(evt.getSource()==txProveedor)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        btAceptarAltaActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txProveedorKeyPressed
+
+    private void txcantidadUnidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txcantidadUnidadKeyPressed
+        // TODO add your handling code here:
+                                     int key=evt.getKeyCode();
+    if(evt.getSource()==txcantidadUnidad)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        btAceptarAltaActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txcantidadUnidadKeyPressed
+
+    private void comboBoxUnidadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBoxUnidadKeyPressed
+        // TODO add your handling code here:
+                                     int key=evt.getKeyCode();
+    if(evt.getSource()==comboBoxUnidad)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        btAceptarAltaActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_comboBoxUnidadKeyPressed
+
+    private void btAceptarAltaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAceptarAltaKeyPressed
+        // TODO add your handling code here:
+                                     int key=evt.getKeyCode();
+    if(evt.getSource()==btAceptarAlta)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        btAceptarAltaActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_btAceptarAltaKeyPressed
+
+    private void btCancelarAltaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btCancelarAltaKeyPressed
+        // TODO add your handling code here:
+                                     int key=evt.getKeyCode();
+    if(evt.getSource()==btCancelarAlta)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+       btCancelarAltaActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_btCancelarAltaKeyPressed
+
+    private void btCancelarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarAltaActionPerformed
+        // TODO add your handling code here:
          VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
            this.removeAll();
            //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -326,8 +541,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
            this.revalidate();
            this.repaint();
         
-        
-    }//GEN-LAST:event_cancelarRegistro
+    }//GEN-LAST:event_btCancelarAltaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarAlta;
