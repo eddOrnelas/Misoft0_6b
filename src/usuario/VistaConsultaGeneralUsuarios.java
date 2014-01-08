@@ -26,6 +26,7 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
      */
     public VistaConsultaGeneralUsuarios() {
         initComponents();
+        
     }
     
  
@@ -33,6 +34,7 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
          //To change body of generated methods, choose Tools | Templates.
         initComponents();
         this.txBuscar.setText(txBuscar);
+        
         ConsultarUsuariosGeneral(null);
         
         
@@ -115,7 +117,7 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jScrollPane1, gridBagConstraints);
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
         jButton5.setText("Cancelar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +152,11 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 txBuscarActionPerformed(evt);
             }
         });
+        txBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txBuscarKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -159,6 +166,8 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(31, 47, 0, 0);
         add(txBuscar, gridBagConstraints);
 
+        EditarUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        EditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         EditarUsuario.setText("Editar Usuario");
         EditarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -182,6 +191,8 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         add(EditarUsuario, gridBagConstraints);
 
+        EliminarUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        EliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942378_Black_Trash.png"))); // NOI18N
         EliminarUsuario.setText("Eliminar Usuario");
         EliminarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -292,7 +303,7 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
                 
              if(usuario!=null)
              {
-           VistaEdicionUsuario vista = new VistaEdicionUsuario(usuario,this.txBuscar.getText());
+           VistaEdicionUsuario vista = new VistaEdicionUsuario(usuario,txBuscar.getText());
            this.removeAll();
            //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
            this.setLayout(new java.awt.BorderLayout());          
@@ -481,6 +492,18 @@ public class VistaConsultaGeneralUsuarios extends javax.swing.JPanel {
         }
     }
     }//GEN-LAST:event_jButton5KeyPressed
+
+    private void txBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txBuscarKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==txBuscar)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          ConsultarUsuariosGeneralActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txBuscarKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ConsultarUsuariosGeneral;

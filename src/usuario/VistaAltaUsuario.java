@@ -55,8 +55,8 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         txusuario = new javax.swing.JTextField();
         txcontraseña = new javax.swing.JPasswordField();
         txpermisos = new javax.swing.JComboBox();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        txCancelar = new javax.swing.JButton();
+        realizarAltaUsuario = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -66,6 +66,11 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         txnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txnombreActionPerformed(evt);
+            }
+        });
+        txnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txnombreKeyPressed(evt);
             }
         });
 
@@ -86,10 +91,26 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
                 txapPaternoActionPerformed(evt);
             }
         });
+        txapPaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txapPaternoKeyPressed(evt);
+            }
+        });
+
+        txapMaterno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txapMaternoKeyPressed(evt);
+            }
+        });
 
         txusuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txusuarioActionPerformed(evt);
+            }
+        });
+        txusuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txusuarioKeyPressed(evt);
             }
         });
 
@@ -98,45 +119,55 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
                 txcontraseñaActionPerformed(evt);
             }
         });
+        txcontraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txcontraseñaKeyPressed(evt);
+            }
+        });
 
         txpermisos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         txpermisos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Responsable de Compras", "Cajero", "" }));
-
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
-        jButton5.setText("Cancelar");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
-            }
-        });
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+        txpermisos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton5KeyPressed(evt);
+                txpermisosKeyPressed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aceptar1.png"))); // NOI18N
-        jButton4.setText("Aceptar");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        txCancelar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_1.jpg"))); // NOI18N
+        txCancelar.setText("Cancelar");
+        txCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txCancelarMouseClicked(evt);
+            }
+        });
+        txCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txCancelarActionPerformed(evt);
+            }
+        });
+        txCancelar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txCancelarKeyPressed(evt);
+            }
+        });
+
+        realizarAltaUsuario.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        realizarAltaUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aceptar1.png"))); // NOI18N
+        realizarAltaUsuario.setText("Aceptar");
+        realizarAltaUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 realizarAltaUsuario(evt);
             }
         });
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        realizarAltaUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                realizarAltaUsuarioActionPerformed(evt);
             }
         });
-        jButton4.addKeyListener(new java.awt.event.KeyAdapter() {
+        realizarAltaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton4KeyPressed(evt);
+                realizarAltaUsuarioKeyPressed(evt);
             }
         });
 
@@ -157,9 +188,9 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(realizarAltaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,8 +252,8 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(realizarAltaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(275, 275, 275))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -233,7 +264,7 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txnombreActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void txCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCancelarActionPerformed
         // TODO add your handling code here:
          this.removeAll();
         this.revalidate();
@@ -241,7 +272,7 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
       
         
        
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_txCancelarActionPerformed
 
     private void txapPaternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txapPaternoActionPerformed
         // TODO add your handling code here:
@@ -287,7 +318,7 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txusuarioActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void realizarAltaUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarAltaUsuarioActionPerformed
         // TODO add your handling code here:
          ControlUsuario ctrusuario = new ControlUsuario();
         String errores="";
@@ -342,43 +373,117 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Alta Incorrecta");
         }
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_realizarAltaUsuarioActionPerformed
 
     private void txcontraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txcontraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txcontraseñaActionPerformed
 
-    private void jButton4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton4KeyPressed
+    private void realizarAltaUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_realizarAltaUsuarioKeyPressed
         // TODO add your handling code here:
                int key=evt.getKeyCode();
-    if(evt.getSource()==jButton4)
+    if(evt.getSource()==realizarAltaUsuario)
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-           jButton4ActionPerformed(null);                    
+           realizarAltaUsuarioActionPerformed(null);                    
         }
     }
-    }//GEN-LAST:event_jButton4KeyPressed
+    }//GEN-LAST:event_realizarAltaUsuarioKeyPressed
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+    private void txCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txCancelarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5MouseClicked
+    }//GEN-LAST:event_txCancelarMouseClicked
 
-    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
+    private void txCancelarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCancelarKeyPressed
         // TODO add your handling code here:
                   int key=evt.getKeyCode();
-    if(evt.getSource()==jButton5)
+    if(evt.getSource()==txCancelar)
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-            jButton5ActionPerformed(null);                    
+            txCancelarActionPerformed(null);                    
         }
     }
-    }//GEN-LAST:event_jButton5KeyPressed
+    }//GEN-LAST:event_txCancelarKeyPressed
+
+    private void txnombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txnombreKeyPressed
+        // TODO add your handling code here:
+                   int key=evt.getKeyCode();
+    if(evt.getSource()==txnombre)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          realizarAltaUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txnombreKeyPressed
+
+    private void txusuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txusuarioKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==txusuario)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          realizarAltaUsuarioActionPerformed(null);                    
+        }
+    }
+    
+     
+        
+    }//GEN-LAST:event_txusuarioKeyPressed
+
+    private void txapPaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txapPaternoKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==txapPaterno)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          realizarAltaUsuarioActionPerformed(null);                    
+        }
+    }
+   
+    }//GEN-LAST:event_txapPaternoKeyPressed
+
+    private void txapMaternoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txapMaternoKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==txapMaterno)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          realizarAltaUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txapMaternoKeyPressed
+
+    private void txcontraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txcontraseñaKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==txcontraseña)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          realizarAltaUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txcontraseñaKeyPressed
+
+    private void txpermisosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txpermisosKeyPressed
+        // TODO add your handling code here:
+                       int key=evt.getKeyCode();
+    if(evt.getSource()==txpermisos)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+          realizarAltaUsuarioActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txpermisosKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -386,6 +491,8 @@ public class VistaAltaUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton realizarAltaUsuario;
+    private javax.swing.JButton txCancelar;
     private javax.swing.JTextField txapMaterno;
     private javax.swing.JTextField txapPaterno;
     private javax.swing.JPasswordField txcontraseña;

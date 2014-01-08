@@ -51,6 +51,11 @@ public class Login extends javax.swing.JFrame {
                 txUsuarioActionPerformed(evt);
             }
         });
+        txUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txUsuarioKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -137,6 +142,11 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel2, gridBagConstraints);
 
         txContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txContraseñaKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -241,6 +251,30 @@ public class Login extends javax.swing.JFrame {
         }
     }
     }//GEN-LAST:event_jButton2KeyPressed
+
+    private void txUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txUsuarioKeyPressed
+        // TODO add your handling code here:
+                int key=evt.getKeyCode();
+    if(evt.getSource()==txUsuario)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           RealizarLoginActionPerformed(null);                    
+        }
+    }   
+    }//GEN-LAST:event_txUsuarioKeyPressed
+
+    private void txContraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txContraseñaKeyPressed
+        // TODO add your handling code here:
+                   int key=evt.getKeyCode();
+    if(evt.getSource()==txContraseña)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           RealizarLoginActionPerformed(null);                    
+        }
+    }
+    }//GEN-LAST:event_txContraseñaKeyPressed
 
     /**
      * @param args the command line arguments

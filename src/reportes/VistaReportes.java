@@ -131,9 +131,9 @@ public class VistaReportes extends javax.swing.JPanel {
         add(jSeparator2);
 
         panelRangos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        panelRangos.setMaximumSize(new java.awt.Dimension(1200, 180));
-        panelRangos.setMinimumSize(new java.awt.Dimension(1200, 180));
-        panelRangos.setPreferredSize(new java.awt.Dimension(1200, 180));
+        panelRangos.setMaximumSize(new java.awt.Dimension(1200, 380));
+        panelRangos.setMinimumSize(new java.awt.Dimension(1200, 380));
+        panelRangos.setPreferredSize(new java.awt.Dimension(1200, 420));
         panelRangos.setLayout(new java.awt.GridBagLayout());
         add(panelRangos);
     }// </editor-fold>//GEN-END:initComponents
@@ -148,18 +148,14 @@ public class VistaReportes extends javax.swing.JPanel {
     
     private void btArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btArticulosActionPerformed
         // TODO add your handling code here:
+        //Generar tabla de articulos
+     
         panelRangos.removeAll();
+        panelRangos.revalidate();
+        VistaReporteAlmacen vista = new VistaReporteAlmacen();
+        panelRangos.add(vista);
+        vista.show();
         this.repaint();
-        ModeloArticulo reporte = null;
-        ControlReporte ctrArticulos = new ControlReporte();
-        reporte = ctrArticulos.realizarReporteArticulo();
-        
-        if (reporte == null) {
-            JOptionPane.showMessageDialog(null, "No existen Articulos en el almacén");
-        } else {
-            
-
-        }
         btArticulos.setBackground(Color.gray);
         btMovimientos.setBackground(Color.lightGray);
         btReporteVentas.setBackground(Color.lightGray);
@@ -209,10 +205,9 @@ public class VistaReportes extends javax.swing.JPanel {
             panelRangos.add(vista);
             vista.show();
             this.repaint();
-            btArticulos.setBackground(Color.lightGray);
+           
             btMovimientos.setBackground(Color.gray);
-            btReporteVentas.setBackground(Color.lightGray);
-            btCorte.setBackground(Color.lightGray);
+            
         } catch (ParseException ex) {
             Logger.getLogger(VistaReportes.class.getName()).log(Level.SEVERE, null, ex);
         }

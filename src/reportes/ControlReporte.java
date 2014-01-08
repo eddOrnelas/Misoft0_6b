@@ -70,12 +70,7 @@ public class ControlReporte {
                 tmpNoVentas++;
                 tmpSubtotal += ((((Venta)ventas[x]).getTotal())*100)/111;
                 tmpIVA +=((((Venta)ventas[x]).getTotal())*11)/111;
-                
-
-            }
-            
-            
-            
+               }
             
         }
 
@@ -147,30 +142,43 @@ public class ControlReporte {
         
     }
 
-    public ModeloCorte realizarReporteVentas(String fecha1, String fecha2) {
+    public ModeloCorte realizarReporteVentas(Long nVenta) {
 
-
+        
 
         //Iniciamos objetos necesarios para la busqueda.
         
-        Venta mVentas = new Venta(true);
+        ArticuloVenta mVentas = new ArticuloVenta(true);
+        Venta fVenta = new Venta(true);
         
         Object[] ventas = null;
+        Object[] fventas = null;
+        Object[] dventas = null;
         
         ModeloCorte reporteVentas = new ModeloCorte();
         //Parametros de busqueda.
         Boolean activo = true;
-        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"}, {"fecha", "<=", fecha2+" 23:59:00"}};
-
+        Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
         ventas = mVentas.buscarBD("all", opciones);
         
-        //Datos de Venta
-        Long tmpIdVenta;
-        String tmpFecha;
-        Integer tmpCantidad;
-        Float tmpTotal;
-        Float totalVentas= 0F;
+        fventas = fVenta.buscarBD("all", opciones);
         
+       
+        
+        
+        
+        //Datos de Venta
+        Long tmpCodArt;
+        Long tmpIDart;
+        Double tmpIVA;
+        String tmpDesc;
+        Integer tmpCantidad;
+        Float tmpPrecioVenta;
+        Float tmpTotal=0F;
+        Float totalVentas= 0F;
+        String tmpFecha;
+    
+        DecimalFormat decimal = new DecimalFormat("#.##");
        
         
         
@@ -207,43 +215,69 @@ public class ControlReporte {
                 document.add(linea);
                 
                 //Crear y llenar Tabla PDF
-                PdfPTable table = new PdfPTable(4);
-                PdfPCell cell = new PdfPCell(new Paragraph("Ventas del " + fecha1 + " al " + fecha2,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
-                cell.setColspan(4);
+                PdfPTable table = new PdfPTable(6);
+                
+                tmpFecha = ((Venta) fventas[0]).getFecha();
+                PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + nVenta +"                  Fecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                cell.setColspan(6);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 table.addCell(cell);
                      
                 
-                table.addCell(new Phrase("No. venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));   
-                table.addCell(new Phrase("Fecha y Hora",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
-                table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
-                table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
+                table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));   
+                table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
+                table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
+                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
+                table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
+                table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 
-                
-                
-                for(int x=0;x<ventas.length;x++){
-                tmpIdVenta = ((Venta) ventas[x]).getIdVenta();
-                table.addCell(new Phrase(tmpIdVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                
-                
-                tmpFecha = ((Venta)ventas[x]).getFecha();
-                table.addCell(new Phrase(tmpFecha.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                
-                   
-                tmpCantidad = ((Venta) ventas[x]).getCantidad();
-                table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                
+                     
+                for(int x=0;x<ventas.length;x++){
                 
-                tmpTotal = ((Venta) ventas[x]).getTotal();
+                Long tmpIdArt;
+        
+                tmpIdArt = ((ArticuloVenta)ventas[x]).getIdArticulo();
+                Object[][] opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
+                Articulo dVenta = new Articulo(true);
+                dventas = dVenta.buscarBD("all",opciones2);    
+                    
+                JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
+                tmpCodArt = ((Articulo) dventas[0]).getCodigoArticulo();
+                tmpIDart = ((ArticuloVenta)ventas[x]).getIdArticulo();
+                table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+          
+                
+                 
+                
+                
+                
+                tmpDesc = ((Articulo)dventas[0]).getDescripcion();
+                table.addCell(new Phrase(tmpDesc,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+          
+                
+                tmpCantidad = ((ArticuloVenta) ventas[x]).getCantidad();
+                table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+                
+                tmpPrecioVenta = ((ArticuloVenta) ventas[x]).getPrecioVenta();
+                table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+                tmpIVA = ((ArticuloVenta) ventas[x]).getIva();
+                table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+                tmpTotal = ((ArticuloVenta) ventas[x]).getTotal();
                 table.addCell(new Phrase(tmpTotal.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                totalVentas += tmpTotal;
+                
+                
+           
                 } 
                     
                 
 
                 document.add(table);
-                document.add(new Phrase("Total de ventas: $"+totalVentas+"",FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                document.add(new Phrase("                                                                                                                                                                          Total: $"+decimal.format(tmpTotal)+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
            
                 
                 JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
@@ -254,10 +288,12 @@ public class ControlReporte {
                     Desktop.getDesktop().open(new File(ruta));
 
                 } catch (IOException e) {
+                    
+                    JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Ventas.pdf");
                     e.printStackTrace();
                 }
             } catch (Exception e) {
-                 JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Ventas.pdf");
+                 JOptionPane.showMessageDialog(null, "Error en crear Reportede Ventas.pdf");
             }
         }
         return reporteVentas;
@@ -272,7 +308,7 @@ public class ControlReporte {
         ModeloArticulo reporteArticulos = new ModeloArticulo();
         //Parametros de busqueda.
         Boolean activo = true;
-        Object[][] opciones = new Object[][]{{"idArticulo", ">=", activo}};
+        Object[][] opciones = new Object[][]{{"activo", ">=", 1}};
 
         articulos = mArticulo.buscarBD("all", opciones);
         //Agrego una fuente general
@@ -352,6 +388,8 @@ public class ControlReporte {
 
 
                 for (x = 0; x < articulos.length; x++) {
+                    
+                    
                     //tmpIdArticulo = ((Articulo) articulos[x]).getIdArticulo();
                     tmpCodigoArticulo = ((Articulo) articulos[x]).getCodigoArticulo();
                     tmpDescripcion = ((Articulo) articulos[x]).getDescripcion();
@@ -362,13 +400,14 @@ public class ControlReporte {
                     //tmpActivo = ((Articulo) articulos[x]).getActivo();
 
                     //table.addCell(tmpIdArticulo.toString());
-                   
+                    if(tmpCantidadExistencia>0){
                     table.addCell(new Phrase(tmpCodigoArticulo.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpDescripcion,FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpPrecioCompra.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpCantidadExistencia.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpProveedor,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                    }
                 }
 
                 document.add(table);

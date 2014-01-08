@@ -6,10 +6,17 @@
 
 package reportes;
 
+import articulo.Articulo;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import venta.ArticuloVenta;
+import venta.Venta;
 
 /**
  *
@@ -23,17 +30,17 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     VistaReporteVentasGeneral() {
         initComponents();
         //Fecha no sea mayor a la actual.
-        Calendar cal = new GregorianCalendar();
-        
-        int month = cal.get(Calendar.MONTH)+1;
-        int year = cal.get(Calendar.YEAR)-1900;
-        int day = cal.get(Calendar.DAY_OF_MONTH)-31;
-                
-        txFechaFinal.setDateFormatString("yyyy-MM-dd");
-        txFechaFinal.setMaxSelectableDate(new Date(year,month,day));
-        
-        txFechaInicio.setDateFormatString("yyyy-MM-dd");
-        txFechaInicio.setMaxSelectableDate(new Date(year,month,day));
+//        Calendar cal = new GregorianCalendar();
+//        
+//        int month = cal.get(Calendar.MONTH)+1;
+//        int year = cal.get(Calendar.YEAR)-1900;
+//        int day = cal.get(Calendar.DAY_OF_MONTH)-31;
+//                
+//        txFechaFinal.setDateFormatString("yyyy-MM-dd");
+//        txFechaFinal.setMaxSelectableDate(new Date(year,month,day));
+//        
+//        txFechaInicio.setDateFormatString("yyyy-MM-dd");
+//        txFechaInicio.setMaxSelectableDate(new Date(year,month,day));
         
     }
 
@@ -45,78 +52,30 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        btAceptarVentas = new javax.swing.JButton();
-        txFechaFinal = new com.toedter.calendar.JDateChooser();
-        jLabel2 = new javax.swing.JLabel();
-        txFechaInicio = new com.toedter.calendar.JDateChooser();
+        btExportarVentas = new javax.swing.JButton();
         btCancelarRepVentas = new javax.swing.JButton();
+        btAceptarRepVentas = new javax.swing.JButton();
+        txNoVenta = new javax.swing.JLabel();
+        txNumVenta = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbVentas = new javax.swing.JTable();
+        txFecHr = new javax.swing.JLabel();
+        txTotal = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Rango de Fechas Ventas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
-        setMaximumSize(new java.awt.Dimension(600, 140));
-        setMinimumSize(new java.awt.Dimension(600, 140));
-        setPreferredSize(new java.awt.Dimension(600, 140));
-        setLayout(new java.awt.GridBagLayout());
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de Ventas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
+        setMaximumSize(new java.awt.Dimension(1200, 350));
+        setMinimumSize(new java.awt.Dimension(1200, 350));
+        setPreferredSize(new java.awt.Dimension(1200, 350));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel1.setText("Fecha Inicio:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(72, 6, 0, 0);
-        add(jLabel1, gridBagConstraints);
-
-        btAceptarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
-        btAceptarVentas.setText("Aceptar");
-        btAceptarVentas.addActionListener(new java.awt.event.ActionListener() {
+        btExportarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
+        btExportarVentas.setText("Exportar");
+        btExportarVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarVentasActionPerformed(evt);
+                btExportarVentasActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 123, 7, 0);
-        add(btAceptarVentas, gridBagConstraints);
-
-        txFechaFinal.setDateFormatString("yyyy-MM-dd");
-        txFechaFinal.setMaximumSize(new java.awt.Dimension(85, 25));
-        txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
-        txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(62, 4, 0, 6);
-        add(txFechaFinal, gridBagConstraints);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Fecha Termino:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(72, 68, 0, 0);
-        add(jLabel2, gridBagConstraints);
-
-        txFechaInicio.setDateFormatString("yyyy-MM-dd");
-        txFechaInicio.setMaximumSize(new java.awt.Dimension(85, 25));
-        txFechaInicio.setMinimumSize(new java.awt.Dimension(85, 25));
-        txFechaInicio.setPreferredSize(new java.awt.Dimension(85, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 60;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(62, 4, 0, 0);
-        add(txFechaInicio, gridBagConstraints);
 
         btCancelarRepVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelarRepVentas.setText("Cancelar");
@@ -125,93 +84,158 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
                 btCancelarRepVentasActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 18, 7, 0);
-        add(btCancelarRepVentas, gridBagConstraints);
+
+        btAceptarRepVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aceptar1.png"))); // NOI18N
+        btAceptarRepVentas.setText("Aceptar");
+        btAceptarRepVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAceptarRepVentasActionPerformed(evt);
+            }
+        });
+
+        txNoVenta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txNoVenta.setText("No. de Venta");
+
+        txNumVenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txNumVentaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txNumVentaKeyTyped(evt);
+            }
+        });
+
+        jSeparator1.setMaximumSize(new java.awt.Dimension(1150, 10));
+        jSeparator1.setMinimumSize(new java.awt.Dimension(1150, 10));
+        jSeparator1.setPreferredSize(new java.awt.Dimension(1150, 10));
+
+        jScrollPane1.setMaximumSize(new java.awt.Dimension(1150, 200));
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(1150, 200));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1150, 200));
+
+        tbVentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Código de Artículo", "Descripción", "Cantidad", "Precio de Venta", "IVA", "Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbVentas.setMaximumSize(new java.awt.Dimension(1150, 200));
+        tbVentas.setMinimumSize(new java.awt.Dimension(1150, 200));
+        tbVentas.setPreferredSize(new java.awt.Dimension(1150, 200));
+        jScrollPane1.setViewportView(tbVentas);
+        if (tbVentas.getColumnModel().getColumnCount() > 0) {
+            tbVentas.getColumnModel().getColumn(0).setResizable(false);
+            tbVentas.getColumnModel().getColumn(1).setResizable(false);
+            tbVentas.getColumnModel().getColumn(2).setResizable(false);
+            tbVentas.getColumnModel().getColumn(3).setResizable(false);
+            tbVentas.getColumnModel().getColumn(4).setResizable(false);
+            tbVentas.getColumnModel().getColumn(5).setResizable(false);
+        }
+
+        txFecHr.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txTotal.setMaximumSize(new java.awt.Dimension(200, 30));
+        txTotal.setMinimumSize(new java.awt.Dimension(200, 30));
+        txTotal.setPreferredSize(new java.awt.Dimension(200, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txNoVenta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(btAceptarRepVentas)
+                        .addGap(18, 18, 18)
+                        .addComponent(btCancelarRepVentas)
+                        .addGap(102, 102, 102)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btExportarVentas))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txNoVenta)
+                        .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btAceptarRepVentas)
+                        .addComponent(btCancelarRepVentas))
+                    .addComponent(btExportarVentas))
+                .addGap(9, 9, 9)
+                .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAceptarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarVentasActionPerformed
-        
+    private void btExportarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarVentasActionPerformed
+       
         ModeloCorte reporte = null;
         //Creamos controlador corte
         ControlReporte ctrCorte = new ControlReporte();
 
-        //Le damos formato a la fecha para que mySQL la reconozca
-        txFechaInicio.setDateFormatString("yyy-MM-dd");
-        txFechaFinal.setDateFormatString("yyy-MM-dd");
-        String fecha1 = "";
-        String fecha2 = "";
+        
         int band=0;
-        int band2=0;
-        int band4 =0;
-
-        //Obtenemos los valores de la texto de la fecha del calendario
-        if (txFechaInicio.getCalendar() != null) {
-            fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
-            band=1;
-        } else {
-            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio.");
-            band = 0;
-        }
-
-        if (txFechaFinal.getCalendar() != null) {
-            fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
-            band2 =2;
-        } else {
-            JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino.");
+        Long nVenta = null;
+    
+         String numVenta = "";
+        if (txNumVenta.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Ingrese No. de Venta.");
             band =0;
+            
+        } else {
+            
+            numVenta = txNumVenta.getText();
+            band=1;
         }
         
-        //Validar fecha inicio <= fecha termino
-        if (txFechaFinal.getCalendar() != null && txFechaInicio.getCalendar() != null) {
-            int a1 = txFechaInicio.getCalendar().get(Calendar.YEAR);
-            int a2 = txFechaFinal.getCalendar().get(Calendar.YEAR);
-            
-            int mes1 = txFechaInicio.getCalendar().get(Calendar.MONTH);
-            int mes2 = txFechaFinal.getCalendar().get(Calendar.MONTH);
-            
-            int dia1 = txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
-            int dia2 = txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
-            
-            
-            if(a1>a2){
-            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
-            band4 = 4;
-            }
-            
-            if(a1==a2){
-                if(mes1>mes2){
-                JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
-                band4 = 4;
-                }else{
-                    if(mes1==mes2){
-                        if(dia1>dia2){
-                            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino.");
-                            band4 = 4;
-                        }
-                    }
-                
-                }
-            }else{
-            band4=0;
-            }
-        }
-        if(band==1&band2==2&&band4==0){
-        reporte = ctrCorte.realizarReporteVentas(fecha1, fecha2);
+        
+        nVenta = Long.parseLong(numVenta);
+        
+        
+        if(band==1){
+        reporte = ctrCorte.realizarReporteVentas(nVenta);
 
         if (reporte == null) {
-            JOptionPane.showMessageDialog(this, " No existen registros de ventas para ese rango de fechas  ");
+            JOptionPane.showMessageDialog(this, " No existen registros para ese No. de Venta.");
         } 
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAceptarVentasActionPerformed
+    }//GEN-LAST:event_btExportarVentasActionPerformed
 
     private void btCancelarRepVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarRepVentasActionPerformed
-        // Boton Cancelar Rep Ventas
+        // Botón Cancelar Rep Ventas
 
         this.removeAll();
         //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -222,13 +246,153 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btCancelarRepVentasActionPerformed
 
+    private void btAceptarRepVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarRepVentasActionPerformed
+        //Botón aceptar
+        // TODO add your handling code here:
+        ArticuloVenta mVentas = new ArticuloVenta(true);
+       
+        if(txNumVenta.getText().equals("")){
+       
+            JOptionPane.showMessageDialog(this,"Ingrese No. de Venta.");
+        
+        }
+        else{
+        
+         //String donde almacenar el texto a buscar
+        Long nVenta = Long.parseLong(txNumVenta.getText());
+        
+        //Iniciamos controlador
+        ControlReporte ctrReporte = new ControlReporte();
+        //Iniciamos objectos donde guardaremos los resultados de busqueda
+        Object[] venta = null;
+        
+        Object[] ventas = null;
+        
+        
+        Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
+        ventas = mVentas.buscarBD("all", opciones);
+        
+         JOptionPane.showMessageDialog(this,"Fecha de venta en index : "+((Venta)ventas[0]).getFecha());  
+        if(ventas.length<0)
+            JOptionPane.showMessageDialog(this,"No existen registros para ese No. de Venta.");
+        else
+        {
+        //Obtener descripcion
+               
+        
+        llenarTabla(ventas);
+        }
+        
+       
+      
+        
+        
+          
+            
+        
+        }//cierre de 1er else
+// TODO add your handling code here:
+    }//GEN-LAST:event_btAceptarRepVentasActionPerformed
 
+    private void txNumVentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumVentaKeyTyped
+        char caracter = evt.getKeyChar();
+        if(((caracter < '0') || (caracter > '9')) &&(caracter != KeyEvent.VK_BACK_SPACE) && (caracter != KeyEvent.VK_ENTER)){
+        evt.consume();
+        JOptionPane.showMessageDialog(this, "Ingrese sólo dígitos: {0,1,2,3,4,5,6,7,8,9}");
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_txNumVentaKeyTyped
+
+    private void txNumVentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumVentaKeyPressed
+
+        // TODO add your handling code here:
+        
+        int key=evt.getKeyCode();
+    if(evt.getSource()==txNumVenta)
+    {
+        if(key==KeyEvent.VK_ENTER)
+        { 
+           btAceptarRepVentasActionPerformed(null);
+        }
+    }
+    }//GEN-LAST:event_txNumVentaKeyPressed
+private void llenarTabla(Object[] venta) {
+    
+        Object[]dventas = null;
+        int x=0;
+        int tam = venta.length;
+        double total = 0.0;
+        for (x=0;x<tam;x++){
+        Long tmpIdArt;
+        
+        tmpIdArt = ((ArticuloVenta)venta[x]).getIdArticulo();
+        Object[][] opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
+        Articulo dVenta = new Articulo(true);
+        dventas = dVenta.buscarBD("all",opciones2);
+        
+        
+        /* obtener articulos */
+
+        DecimalFormat decimal = new DecimalFormat("#.##");
+        Long nVenta = Long.parseLong(txNumVenta.getText());
+        
+        
+        Object[] fventas = null;
+        Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
+        Venta fVenta = new Venta(true);
+        fventas = fVenta.buscarBD("all", opciones);
+        
+        txFecHr.setText("Fecha y Hora:  " + ((Venta) fventas[0]).getFecha());
+        txTotal.setText("Total:  $" + ((Venta) fventas[0]).getTotal());
+        
+        Object [] desc = null;
+       
+        DefaultTableModel datos = (DefaultTableModel) tbVentas.getModel();
+        datos.setRowCount(0);
+        for(Object thisVenta:venta)
+          {
+          float tmpTotal= ((ArticuloVenta)thisVenta).getCantidad() * ((ArticuloVenta)thisVenta).getPrecioVenta() ;
+          float tmpIVA = ((11*tmpTotal)/111);
+          float tmpPrecioVenta = (100*tmpTotal)/111 ;
+          
+          datos.addRow(new Object[] {
+         ((Articulo)dventas[0]).getCodigoArticulo(),         
+         ((Articulo)dventas[0]).getDescripcion(),
+          ((ArticuloVenta)thisVenta).getCantidad(),
+                   
+          decimal.format(tmpPrecioVenta),
+           decimal.format(tmpIVA),
+           decimal.format(tmpTotal)
+            
+          });
+          
+          
+          x++;
+          //Obtener los datos del siguiente artículo
+          tmpIdArt = ((ArticuloVenta)venta[x]).getIdArticulo();
+          
+          opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
+          dVenta = new Articulo(true);
+          dventas = dVenta.buscarBD("all",opciones2);
+          
+          }
+        
+        
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbVentas.getModel());
+          
+        tbVentas.setRowSorter(sorter);}
+
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAceptarVentas;
+    private javax.swing.JButton btAceptarRepVentas;
     private javax.swing.JButton btCancelarRepVentas;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private com.toedter.calendar.JDateChooser txFechaFinal;
-    private com.toedter.calendar.JDateChooser txFechaInicio;
+    private javax.swing.JButton btExportarVentas;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable tbVentas;
+    private javax.swing.JLabel txFecHr;
+    private javax.swing.JLabel txNoVenta;
+    private javax.swing.JTextField txNumVenta;
+    private javax.swing.JLabel txTotal;
     // End of variables declaration//GEN-END:variables
 }

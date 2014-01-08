@@ -24,6 +24,8 @@ public class Articulo extends CustomORM {
     private Integer cantidadExistencia;
     private String proveedor;
     private Boolean activo;
+    private String unidad;
+    private Long cantidadUnidad;
 
   
 
@@ -54,6 +56,14 @@ public class Articulo extends CustomORM {
         this.idArticulo = idArticulo;
     }
 
+     public Long getCantidadUnidad() {
+        return cantidadUnidad;
+    }
+
+    public void setCantidadUnidad(Long cantidadUnidad) {
+        this.cantidadUnidad = cantidadUnidad;
+    }
+    
     public Long getCodigoArticulo() {
         return codigoArticulo;
     }
@@ -72,6 +82,14 @@ public class Articulo extends CustomORM {
         this.descripcion = descripcion;
     }
 
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(String Unidad) {
+        this.unidad = Unidad;
+    }
+    
     public Float getPrecioCompra() {
         return precioCompra;
     }

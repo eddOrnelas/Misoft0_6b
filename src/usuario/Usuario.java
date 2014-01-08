@@ -23,6 +23,7 @@ public class Usuario extends CustomORM{
     private String tipoPermiso;
     
     
+    
     public Usuario()
     {
     
@@ -38,7 +39,9 @@ public class Usuario extends CustomORM{
     
     }
     
-    
+     public Long getIdArticulo() {
+        return idUsuario;
+    }
     
     public Boolean getActivo() {
         return activo;

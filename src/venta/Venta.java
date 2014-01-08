@@ -17,8 +17,48 @@ public class Venta extends CustomORM {
     private Long idVenta;
     private Integer cantidad;
     private String fecha;
+    private Float iva;
+    private Float porcentajeIva;
+    private Float subtotal;
+    private Boolean cancelado;
    // private String hora;
    // private Float precio;
+
+    public Boolean getCancelado() {
+        return cancelado;
+    }
+
+    public void setCancelado(Boolean cancelado) {
+        this.cancelado = cancelado;
+    }
+
+    
+    
+    public void setIva(Float iva) {
+        this.iva = iva;
+    }
+
+   
+    
+    public void setPorcentajeIva(Float porcentajeIva) {
+        this.porcentajeIva = porcentajeIva;
+    }
+
+    public void setSubtotal(Float subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public Float getIva() {
+        return iva;
+    }
+
+    public Float getPorcentajeIva() {
+        return porcentajeIva;
+    }
+
+    public Float getSubtotal() {
+        return subtotal;
+    }
    
    private Float total;
 

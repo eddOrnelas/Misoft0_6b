@@ -63,7 +63,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         lbTotal = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        cancelarArticulo = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -73,10 +74,12 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Realizar Venta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weighty = 0.01;
@@ -84,17 +87,16 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Codigo Articulo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 19;
-        gridBagConstraints.ipady = 19;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.ipadx = 5;
+        gridBagConstraints.ipady = 5;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
-        gridBagConstraints.insets = new java.awt.Insets(0, 21, 0, 0);
         add(jLabel2, gridBagConstraints);
 
         txBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -109,9 +111,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 56;
         gridBagConstraints.ipady = 19;
@@ -129,9 +130,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 9;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 19;
         gridBagConstraints.ipady = 19;
@@ -149,15 +149,14 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 16;
         gridBagConstraints.ipady = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
-        gridBagConstraints.insets = new java.awt.Insets(0, 19, 0, 0);
         add(jButton2, gridBagConstraints);
 
         tbCarrito.setModel(new javax.swing.table.DefaultTableModel(
@@ -165,14 +164,14 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Codigo Articulo", "Nombre Articulo", "Cantidad", "Precio Unitario", "Total"
+                "Codigo Articulo", "Descripcion", "Cantidad", "Precio Unitario", "Total"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Long.class, java.lang.String.class, java.lang.Integer.class, java.lang.Float.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -190,22 +189,23 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tbCarrito);
-        tbCarrito.getColumnModel().getColumn(0).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tbCarrito.getColumnModel().getColumn(1).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tbCarrito.getColumnModel().getColumn(2).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(2).setPreferredWidth(20);
-        tbCarrito.getColumnModel().getColumn(3).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(3).setPreferredWidth(20);
-        tbCarrito.getColumnModel().getColumn(4).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(4).setPreferredWidth(20);
+        if (tbCarrito.getColumnModel().getColumnCount() > 0) {
+            tbCarrito.getColumnModel().getColumn(0).setResizable(false);
+            tbCarrito.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tbCarrito.getColumnModel().getColumn(1).setResizable(false);
+            tbCarrito.getColumnModel().getColumn(1).setPreferredWidth(200);
+            tbCarrito.getColumnModel().getColumn(2).setResizable(false);
+            tbCarrito.getColumnModel().getColumn(2).setPreferredWidth(20);
+            tbCarrito.getColumnModel().getColumn(3).setResizable(false);
+            tbCarrito.getColumnModel().getColumn(3).setPreferredWidth(20);
+            tbCarrito.getColumnModel().getColumn(4).setResizable(false);
+            tbCarrito.getColumnModel().getColumn(4).setPreferredWidth(20);
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
@@ -222,7 +222,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 13;
@@ -239,7 +239,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 13;
@@ -262,7 +262,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jPanel1.add(jLabel3, gridBagConstraints);
 
         lbSubTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbSubTotal.setText("0.0 $");
+        lbSubTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -286,7 +286,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jPanel1.add(jLabel5, gridBagConstraints);
 
         lbIva.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbIva.setText("0.0 $");
+        lbIva.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -310,7 +310,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jPanel1.add(jLabel7, gridBagConstraints);
 
         lbTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbTotal.setText("0.0");
+        lbTotal.setText("$ 0.0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -322,9 +322,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jPanel1.add(lbTotal, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 10;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
@@ -340,22 +339,40 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         add(jButton1, gridBagConstraints);
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
-        jButton5.setText("Cancelar Articulos [C]");
+        cancelarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cancelarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
+        cancelarArticulo.setText("Cancelar Articulos [C]");
+        cancelarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelarArticuloMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.ipady = 13;
         gridBagConstraints.weighty = 0.01;
-        add(jButton5, gridBagConstraints);
+        add(cancelarArticulo, gridBagConstraints);
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton4.setText("Devolucion de Articulo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        add(jButton4, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarArticulo
@@ -439,14 +456,16 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        VistaRealizarVenta vista = new VistaRealizarVenta();
-           this.removeAll();
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-           this.setLayout(new java.awt.BorderLayout());          
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
+        Object opciones[] = { "SI", "NO" };
+         Integer seleccion = JOptionPane.showOptionDialog(this, "Deseas cancelar la venta?", "Atencion!",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                carrito.clear();
+                calcularCosto();
+                rellenartabla();
+            }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txBuscarKeyPressed
@@ -511,9 +530,12 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     private void RealizarCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarCobroActionPerformed
         // TODO add your handling code here:
         
-      VistaRealizarCobro vista = new VistaRealizarCobro(carrito);
+        if(carrito.size()>0){
+      VistaRealizarCobro vista = new VistaRealizarCobro(carrito,this);
       vista.setEnabled(true);
       vista.setVisible(true);
+        }else
+            JOptionPane.showMessageDialog(this, "No cuentas con articulos en la lista");
           
         
     }//GEN-LAST:event_RealizarCobroActionPerformed
@@ -575,6 +597,17 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
        
         
     }//GEN-LAST:event_tbCarritoKeyPressed
+
+    private void cancelarArticuloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarArticuloMouseClicked
+        
+        
+        
+    }//GEN-LAST:event_cancelarArticuloMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        VistaDevolucionArticulos devolucionArticulos= new VistaDevolucionArticulos();
+        devolucionArticulos.show();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     public void agregarArticuloCarrito(Articulo articulo, Integer cantidad){
         
@@ -689,19 +722,20 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
          
          DecimalFormat decimal = new DecimalFormat("#.##");
          
-        lbSubTotal.setText(""+decimal.format(subSubTotal)+" $");
-        lbIva.setText(""+decimal.format(iva)+" $");
-        lbTotal.setText(""+decimal.format(subTotal)+" $");
+        lbSubTotal.setText("$ "+decimal.format(subSubTotal));
+        lbIva.setText("$ "+decimal.format(iva));
+        lbTotal.setText("$ "+decimal.format(subTotal));
     }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton RealizarCobro;
     private javax.swing.JButton btBuscar;
+    private javax.swing.JButton cancelarArticulo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -716,7 +750,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     public javax.swing.JTextField txBuscar;
     // End of variables declaration//GEN-END:variables
 
-    private void rellenartabla() {
+    public void rellenartabla() {
         
          DefaultTableModel datos = (DefaultTableModel) tbCarrito.getModel();
             datos.setRowCount(0);
@@ -735,7 +769,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
           ((Articulo)thisArticulo[0]).getDescripcion(),
           ((Integer)thisArticulo[1]).intValue(),
          ((Articulo)thisArticulo[0]).getPrecioVenta(),
-          ((Articulo)thisArticulo[0]).getPrecioVenta()});
+          ((Integer)thisArticulo[1]).intValue()*((Articulo)thisArticulo[0]).getPrecioVenta()});
           }
         
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbCarrito.getModel());
