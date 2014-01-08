@@ -243,7 +243,7 @@ public class ControlReporte {
                 Articulo dVenta = new Articulo(true);
                 dventas = dVenta.buscarBD("all",opciones2);    
                     
-                JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
+                //JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
                 tmpCodArt = ((Articulo) dventas[0]).getCodigoArticulo();
                 tmpIDart = ((ArticuloVenta)ventas[x]).getIdArticulo();
                 table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));

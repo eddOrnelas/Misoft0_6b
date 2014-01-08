@@ -272,7 +272,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         Object[][] opciones = new Object[][]{{"idVenta","=",nVenta}};
         ventas = mVentas.buscarBD("all", opciones);
         
-         JOptionPane.showMessageDialog(this,"Fecha de venta en index : "+((Venta)ventas[0]).getFecha());  
+       
         if(ventas.length<0)
             JOptionPane.showMessageDialog(this,"No existen registros para ese No. de Venta.");
         else
@@ -316,7 +316,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         }
     }
     }//GEN-LAST:event_txNumVentaKeyPressed
-private void llenarTabla(Object[] venta) {
+    private void llenarTabla(Object[] venta) {
     
         Object[]dventas = null;
         int x=0;

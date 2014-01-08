@@ -5,6 +5,7 @@
 package reportes;
 
 import articulo.Articulo;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -66,6 +67,11 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(1200, 350));
         setMinimumSize(new java.awt.Dimension(1200, 350));
         setPreferredSize(new java.awt.Dimension(1200, 350));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         btCancelarReporteC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelarReporteC.setText("Cancelar");
@@ -104,6 +110,14 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         btAceptarCC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAceptarCCActionPerformed(evt);
+            }
+        });
+        btAceptarCC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAceptarCCKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btAceptarCCKeyTyped(evt);
             }
         });
 
@@ -361,6 +375,28 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         tbCorteCaja.setRowSorter(sorter);
         }
     }//GEN-LAST:event_btAceptarCCActionPerformed
+
+    private void btAceptarCCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAceptarCCKeyPressed
+        // TODO add your handling code here:
+        
+        int key=evt.getKeyCode();
+   
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        
+            btAceptarCCActionPerformed(null);
+         
+        }
+    
+    }//GEN-LAST:event_btAceptarCCKeyPressed
+
+    private void btAceptarCCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAceptarCCKeyTyped
+
+    }//GEN-LAST:event_btAceptarCCKeyTyped
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+     
+    }//GEN-LAST:event_formKeyPressed
 
     private int validaciones (){
         txFechaInicio.setDateFormatString("yyy-MM-dd");
