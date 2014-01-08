@@ -5,6 +5,7 @@
 package reportes;
 
 import articulo.Articulo;
+import articulo.ControlArticulo;
 import articulo.HistorialAlmacen;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -170,7 +171,7 @@ public class ControlReporte {
         //Datos de Venta
         Long tmpCodArt;
         Long tmpIDart;
-        Double tmpIVA;
+        Float tmpIVA;
         String tmpDesc;
         Integer tmpCantidad;
         Float tmpPrecioVenta;
@@ -228,7 +229,7 @@ public class ControlReporte {
                 table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));   
                 table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
-                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
+                table.addCell(new Phrase("SubTotal",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
                 table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 
@@ -243,7 +244,7 @@ public class ControlReporte {
                 Articulo dVenta = new Articulo(true);
                 dventas = dVenta.buscarBD("all",opciones2);    
                     
-                JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
+                //JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
                 tmpCodArt = ((Articulo) dventas[0]).getCodigoArticulo();
                 tmpIDart = ((ArticuloVenta)ventas[x]).getIdArticulo();
                 table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -262,13 +263,23 @@ public class ControlReporte {
                 
                 
                 tmpPrecioVenta = ((ArticuloVenta) ventas[x]).getPrecioVenta();
-                table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                 Float tmpGranTotal =  tmpCantidad * tmpPrecioVenta;
                 
-                tmpIVA = ((ArticuloVenta) ventas[x]).getIva();
-                table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                tmpTotal = ((100*tmpGranTotal)/111);
+                decimal.format(tmpTotal);
+                table.addCell(new Phrase(decimal.format(tmpTotal),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
-                tmpTotal = ((ArticuloVenta) ventas[x]).getTotal();
-                table.addCell(new Phrase(tmpTotal.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                 tmpIVA =  (11*tmpGranTotal)/111;
+                table.addCell(new Phrase(decimal.format(tmpIVA),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+                
+                table.addCell(new Phrase(decimal.format(tmpPrecioVenta),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+               
+               
+                
+                
+                
                 
                 
            
@@ -277,7 +288,7 @@ public class ControlReporte {
                 
 
                 document.add(table);
-                document.add(new Phrase("                                                                                                                                                                          Total: $"+decimal.format(tmpTotal)+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                document.add(new Phrase("                                                                                                                                                                          Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
            
                 
                 JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
@@ -447,26 +458,35 @@ public class ControlReporte {
         //Iniciamos objetos necesarios para la busqueda.
         
         HistorialAlmacen rMovimientos = new HistorialAlmacen(true);
-        
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        Articulo articuloBuscar = null;
+        Articulo rArt = new Articulo(true);
         Object[] mov = null;
+        Object[] art = null;
         
         ModeloCorte reporteMovimientos = new ModeloCorte();
         //Parametros de busqueda.
         Boolean activo = true;
         
-        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"},{"fecha", "<=", fecha2+" 23:59:00"},{"idArticulo","=",idArticulo}};
-
-        mov = rMovimientos.buscarBD("all", opciones);
+        //Obtener datos para convertir codigoArt a IDart
+        //Object[][] opciones1 = new Object[][]{{"codigoArticulo","=",idArticulo}};
+       // art = rArt.buscarBD("all", opciones1);
         
-              
+        articuloBuscar = ctrArticulo.buscarUnoPorCodigoArticulo(idArticulo);
+        
+        if(articuloBuscar!=null){
+        Long tmpIDart = articuloBuscar.getIdArticulo();
        
         
+        Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"},{"fecha", "<=", fecha2+" 23:59:00"},{"idArticulo","=",tmpIDart}};
+        mov = rMovimientos.buscarBD("all", opciones);
         
-        if (mov.length <= 0) {
+        if (mov.length<=0) {
             return null;
         } else {
 
             try {
+                
                 //Obtenemos la fecha del reporte y la separamos en mes dia y año.
                 Calendar cal = new GregorianCalendar();
                 
@@ -496,18 +516,12 @@ public class ControlReporte {
                 
                 //Crear y llenar Tabla PDF
                 PdfPTable table = new PdfPTable(5);
-                PdfPCell cell = new PdfPCell(new Paragraph("Código de artículo: " +tmpIdArticulo,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                PdfPCell cell = new PdfPCell(new Paragraph("Código de artículo: " +tmpIdArticulo + "   Descripción: "+((Articulo)art[0]).getDescripcion(),FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
                 cell.setColspan(5);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
-                table.addCell(cell);
                
-                
-                
-                
-                
-                               
-                
+                table.addCell(cell);
                 table.addCell(new Phrase("Concepto",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));   
                 table.addCell(new Phrase("Fecha y Hora",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
@@ -515,13 +529,16 @@ public class ControlReporte {
                 table.addCell(new Phrase("Precio Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
                 
                 
-                
+           //CONFLICTO PARA OBTENER DATOS DE HISTORIAL ALMACEN.
                 for(int x=0;x<mov.length;x++){
-                tmpConcepto = ((HistorialAlmacen) mov[x]).getConcepto();
-                table.addCell(new Phrase(tmpConcepto.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                     
+               
+                tmpConcepto = ((HistorialAlmacen)mov[x]).getConcepto();
+                table.addCell(new Phrase(tmpConcepto,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                JOptionPane.showMessageDialog(null, "agrego Concepto: ");  
                 
                 tmpFecha = ((HistorialAlmacen) mov[x]).getFecha();
-                table.addCell(new Phrase(tmpFecha.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                table.addCell(new Phrase(tmpFecha,FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                 tmpCantidad = ((HistorialAlmacen) mov[x]).getCantidad();
                 table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -549,11 +566,15 @@ public class ControlReporte {
                     Desktop.getDesktop().open(new File(ruta));
 
                 } catch (IOException e) {
-                    e.printStackTrace();
+                     JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Movimientos.pdf");
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Movimientos.pdf");
+                JOptionPane.showMessageDialog(null, "Error al crear Reporte de Movimientos.pdf");
             }
+        }
+        }
+        else{
+        JOptionPane.showMessageDialog(null, "No existe artículo "+tmpIdArticulo+", por favor ingrese otro código de artículo.");
         }
         return reporteMovimientos;
     }

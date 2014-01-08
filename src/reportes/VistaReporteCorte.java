@@ -5,6 +5,7 @@
 package reportes;
 
 import articulo.Articulo;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -66,6 +67,11 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(1200, 350));
         setMinimumSize(new java.awt.Dimension(1200, 350));
         setPreferredSize(new java.awt.Dimension(1200, 350));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         btCancelarReporteC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelarReporteC.setText("Cancelar");
@@ -106,6 +112,14 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                 btAceptarCCActionPerformed(evt);
             }
         });
+        btAceptarCC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btAceptarCCKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btAceptarCCKeyTyped(evt);
+            }
+        });
 
         jScrollPane1.setMaximumSize(new java.awt.Dimension(1150, 210));
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1150, 210));
@@ -132,6 +146,11 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbCorteCaja);
 
+        txRango.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txRango.setMaximumSize(new java.awt.Dimension(300, 50));
+        txRango.setMinimumSize(new java.awt.Dimension(300, 50));
+        txRango.setPreferredSize(new java.awt.Dimension(300, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,20 +164,18 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txFecTer)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txFechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(81, 81, 81)
-                                .addComponent(btAceptarCC)
-                                .addGap(63, 63, 63)
-                                .addComponent(btCancelarReporteC)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btExportarCorteCaja))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(btAceptarCC))
+                            .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(63, 63, 63)
+                        .addComponent(btCancelarReporteC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btExportarCorteCaja)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -175,16 +192,19 @@ public class VistaReporteCorte extends javax.swing.JPanel {
                         .addComponent(btCancelarReporteC)
                         .addComponent(btExportarCorteCaja))
                     .addComponent(txFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txRango, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExportarCorteCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarCorteCajaActionPerformed
+        
+        limpiarTabla();
         // Ejecuto corte de caja
+        
         ModeloCorte reporte = null;
         //Creamos controlador corte
         ControlReporte ctrCorte = new ControlReporte();
@@ -278,7 +298,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         // TODO add your handling code here:
         //Aceptar Repote Corte de Caja
         
-        
+        limpiarTabla();
        //Iniciamos objetos necesarios para la busqueda.
         Venta mVentas = new Venta(true);
         Object[] ventas = null;
@@ -314,8 +334,10 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         Object[][] opciones = new Object[][]{{"fecha", ">=", fecha1+" 00:00:00"}, {"fecha", "<=", fecha2+" 23:59:00"}};
 
         ventas = mVentas.buscarBD("all", opciones);
-        
+        if(ventas.length>0){
+            
         DecimalFormat decimal = new DecimalFormat("#.##");
+        
      
         Integer tmpNoVentas = 0;
         Float tmpVentas = 0F;
@@ -359,8 +381,34 @@ public class VistaReporteCorte extends javax.swing.JPanel {
         RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbCorteCaja.getModel());
           
         tbCorteCaja.setRowSorter(sorter);
+        }else{
+        JOptionPane.showMessageDialog(this, " No existen registros de corte de caja para ese rango de fechas.");
+        }
         }
     }//GEN-LAST:event_btAceptarCCActionPerformed
+
+    private void btAceptarCCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAceptarCCKeyPressed
+        // TODO add your handling code here:
+        
+    
+        int key=evt.getKeyCode();
+   
+        if(key==KeyEvent.VK_ENTER)
+        { 
+        
+            btAceptarCCActionPerformed(null);
+         
+        }
+    
+    }//GEN-LAST:event_btAceptarCCKeyPressed
+
+    private void btAceptarCCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAceptarCCKeyTyped
+
+    }//GEN-LAST:event_btAceptarCCKeyTyped
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+     
+    }//GEN-LAST:event_formKeyPressed
 
     private int validaciones (){
         txFechaInicio.setDateFormatString("yyy-MM-dd");
@@ -406,6 +454,17 @@ public class VistaReporteCorte extends javax.swing.JPanel {
       }
         
     return band3;
+    }
+    private void limpiarTabla(){
+        DefaultTableModel datos = (DefaultTableModel) tbCorteCaja.getModel();
+        datos.setRowCount(0);
+        datos.addRow(new Object[] {
+          "","","",""
+          });
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbCorteCaja.getModel());
+          
+        tbCorteCaja.setRowSorter(sorter);
+        txRango.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btAceptarCC;

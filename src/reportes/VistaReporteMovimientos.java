@@ -54,23 +54,25 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         txNumArt = new javax.swing.JTextField();
         etFechaInicio = new javax.swing.JLabel();
         txFechaFinal = new com.toedter.calendar.JDateChooser();
-        btAceptarVentas = new javax.swing.JButton();
-        btCancelarRepVentas = new javax.swing.JButton();
+        btExportarMovimientos = new javax.swing.JButton();
+        btCancelarRepMovimientos = new javax.swing.JButton();
         etFechaFinal = new javax.swing.JLabel();
         txFechaInicio = new com.toedter.calendar.JDateChooser();
+        btAceptarRepMovimientos = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de Movimientos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
-        setMaximumSize(new java.awt.Dimension(600, 140));
-        setMinimumSize(new java.awt.Dimension(600, 140));
-        setPreferredSize(new java.awt.Dimension(600, 140));
+        setMaximumSize(new java.awt.Dimension(1150, 250));
+        setMinimumSize(new java.awt.Dimension(1150, 250));
+        setPreferredSize(new java.awt.Dimension(1150, 250));
         setLayout(new java.awt.GridBagLayout());
 
         etCodigoArticulo.setText("Código de Árticulo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 15;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(27, 20, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(56, 16, 180, 0);
         add(etCodigoArticulo, gridBagConstraints);
 
         txNumArt.setMaximumSize(new java.awt.Dimension(6, 25));
@@ -84,19 +86,18 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.ipadx = 91;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 4, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(45, 4, 180, 0);
         add(txNumArt, gridBagConstraints);
 
         etFechaInicio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etFechaInicio.setText("Fecha Termino");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 94, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(55, 4, 180, 0);
         add(etFechaInicio, gridBagConstraints);
 
         txFechaFinal.setDateFormatString("yyyy-MM-dd");
@@ -104,51 +105,48 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         txFechaFinal.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaFinal.setPreferredSize(new java.awt.Dimension(85, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 16);
+        gridBagConstraints.insets = new java.awt.Insets(45, 4, 180, 0);
         add(txFechaFinal, gridBagConstraints);
 
-        btAceptarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
-        btAceptarVentas.setText("Aceptar");
-        btAceptarVentas.addActionListener(new java.awt.event.ActionListener() {
+        btExportarMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
+        btExportarMovimientos.setText("Exportar");
+        btExportarMovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarVentasActionPerformed(evt);
+                btExportarMovimientosActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 54, 3, 0);
-        add(btAceptarVentas, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(41, 111, 180, 16);
+        add(btExportarMovimientos, gridBagConstraints);
 
-        btCancelarRepVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
-        btCancelarRepVentas.setText("Cancelar");
-        btCancelarRepVentas.addActionListener(new java.awt.event.ActionListener() {
+        btCancelarRepMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
+        btCancelarRepMovimientos.setText("Cancelar");
+        btCancelarRepMovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarRepVentasActionPerformed(evt);
+                btCancelarRepMovimientosActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 94, 3, 0);
-        add(btCancelarRepVentas, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(41, 10, 180, 0);
+        add(btCancelarRepMovimientos, gridBagConstraints);
 
         etFechaFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etFechaFinal.setText("Fecha Inicio");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(28, 47, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(55, 18, 180, 0);
         add(etFechaFinal, gridBagConstraints);
 
         txFechaInicio.setDateFormatString("yyyy-MM-dd");
@@ -156,16 +154,29 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         txFechaInicio.setMinimumSize(new java.awt.Dimension(85, 25));
         txFechaInicio.setPreferredSize(new java.awt.Dimension(85, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 60;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 4, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(45, 4, 180, 0);
         add(txFechaInicio, gridBagConstraints);
+
+        btAceptarRepMovimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
+        btAceptarRepMovimientos.setText("Aceptar");
+        btAceptarRepMovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAceptarRepMovimientosActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(41, 32, 180, 0);
+        add(btAceptarRepMovimientos, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btAceptarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarVentasActionPerformed
+    private void btExportarMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarMovimientosActionPerformed
         
         
         //Validación de campos
@@ -186,33 +197,33 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
          String idArt = "";
         if (txNumArt.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Ingrese código de artículo");
-            band =0;
+            band2 =2;
             
         } else {
             
             idArt = txNumArt.getText();
-            band2=2;
+            band2=0;
         }
         
         
         if (txFechaInicio.getCalendar() != null) {
             fecha1 = txFechaInicio.getCalendar().get(Calendar.YEAR) + "-" + (txFechaInicio.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaInicio.getCalendar().get(Calendar.DAY_OF_MONTH);
-            band3=3;
+            band3=0;
                        
             
         } else {
             JOptionPane.showMessageDialog(this, "Ingrese Fecha de Inicio");
-            band =0;
+            band3 =3;
         }     
         
         if (txFechaFinal.getCalendar() != null) {
             fecha2 = txFechaFinal.getCalendar().get(Calendar.YEAR) + "-" + (txFechaFinal.getCalendar().get(Calendar.MONTH) + 1) + "-" + txFechaFinal.getCalendar().get(Calendar.DAY_OF_MONTH);
-            band=1;
+            band=0;
                        
             
         } else {
             JOptionPane.showMessageDialog(this, "Ingrese Fecha Termino");
-            band =0;
+            band =1;
         }
         
         //Validar fecha inicio <= fecha termino
@@ -250,8 +261,8 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
             }
             
         } else {
-            JOptionPane.showMessageDialog(this, "Ingrese Fecha Inicio menor o igual a Fecha Termino. ultimo else");
-            band =0;
+            
+            band4 =0;
         }
         
        
@@ -261,7 +272,8 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
       
  
         
-        if(band==1&&band2==2&&band3==3&&band4==0){
+        if(band==0&&band2==0&&band3==0&&band4==0){
+         
         reporte = ctrlMov.realizarReporteMovimientos(idArticulo, fecha1, fecha2);
 
         if (reporte == null) {
@@ -270,9 +282,9 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         }
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAceptarVentasActionPerformed
+    }//GEN-LAST:event_btExportarMovimientosActionPerformed
 
-    private void btCancelarRepVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarRepVentasActionPerformed
+    private void btCancelarRepMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarRepMovimientosActionPerformed
         // Boton Cancelar Rep Corte Caja
 
         this.removeAll();
@@ -282,7 +294,7 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         this.setVisible(false);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btCancelarRepVentasActionPerformed
+    }//GEN-LAST:event_btCancelarRepMovimientosActionPerformed
 
     private void txNumArtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txNumArtKeyTyped
         char caracter = evt.getKeyChar();
@@ -294,10 +306,16 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
 // TODO add your handling code here:
     }//GEN-LAST:event_txNumArtKeyTyped
 
+    private void btAceptarRepMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarRepMovimientosActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "En construcción");
+    }//GEN-LAST:event_btAceptarRepMovimientosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAceptarVentas;
-    private javax.swing.JButton btCancelarRepVentas;
+    private javax.swing.JButton btAceptarRepMovimientos;
+    private javax.swing.JButton btCancelarRepMovimientos;
+    private javax.swing.JButton btExportarMovimientos;
     private javax.swing.JLabel etCodigoArticulo;
     private javax.swing.JLabel etFechaFinal;
     private javax.swing.JLabel etFechaInicio;
