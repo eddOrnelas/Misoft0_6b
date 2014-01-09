@@ -63,7 +63,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Devolucion Articulo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -115,6 +115,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 10, 0, 0);
         getContentPane().add(btBuscar, gridBagConstraints);
 
+        tbArticulos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tbArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -138,6 +139,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbArticulos.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbArticulos);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -244,7 +246,8 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         
         //Buscamos primero venta
         ventaBuscar.setIdVenta(idVenta);
-        Boolean ventaValida = ventaBuscar.buscarBD();
+        Boolean ventaValida = false;
+        ventaValida = ventaBuscar.buscarBD();
         
         //Validamos que la venta no ha sido cancelada antes por completo
             if(ventaValida)
@@ -365,7 +368,7 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
             {
 
                 
-                Boolean resultado = ctrVenta.cancelarArticuloVenta(venta, codigoArticulo, cantidadTmp);
+                Boolean resultado = ctrVenta.devolucionArticuloVenta(venta, codigoArticulo, cantidadTmp);
              if(resultado)
              {
                  Integer cantidadTabla = (Integer) tbArticulos.getValueAt(selection, 2);
