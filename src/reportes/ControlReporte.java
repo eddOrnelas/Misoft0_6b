@@ -14,6 +14,7 @@ import com.itextpdf.text.FontFactory;
 import static com.itextpdf.text.FontFactory.HELVETICA_BOLD;
 import com.itextpdf.text.Image;
 import static com.itextpdf.text.Image.MIDDLE;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -319,6 +320,186 @@ public class ControlReporte {
                  JOptionPane.showMessageDialog(null, "Error en crear Reportede Ventas.pdf");
             }
         }
+        return reporteVentas;
+    }
+    
+    public ModeloCorte generarTicket(Long idVenta){
+        ArticuloVenta mVentas = new ArticuloVenta(true);
+        Venta fVenta = new Venta(true);
+        
+        Object[] ventas = null;
+        Object[] fventas = null;
+        Object[] dventas = null;
+        
+        ModeloCorte reporteVentas = new ModeloCorte();
+        //Parametros de busqueda.
+        Boolean activo = true;
+        Object[][] opciones = new Object[][]{{"idVenta","=",idVenta}};
+        ventas = mVentas.buscarBD("all", opciones);
+        
+        fventas = fVenta.buscarBD("all", opciones);
+        
+       
+        
+        
+        
+        //Datos de Venta
+        Long tmpCodArt;
+        Long tmpIDart;
+        Float tmpIVA;
+        String tmpDesc;
+        Integer tmpCantidad;
+        Float tmpPrecioVenta;
+        Float tmpTotal=0F;
+        Float totalVentas= 0F;
+        String tmpFecha;
+    
+        DecimalFormat decimal = new DecimalFormat("#.##");
+       
+        
+        
+        if (ventas.length <= 0) {
+            return null;
+        } else {
+
+            try {
+                //Obtenemos la fecha del reporte y la separamos en mes dia y año.
+                Calendar cal = new GregorianCalendar();
+                
+                int month = cal.get(Calendar.MONTH);
+                int year = cal.get(Calendar.YEAR);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                String fechaDia = ((1+ month)+ "/" + day + "/" + year);
+
+                //Creamos la variable docmuent de tipo Document
+                Document document=new Document(PageSize.A7);  
+                
+                //Abrimos el flujo para escribir en el PDF.
+                PdfWriter.getInstance(document, new FileOutputStream("ticket.pdf"));
+                document.open();
+                Image logo = Image.getInstance("logo200.png");   
+               //Modificacion posicion de img Dann
+                logo.scaleAbsolute(80,40);
+                logo.setAlignment(MIDDLE);               
+                document.add(logo);
+
+                //Creamos el documento y le damos formato con una tabla
+                //Modificacion de Fuente, Tamaño y Color Dann
+                
+                Image linea = Image.getInstance("linea.png");   
+               //Modificacion posicion de img Dann
+                linea.scaleAbsolute(150,10);
+                linea.setAlignment(MIDDLE);     
+                document.add(linea);
+                
+                //Crear y llenar Tabla PDF
+                PdfPTable table = new PdfPTable(7);
+                
+                tmpFecha = ((Venta) fventas[0]).getFecha();
+                PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + idVenta +"                  Fecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3)));
+                cell.setColspan(7);
+                cell.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
+                cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                table.addCell(cell);
+                     
+               
+                table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,3, BaseColor.BLACK)));   
+                table.addCell(new Phrase("Descrip- ción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
+                table.addCell(new Phrase("Canti- dad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
+                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
+                table.addCell(new Phrase("Sub Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
+                table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,3, BaseColor.BLACK)));
+                table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,3, BaseColor.BLACK)));
+                
+               
+                     
+                for(int x=0;x<ventas.length;x++){
+                
+                Long tmpIdArt;
+        
+                tmpIdArt = ((ArticuloVenta)ventas[x]).getIdArticulo();
+                Object[][] opciones2 = new Object[][]{{"idArticulo","=",tmpIdArt}};
+                Articulo dVenta = new Articulo(true);
+                dventas = dVenta.buscarBD("all",opciones2);    
+                    
+                //JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
+                tmpCodArt = ((Articulo) dventas[0]).getCodigoArticulo();
+                tmpIDart = ((ArticuloVenta)ventas[x]).getIdArticulo();
+                table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+          
+                
+                 
+                
+                
+                
+                tmpDesc = ((Articulo)dventas[0]).getDescripcion();
+                table.addCell(new Phrase(tmpDesc,FontFactory.getFont(FontFactory.HELVETICA, 2)));
+          
+                
+                tmpCantidad = ((ArticuloVenta) ventas[x]).getCantidad();
+                table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+                
+                
+                tmpPrecioVenta = ((ArticuloVenta) ventas[x]).getPrecioVenta();
+                 Float tmpGranTotal =  tmpCantidad * tmpPrecioVenta;
+                
+                table.addCell(new Phrase(decimal.format(tmpGranTotal),FontFactory.getFont(FontFactory.HELVETICA, 2))); 
+                 
+                tmpTotal = ((100*tmpGranTotal)/111);
+                decimal.format(tmpTotal);
+                table.addCell(new Phrase(decimal.format(tmpTotal),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+                
+                 tmpIVA =  (11*tmpGranTotal)/111;
+                table.addCell(new Phrase(decimal.format(tmpIVA),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+                
+                
+                table.addCell(new Phrase(decimal.format(tmpPrecioVenta*tmpCantidad),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+                
+               
+               
+                
+                
+                
+                
+                
+           
+                } 
+                    
+                
+                              
+              
+                document.add(table);
+                 document.add(new Phrase(" "));
+                document.add(new Phrase(" "));
+                document.add(new Phrase(" "));
+                document.add(new Phrase(" "));
+                document.add(new Phrase(" "));
+                document.add(new Phrase(" "));
+                
+                
+                document.add(new Phrase("                                                                                                                                                                                                                           Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3)));
+               
+                JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
+                //Cerramos PDF.
+                document.close();
+                java.awt.Desktop desktop = java.awt.Desktop.getDesktop(); 
+                java.io.File fichero = new java.io.File("ticket.pdf"); 
+                if (desktop.isSupported(Desktop.Action.PRINT)){ 
+                try {
+                desktop.print(fichero);
+                } catch (Exception e){
+
+                e.printStackTrace();
+                }
+                }else{ 
+
+                } 
+        } catch (Exception e) {
+                 JOptionPane.showMessageDialog(null, "Error en crear Reportede Ventas.pdf");
+            }
+        }
+
+        
         return reporteVentas;
     }
 
