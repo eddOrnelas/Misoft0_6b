@@ -209,7 +209,7 @@ public class VistaReporteCorte extends javax.swing.JPanel {
             }
         });
 
-        btCorteDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
+        btCorteDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/corte.png"))); // NOI18N
         btCorteDia.setText("Corte del Día");
         btCorteDia.setMaximumSize(new java.awt.Dimension(127, 29));
         btCorteDia.setMinimumSize(new java.awt.Dimension(127, 29));

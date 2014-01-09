@@ -74,8 +74,7 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tbArticulos.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        tbArticulos.setMaximumSize(new java.awt.Dimension(1150, 210));
+        tbArticulos.setMaximumSize(new java.awt.Dimension(1150, 6000));
         tbArticulos.setMinimumSize(new java.awt.Dimension(1150, 210));
         tbArticulos.setPreferredSize(new java.awt.Dimension(1150, 210));
         jScrollPane1.setViewportView(tbArticulos);
