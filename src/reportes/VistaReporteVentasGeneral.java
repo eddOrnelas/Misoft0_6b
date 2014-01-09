@@ -63,11 +63,20 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         tbVentas = new javax.swing.JTable();
         txFecHr = new javax.swing.JLabel();
         txTotal = new javax.swing.JLabel();
+        btConsultaVtas = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reporte de Ventas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         setMaximumSize(new java.awt.Dimension(1200, 350));
         setMinimumSize(new java.awt.Dimension(1200, 350));
         setPreferredSize(new java.awt.Dimension(1200, 350));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
 
         btExportarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
         btExportarVentas.setText("Exportar");
@@ -152,6 +161,15 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
         txTotal.setMinimumSize(new java.awt.Dimension(200, 30));
         txTotal.setPreferredSize(new java.awt.Dimension(200, 30));
 
+        btConsultaVtas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
+        btConsultaVtas.setText("Consultar Ventas ");
+        btConsultaVtas.setActionCommand("Consultar Ventas ");
+        btConsultaVtas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConsultaVtasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,8 +177,11 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txNoVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,14 +189,16 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
                         .addComponent(btAceptarRepVentas)
                         .addGap(18, 18, 18)
                         .addComponent(btCancelarRepVentas)
-                        .addGap(102, 102, 102)
+                        .addGap(18, 18, 18)
+                        .addComponent(btConsultaVtas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txFecHr, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btExportarVentas))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1153, Short.MAX_VALUE))
+                                .addGap(52, 52, 52)
+                                .addComponent(btExportarVentas)))
+                        .addGap(79, 79, 79)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,7 +211,8 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
                         .addComponent(txNoVenta)
                         .addComponent(txNumVenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btAceptarRepVentas)
-                        .addComponent(btCancelarRepVentas))
+                        .addComponent(btCancelarRepVentas)
+                        .addComponent(btConsultaVtas))
                     .addComponent(btExportarVentas))
                 .addGap(9, 9, 9)
                 .addComponent(txTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,7 +339,38 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
            btAceptarRepVentasActionPerformed(null);
         }
     }
+    if(key==KeyEvent.VK_F2)
+        { 
+           limpiarTabla();
+           btConsultaVtasActionPerformed(null);
+        }
     }//GEN-LAST:event_txNumVentaKeyPressed
+
+    private void btConsultaVtasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultaVtasActionPerformed
+        // TODO add your handling code here:
+        vistaConsultaVentas vista = new vistaConsultaVentas ();
+        vista.setVisible(true);
+    }//GEN-LAST:event_btConsultaVtasActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+         int key=evt.getKeyCode();
+        if(key==KeyEvent.VK_F2)
+        { 
+           limpiarTabla();
+           btConsultaVtasActionPerformed(null);
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        // TODO add your handling code here:
+        int key=evt.getKeyCode();
+        if(key==KeyEvent.VK_F2)
+        { 
+           limpiarTabla();
+           btConsultaVtasActionPerformed(null);
+        }
+    }//GEN-LAST:event_formKeyTyped
     private void llenarTabla(Object[] venta) {
     
         Object[]dventas = null;
@@ -399,6 +454,7 @@ public class VistaReporteVentasGeneral extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarRepVentas;
     private javax.swing.JButton btCancelarRepVentas;
+    private javax.swing.JButton btConsultaVtas;
     private javax.swing.JButton btExportarVentas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
