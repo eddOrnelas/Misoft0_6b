@@ -34,6 +34,20 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         initComponents();
         
         carrito = new ArrayList();
+
+    }
+    
+    public VistaRealizarVentas(ArrayList carritoRecuperado) {
+        initComponents();
+        
+        if(carritoRecuperado==null)
+        carrito = new ArrayList();
+        else{
+            carrito = carritoRecuperado;
+            rellenartabla();
+            calcularCosto();
+            
+        }
     }
 
     /**
@@ -395,7 +409,12 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
 
         btEditarCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btEditarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
-        btEditarCantidad.setText("Editar Cantidad Articulo");
+        btEditarCantidad.setText("Editar Cantidad Articulo [F4]");
+        btEditarCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarCantidadActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -620,7 +639,57 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             else
                 if(key==KeyEvent.VK_TAB){
                 //    evt.
+                }else
+                    if(key == KeyEvent.VK_F4){
+                        
+                        int selection= tbConsultar.getSelectedRow();
+        
+       Long codigoArticulo = null;
+        try{
+        codigoArticulo = (Long)tbConsultar.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        if(codigoArticulo!=null){
+        
+            String cantEditStr = JOptionPane.showInputDialog(this, "Introduce la cantidad para edicion: ", tbConsultar.getValueAt(selection, 2));
+            Integer cantEdit = null;
+            
+            if(cantEditStr!=null)
+            try{
+            cantEdit = Integer.parseInt(cantEditStr);
+            }catch(java.lang.ArrayIndexOutOfBoundsException e)
+            {
+
+            }
+            
+            if(cantEdit<=0 || cantEdit == null)
+           {
+               JOptionPane.showMessageDialog(this, "Cantidad introducida invalida");
+               
+           }else
+                if(cantEdit<=0 || cantEditStr.contains("+") || cantEditStr.contains("-")){
+                    JOptionPane.showMessageDialog(this, "La cantidad introducida es invalida, solo son permitidos numeros \n");
+                    
+                    }else{
+                        editarCantidadCarrito(codigoArticulo, cantEdit);
+                       // rellenartabla();
+        calcularCosto();
                 }
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "No has seleccionas articulo");
+        }
+                        
+        
+
+                        
+                        
+                        
+                    }
         
         
        
@@ -646,7 +715,90 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
 
     private void btCancelarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarArticuloActionPerformed
         // TODO add your handling code here:
+        
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        ControlVenta ctrVenta = new ControlVenta();
+        
+        //Obtenemos la fila seleccionada
+        Integer selection= tbConsultar.getSelectedRow();
+        //Optenemos el id de esa fila
+        Long codigoArticulo = null;
+        
+        try{
+        codigoArticulo = (Long) tbConsultar.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        if(codigoArticulo!=null){
+        Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "Desceas cancelar articulo?", "Atencion!",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                cancelarArticulo(codigoArticulo);
+                txBuscar.requestFocus();
+            }
+        }else{
+             JOptionPane.showMessageDialog(this, "Codigo Articulo Invalido");
+            txBuscar.requestFocus();
+        }
+        
+        
     }//GEN-LAST:event_btCancelarArticuloActionPerformed
+
+    private void btEditarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarCantidadActionPerformed
+        // TODO add your handling code here:
+        
+        int selection= tbConsultar.getSelectedRow();
+        
+       Long codigoArticulo = null;
+        try{
+        codigoArticulo = (Long)tbConsultar.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        if(codigoArticulo!=null){
+        
+            String cantEditStr = JOptionPane.showInputDialog(this, "Introduce la cantidad para edicion: ", tbConsultar.getValueAt(selection, 2));
+            Integer cantEdit = null;
+            
+            if(cantEditStr!=null)
+            try{
+            cantEdit = Integer.parseInt(cantEditStr);
+            }catch(java.lang.ArrayIndexOutOfBoundsException e)
+            {
+
+            }
+            
+          if(cantEdit != null)
+            if(cantEdit<=0)
+           {
+               JOptionPane.showMessageDialog(this, "Cantidad introducida invalida");
+               
+           }else
+                if(cantEdit<=0 || cantEditStr.contains("+") || cantEditStr.contains("-")){
+                    JOptionPane.showMessageDialog(this, "La cantidad introducida es invalida, solo son permitidos numeros \n");
+                    
+                    }else{
+                        editarCantidadCarrito(codigoArticulo, cantEdit);
+                       // rellenartabla();
+        calcularCosto();
+                }
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "No has seleccionas articulo");
+        }
+                        
+        
+        
+    }//GEN-LAST:event_btEditarCantidadActionPerformed
 
     public void agregarArticuloCarrito(Articulo articulo, Integer cantidad){
         
@@ -737,6 +889,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     
     public void calcularCosto(){
         
+        
+        
         Integer cantidad_articulos = carrito.size();
         Float subTotal = 0.0f;
         Float subSubTotal = 0.0f;
@@ -764,6 +918,9 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         lbSubTotal.setText("$ "+decimal.format(subSubTotal));
         lbIva.setText("$ "+decimal.format(iva));
         lbTotal.setText("$ "+decimal.format(subTotal));
+        
+        ControlVenta ctrVentaCarrito = new ControlVenta();
+        ctrVentaCarrito.guardarCarrito(this, carrito);
     }
     
     
@@ -842,5 +999,98 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         rellenartabla();
         calcularCosto();
      }
+
+    private void editarCantidadCarrito(Long codigoArticulo, Integer cantidad) {
+        
+            int cantidad_articulos =  carrito.size();
+            //Bandera de repetido encontrado
+            Boolean noRepetido = true;
+        //Buscar Anteriormente Agregados y cotejar la cantidad en almacen con los agregados
+            
+            ControlArticulo ctrArticulo = new ControlArticulo();
+            Articulo datosArticulo = null;
+            
+            datosArticulo = ctrArticulo.buscarUnoPorCodigoArticulo(codigoArticulo);
+        
+            
+            for(int x=0; x<cantidad_articulos; x++)
+          {
+              
+             Object articuloTmp = carrito.get(x);
+             Object[] thisArticulo = ((Object[]) articuloTmp);
+             
+             
+             
+              
+             if(((Articulo)thisArticulo[0]).getCodigoArticulo().longValue() == codigoArticulo.longValue())
+             {   noRepetido = false;
+                 System.out.println("Coincide");
+                 
+                 if(cantidad>((Articulo)thisArticulo[0]).getCantidadExistencia())
+                 {
+                     Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "La cantidad a comprar excede de la existente en almacen,\n Continuar de todos modos?", "Atencion!",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                 Object[] articuloNuevo = new Object[2];
+                 articuloNuevo[0] = ((Articulo)thisArticulo[0]);
+                 articuloNuevo[1] = cantidad;
+                 
+                 carrito.set(x, articuloNuevo);
+                 rellenartabla();
+                 
+            }
+            
+                 }
+                 else{
+                      Object[] articuloNuevo = new Object[2];
+                 articuloNuevo[0] = ((Articulo)thisArticulo[0]);
+                 articuloNuevo[1] = cantidad;
+                 
+                 carrito.set(x, articuloNuevo);
+                 rellenartabla();
+                 noRepetido = false;
+                 }
+             }
+          
+          
+          }
+        
+        
+        //Si no esta repetido pero puede y exceda la cantidad en existencia
+        if(noRepetido)
+        if(cantidad>datosArticulo.getCantidadExistencia())
+           {
+                     Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "La cantidad a comprar excede de la existente en almacen,\n Continuar de todos modos?", "Atencion!",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                 Object[] articuloNuevo = new Object[2];
+                    articuloNuevo[0] = datosArticulo;
+                    articuloNuevo[1] = cantidad;
+
+                    carrito.add(articuloNuevo);
+
+                    rellenartabla();
+                 
+            }
+            
+                 }
+        else{
+        Object[] articuloNuevo = new Object[2];
+        articuloNuevo[0] = datosArticulo;
+        articuloNuevo[1] = cantidad;
+        
+        carrito.add(articuloNuevo);
+        
+        rellenartabla();
+        }
+    }
     
 }

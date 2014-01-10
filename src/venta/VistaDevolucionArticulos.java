@@ -142,6 +142,10 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         });
         tbArticulos.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbArticulos);
+        tbArticulos.getColumnModel().getColumn(0).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(1).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(2).setResizable(false);
+        tbArticulos.getColumnModel().getColumn(3).setResizable(false);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
