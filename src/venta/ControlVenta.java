@@ -15,6 +15,7 @@ import articulo.Articulo;
 import articulo.ControlArticulo;
 import articulo.HistorialAlmacen;
 import javax.swing.JOptionPane;
+import reportes.ControlReporte;
 
 /**
  *
@@ -663,7 +664,8 @@ return true;
           }
          
          
-      
+      ControlReporte ctrReporte = new ControlReporte();
+          ctrReporte.generarTicket(idventa);
          
         //JOptionPane.showMessageDialog(this, "La venta se realizo con exito");
          

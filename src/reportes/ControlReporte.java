@@ -17,6 +17,7 @@ import static com.itextpdf.text.Image.MIDDLE;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -372,14 +373,17 @@ public class ControlReporte {
                 String fechaDia = ((1+ month)+ "/" + day + "/" + year);
 
                 //Creamos la variable docmuent de tipo Document
-                Document document=new Document(PageSize.A7);  
+                Rectangle tamTicket = new Rectangle(216f, 720f, 0); //ancho, largo, giro, en pt
+                
+                Document document=new Document(tamTicket);
+                System.out.println("Papel: "+PageSize.LETTER.toString());
                 
                 //Abrimos el flujo para escribir en el PDF.
                 PdfWriter.getInstance(document, new FileOutputStream("ticket.pdf"));
                 document.open();
                 Image logo = Image.getInstance("logo200.png");   
                //Modificacion posicion de img Dann
-                logo.scaleAbsolute(80,40);
+                logo.scaleAbsolute(180,60);
                 logo.setAlignment(MIDDLE);               
                 document.add(logo);
 
@@ -388,28 +392,33 @@ public class ControlReporte {
                 
                 Image linea = Image.getInstance("linea.png");   
                //Modificacion posicion de img Dann
-                linea.scaleAbsolute(150,10);
+                linea.scaleAbsolute(180,10);
                 linea.setAlignment(MIDDLE);     
                 document.add(linea);
                 
                 //Crear y llenar Tabla PDF
-                PdfPTable table = new PdfPTable(7);
-                
+                PdfPTable table = new PdfPTable(5);
+                table.setTotalWidth(380f);
+                 table.setWidthPercentage(130);
+                // table.setWidths(new float[]{2, 1, 1});
+                //table.setw
                 tmpFecha = ((Venta) fventas[0]).getFecha();
-                PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + idVenta +"                  Fecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3)));
-                cell.setColspan(7);
+                PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + idVenta +"                  Fecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 4)));
+                cell.setColspan(5);
                 cell.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                //cell.set
                 table.addCell(cell);
+               // table.set
                      
                
-                table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,3, BaseColor.BLACK)));   
-                table.addCell(new Phrase("Descrip- ción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
-                table.addCell(new Phrase("Canti- dad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
-                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
-                table.addCell(new Phrase("Sub Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3, BaseColor.BLACK)));
-                table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,3, BaseColor.BLACK)));
-                table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,3, BaseColor.BLACK)));
+                table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,8, BaseColor.BLACK)));   
+                table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
+                table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
+                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
+                //table.addCell(new Phrase("Sub Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 4, BaseColor.BLACK)));
+                //table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,4, BaseColor.BLACK)));
+                table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,8, BaseColor.BLACK)));
                 
                
                      
@@ -425,35 +434,31 @@ public class ControlReporte {
                 //JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
                 tmpCodArt = ((Articulo) dventas[0]).getCodigoArticulo();
                 tmpIDart = ((ArticuloVenta)ventas[x]).getIdArticulo();
-                table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+                table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
           
-                
-                 
-                
-                
-                
+
                 tmpDesc = ((Articulo)dventas[0]).getDescripcion();
-                table.addCell(new Phrase(tmpDesc,FontFactory.getFont(FontFactory.HELVETICA, 2)));
-          
+                table.addCell(new Phrase(tmpDesc,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+               // new Phrase()
                 
                 tmpCantidad = ((ArticuloVenta) ventas[x]).getCantidad();
-                table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+                table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                 
                 tmpPrecioVenta = ((ArticuloVenta) ventas[x]).getPrecioVenta();
                  Float tmpGranTotal =  tmpCantidad * tmpPrecioVenta;
                 
-                table.addCell(new Phrase(decimal.format(tmpGranTotal),FontFactory.getFont(FontFactory.HELVETICA, 2))); 
+                table.addCell(new Phrase(decimal.format(tmpGranTotal),FontFactory.getFont(FontFactory.HELVETICA, 8))); 
                  
                 tmpTotal = ((100*tmpGranTotal)/111);
                 decimal.format(tmpTotal);
-                table.addCell(new Phrase(decimal.format(tmpTotal),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+               // table.addCell(new Phrase(decimal.format(tmpTotal),FontFactory.getFont(FontFactory.HELVETICA, 2)));
                 
                  tmpIVA =  (11*tmpGranTotal)/111;
-                table.addCell(new Phrase(decimal.format(tmpIVA),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+               // table.addCell(new Phrase(decimal.format(tmpIVA),FontFactory.getFont(FontFactory.HELVETICA, 2)));
                 
                 
-                table.addCell(new Phrase(decimal.format(tmpPrecioVenta*tmpCantidad),FontFactory.getFont(FontFactory.HELVETICA, 2)));
+                table.addCell(new Phrase(decimal.format(tmpPrecioVenta*tmpCantidad),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                
                

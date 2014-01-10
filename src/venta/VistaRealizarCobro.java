@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import reportes.ControlReporte;
 
 /**
  *
@@ -263,6 +264,9 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
           btCobrar.setEnabled(false);
           txEfectivo.setEnabled(false);
           JOptionPane.showMessageDialog(this, "Venta Realizada con Exito");
+          
+          
+          
          btContinuar.setEnabled(true);
          btContinuar.requestFocus();
          
