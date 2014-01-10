@@ -37,7 +37,7 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btAceptarVentas = new javax.swing.JButton();
+        btExportarAlmacen = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbArticulos = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
@@ -47,27 +47,27 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1200, 350));
         setPreferredSize(new java.awt.Dimension(1200, 350));
 
-        btAceptarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
-        btAceptarVentas.setText("Exportar");
-        btAceptarVentas.addActionListener(new java.awt.event.ActionListener() {
+        btExportarAlmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pdf.png"))); // NOI18N
+        btExportarAlmacen.setText("Exportar");
+        btExportarAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarVentasActionPerformed(evt);
+                btExportarAlmacenActionPerformed(evt);
             }
         });
 
         tbArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código de Artículo", "Descripción", "Precio de Compra", "Precio de Venta", "Cantidad en Existencia", "Proveedor"
+                "Código de Artículo", "Descripción", "Precio de Compra", "Precio de Venta", "Cantidad en Existencia", "Proveedor", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -78,11 +78,6 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
         tbArticulos.setMinimumSize(new java.awt.Dimension(1150, 210));
         tbArticulos.setPreferredSize(new java.awt.Dimension(1150, 210));
         jScrollPane1.setViewportView(tbArticulos);
-        if (tbArticulos.getColumnModel().getColumnCount() > 0) {
-            tbArticulos.getColumnModel().getColumn(1).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(2).setResizable(false);
-            tbArticulos.getColumnModel().getColumn(5).setResizable(false);
-        }
 
         jSeparator1.setMaximumSize(new java.awt.Dimension(1150, 10));
         jSeparator1.setMinimumSize(new java.awt.Dimension(1150, 10));
@@ -99,7 +94,7 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
                         .addComponent(jScrollPane1)
                         .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btAceptarVentas)
+                        .addComponent(btExportarAlmacen)
                         .addContainerGap())))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -111,7 +106,7 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(btAceptarVentas)
+                .addComponent(btExportarAlmacen)
                 .addGap(55, 55, 55)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +120,8 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
     private void llenarTabla(){
         Articulo mArticulo = new Articulo(true);
         Object[] articulos = null;
-        Boolean activo = true;
-        Object[][] opciones = new Object[][]{{"idArticulo", ">=", activo}};
+        //Boolean activo = true;
+        Object[][] opciones = new Object[][]{{"idArticulo", ">=",0}};
         articulos = mArticulo.buscarBD("all", opciones);
         
         DecimalFormat decimal = new DecimalFormat("#.##");
@@ -135,18 +130,28 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
         DefaultTableModel datos = (DefaultTableModel) tbArticulos.getModel();
         datos.setRowCount(0);
         
-           
+       
          
         for(Object thisArticulo:articulos)
           {
-          if( ((Articulo)thisArticulo).getCantidadExistencia() >0 && ((Articulo)thisArticulo).getActivo())
+          Boolean activo = ((Articulo)thisArticulo).getActivo() ;
+          
+          String tmpActivo="";
+          if(activo==true){
+          tmpActivo="Activo";
+          
+          }else{
+          tmpActivo="Eliminado";
+          }
+          
           datos.addRow(new Object[] {
          ((Articulo)thisArticulo).getCodigoArticulo(),         
           ((Articulo)thisArticulo).getDescripcion(),
           decimal.format(((Articulo)thisArticulo).getPrecioCompra()),
           decimal.format(((Articulo)thisArticulo).getPrecioVenta()),
           decimal.format(((Articulo)thisArticulo).getCantidadExistencia()),
-          ((Articulo)thisArticulo).getProveedor()
+          ((Articulo)thisArticulo).getProveedor(),
+          tmpActivo.toString()
             
           });
           
@@ -160,7 +165,7 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
     
     
     }
-    private void btAceptarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarVentasActionPerformed
+    private void btExportarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExportarAlmacenActionPerformed
 
         
         ModeloArticulo reporte = null;
@@ -175,11 +180,11 @@ public class VistaReporteAlmacen extends javax.swing.JPanel {
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAceptarVentasActionPerformed
+    }//GEN-LAST:event_btExportarAlmacenActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAceptarVentas;
+    private javax.swing.JButton btExportarAlmacen;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tbArticulos;

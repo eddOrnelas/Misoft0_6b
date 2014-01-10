@@ -151,9 +151,9 @@ public class VistaReporteMovimientos extends javax.swing.JPanel {
         tbMovimientos.setPreferredSize(new java.awt.Dimension(1150, 200));
         jScrollPane1.setViewportView(tbMovimientos);
 
-        etDatosMov.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etDatosMov.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
-        etDatosArt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etDatosArt.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

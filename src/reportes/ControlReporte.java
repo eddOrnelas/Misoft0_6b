@@ -227,11 +227,11 @@ public class ControlReporte {
                 document.add(linea);
                 
                 //Crear y llenar Tabla PDF
-                PdfPTable table = new PdfPTable(7);
+                PdfPTable table = new PdfPTable(5);
                 
                 tmpFecha = ((Venta) fventas[0]).getFecha();
                 PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + nVenta +"                  Fecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
-                cell.setColspan(7);
+                cell.setColspan(5);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 table.addCell(cell);
@@ -241,8 +241,6 @@ public class ControlReporte {
                 table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
-                table.addCell(new Phrase("SubTotal",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, BaseColor.BLACK)));
-                table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,9, BaseColor.BLACK)));
                 
                
@@ -275,16 +273,11 @@ public class ControlReporte {
                 
                 
                 tmpPrecioVenta = ((ArticuloVenta) ventas[x]).getPrecioVenta();
-                 Float tmpGranTotal =  tmpCantidad * tmpPrecioVenta;
+                Float tmpGranTotal =  tmpCantidad * tmpPrecioVenta;
                 
                 table.addCell(new Phrase(decimal.format(tmpGranTotal),FontFactory.getFont(FontFactory.HELVETICA, 8))); 
                  
-                tmpTotal = ((100*tmpGranTotal)/111);
-                decimal.format(tmpTotal);
-                table.addCell(new Phrase(decimal.format(tmpTotal),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
-                 tmpIVA =  (11*tmpGranTotal)/111;
-                table.addCell(new Phrase(decimal.format(tmpIVA),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                 
                 table.addCell(new Phrase(decimal.format(tmpPrecioVenta*tmpCantidad),FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -302,7 +295,12 @@ public class ControlReporte {
                 
 
                 document.add(table);
-                document.add(new Phrase("                                                                                                                                                                                Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                document.add(new Paragraph(" ",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 4)));
+                document.add(new Phrase("                                                                                                                                                                Subtotal: $"+decimal.format(((Venta) fventas[0]).getSubtotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                document.add(new Paragraph(" ",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 4)));
+                document.add(new Phrase("                                                                                                                                                                        IVA: $"+decimal.format(((Venta) fventas[0]).getIva())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                document.add(new Paragraph(" ",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 4)));
+                document.add(new Phrase("                                                                                                                                                                     Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
            
                 
                 JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
@@ -517,7 +515,7 @@ public class ControlReporte {
         ModeloArticulo reporteArticulos = new ModeloArticulo();
         //Parametros de busqueda.
         Boolean activo = true;
-        Object[][] opciones = new Object[][]{{"activo", ">=", 1}};
+        Object[][] opciones = new Object[][]{{"activo", ">=", 0}};
 
         articulos = mArticulo.buscarBD("all", opciones);
         //Agrego una fuente general
@@ -530,6 +528,7 @@ public class ControlReporte {
         Integer tmpCantidadExistencia;
         String tmpProveedor = " ";
         Boolean tmpActivo;
+        String tmpAct = "";
         int x = 0;
 
         if (articulos.length <= 0) {
@@ -566,13 +565,14 @@ public class ControlReporte {
                 document.add(new Paragraph(" "));
                
                 //Modifico las celdas de las tablas Dann
-                PdfPTable table = new PdfPTable(6);
+                PdfPTable table = new PdfPTable(7);
+                table.setWidthPercentage(90);
                 //Dar formato al contenido de la celda DANN
                 PdfPCell cell = new PdfPCell();
                 //Cambiar Forma a las celdas Dann
                 //cell.setBorder(5);
                 
-                cell.setColspan(6);
+                cell.setColspan(7);
                 cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 table.addCell(cell);
@@ -593,6 +593,8 @@ public class ControlReporte {
                 
                
                 table.addCell(new Phrase("Proveedor",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
+                
+                table.addCell(new Phrase("Estado",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10, BaseColor.BLACK)));
 
 
 
@@ -606,17 +608,23 @@ public class ControlReporte {
                     tmpPrecioVenta = ((Articulo) articulos[x]).getPrecioVenta();
                     tmpCantidadExistencia = ((Articulo) articulos[x]).getCantidadExistencia();
                     tmpProveedor = ((Articulo) articulos[x]).getProveedor();
-                    //tmpActivo = ((Articulo) articulos[x]).getActivo();
-
+                    tmpActivo = ((Articulo) articulos[x]).getActivo();
+                    if(tmpActivo==true){
+                    tmpAct = "Activo";
+                    }
+                    else{
+                    tmpAct = "Eliminado";
+                    }
                     //table.addCell(tmpIdArticulo.toString());
-                    if(tmpCantidadExistencia>0){
+                    //if(tmpCantidadExistencia>0){
                     table.addCell(new Phrase(tmpCodigoArticulo.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpDescripcion,FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpPrecioCompra.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpPrecioVenta.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpCantidadExistencia.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
                     table.addCell(new Phrase(tmpProveedor,FontFactory.getFont(FontFactory.HELVETICA, 8)));
-                    }
+                    table.addCell(new Phrase(tmpAct,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                    //}
                 }
 
                 document.add(table);
