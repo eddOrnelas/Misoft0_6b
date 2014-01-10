@@ -38,6 +38,7 @@ public class vistaConsultaVentas extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbAllVentas = new javax.swing.JTable();
@@ -48,7 +49,8 @@ public class vistaConsultaVentas extends javax.swing.JFrame {
         setTitle("Consulta de Ventas");
         setFocusCycleRoot(false);
         setMaximumSize(new java.awt.Dimension(600, 300));
-        setPreferredSize(new java.awt.Dimension(600, 300));
+        setMinimumSize(new java.awt.Dimension(600, 300));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         tbAllVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,8 +68,28 @@ public class vistaConsultaVentas extends javax.swing.JFrame {
         tbAllVentas.setPreferredSize(new java.awt.Dimension(299999999, 250));
         jScrollPane1.setViewportView(tbAllVentas);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 567;
+        gridBagConstraints.ipady = 70;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(45, 0, 0, 10);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Consulta de Ventas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(37, 215, 0, 0);
+        getContentPane().add(jLabel1, gridBagConstraints);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         jButton1.setText("Cerrar");
@@ -76,36 +98,15 @@ public class vistaConsultaVentas extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(64, 154, 11, 10);
+        getContentPane().add(jButton1, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(215, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(jButton1)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
-
-        pack();
+        setSize(new java.awt.Dimension(616, 338));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -155,7 +156,7 @@ public class vistaConsultaVentas extends javax.swing.JFrame {
         
         
         Object[] fventas = null;
-        Object[][] opciones = new Object[][]{{"cancelado","=",nVenta}};
+        Object[][] opciones = new Object[][]{{"cancelado",">=",nVenta}};
         Venta fVenta = new Venta(true);
         fventas = fVenta.buscarBD("all", opciones);
         
