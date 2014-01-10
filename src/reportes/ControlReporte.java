@@ -211,7 +211,10 @@ public class ControlReporte {
                 Document document = new Document();
                 //Abrimos el flujo para escribir en el PDF.
                 PdfWriter.getInstance(document, new FileOutputStream("Reporte de Ventas.pdf"));
+              
                 document.open();
+                
+                
                 Image logo = Image.getInstance("logo200.png");   
                //Modificacion posicion de img Dann
                 logo.setAlignment(MIDDLE);               
@@ -316,7 +319,7 @@ public class ControlReporte {
                     e.printStackTrace();
                 }
             } catch (Exception e) {
-                 JOptionPane.showMessageDialog(null, "Error en crear Reportede Ventas.pdf");
+                   JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Ventas.pdf");
             }
         }
         return reporteVentas;
@@ -783,7 +786,7 @@ public class ControlReporte {
                      JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Movimientos.pdf");
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error al crear Reporte de Movimientos.pdf");
+                JOptionPane.showMessageDialog(null, "Archivo no disponible: Cerrar Reporte de Movimientos.pdf");
             }
         }
         }
