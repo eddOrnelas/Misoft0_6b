@@ -43,9 +43,10 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         if(carritoRecuperado==null)
         carrito = new ArrayList();
         else{
+            System.out.println("Carrito: "+carritoRecuperado.toString());
             carrito = carritoRecuperado;
             rellenartabla();
-            calcularCosto();
+            calcularCosto(true);
             
         }
     }
@@ -416,9 +417,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         add(btEditarCantidad, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
@@ -753,9 +753,10 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     private void btEditarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarCantidadActionPerformed
         // TODO add your handling code here:
         
-        int selection= tbConsultar.getSelectedRow();
+        Integer selection= tbConsultar.getSelectedRow();
         
        Long codigoArticulo = null;
+       if(selection!=null && selection!=-1)
         try{
         codigoArticulo = (Long)tbConsultar.getValueAt(selection, 0);
         }catch(java.lang.ArrayIndexOutOfBoundsException e)
@@ -921,6 +922,40 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         
         ControlVenta ctrVentaCarrito = new ControlVenta();
         ctrVentaCarrito.guardarCarrito(this, carrito);
+    }
+    
+    public void calcularCosto(Boolean opt){
+        
+        
+        
+        Integer cantidad_articulos = carrito.size();
+        Float subTotal = 0.0f;
+        Float subSubTotal = 0.0f;
+        Float iva = 0.0f;
+        
+         for(int x=0; x<cantidad_articulos; x++)
+          {
+              
+             Object articuloTmp = carrito.get(x);
+             Object[] thisArticulo = ((Object[]) articuloTmp); 
+              
+          
+          subTotal += ((Articulo)thisArticulo[0]).getPrecioVenta()*((Integer)thisArticulo[1]).intValue();
+          
+          
+          
+          
+          }
+         
+         subSubTotal = (subTotal*100)/111;
+         iva =subTotal-subSubTotal;
+         
+         DecimalFormat decimal = new DecimalFormat("#.##");
+         
+        lbSubTotal.setText("$ "+decimal.format(subSubTotal));
+        lbIva.setText("$ "+decimal.format(iva));
+        lbTotal.setText("$ "+decimal.format(subTotal));
+
     }
     
     
