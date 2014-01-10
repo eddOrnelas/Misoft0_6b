@@ -1,13 +1,11 @@
 package misoft;
 
 import articulo.VistaPrincipalArticulos;
-import corte.VistaCorte;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import reportes.VistaReportes;
 import usuario.VistaPrincipalUsuario;
-import venta.VistaRealizarVenta;
 import venta.VistaRealizarVentas;
 
 

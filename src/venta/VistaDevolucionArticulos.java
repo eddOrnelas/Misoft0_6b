@@ -60,7 +60,6 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         tbArticulos = new javax.swing.JTable();
         btRealizarVenta = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -191,17 +190,6 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         getContentPane().add(btCancelar, gridBagConstraints);
-
-        jButton1.setText("Reinpresion de Ticket");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
-        gridBagConstraints.gridy = 1;
-        getContentPane().add(jButton1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -384,8 +372,8 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
                 Boolean resultado = ctrVenta.devolucionArticuloVenta(venta, codigoArticulo, cantidadTmp);
              if(resultado)
              {
-                 Integer cantidadTabla = (Integer) tbArticulos.getValueAt(selection, 2);
-                 ((DefaultTableModel)tbArticulos.getModel()).setValueAt((cantidadTabla-cantidadTmp), selection, 3);
+                 Integer cantidadTabla = (Integer) tbArticulos.getValueAt(selection, 3);
+                 ((DefaultTableModel)tbArticulos.getModel()).setValueAt((cantidadTabla-cantidadTmp), selection, 2);
                  JOptionPane.showMessageDialog(this, "Se cancelo el articulo de forma correcta del sistema \n"+"Favor de devolver al cliente la cantidad de: \n"+(cantidadTmp*cantidadTabla));
                  
              }
@@ -405,14 +393,6 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btRealizarVentaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        ControlReporte ctrReporte = new ControlReporte();
-        ctrReporte.generarTicket(venta);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -452,7 +432,6 @@ public class VistaDevolucionArticulos extends javax.swing.JFrame {
     private javax.swing.JButton btBuscar;
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btRealizarVenta;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
