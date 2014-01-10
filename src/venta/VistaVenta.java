@@ -16,10 +16,10 @@ public class VistaVenta extends javax.swing.JPanel {
     public VistaVenta() {
         initComponents();
         
-        VistaRealizarVenta vista = new VistaRealizarVenta();
+        //VistaRealizarVenta vista = new VistaRealizarVenta();
         this.removeAll();
-        this.add(vista);
-        vista.show();
+       // this.add(vista);
+       // vista.show();
         this.revalidate();
         this.repaint();
         

@@ -209,7 +209,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         Articulo articulosBusqueda = new Articulo(true);
         Object[] resultado = null;
         
-        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}};
+        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}, {"activo","=",1}};
         
         resultado = articulosBusqueda.buscarBD("all", opciones);
         
@@ -220,7 +220,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         Articulo articulosBusqueda = new Articulo(true);
         Object[] resultado = null;
         
-        Object[][] opciones = new Object[][] {{"descripcion","LIKE",descripcion}};
+        Object[][] opciones = new Object[][] {{"descripcion","LIKE",descripcion}, {"activo","=",1}};
         
         resultado = articulosBusqueda.buscarBD("all", opciones);
         
@@ -827,7 +827,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
         Articulo articuloEncontrado = new Articulo(true);
         Object[] resultado = null;
         
-        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}};
+        Object[][] opciones = new Object[][] {{"codigoArticulo","=",codigoArticulo}, {"activo","=",1}};
         
         resultado = articulosBusqueda.buscarBD("all", opciones);
         if(resultado.length>0){

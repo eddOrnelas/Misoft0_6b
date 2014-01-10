@@ -18,9 +18,13 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.Barcode;
+import com.itextpdf.text.pdf.Barcode128;
+import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Font;
 import static java.awt.GridBagConstraints.CENTER;
@@ -325,7 +329,7 @@ public class ControlReporte {
         return reporteVentas;
     }
     
-    public ModeloCorte generarTicket(Long idVenta){
+    public Boolean generarTicket(Long idVenta){
         ArticuloVenta mVentas = new ArticuloVenta(true);
         Venta fVenta = new Venta(true);
         
@@ -350,6 +354,7 @@ public class ControlReporte {
         Long tmpIDart;
         Float tmpIVA;
         String tmpDesc;
+        String tmpUnit;
         Integer tmpCantidad;
         Float tmpPrecioVenta;
         Float tmpTotal=0F;
@@ -361,7 +366,7 @@ public class ControlReporte {
         
         
         if (ventas.length <= 0) {
-            return null;
+            return false;
         } else {
 
             try {
@@ -380,7 +385,7 @@ public class ControlReporte {
                 System.out.println("Papel: "+PageSize.LETTER.toString());
                 
                 //Abrimos el flujo para escribir en el PDF.
-                PdfWriter.getInstance(document, new FileOutputStream("ticket.pdf"));
+                 PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("ticket.pdf"));
                 document.open();
                 Image logo = Image.getInstance("logo200.png");   
                //Modificacion posicion de img Dann
@@ -398,25 +403,31 @@ public class ControlReporte {
                 document.add(linea);
                 
                 //Crear y llenar Tabla PDF
-                PdfPTable table = new PdfPTable(5);
+                PdfPTable table = new PdfPTable(3);
                 table.setTotalWidth(380f);
                  table.setWidthPercentage(130);
+                 float[] columnWidths = new float[] {12f, 30f, 8f};
+                table.setWidths(columnWidths);
                 // table.setWidths(new float[]{2, 1, 1});
                 //table.setw
                 tmpFecha = ((Venta) fventas[0]).getFecha();
-                PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + idVenta +"                  Fecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 4)));
-                cell.setColspan(5);
+                PdfPCell cell = new PdfPCell(new Paragraph("No. Venta " + idVenta +"\nFecha y Hora: " +tmpFecha,FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                cell.setColspan(3);
                 cell.setHorizontalAlignment(Element.ALIGN_JUSTIFIED);
                 cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                 //cell.set
                 table.addCell(cell);
+                table.getDefaultCell().setBorderWidth(0f);//Cambiamos tamaño borde celda
+                //ta
+                //table.set
                // table.set
                      
                
-                table.addCell(new Phrase("Código de Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,8, BaseColor.BLACK)));   
-                table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
-                table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
-                table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
+                table.addCell(new Phrase("Cód. Artículo",FontFactory.getFont(FontFactory.HELVETICA_BOLD,8, BaseColor.BLACK)));   
+                //table.addCell(new Phrase("Descripción",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
+                table.addCell(new Phrase("Concepto",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
+                //table.addCell(new Phrase("Cantidad",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
+                //table.addCell(new Phrase("Precio de Venta",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8, BaseColor.BLACK)));
                 //table.addCell(new Phrase("Sub Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 4, BaseColor.BLACK)));
                 //table.addCell(new Phrase("IVA",FontFactory.getFont(FontFactory.HELVETICA_BOLD,4, BaseColor.BLACK)));
                 table.addCell(new Phrase("Total",FontFactory.getFont(FontFactory.HELVETICA_BOLD,8, BaseColor.BLACK)));
@@ -435,21 +446,28 @@ public class ControlReporte {
                 //JOptionPane.showMessageDialog(null, "codigo del articulo: "+((Articulo) dventas[0]).getCodigoArticulo());
                 tmpCodArt = ((Articulo) dventas[0]).getCodigoArticulo();
                 tmpIDart = ((ArticuloVenta)ventas[x]).getIdArticulo();
-                table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                table.addCell(new Phrase(tmpCodArt.toString(),FontFactory.getFont(FontFactory.HELVETICA, 6)));
           
 
                 tmpDesc = ((Articulo)dventas[0]).getDescripcion();
-                table.addCell(new Phrase(tmpDesc,FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+                //table.addCell(new Phrase(tmpDesc,FontFactory.getFont(FontFactory.HELVETICA, 8)));
                // new Phrase()
                 
                 tmpCantidad = ((ArticuloVenta) ventas[x]).getCantidad();
-                table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                //table.addCell(new Phrase(tmpCantidad.toString(),FontFactory.getFont(FontFactory.HELVETICA, 8)));
+                
+                
+                
+                tmpUnit = ((Articulo)dventas[0]).getCantidadUnidad()+" "+((Articulo)dventas[0]).getUnidad();
+                
+                table.addCell(new Phrase(tmpDesc+" - "+tmpUnit+"\n Cant: "+tmpCantidad,FontFactory.getFont(FontFactory.HELVETICA, 8)));
                 
                 
                 tmpPrecioVenta = ((ArticuloVenta) ventas[x]).getPrecioVenta();
                  Float tmpGranTotal =  tmpCantidad * tmpPrecioVenta;
                 
-                table.addCell(new Phrase(decimal.format(tmpGranTotal),FontFactory.getFont(FontFactory.HELVETICA, 8))); 
+               // table.addCell(new Phrase(decimal.format(tmpGranTotal),FontFactory.getFont(FontFactory.HELVETICA, 8))); 
                  
                 tmpTotal = ((100*tmpGranTotal)/111);
                 decimal.format(tmpTotal);
@@ -471,21 +489,60 @@ public class ControlReporte {
            
                 } 
                     
+                //Margen fantasma de celdas
+                table.addCell(" ");
+                table.addCell(" ");
+                table.addCell(" ");
                 
-                              
+                //Agregamos Subtotal
+                table.addCell(" ");
+                table.addCell(new Phrase("SubTotal:",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                table.addCell(new Phrase("$"+decimal.format(((Venta) fventas[0]).getSubtotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                
+                //Agregamos Iva
+                table.addCell(" ");
+                table.addCell(new Phrase("Iva:",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                table.addCell(new Phrase("$"+decimal.format(((Venta) fventas[0]).getIva())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                
+                //Agregamos Total
+                table.addCell(" ");
+                table.addCell(new Phrase("Total:",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                table.addCell(new Phrase("$"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
+                
+                //Agregamos Total
+                table.addCell(" ");
+                
+               // java.awt.Image barcodeImage = null;
+//                Image barcodeImage = null;
+//                Barcode128 barcodeGen = new Barcode128();
+//                barcodeGen.setCode(idVenta.toString());
+                   PdfContentByte cb = writer.getDirectContent();
+                //barcodeImage = barcodeGen.createImageWithBarcode(cb, Color.black, Color.white);
+                
+                 Barcode128 code128 = new Barcode128();
+                    //code128.setCode("0123456789 hello");
+                    //document.add(code128.createImageWithBarcode(cb, null, null));
+                    //code128.setCode("0123456789\uffffMy Raw Barcode (0 - 9)");
+                    code128.setCode(idVenta.toString());
+                    code128.setCodeType(Barcode.CODE128);
+                    code128.setBarHeight(5f);
+                    //document.add(code128.createImageWithBarcode(cb, null, null));
+                
+                table.addCell(code128.createImageWithBarcode(cb, BaseColor.BLACK, BaseColor.WHITE));
+                table.addCell(" ");
               
                 document.add(table);
-                 document.add(new Phrase(" "));
-                document.add(new Phrase(" "));
-                document.add(new Phrase(" "));
-                document.add(new Phrase(" "));
-                document.add(new Phrase(" "));
-                document.add(new Phrase(" "));
+                // document.add(new Phrase(" "));
+               // document.add(new Phrase(" "));
+               // document.add(new Phrase(" "));
+                //document.add(new Phrase(" "));
+                ///document.add(new Phrase(" "));
+                //document.add(new Phrase(" "));
                 
                 
-                document.add(new Phrase("                                                                                                                                                                                                                           Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 3)));
+                //document.add(new Phrase("Total: $"+decimal.format(((Venta) fventas[0]).getTotal())+"",FontFactory.getFont(FontFactory.HELVETICA_BOLD, 8)));
                
-                JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
+               // JOptionPane.showMessageDialog(null, "Reporte Guardado con Éxito.");
                 //Cerramos PDF.
                 document.close();
                 java.awt.Desktop desktop = java.awt.Desktop.getDesktop(); 
@@ -501,12 +558,13 @@ public class ControlReporte {
 
                 } 
         } catch (Exception e) {
-                 JOptionPane.showMessageDialog(null, "Error en crear Reportede Ventas.pdf");
+                 //JOptionPane.showMessageDialog(null, "Error en crear Reportede Ventas.pdf");
+                 return false;
             }
         }
 
         
-        return reporteVentas;
+        return true;
     }
 
     public ModeloArticulo realizarReporteArticulo() {

@@ -34,6 +34,21 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         initComponents();
         
         carrito = new ArrayList();
+
+    }
+    
+    public VistaRealizarVentas(ArrayList carritoRecuperado) {
+        initComponents();
+        
+        if(carritoRecuperado==null)
+        carrito = new ArrayList();
+        else{
+            System.out.println("Carrito: "+carritoRecuperado.toString());
+            carrito = carritoRecuperado;
+            rellenartabla();
+            calcularCosto(true);
+            
+        }
     }
 
     /**
@@ -49,12 +64,11 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txBuscar = new javax.swing.JTextField();
+        btAgregar = new javax.swing.JButton();
         btBuscar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbCarrito = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        RealizarCobro = new javax.swing.JButton();
+        tbConsultar = new javax.swing.JTable();
+        btReiniciarVenta = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         lbSubTotal = new javax.swing.JLabel();
@@ -62,10 +76,12 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         lbIva = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         lbTotal = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        cancelarArticulo = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btRealizarCobro = new javax.swing.JButton();
+        btAgregarArticulos = new javax.swing.JButton();
+        btCancelarArticulo = new javax.swing.JButton();
+        btDevolucionAriculo = new javax.swing.JButton();
+        btCancelarVenta = new javax.swing.JButton();
+        btEditarCantidad = new javax.swing.JButton();
 
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -122,10 +138,10 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.weighty = 0.01;
         add(txBuscar, gridBagConstraints);
 
-        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944512_plus.png"))); // NOI18N
-        btBuscar.setText("Agregar [Enter]");
-        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+        btAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944512_plus.png"))); // NOI18N
+        btAgregar.setText("Agregar [Enter]");
+        btAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarArticulo(evt);
             }
@@ -139,14 +155,14 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
-        add(btBuscar, gridBagConstraints);
+        add(btAgregar, gridBagConstraints);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
-        jButton2.setText("Consultar Articulo [F2]");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
+        btBuscar.setText("Consultar Articulo [F2]");
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btBuscarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -158,10 +174,10 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.01;
-        add(jButton2, gridBagConstraints);
+        add(btBuscar, gridBagConstraints);
 
-        tbCarrito.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tbCarrito.setModel(new javax.swing.table.DefaultTableModel(
+        tbConsultar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tbConsultar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -184,23 +200,23 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tbCarrito.getTableHeader().setReorderingAllowed(false);
-        tbCarrito.addKeyListener(new java.awt.event.KeyAdapter() {
+        tbConsultar.getTableHeader().setReorderingAllowed(false);
+        tbConsultar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbCarritoKeyPressed(evt);
+                tbConsultarKeyPressed(evt);
             }
         });
-        jScrollPane1.setViewportView(tbCarrito);
-        tbCarrito.getColumnModel().getColumn(0).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(0).setPreferredWidth(50);
-        tbCarrito.getColumnModel().getColumn(1).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(1).setPreferredWidth(200);
-        tbCarrito.getColumnModel().getColumn(2).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(2).setPreferredWidth(20);
-        tbCarrito.getColumnModel().getColumn(3).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(3).setPreferredWidth(20);
-        tbCarrito.getColumnModel().getColumn(4).setResizable(false);
-        tbCarrito.getColumnModel().getColumn(4).setPreferredWidth(20);
+        jScrollPane1.setViewportView(tbConsultar);
+        tbConsultar.getColumnModel().getColumn(0).setResizable(false);
+        tbConsultar.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tbConsultar.getColumnModel().getColumn(1).setResizable(false);
+        tbConsultar.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tbConsultar.getColumnModel().getColumn(2).setResizable(false);
+        tbConsultar.getColumnModel().getColumn(2).setPreferredWidth(20);
+        tbConsultar.getColumnModel().getColumn(3).setResizable(false);
+        tbConsultar.getColumnModel().getColumn(3).setPreferredWidth(20);
+        tbConsultar.getColumnModel().getColumn(4).setResizable(false);
+        tbConsultar.getColumnModel().getColumn(4).setPreferredWidth(20);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -214,39 +230,22 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 19, 0, 0);
         add(jScrollPane1, gridBagConstraints);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/almacen.png"))); // NOI18N
-        jButton3.setText("Reiniciar Venta [F10]");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btReiniciarVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btReiniciarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/almacen.png"))); // NOI18N
+        btReiniciarVenta.setText("Reiniciar Venta [F12]");
+        btReiniciarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btReiniciarVentaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.ipady = 13;
         gridBagConstraints.weighty = 0.01;
-        add(jButton3, gridBagConstraints);
-
-        RealizarCobro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        RealizarCobro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944849_Business.png"))); // NOI18N
-        RealizarCobro.setText("Realizar Cobro [F8]");
-        RealizarCobro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RealizarCobroActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.ipadx = 13;
-        gridBagConstraints.ipady = 13;
-        gridBagConstraints.weighty = 0.01;
-        add(RealizarCobro, gridBagConstraints);
+        add(btReiniciarVenta, gridBagConstraints);
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -322,6 +321,20 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(13, 13, 13, 13);
         jPanel1.add(lbTotal, gridBagConstraints);
 
+        btRealizarCobro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btRealizarCobro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944849_Business.png"))); // NOI18N
+        btRealizarCobro.setText("Realizar Cobro [F8]");
+        btRealizarCobro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRealizarCobroActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        jPanel1.add(btRealizarCobro, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -331,10 +344,10 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jPanel1, gridBagConstraints);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944250_pencil_add.png"))); // NOI18N
-        jButton1.setText("Agregar Articulos [F5]");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAgregarArticulos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btAgregarArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386944250_pencil_add.png"))); // NOI18N
+        btAgregarArticulos.setText("Agregar Articulos [F5]");
+        btAgregarArticulos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 VerAgregarArticulos(evt);
             }
@@ -343,52 +356,71 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        add(jButton1, gridBagConstraints);
+        add(btAgregarArticulos, gridBagConstraints);
 
-        cancelarArticulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cancelarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
-        cancelarArticulo.setText("Cancelar Articulos [C]");
-        cancelarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
+        btCancelarArticulo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btCancelarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
+        btCancelarArticulo.setText("Cancelar Articulos [Supr]");
+        btCancelarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelarArticuloMouseClicked(evt);
+                btCancelarArticuloMouseClicked(evt);
+            }
+        });
+        btCancelarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCancelarArticuloActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
         gridBagConstraints.ipadx = 13;
         gridBagConstraints.ipady = 13;
         gridBagConstraints.weighty = 0.01;
-        add(cancelarArticulo, gridBagConstraints);
+        add(btCancelarArticulo, gridBagConstraints);
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943418_th-list.png"))); // NOI18N
-        jButton4.setText("Devolucion de Articulo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btDevolucionAriculo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btDevolucionAriculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943418_th-list.png"))); // NOI18N
+        btDevolucionAriculo.setText("Devolucion de Articulo");
+        btDevolucionAriculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btDevolucionAriculoActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jButton4, gridBagConstraints);
+        add(btDevolucionAriculo, gridBagConstraints);
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942378_Black_Trash.png"))); // NOI18N
-        jButton5.setText("Cancelar Venta");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btCancelarVenta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btCancelarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942378_Black_Trash.png"))); // NOI18N
+        btCancelarVenta.setText("Cancelar Venta");
+        btCancelarVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btCancelarVentaActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        add(btCancelarVenta, gridBagConstraints);
+
+        btEditarCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btEditarCantidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
+        btEditarCantidad.setText("Editar Cantidad Articulo [F4]");
+        btEditarCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarCantidadActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        add(jButton5, gridBagConstraints);
+        add(btEditarCantidad, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarArticulo
@@ -470,7 +502,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     }
     
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btReiniciarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReiniciarVentaActionPerformed
         // TODO add your handling code here:
         Object opciones[] = { "SI", "NO" };
          Integer seleccion = JOptionPane.showOptionDialog(this, "Deseas cancelar la venta?", "Atencion!",
@@ -482,7 +514,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
                 calcularCosto();
                 rellenartabla();
             }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btReiniciarVentaActionPerformed
 
     private void txBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txBuscarKeyPressed
         // TODO add your handling code here:
@@ -510,19 +542,19 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
                 }
                     else
                         if(key==KeyEvent.VK_F8){
-                            RealizarCobroActionPerformed(null);
+                            btRealizarCobroActionPerformed(null);
                     }
             }
         
     }//GEN-LAST:event_txBuscarKeyPressed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         // TODO add your handling code here:
         
         VistaConsultarArticulo consultarArticulo = new VistaConsultarArticulo(txBuscar,this);
         consultarArticulo.show();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btBuscarActionPerformed
 
     private void txBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBuscarActionPerformed
         // TODO add your handling code here:
@@ -543,7 +575,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
 
     }//GEN-LAST:event_formKeyPressed
 
-    private void RealizarCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarCobroActionPerformed
+    private void btRealizarCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarCobroActionPerformed
         // TODO add your handling code here:
         
         if(carrito.size()>0){
@@ -554,7 +586,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "No cuentas con articulos en la lista");
           
         
-    }//GEN-LAST:event_RealizarCobroActionPerformed
+    }//GEN-LAST:event_btRealizarCobroActionPerformed
 
     private void VerAgregarArticulos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerAgregarArticulos
         // TODO add your handling code here:
@@ -562,7 +594,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         agregarArticulos.show();
     }//GEN-LAST:event_VerAgregarArticulos
 
-    private void tbCarritoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbCarritoKeyPressed
+    private void tbConsultarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbConsultarKeyPressed
         // TODO add your handling code here:
         
          int key=evt.getKeyCode();
@@ -571,11 +603,11 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         if(key==KeyEvent.VK_DELETE)
         {
           //Obtenemos la fila seleccionada
-       int selection= tbCarrito.getSelectedRow();
+       int selection= tbConsultar.getSelectedRow();
         
        Long codigoArticulo = null;
         try{
-        codigoArticulo = (Long)tbCarrito.getValueAt(selection, 0);
+        codigoArticulo = (Long)tbConsultar.getValueAt(selection, 0);
         }catch(java.lang.ArrayIndexOutOfBoundsException e)
         {
             
@@ -607,29 +639,167 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             else
                 if(key==KeyEvent.VK_TAB){
                 //    evt.
+                }else
+                    if(key == KeyEvent.VK_F4){
+                        
+                        int selection= tbConsultar.getSelectedRow();
+        
+       Long codigoArticulo = null;
+        try{
+        codigoArticulo = (Long)tbConsultar.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        if(codigoArticulo!=null){
+        
+            String cantEditStr = JOptionPane.showInputDialog(this, "Introduce la cantidad para edicion: ", tbConsultar.getValueAt(selection, 2));
+            Integer cantEdit = null;
+            
+            if(cantEditStr!=null)
+            try{
+            cantEdit = Integer.parseInt(cantEditStr);
+            }catch(java.lang.ArrayIndexOutOfBoundsException e)
+            {
+
+            }
+            
+            if(cantEdit<=0 || cantEdit == null)
+           {
+               JOptionPane.showMessageDialog(this, "Cantidad introducida invalida");
+               
+           }else
+                if(cantEdit<=0 || cantEditStr.contains("+") || cantEditStr.contains("-")){
+                    JOptionPane.showMessageDialog(this, "La cantidad introducida es invalida, solo son permitidos numeros \n");
+                    
+                    }else{
+                        editarCantidadCarrito(codigoArticulo, cantEdit);
+                       // rellenartabla();
+        calcularCosto();
                 }
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "No has seleccionas articulo");
+        }
+                        
+        
+
+                        
+                        
+                        
+                    }
         
         
        
         
-    }//GEN-LAST:event_tbCarritoKeyPressed
+    }//GEN-LAST:event_tbConsultarKeyPressed
 
-    private void cancelarArticuloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarArticuloMouseClicked
+    private void btCancelarArticuloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btCancelarArticuloMouseClicked
         
         
         
-    }//GEN-LAST:event_cancelarArticuloMouseClicked
+    }//GEN-LAST:event_btCancelarArticuloMouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btDevolucionAriculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDevolucionAriculoActionPerformed
         VistaDevolucionArticulos devolucionArticulos= new VistaDevolucionArticulos();
         devolucionArticulos.show();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btDevolucionAriculoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btCancelarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarVentaActionPerformed
         // TODO add your handling code here:
         VistaCancelarVenta cancelarVenta= new VistaCancelarVenta();
          cancelarVenta.show();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btCancelarVentaActionPerformed
+
+    private void btCancelarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarArticuloActionPerformed
+        // TODO add your handling code here:
+        
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        ControlVenta ctrVenta = new ControlVenta();
+        
+        //Obtenemos la fila seleccionada
+        Integer selection= tbConsultar.getSelectedRow();
+        //Optenemos el id de esa fila
+        Long codigoArticulo = null;
+        
+        try{
+        codigoArticulo = (Long) tbConsultar.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        if(codigoArticulo!=null){
+        Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "Desceas cancelar articulo?", "Atencion!",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                cancelarArticulo(codigoArticulo);
+                txBuscar.requestFocus();
+            }
+        }else{
+             JOptionPane.showMessageDialog(this, "Codigo Articulo Invalido");
+            txBuscar.requestFocus();
+        }
+        
+        
+    }//GEN-LAST:event_btCancelarArticuloActionPerformed
+
+    private void btEditarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarCantidadActionPerformed
+        // TODO add your handling code here:
+        
+        Integer selection= tbConsultar.getSelectedRow();
+        
+       Long codigoArticulo = null;
+       if(selection!=null && selection!=-1)
+        try{
+        codigoArticulo = (Long)tbConsultar.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+        
+        if(codigoArticulo!=null){
+        
+            String cantEditStr = JOptionPane.showInputDialog(this, "Introduce la cantidad para edicion: ", tbConsultar.getValueAt(selection, 2));
+            Integer cantEdit = null;
+            
+            if(cantEditStr!=null)
+            try{
+            cantEdit = Integer.parseInt(cantEditStr);
+            }catch(java.lang.ArrayIndexOutOfBoundsException e)
+            {
+
+            }
+            
+          if(cantEdit != null)
+            if(cantEdit<=0)
+           {
+               JOptionPane.showMessageDialog(this, "Cantidad introducida invalida");
+               
+           }else
+                if(cantEdit<=0 || cantEditStr.contains("+") || cantEditStr.contains("-")){
+                    JOptionPane.showMessageDialog(this, "La cantidad introducida es invalida, solo son permitidos numeros \n");
+                    
+                    }else{
+                        editarCantidadCarrito(codigoArticulo, cantEdit);
+                       // rellenartabla();
+        calcularCosto();
+                }
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "No has seleccionas articulo");
+        }
+                        
+        
+        
+    }//GEN-LAST:event_btEditarCantidadActionPerformed
 
     public void agregarArticuloCarrito(Articulo articulo, Integer cantidad){
         
@@ -720,6 +890,8 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     
     public void calcularCosto(){
         
+        
+        
         Integer cantidad_articulos = carrito.size();
         Float subTotal = 0.0f;
         Float subSubTotal = 0.0f;
@@ -747,18 +919,56 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         lbSubTotal.setText("$ "+decimal.format(subSubTotal));
         lbIva.setText("$ "+decimal.format(iva));
         lbTotal.setText("$ "+decimal.format(subTotal));
+        
+        ControlVenta ctrVentaCarrito = new ControlVenta();
+        ctrVentaCarrito.guardarCarrito(this, carrito);
+    }
+    
+    public void calcularCosto(Boolean opt){
+        
+        
+        
+        Integer cantidad_articulos = carrito.size();
+        Float subTotal = 0.0f;
+        Float subSubTotal = 0.0f;
+        Float iva = 0.0f;
+        
+         for(int x=0; x<cantidad_articulos; x++)
+          {
+              
+             Object articuloTmp = carrito.get(x);
+             Object[] thisArticulo = ((Object[]) articuloTmp); 
+              
+          
+          subTotal += ((Articulo)thisArticulo[0]).getPrecioVenta()*((Integer)thisArticulo[1]).intValue();
+          
+          
+          
+          
+          }
+         
+         subSubTotal = (subTotal*100)/111;
+         iva =subTotal-subSubTotal;
+         
+         DecimalFormat decimal = new DecimalFormat("#.##");
+         
+        lbSubTotal.setText("$ "+decimal.format(subSubTotal));
+        lbIva.setText("$ "+decimal.format(iva));
+        lbTotal.setText("$ "+decimal.format(subTotal));
+
     }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton RealizarCobro;
+    private javax.swing.JButton btAgregar;
+    private javax.swing.JButton btAgregarArticulos;
     private javax.swing.JButton btBuscar;
-    private javax.swing.JButton cancelarArticulo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btCancelarArticulo;
+    private javax.swing.JButton btCancelarVenta;
+    private javax.swing.JButton btDevolucionAriculo;
+    private javax.swing.JButton btEditarCantidad;
+    private javax.swing.JButton btRealizarCobro;
+    private javax.swing.JButton btReiniciarVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -769,13 +979,13 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
     private javax.swing.JLabel lbIva;
     private javax.swing.JLabel lbSubTotal;
     private javax.swing.JLabel lbTotal;
-    private javax.swing.JTable tbCarrito;
+    private javax.swing.JTable tbConsultar;
     public javax.swing.JTextField txBuscar;
     // End of variables declaration//GEN-END:variables
 
     public void rellenartabla() {
         
-         DefaultTableModel datos = (DefaultTableModel) tbCarrito.getModel();
+         DefaultTableModel datos = (DefaultTableModel) tbConsultar.getModel();
             datos.setRowCount(0);
          
             int cantidad_articulos =  carrito.size();
@@ -795,9 +1005,9 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
           ((Integer)thisArticulo[1]).intValue()*((Articulo)thisArticulo[0]).getPrecioVenta()});
           }
         
-        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbCarrito.getModel());
+        RowSorter<TableModel> sorter = new TableRowSorter<TableModel>(tbConsultar.getModel());
           
-        tbCarrito.setRowSorter(sorter);
+        tbConsultar.setRowSorter(sorter);
         
         
        }
@@ -824,5 +1034,98 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         rellenartabla();
         calcularCosto();
      }
+
+    private void editarCantidadCarrito(Long codigoArticulo, Integer cantidad) {
+        
+            int cantidad_articulos =  carrito.size();
+            //Bandera de repetido encontrado
+            Boolean noRepetido = true;
+        //Buscar Anteriormente Agregados y cotejar la cantidad en almacen con los agregados
+            
+            ControlArticulo ctrArticulo = new ControlArticulo();
+            Articulo datosArticulo = null;
+            
+            datosArticulo = ctrArticulo.buscarUnoPorCodigoArticulo(codigoArticulo);
+        
+            
+            for(int x=0; x<cantidad_articulos; x++)
+          {
+              
+             Object articuloTmp = carrito.get(x);
+             Object[] thisArticulo = ((Object[]) articuloTmp);
+             
+             
+             
+              
+             if(((Articulo)thisArticulo[0]).getCodigoArticulo().longValue() == codigoArticulo.longValue())
+             {   noRepetido = false;
+                 System.out.println("Coincide");
+                 
+                 if(cantidad>((Articulo)thisArticulo[0]).getCantidadExistencia())
+                 {
+                     Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "La cantidad a comprar excede de la existente en almacen,\n Continuar de todos modos?", "Atencion!",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                 Object[] articuloNuevo = new Object[2];
+                 articuloNuevo[0] = ((Articulo)thisArticulo[0]);
+                 articuloNuevo[1] = cantidad;
+                 
+                 carrito.set(x, articuloNuevo);
+                 rellenartabla();
+                 
+            }
+            
+                 }
+                 else{
+                      Object[] articuloNuevo = new Object[2];
+                 articuloNuevo[0] = ((Articulo)thisArticulo[0]);
+                 articuloNuevo[1] = cantidad;
+                 
+                 carrito.set(x, articuloNuevo);
+                 rellenartabla();
+                 noRepetido = false;
+                 }
+             }
+          
+          
+          }
+        
+        
+        //Si no esta repetido pero puede y exceda la cantidad en existencia
+        if(noRepetido)
+        if(cantidad>datosArticulo.getCantidadExistencia())
+           {
+                     Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "La cantidad a comprar excede de la existente en almacen,\n Continuar de todos modos?", "Atencion!",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+            
+            if(seleccion== JOptionPane.YES_OPTION)//Si seleccionamos que Si
+            {
+                 Object[] articuloNuevo = new Object[2];
+                    articuloNuevo[0] = datosArticulo;
+                    articuloNuevo[1] = cantidad;
+
+                    carrito.add(articuloNuevo);
+
+                    rellenartabla();
+                 
+            }
+            
+                 }
+        else{
+        Object[] articuloNuevo = new Object[2];
+        articuloNuevo[0] = datosArticulo;
+        articuloNuevo[1] = cantidad;
+        
+        carrito.add(articuloNuevo);
+        
+        rellenartabla();
+        }
+    }
     
 }

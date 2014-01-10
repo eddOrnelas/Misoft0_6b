@@ -1,13 +1,13 @@
 package misoft;
 
 import articulo.VistaPrincipalArticulos;
-import corte.VistaCorte;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import reportes.VistaReportes;
 import usuario.VistaPrincipalUsuario;
-import venta.VistaRealizarVenta;
+import venta.ControlVenta;
 import venta.VistaRealizarVentas;
 
 
@@ -22,9 +22,12 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
      * Creates new form VistaVentanaPrincipal
      */
     
-     Long idUsuario;
+     public Long idUsuario;
+     
+     public ArrayList carrito;
+     
     
-    private void setIdUsuario(Long idUsuario)
+    public void setIdUsuario(Long idUsuario)
     {
         this.idUsuario = idUsuario;
     }
@@ -32,6 +35,16 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
     public Long getIdUsuario()
     {
         return idUsuario;
+    }
+    
+    public void setCarrito(ArrayList carrito)
+    {
+        this.carrito = carrito;
+    }
+    
+    public ArrayList getCarrito()
+    {
+        return carrito;
     }
     
     
@@ -250,7 +263,12 @@ public class VistaVentanaPrincipal extends javax.swing.JFrame {
             
         panelPrincipal.removeAll();
         
-        VistaRealizarVentas vista = new VistaRealizarVentas();
+         ControlVenta ctrVenta = new ControlVenta();
+            ArrayList carritoRecuperado = null;
+        
+        carritoRecuperado = ctrVenta.recuperarCarrito(this);
+        
+        VistaRealizarVentas vista = new VistaRealizarVentas(carritoRecuperado);
         vista.show();
         
         panelPrincipal.add(vista);
