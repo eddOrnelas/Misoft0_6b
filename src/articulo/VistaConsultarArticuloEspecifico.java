@@ -197,8 +197,8 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         btEditarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btEditarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btEditarArticulo.setText("Editar");
-        btEditarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btEditarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarArticulo(evt);
             }
         });
@@ -235,14 +235,9 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         btCancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelar.setText("Cancelar");
-        btCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelarConsulta(evt);
-            }
-        });
         btCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarActionPerformed(evt);
+                cancelarCoonsulta(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -344,10 +339,10 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
         add(lbUnidad, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editarArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarArticulo
+    private void cancelarCoonsulta(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarCoonsulta
         // TODO add your handling code here:
         
-        VistaEditarArticulo vista = new VistaEditarArticulo(codigoArticulo,textoBusqueda);
+           VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
            this.removeAll();
            //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
            this.setLayout(new java.awt.BorderLayout());          
@@ -356,32 +351,25 @@ public class VistaConsultarArticuloEspecifico extends javax.swing.JPanel {
            this.revalidate();
            this.repaint();
         
-        
-        
-    }//GEN-LAST:event_editarArticulo
-
-    private void cancelarConsulta(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarConsulta
-        // TODO add your handling code here:
-        
-        VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
-           this.removeAll();
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-           this.setLayout(new java.awt.BorderLayout());          
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
-        
-        
-    }//GEN-LAST:event_cancelarConsulta
-
-    private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btCancelarActionPerformed
+    }//GEN-LAST:event_cancelarCoonsulta
 
     private void jLabel9ComponentMoved(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel9ComponentMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel9ComponentMoved
+
+    private void editarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarArticulo
+        // TODO add your handling code here:
+        
+         VistaEditarArticulo vista = new VistaEditarArticulo(codigoArticulo,textoBusqueda);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());          
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
+        
+    }//GEN-LAST:event_editarArticulo
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCancelar;

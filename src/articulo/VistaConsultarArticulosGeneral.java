@@ -152,8 +152,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         btBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942888_search.png"))); // NOI18N
         btBuscar.setText("Buscar");
-        btBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarArticulos(evt);
             }
         });
@@ -186,8 +186,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         btVerDetallesAriculo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btVerDetallesAriculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942729_eye-24.png"))); // NOI18N
         btVerDetallesAriculo.setText("Ver Detalles");
-        btVerDetallesAriculo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btVerDetallesAriculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verDetallesArticulo(evt);
             }
         });
@@ -206,8 +206,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         btEditarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/editar-icono.png"))); // NOI18N
         btEditarArticulo.setText("Editar Articulo");
         btEditarArticulo.setActionCommand("Editar Artículo");
-        btEditarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btEditarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editarArticulo(evt);
             }
         });
@@ -225,14 +225,9 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         btEliminarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btEliminarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942378_Black_Trash.png"))); // NOI18N
         btEliminarArticulo.setText("Eliminar Artículo");
-        btEliminarArticulo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarArticulo(evt);
-            }
-        });
         btEliminarArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEliminarArticuloActionPerformed(evt);
+                eliminarArticulo(evt);
             }
         });
         btEliminarArticulo.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -249,8 +244,8 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         btRealizarCompra.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btRealizarCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386942614_meanicons_58.png"))); // NOI18N
         btRealizarCompra.setText("Realizar Compra");
-        btRealizarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btRealizarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comprarArticulo(evt);
             }
         });
@@ -271,202 +266,6 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
 
     
     
-    private void consultarArticulos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultarArticulos
-        // TODO add your handling code here:
-        
-        //String donde almacenar el texto a buscar
-        String descripcion = txBusqueda.getText();
-        
-        //Iniciamos controlador
-        ControlArticulo ctrArticulo = new ControlArticulo();
-        //Iniciamos objectos donde guardaremos los resultados de busqueda
-        Object[] articulos = null;
-        
-        this.textoBusqueda = descripcion;
-       articulos = ctrArticulo.buscarArticulo(descripcion);
-        
-        //Long donde almacenamos el codigo de articulo
-        
-            
-        
-        if(articulos.length<=0)
-            JOptionPane.showMessageDialog(this,"no se encontro articulo");
-        else
-        {
-          llenarTabla(articulos);
-            
-        }
-        
-        
-        
-    }//GEN-LAST:event_consultarArticulos
-
-    private void verDetallesArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verDetallesArticulo
-        // TODO add your handling code here:
-        
-        //Obtenemos la fila seleccionada
-        selection= tbArticulos.getSelectedRow();
-        //Optenemos el id de esa fila
-        Long codigoArticulo = null;
-        try{
-        codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
-        }catch(java.lang.ArrayIndexOutOfBoundsException e)
-        {
-            
-        }
-                
-             if(codigoArticulo!=null)
-             {
-           VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(codigoArticulo, textoBusqueda);
-           this.removeAll();
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-           this.setLayout(new java.awt.BorderLayout());          
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
-             }
-             else
-             {
-                 JOptionPane.showMessageDialog(this, "No has seleccionado articulo");
-             }
-        
-        
-    }//GEN-LAST:event_verDetallesArticulo
-
-    private void editarArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarArticulo
-        // TODO add your handling code here:
-        
-        
-        //Obtenemos la fila seleccionada
-        selection= tbArticulos.getSelectedRow();
-        //Optenemos el id de esa fila
-        Long codigoArticulo = null;
-        try{
-        codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
-        }catch(java.lang.ArrayIndexOutOfBoundsException e)
-        {
-            
-        }
-                
-             if(codigoArticulo!=null)
-             {
-           VistaEditarArticulo vista = new VistaEditarArticulo(codigoArticulo, textoBusqueda);
-           this.removeAll();
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-           this.setLayout(new java.awt.BorderLayout());          
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
-             }
-             else
-             {
-                 JOptionPane.showMessageDialog(this, "No has seleccionado articulo");
-             }
-        
-        
-    }//GEN-LAST:event_editarArticulo
-
-    private void eliminarArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarArticulo
-        // TODO add your handling code here:
-        
-        //Iniciamos controlador articulo
-        ControlArticulo ctrArticulo = new ControlArticulo();
-        
-        //Obtenemos la fila seleccionada
-        selection= tbArticulos.getSelectedRow();
-        //Optenemos el id de esa fila
-        Long codigoArticulo = null;
-        try{
-        codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
-        }catch(java.lang.ArrayIndexOutOfBoundsException e)
-        {
-            
-        }
-              
-        
-        if(codigoArticulo!=null)
-             {
-                 //Establecemos un si y un no en espanol
-                 Object opciones[] = { "SI", "NO" };
-                 
-            Integer seleccion = JOptionPane.showOptionDialog(this, "Deceas eliminar el articulo seleccionado?", "Atencion!",
-        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
-    
-            
-            
-            if(seleccion == JOptionPane.YES_OPTION)
-            {
-                ControlUsuario ctrUsuario = new ControlUsuario();
-       
-     Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
-       
-       Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
-       
-       if(!autorizado)
-       {
-           JOptionPane.showMessageDialog(this, "No estas autorizado");
-           return;
-       }
-            
-                Boolean resultado = ctrArticulo.elimiarArticuloPorCodigo(codigoArticulo);
-             if(resultado)
-             {
-                 ((DefaultTableModel)tbArticulos.getModel()).setValueAt("Eliminado", seleccion, 4);
-                 JOptionPane.showMessageDialog(this, "Se elimino el articulo de forma correcta del sistema");
-             }
-             else
-                 JOptionPane.showMessageDialog(this, "Ocurrio un error en la operacion, favor de intentar mas tarde");
-             }
-            
-            
-             }
-             else
-             {
-                JOptionPane.showMessageDialog(this, "No has seleccionado articulo "); 
-             }
-             
-           
-           
-        
-    }//GEN-LAST:event_eliminarArticulo
-
-    private void comprarArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comprarArticulo
-        // TODO add your handling code here:
-        
-        // TODO add your handling code here:
-        
-        //Obtenemos la fila seleccionada
-        selection= tbArticulos.getSelectedRow();
-        //Optenemos el id de esa fila
-        Long idArticulo = null;
-        try{
-        idArticulo = (Long) tbArticulos.getValueAt(selection, 0);
-        }catch(java.lang.ArrayIndexOutOfBoundsException e)
-        {
-            
-        }
-                
-             if(idArticulo!=null)
-             {
-           VistaCompraArticulos vista = new VistaCompraArticulos(idArticulo, textoBusqueda);
-           this.removeAll();
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-           this.setLayout(new java.awt.BorderLayout());          
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
-             }
-             else
-             {
-                 JOptionPane.showMessageDialog(this, "No has seleccionado articulo");
-             }
-        
-        
-    }//GEN-LAST:event_comprarArticulo
-
     private void keyEditarArticulo(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyEditarArticulo
         // TODO add your handling code here:
         int key=evt.getKeyCode();
@@ -543,13 +342,190 @@ public class VistaConsultarArticulosGeneral extends javax.swing.JPanel {
         
     }//GEN-LAST:event_keyEliminarArticulo
 
-    private void btEliminarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEliminarArticuloActionPerformed
+    private void eliminarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarArticulo
         // TODO add your handling code here:
-    }//GEN-LAST:event_btEliminarArticuloActionPerformed
+        
+         //Iniciamos controlador articulo
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        
+        //Obtenemos la fila seleccionada
+        selection= tbArticulos.getSelectedRow();
+        //Optenemos el id de esa fila
+        Long codigoArticulo = null;
+        try{
+        codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+              
+        
+        if(codigoArticulo!=null)
+             {
+                 //Establecemos un si y un no en espanol
+                 Object opciones[] = { "SI", "NO" };
+                 
+            Integer seleccion = JOptionPane.showOptionDialog(this, "Deceas eliminar el articulo seleccionado?", "Atencion!",
+        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
+    
+            
+            
+            if(seleccion == JOptionPane.YES_OPTION)
+            {
+                ControlUsuario ctrUsuario = new ControlUsuario();
+       
+     Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
+       
+       Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
+       
+       if(!autorizado)
+       {
+           JOptionPane.showMessageDialog(this, "No estas autorizado");
+           return;
+       }
+            
+                Boolean resultado = ctrArticulo.elimiarArticuloPorCodigo(codigoArticulo);
+             if(resultado)
+             {
+                 ((DefaultTableModel)tbArticulos.getModel()).setValueAt("Eliminado", seleccion, 4);
+                 JOptionPane.showMessageDialog(this, "Se elimino el articulo de forma correcta del sistema");
+             }
+             else
+                 JOptionPane.showMessageDialog(this, "Ocurrio un error en la operacion, favor de intentar mas tarde");
+             }
+            
+            
+             }
+             else
+             {
+                JOptionPane.showMessageDialog(this, "No has seleccionado articulo "); 
+             }
+             
+           
+           
+    }//GEN-LAST:event_eliminarArticulo
 
     private void txBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txBusquedaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txBusquedaActionPerformed
+
+    private void verDetallesArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verDetallesArticulo
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        
+        //Obtenemos la fila seleccionada
+        selection= tbArticulos.getSelectedRow();
+        //Optenemos el id de esa fila
+        Long codigoArticulo = null;
+        try{
+        codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+                
+             if(codigoArticulo!=null)
+             {
+           VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(codigoArticulo, textoBusqueda);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());          
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
+             }
+             else
+             {
+                 JOptionPane.showMessageDialog(this, "No has seleccionado articulo");
+             }
+    }//GEN-LAST:event_verDetallesArticulo
+
+    private void editarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarArticulo
+        // TODO add your handling code here:
+        //Obtenemos la fila seleccionada
+        selection= tbArticulos.getSelectedRow();
+        //Optenemos el id de esa fila
+        Long codigoArticulo = null;
+        try{
+        codigoArticulo = (Long) tbArticulos.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+                
+             if(codigoArticulo!=null)
+             {
+           VistaEditarArticulo vista = new VistaEditarArticulo(codigoArticulo, textoBusqueda);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());          
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
+             }
+             else
+             {
+                 JOptionPane.showMessageDialog(this, "No has seleccionado articulo");
+             }
+    }//GEN-LAST:event_editarArticulo
+
+    private void comprarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarArticulo
+        // TODO add your handling code here:
+        //Obtenemos la fila seleccionada
+        selection= tbArticulos.getSelectedRow();
+        //Optenemos el id de esa fila
+        Long idArticulo = null;
+        try{
+        idArticulo = (Long) tbArticulos.getValueAt(selection, 0);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        {
+            
+        }
+                
+             if(idArticulo!=null)
+             {
+           VistaCompraArticulos vista = new VistaCompraArticulos(idArticulo, textoBusqueda);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());          
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
+             }
+             else
+             {
+                 JOptionPane.showMessageDialog(this, "No has seleccionado articulo");
+             }
+    }//GEN-LAST:event_comprarArticulo
+
+    private void consultarArticulos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarArticulos
+        // TODO add your handling code here:
+         //String donde almacenar el texto a buscar
+        String descripcion = txBusqueda.getText();
+        
+        //Iniciamos controlador
+        ControlArticulo ctrArticulo = new ControlArticulo();
+        //Iniciamos objectos donde guardaremos los resultados de busqueda
+        Object[] articulos = null;
+        
+        this.textoBusqueda = descripcion;
+       articulos = ctrArticulo.buscarArticulo(descripcion);
+        
+        //Long donde almacenamos el codigo de articulo
+        
+            
+        
+        if(articulos.length<=0)
+            JOptionPane.showMessageDialog(this,"no se encontro articulo");
+        else
+        {
+          llenarTabla(articulos);
+            
+        }
+    }//GEN-LAST:event_consultarArticulos
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;

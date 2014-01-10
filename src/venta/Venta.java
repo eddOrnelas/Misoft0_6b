@@ -118,9 +118,6 @@ public Venta(Boolean init)
         this.total = total;
     }
     
-    @Override
-    public String toString() {
-        return "[idVenta"+this.getIdVenta()+" fecha: "+this.getFecha()+"[cantidad"+this.getCantidad()+"total:"+this.getTotal();
-    }
+
     
 }

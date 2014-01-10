@@ -159,7 +159,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         btCobrar.setText("Cobrar");
         btCobrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCobrarActionPerformed(evt);
+                cobrar(evt);
             }
         });
         btCobrar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -235,7 +235,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCobrarActionPerformed
+    private void cobrar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cobrar
         // TODO add your handling code here:
         
         Float efectivo = null;
@@ -285,7 +285,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
              
         }
         
-    }//GEN-LAST:event_btCobrarActionPerformed
+    }//GEN-LAST:event_cobrar
 
     
     public Float calcularCosto(){
@@ -342,7 +342,7 @@ public class VistaRealizarCobro extends javax.swing.JFrame {
         else
             if(key==KeyEvent.VK_ENTER)
                 { 
-                   btCobrarActionPerformed(null);
+                   cobrar(null);
                 }
 
         

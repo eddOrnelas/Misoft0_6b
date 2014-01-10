@@ -157,14 +157,9 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         btAceptarAlta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btAceptarAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
         btAceptarAlta.setText("Aceptar");
-        btAceptarAlta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                realizarRegistroArticulo(evt);
-            }
-        });
         btAceptarAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAceptarAltaActionPerformed(evt);
+                realizarAltaArticulo(evt);
             }
         });
         btAceptarAlta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -185,14 +180,9 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         btCancelarAlta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btCancelarAlta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         btCancelarAlta.setText("Cancelar");
-        btCancelarAlta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelarRegistro(evt);
-            }
-        });
         btCancelarAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCancelarAltaActionPerformed(evt);
+                cancelarRegistro(evt);
             }
         });
         btCancelarAlta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -288,93 +278,6 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txDescripcionActionPerformed
 
-    private void realizarRegistroArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_realizarRegistroArticulo
-//        // TODO add your handling code here:
-//        
-//        //barraEstado.setText("Alta Articulos: Guardando");
-//        
-//        String errorString = "";
-//        
-//       ControlArticulo ctrArticulos = new ControlArticulo();
-//       String errors = "";
-//       
-//       //ControlUsuario ctrUsuario =new ControlUsuario();
-//       
-//       //Long idUsuario = ctrUsuario.obtenerUsuarioActual(this);
-//       
-//       //Boolean autorizado = ctrUsuario.autorizarOperacion(idUsuario);
-//       
-//       //if(!autorizado)
-//         //  errors += "No estas autorizado";
-//    
-//    
-//       errors += ctrArticulos.validaDatosArticulo(txCodigoArticulo.getText(), txDescripcion.getText(),txProveedor.getText(), txcantidadUnidad.getText(), (String) comboBoxUnidad.getSelectedItem() );
-//    
-//       
-//       if(errors.length()>0)
-//       { JOptionPane.showMessageDialog(this,errors);
-//        //barraEstado.setText("Alta Articulos: En Espera");
-//       }
-//       else
-//       {
-//          Integer status = ctrArticulos.realizarRegistroArticulo(txCodigoArticulo.getText(), txDescripcion.getText(), txProveedor.getText(), txcantidadUnidad.getText(), (String) comboBoxUnidad.getSelectedItem() );
-//    
-//           if(status==1)
-//           {
-//           
-//            Object opciones[] = { "SI", "NO" };    
-//         Integer seleccion = JOptionPane.showOptionDialog(this, "El articulo se registro con exito, deceas registrar otro mas?", "Atencion!",
-//        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[1]);
-//    
-//            
-//            
-//            if(seleccion == JOptionPane.YES_OPTION)
-//            {
-//                txCodigoArticulo.setText("");
-//                txDescripcion.setText("");
-//                txProveedor.setText("");
-//            
-//            }
-//            else{
-//                VistaConsultarArticuloEspecifico vista = new VistaConsultarArticuloEspecifico(Long.parseLong(txCodigoArticulo.getText()),textoBusqueda);
-//                this.removeAll();
-//                txCodigoArticulo.setText("");
-//                txDescripcion.setText("");
-//                txProveedor.setText("");
-//                this.setLayout(new java.awt.BorderLayout());
-//                this.add(vista);
-//                vista.show();
-//                this.revalidate();
-//                this.repaint();
-//            }
-//            
-//           }
-//           else
-//           {
-//               JOptionPane.showMessageDialog(this,"Hubo un error en la operacion");
-//               //barraEstado.setText("Alta Articulos: En Espera");
-//           }
-//           
-//       }
-        
-        
-    }//GEN-LAST:event_realizarRegistroArticulo
-
-    private void cancelarRegistro(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarRegistro
-        // TODO add your handling code here:
-        
-//         VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
-//           this.removeAll();
-//           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-//           this.setLayout(new java.awt.BorderLayout());          
-//           this.add(vista);
-//           vista.show();
-//           this.revalidate();
-//           this.repaint();
-//        
-        
-    }//GEN-LAST:event_cancelarRegistro
-
     private void txCodigoArticuloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txCodigoArticuloKeyPressed
         // TODO add your handling code here:
                                  int key=evt.getKeyCode();
@@ -382,12 +285,12 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-        btAceptarAltaActionPerformed(null);                    
+        txDescripcion.requestFocus();
         }
     }
     }//GEN-LAST:event_txCodigoArticuloKeyPressed
 
-    private void btAceptarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAceptarAltaActionPerformed
+    private void realizarAltaArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarAltaArticulo
         // TODO add your handling code here:
           // TODO add your handling code here:
         
@@ -456,7 +359,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
            }
            
        }
-    }//GEN-LAST:event_btAceptarAltaActionPerformed
+    }//GEN-LAST:event_realizarAltaArticulo
 
     private void txDescripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txDescripcionKeyPressed
         // TODO add your handling code here:
@@ -465,7 +368,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-        btAceptarAltaActionPerformed(null);                    
+       realizarAltaArticulo(null);                    
         }
     }
     }//GEN-LAST:event_txDescripcionKeyPressed
@@ -477,7 +380,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-        btAceptarAltaActionPerformed(null);                    
+        realizarAltaArticulo(null);                    
         }
     }
     }//GEN-LAST:event_txProveedorKeyPressed
@@ -489,7 +392,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-        btAceptarAltaActionPerformed(null);                    
+        realizarAltaArticulo(null);                    
         }
     }
     }//GEN-LAST:event_txcantidadUnidadKeyPressed
@@ -501,7 +404,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-        btAceptarAltaActionPerformed(null);                    
+        realizarAltaArticulo(null);                    
         }
     }
     }//GEN-LAST:event_comboBoxUnidadKeyPressed
@@ -512,8 +415,8 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     if(evt.getSource()==btAceptarAlta)
     {
         if(key==KeyEvent.VK_ENTER)
-        { 
-        btAceptarAltaActionPerformed(null);                    
+        {
+        realizarAltaArticulo(null);
         }
     }
     }//GEN-LAST:event_btAceptarAltaKeyPressed
@@ -525,12 +428,12 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-       btCancelarAltaActionPerformed(null);                    
+       cancelarRegistro(null);                    
         }
     }
     }//GEN-LAST:event_btCancelarAltaKeyPressed
 
-    private void btCancelarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarAltaActionPerformed
+    private void cancelarRegistro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarRegistro
         // TODO add your handling code here:
          VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
            this.removeAll();
@@ -541,7 +444,7 @@ public class VistaRegistrarArticulo extends javax.swing.JPanel {
            this.revalidate();
            this.repaint();
         
-    }//GEN-LAST:event_btCancelarAltaActionPerformed
+    }//GEN-LAST:event_cancelarRegistro
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAceptarAlta;

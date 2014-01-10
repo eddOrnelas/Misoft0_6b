@@ -484,15 +484,31 @@ public class VistaCompraArticulos extends javax.swing.JPanel {
     }//GEN-LAST:event_realizarCompra
 
     private void txPrecioCompraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txPrecioCompraKeyReleased
-        Float iva=0.0f;
-        Float total=0.0f;
+
+        Float precioSugerido = null;
+        Float porcentajeSugerido = 100f;
+        Float precioCompra = null;
+        
         try{
-        iva= Float.parseFloat(txPrecioCompra.getText());
-        total= iva+Float.parseFloat(txPrecioCompra.getText());
-        txPrecioVenta.setText(total.toString());
+        
+            precioCompra  = Float.parseFloat(txPrecioCompra.getText());
+        
         }catch(NumberFormatException e){
+            //txPrecioVenta.setText("0.0");
+        }
+        
+        if(precioCompra==null){
             txPrecioVenta.setText("0.0");
         }
+        else
+            if(precioCompra<=0){
+                txPrecioVenta.setText("0.0");
+            }else{
+             precioSugerido =  precioCompra+((precioCompra*porcentajeSugerido)/100);
+             txPrecioVenta.setText(""+precioSugerido);
+            }
+       
+        
     }//GEN-LAST:event_txPrecioCompraKeyReleased
 
     private void cancelarCompra(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarCompra

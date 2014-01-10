@@ -771,7 +771,7 @@ public Integer realizarRegistroArticulo(String codigoArticulo, String descripcio
     }
     
     
-    Boolean reliazarEliminacionArticulo(Long idArticulo) {
+    Boolean realizarEliminacionArticulo(Long idArticulo) {
      
         Articulo articulo = new Articulo(true);
         

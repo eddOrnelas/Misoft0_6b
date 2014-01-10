@@ -111,14 +111,9 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/aceptar1.png"))); // NOI18N
         jButton1.setText("Aceptar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editarArticulo(evt);
-            }
-        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                editarArticulo(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -134,14 +129,9 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/img20x20/cancelar_1.jpg"))); // NOI18N
         jButton2.setText("Cancelar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cancelarEdicion(evt);
-            }
-        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelarEdicion(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -403,10 +393,22 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txCodigoArticuloActionPerformed
 
-    private void editarArticulo(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editarArticulo
+    private void cancelarEdicion(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarEdicion
         // TODO add your handling code here:
         
-        String errorString = "";
+        VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
+           this.removeAll();
+           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+           this.setLayout(new java.awt.BorderLayout());          
+           this.add(vista);
+           vista.show();
+           this.revalidate();
+           this.repaint();
+    }//GEN-LAST:event_cancelarEdicion
+
+    private void editarArticulo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarArticulo
+        // TODO add your handling code here:
+         String errorString = "";
         
        ControlArticulo ctrArticulos = new ControlArticulo();
        ControlUsuario ctrUsuario = new ControlUsuario();
@@ -461,39 +463,30 @@ public class VistaEditarArticulo extends javax.swing.JPanel {
        }
     }//GEN-LAST:event_editarArticulo
 
-    private void cancelarEdicion(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelarEdicion
-        // TODO add your handling code here:
-        
-           VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral(textoBusqueda);
-           this.removeAll();
-           //this.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-           this.setLayout(new java.awt.BorderLayout());          
-           this.add(vista);
-           vista.show();
-           this.revalidate();
-           this.repaint();
-        
-    }//GEN-LAST:event_cancelarEdicion
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     private void txPrecioCompraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txPrecioCompraKeyReleased
-        Float iva=0.0f;
-        Float total=0.0f;
+        Float precioSugerido = null;
+        Float porcentajeSugerido = 100f;
+        Float precioCompra = null;
+        
         try{
-        iva= Float.parseFloat(txPrecioCompra.getText());
-        total= iva+Float.parseFloat(txPrecioCompra.getText());
-        txPrecioVenta.setText(total.toString());
+        
+            precioCompra  = Float.parseFloat(txPrecioCompra.getText());
+        
         }catch(NumberFormatException e){
+            //txPrecioVenta.setText("0.0");
+        }
+        
+        if(precioCompra==null){
             txPrecioVenta.setText("0.0");
         }
+        else
+            if(precioCompra<=0){
+                txPrecioVenta.setText("0.0");
+            }else{
+             precioSugerido =  precioCompra+((precioCompra*porcentajeSugerido)/100);
+             txPrecioVenta.setText(""+precioSugerido);
+            }
     }//GEN-LAST:event_txPrecioCompraKeyReleased
 
     private void ComboBoxUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxUnidadActionPerformed

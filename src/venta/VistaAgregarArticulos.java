@@ -6,6 +6,7 @@ package venta;
 
 import articulo.Articulo;
 import articulo.ControlArticulo;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -91,6 +92,11 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         getContentPane().add(jLabel3, gridBagConstraints);
 
         txBuscarArticulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txBuscarArticulo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txBuscarArticuloPress(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -162,6 +168,7 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         Articulo articulo = null;
         ControlArticulo ctrArticulo = new ControlArticulo();
         
+        if(txBuscarArticulo.getText().length()>0)
         try{
         codigoArticulo = Long.parseLong(txBuscarArticulo.getText());
         }catch(NumberFormatException e)
@@ -183,9 +190,10 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         
          Integer cantidad= null;
 
+            if(txCantidad.getText().length()>0)
         try{
         cantidad = Integer.parseInt(txCantidad.getText());
-        }catch(java.lang.ArrayIndexOutOfBoundsException e)
+        }catch(NumberFormatException e)
         {
             
         }
@@ -214,6 +222,20 @@ public class VistaAgregarArticulos extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
+
+    private void txBuscarArticuloPress(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txBuscarArticuloPress
+        // TODO add your handling code here:
+        
+         int key=evt.getKeyCode();
+
+        
+        if(key==KeyEvent.VK_ENTER)
+        {
+            btAgregarActionPerformed(null);
+        }
+        
+        
+    }//GEN-LAST:event_txBuscarArticuloPress
 
     /**
      * @param args the command line arguments

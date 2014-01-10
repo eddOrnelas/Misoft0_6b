@@ -24,7 +24,6 @@ import reportes.ControlReporte;
  * @author isa
  */
 public class ControlVenta {
-   private ArrayList carritoCompra;
 
     public ControlVenta(){
                  

@@ -326,7 +326,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
         btRealizarCobro.setText("Realizar Cobro [F8]");
         btRealizarCobro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btRealizarCobroActionPerformed(evt);
+                realizarCobro(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -542,7 +542,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
                 }
                     else
                         if(key==KeyEvent.VK_F8){
-                            btRealizarCobroActionPerformed(null);
+                            realizarCobro(null);
                     }
             }
         
@@ -575,7 +575,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
 
     }//GEN-LAST:event_formKeyPressed
 
-    private void btRealizarCobroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRealizarCobroActionPerformed
+    private void realizarCobro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarCobro
         // TODO add your handling code here:
         
         if(carrito.size()>0){
@@ -586,7 +586,7 @@ public class VistaRealizarVentas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "No cuentas con articulos en la lista");
           
         
-    }//GEN-LAST:event_btRealizarCobroActionPerformed
+    }//GEN-LAST:event_realizarCobro
 
     private void VerAgregarArticulos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerAgregarArticulos
         // TODO add your handling code here:

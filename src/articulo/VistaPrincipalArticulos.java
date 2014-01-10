@@ -40,28 +40,23 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        btAltaArticulos = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bRegistroArticulos = new javax.swing.JButton();
+        btConsultaArticulos = new javax.swing.JButton();
         jpArticulos = new javax.swing.JPanel();
 
         setLayout(new java.awt.GridBagLayout());
 
-        btAltaArticulos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btAltaArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/addarticle.png"))); // NOI18N
-        btAltaArticulos.setText("Registro Nuevo Artículo");
-        btAltaArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        bRegistroArticulos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bRegistroArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/addarticle.png"))); // NOI18N
+        bRegistroArticulos.setText("Registro Nuevo Artículo");
+        bRegistroArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verVistaAltaArticulos(evt);
             }
         });
-        btAltaArticulos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAltaArticulosActionPerformed(evt);
-            }
-        });
-        btAltaArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
+        bRegistroArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btAltaArticulosKeyPressed(evt);
+                bRegistroArticulosKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -72,24 +67,19 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        add(btAltaArticulos, gridBagConstraints);
+        add(bRegistroArticulos, gridBagConstraints);
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943418_th-list.png"))); // NOI18N
-        jButton5.setText("Consulta Artículos");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        btConsultaArticulos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btConsultaArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NuevasImagenes/1386943418_th-list.png"))); // NOI18N
+        btConsultaArticulos.setText("Consulta Artículos");
+        btConsultaArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verVistaConsultaArticulos(evt);
             }
         });
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jButton5.addKeyListener(new java.awt.event.KeyAdapter() {
+        btConsultaArticulos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton5KeyPressed(evt);
+                btConsultaArticulosKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -100,7 +90,7 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         gridBagConstraints.ipady = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        add(jButton5, gridBagConstraints);
+        add(btConsultaArticulos, gridBagConstraints);
 
         jpArticulos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpArticulos.setLayout(new java.awt.BorderLayout());
@@ -116,46 +106,20 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         add(jpArticulos, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void verVistaAltaArticulos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVistaAltaArticulos
-        // TODO add your handling code here:
-//        
-//        jpArticulos.removeAll();
-//       jpArticulos.revalidate();
-//       
-//       VistaRegistrarArticulo vistaAltaArticulos = new VistaRegistrarArticulo();
-//       
-//        jpArticulos.add(vistaAltaArticulos);
-//        
-//        vistaAltaArticulos.show();
-        
-    }//GEN-LAST:event_verVistaAltaArticulos
-
-    private void verVistaConsultaArticulos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verVistaConsultaArticulos
-        // TODO add your handling code here:
-//        
-//         VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral();
-//        jpArticulos.removeAll();
-//        jpArticulos.add(vista);
-//        vista.show();
-//        jpArticulos.revalidate();
-//        jpArticulos.repaint();
-        
-    }//GEN-LAST:event_verVistaConsultaArticulos
-
-    private void btAltaArticulosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btAltaArticulosKeyPressed
+    private void bRegistroArticulosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bRegistroArticulosKeyPressed
         // TODO add your handling code here:
                        int key=evt.getKeyCode();
-    if(evt.getSource()==btAltaArticulos)
+    if(evt.getSource()==bRegistroArticulos)
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-          btAltaArticulosActionPerformed(null);                    
+         verVistaAltaArticulos(null);                    
         }
     }
         
-    }//GEN-LAST:event_btAltaArticulosKeyPressed
+    }//GEN-LAST:event_bRegistroArticulosKeyPressed
 
-    private void btAltaArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaArticulosActionPerformed
+    private void verVistaAltaArticulos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verVistaAltaArticulos
         // TODO add your handling code here:
          
         jpArticulos.removeAll();
@@ -166,22 +130,22 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         jpArticulos.add(vistaAltaArticulos);
         
         vistaAltaArticulos.show();
-    }//GEN-LAST:event_btAltaArticulosActionPerformed
+    }//GEN-LAST:event_verVistaAltaArticulos
 
-    private void jButton5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton5KeyPressed
+    private void btConsultaArticulosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btConsultaArticulosKeyPressed
         // TODO add your handling code here:
                            int key=evt.getKeyCode();
-    if(evt.getSource()==jButton5)
+    if(evt.getSource()==btConsultaArticulos)
     {
         if(key==KeyEvent.VK_ENTER)
         { 
-         jButton5ActionPerformed(null);                    
+         verVistaConsultaArticulos(null);                    
         }
     }
         
-    }//GEN-LAST:event_jButton5KeyPressed
+    }//GEN-LAST:event_btConsultaArticulosKeyPressed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void verVistaConsultaArticulos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verVistaConsultaArticulos
         // TODO add your handling code here:
            
          VistaConsultarArticulosGeneral vista = new VistaConsultarArticulosGeneral();
@@ -190,11 +154,11 @@ public class VistaPrincipalArticulos extends javax.swing.JPanel {
         vista.show();
         jpArticulos.revalidate();
         jpArticulos.repaint();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_verVistaConsultaArticulos
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAltaArticulos;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton bRegistroArticulos;
+    private javax.swing.JButton btConsultaArticulos;
     private javax.swing.JPanel jpArticulos;
     // End of variables declaration//GEN-END:variables
 }
